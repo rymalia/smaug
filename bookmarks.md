@@ -1,5 +1,41 @@
 # Friday, January 2, 2026
 
+## @simonw - GistHost Fork of GistPreview
+
+> I forked the wonderful https://gistpreview.github.io/ to create https://gisthost.github.io/ - here's what I changed in my fork: https://simonwillison.net/2026/Jan/1/gisthost/
+
+- **Tweet:** https://x.com/simonw/status/2006851664935006385
+- **Links:** [GistPreview](https://gistpreview.github.io/), [GistHost](https://gisthost.github.io/)
+- **Filed:** [GistHost Fork](./knowledge/articles/gisthost-fork.md)
+- **What:** Simon Willison forked GistPreview to create GistHost, a tool for rendering GitHub Gists as standalone web pages. The linked article documents his changes and motivations for the fork.
+
+---
+
+## @DataChaz - Gemini Interactive Images for Learning
+
+> Holy sh*t.
+>
+> Gemini can now produce fully interactive images on any topic.
+>
+> Such an insane resource for learning → highlight any region, and it gives you a full explanation 🤯
+
+- **Tweet:** https://x.com/DataChaz/status/2005605994781606141
+- **Media:** Video demonstration
+- **What:** Google Gemini's new capability to generate interactive images where users can highlight any region to get detailed explanations. Positioned as a powerful learning tool.
+
+---
+
+## @steipete - Summarize.sh Link Preview Toolbar
+
+> https://summarize.sh/ now shows a summarized toolbar over any link you hover, perfect to identify clickbait before even opening the link.
+
+- **Tweet:** https://x.com/steipete/status/2006425901719023628
+- **Link:** https://summarize.sh/
+- **Filed:** [Summarize.sh](./knowledge/tools/summarize-sh.md)
+- **What:** A browser tool that displays summary information in a toolbar when hovering over links, helping users identify clickbait without clicking through.
+
+---
+
 ## @pk_iv - Claude Chrome Browser Integration
 
 > I spent all of Christmas reverse engineering Claude Chrome so it would work with remote browsers.
