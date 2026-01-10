@@ -1,3 +1,287 @@
+# Friday, January 9, 2026
+
+## @irl_danB - OpenProse Cloud Launch
+> lots of people have installed the OpenProse skill (simple, free, open source, no dependencies, steps in thread)
+>
+> I've gotten a lot of messages expressing amazement about how well it lets them automate complex workflows
+>
+> but if you have Claude Code / OpenCode / Amp running locally, you're in a small elite club
+>
+> to let more people try it I'm launching OpenProse in the cloud, backed by opencode server
+>
+> inference is not cheap, so I will be letting folks in gradually. but if you want to see what it's about, check it out at https://t.co/aiEOcLMlOV
+
+- **Tweet:** https://x.com/irl_danB/status/2009592560231063943
+- **Link:** https://run.prose.md/
+- **Filed:** [OpenProse Cloud Launch](./knowledge/articles/openprose-cloud-launch.md)
+- **What:** Announcement of OpenProse cloud service launch, making the locally-run automation tool available in the cloud through gradual rollout, backed by an OpenCode server.
+
+---
+
+## @TheAhmadOsman - Switching from Claude Code to OpenCode
+> i have fully dropped Claude Code for OpenCode
+>
+> i donʼt use Opus 4.5,
+> i use GLM-4.7 and MiniMax-M2.1
+> theyʼre opensource and can be self-hosted
+>
+> nobody can nerf my models or rug pull me
+> nobody should be able to do that to your intelligence
+>
+> p.s. buy a GPU and run your LLMs locally
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2009730047452623113
+- **What:** User advocates for switching from Claude Code/Opus 4.5 to OpenCode with open-source, self-hosted models (GLM-4.7, MiniMax-M2.1) to avoid vendor lock-in and maintain control over AI tools.
+
+---
+
+## @spaceghost - Federal Agent Criticizes CBS Gun Investigation Coverage
+> A former 25 year career federal agent whose entire job was dealing with gun incidents involving federal agents details all the ways Ross messed up on CBS.
+>
+> It didn't air on the actual show tonight.
+>
+> CBS did post it to YouTube—and it has nearly 800k views already
+
+- **Tweet:** https://x.com/spaceghost/status/2009716693673681305
+- **What:** A CBS YouTube video (800k+ views) featuring a 25-year veteran federal agent providing critical analysis of coverage gaps in a gun-related investigation.
+
+---
+
+## @foundmyfitness - APOE and Alzheimer's Disease
+> Nearly all Alzheimer's, and half of dementia, is driven by APOE.
+>
+> A new, large-scale analysis reports that up to 93% of Alzheimer's cases and 85% of brain amyloid burden are attributable to having an APOE ε3/ε4 genotype, and the combined contribution of ε3 and ε4 to all-cause dementia is roughly 46%.
+>
+> The authors estimate that without the strong underlying risks conferred by APOE ε3 and ε4, almost all Alzheimer's disease and about half of all dementia cases would not occur.
+>
+> APOE is a risk factor, not an absolute determinant—many people with ε4 never develop Alzheimer's and many without it do. Still, the scale of these estimates makes it clear that APOE biology is a dominant driver of Alzheimer's risk at the population level.
+
+- **Tweet:** https://x.com/foundmyfitness/status/2009713823947862142
+- **What:** Summary of new research showing APOE genetic variants drive ~93% of Alzheimer's cases and ~46% of all dementia, though possession of risk variants doesn't guarantee disease development.
+
+---
+
+## @BenLorber8 - Elon Musk and White Nationalism
+> Yesterday Elon Musk retweeted "white solidarity is the only way to survive". In our numb overwhelmed media environment it barely made headlines that the world's richest man endorsed blood-curdling white nationalism. My brief writeup for @RDispatches
+
+- **Tweet:** https://x.com/BenLorber8/status/2009675266151641194
+- **Link:** https://religiondispatches.org/elon-musk-just-endorsed-blatant-white-nationalism-and-the-silence-is-deafening/
+- **Filed:** [Elon Musk and White Nationalism](./knowledge/articles/elon-musk-white-nationalism.md)
+- **What:** Analysis article examining Elon Musk's retweeting of white nationalist content and the minimal media coverage of this endorsement by a high-profile billionaire.
+
+---
+
+## @banteg - takopi v0.12.0
+> 🎤 voice notes → now you can talk to your agents. send a voice message in telegram and takopi transcribes it, routes it like typed text.
+>
+> uv tool install -U takopi
+
+- **Tweet:** https://x.com/banteg/status/2009673736317022460
+- **Link:** https://github.com/banteg/takopi
+- **Filed:** [takopi](./knowledge/tools/takopi.md)
+- **What:** A Telegram bridge for AI agents (Codex, Claude Code, OpenCode, Pi) with voice note transcription support. Enables managing projects through Telegram with progress streaming and resumable sessions.
+
+---
+
+## @louisanicola_ - Alzheimer's is more common than we thought. Blood tests just proved it.
+> Alzheimer's is more common than we thought. Blood tests just proved it.
+>
+> What the science shows
+>
+> 1. Almost 1 in 10 people over 70 have Alzheimer's dementia
+> This comes from a large Norwegian study using blood biomarkers + cognitive testing, not just surveys.
+>
+> 2. Alzheimer's starts years before symptoms
+> About 10% had high pTau217 with no symptoms, meaning preclinical Alzheimer's is already in the brain.
+>
+> 3. Rates after 85 were way higher than expected
+> Around 25% of people aged 85 to 89 had Alzheimer's dementia, far above older estimates.
+>
+> 4. Blood tests change the picture
+> pTau217 in blood tracks amyloid in the brain and reveals cases we used to miss.
+>
+> 5. Education mattered
+> Lower education levels were linked to higher Alzheimer's pathology, even before dementia.
+>
+> 6. Screening is powerful and risky
+> Experts warn blood tests are not ready for mass screening without safeguards.
+>
+> We now have tools to detect Alzheimer's early, but our healthcare system is built to step in after damage is done. We underfund education, prevention, and brain health, then act shocked when dementia explodes decades later.
+>
+> If Alzheimer's is showing up in blood years before memory loss, waiting until people forget their names is a policy failure, not a scientific one.
+
+- **Tweet:** https://x.com/louisanicola_/status/2009672443271753791
+- **What:** Analysis of recent research on Alzheimer's prevalence using blood biomarker testing. Highlights that Alzheimer's is far more common than previously estimated (1 in 10 over 70) and can be detected years before symptoms appear via blood tests like pTau217.
+
+---
+
+## @autisticadhdco - 10 Practical Focus Strategies
+> 10 Practical Focus Strategies:
+>
+> 1) Do it for just 10 minutes
+> 2) Limit daily priorities
+> 3) Write down distracting thoughts
+> 4) Notice what overwhelms you
+> 5) Notice when you have the most energy
+> 6) Use helpful distractions on purpose
+> 7) Aim for "good enough"
+> 8) Get clear on the goal
+> 9) Create artificial deadlines
+> 10) Acknowledge negative thoughts
+>
+> ADHD and Autism don't come with an instruction manual so I started writing one.
+>
+> Every week, I share short, practical strategies that make everyday life easier.
+
+- **Tweet:** https://x.com/autisticadhdco/status/2009671257827004455
+- **Link:** https://www.autisticadhd.co/
+- **Filed:** [Autistic ADHD Focus Strategies](./knowledge/articles/autisticadhd-co.md)
+- **What:** Newsletter and resource site providing practical strategies for managing daily life with ADHD and Autism. Focuses on actionable techniques and self-help guidance.
+
+---
+
+## @jasonfried - Jeremy, a 19-year veteran of 37signals, calmly walks through the process moving 5+ petabytes of data
+> Jeremy, a 19-year veteran of 37signals, calmly walks through the process moving 5+ petabytes of data and billions of individual files off AWS and onto our own on-prem storage setup without a second of downtime.
+>
+> The how, the time, and the tooling, it's all in here. Watch:
+
+- **Tweet:** https://x.com/jasonfried/status/2009667755876987204
+- **What:** Case study of a large-scale infrastructure migration: moving massive amounts of data (5+ petabytes) from AWS to on-premises storage with zero downtime. Notable for demonstrating practical enterprise infrastructure management.
+
+---
+
+## @rohit4verse -
+
+- **Tweet:** https://x.com/rohit4verse/status/2009663737469542875
+- **What:** Link to a tweet/article, content not fully captured. Appears to be sharing another tweet's content.
+
+---
+
+## @EricTopol - A new report claims that the APOE gene alleles accounts for the vast majority of Alzheimer's cases
+> A new report claims that the APOE gene alleles accounts for the vast majority of Alzheimer's cases:
+> "Without strong underlying risks from APOE ε3 and ε4, almost all AD and half of all dementia would not occur."
+
+- **Tweet:** https://x.com/EricTopol/status/2009653867437502469
+- **Link:** https://www.nature.com/articles/s44400-025-00045-9
+- **What:** Research article from Nature demonstrating that APOE gene variants are responsible for the vast majority of Alzheimer's disease cases. Significant finding for understanding genetic risk factors in neurodegeneration.
+
+---
+
+## @PsyPost - High passion without intimacy linked to severe psychological aggression in relationships
+> A new study finds that relationships characterized by high passion but low intimacy and commitment are associated with higher levels of severe psychological aggression and controlling behaviors compared to companionate partnerships.
+
+- **Tweet:** https://x.com/PsyPost/status/2009628888335569014
+- **Link:** https://www.psypost.org/high-passion-without-intimacy-linked-to-severe-psychological-aggression-in-relationships/?utm_source=dlvr.it&utm_medium=twitter
+- **Filed:** [High Passion Low Intimacy Relationships](./knowledge/articles/high-passion-low-intimacy-relationships.md)
+- **What:** Research study on relationship dynamics showing that passionate but emotionally disconnected relationships correlate with higher rates of psychological aggression and controlling behavior.
+
+---
+
+## @Mylovanov - Ukrainian F-16 pilot: We have cases when a pilot destroyed six cruise missiles in one flight
+> Ukrainian F-16 pilot: We have cases when a pilot destroyed six cruise missiles in one flight.
+>
+> Our list of targets included not only destroyed kamikaze drones and cruise missiles, but also enemy aircraft. We can do more. 1/
+
+- **Tweet:** https://x.com/Mylovanov/status/2009627560200868246
+- **What:** Interview with Ukrainian F-16 pilot discussing tactical successes destroying cruise missiles and drones, with capability to engage additional targets.
+
+---
+
+## @TheDrMAWZ - A new drug in the middle of clinical trials just increased REM sleep by 90%
+> A new drug in the middle of clinical trials just increased REM sleep by 90% without making people sleep longer!
+>
+> This is the first medication ever to specifically enhance REM only and the implications go far beyond seizure control.
+>
+> Here's what just happened. 🧵
+
+- **Tweet:** https://x.com/TheDrMAWZ/status/2009622195358843260
+- **What:** Discussion of breakthrough medication in clinical trials that selectively enhances REM sleep by 90% without increasing total sleep duration, with implications beyond seizure control.
+
+---
+
+## @mqst_ - The Hitchhiker's Guide to Online Anonymity
+> 🗻 The Hitchhiker's Guide to Online Anonymity
+>
+> Guide: https://t.co/q9mq4VsaV9
+>
+> Author: Anonymous Planet
+>
+> #opsec
+
+- **Tweet:** https://x.com/mqst_/status/2009618660982444457
+- **Link:** https://anonymousplanet.org/guide.html
+- **Filed:** [Hitchhikers Guide Online Anonymity](./knowledge/articles/hitchhikers-guide-online-anonymity.md)
+- **What:** Comprehensive guide for online anonymity and operational security (OpSec) practices by Anonymous Planet.
+
+---
+
+## @EuromaidanPress - Frontline report: Russia's elite force in Venezuela vanished without a fight
+> During the final moments of Maduro's rule, Russian forces meant to protect him simply disappeared. Despite forming his elite security ring, they didn't fire a shot as US troops entered Caracas.
+>
+> While Cuban defenders died fighting, Russian troops melted away.
+>
+> Russia didn't lose Venezuela in a battle. It walked away without a fight — confirming the fears of many of its allies: when the pressure rises, Moscow will not stand by them.
+
+- **Tweet:** https://x.com/EuromaidanPress/status/2009613127671800107
+- **Link:** https://euromaidanpress.com/2026/01/09/frontline-report-russias-elite-force-in-venezuela-vanished-without-a-fight/
+- **Filed:** [Russias Elite Force in Venezuela](./knowledge/articles/russias-elite-force-in-venezuela.md)
+- **What:** Analysis of Russia's withdrawal from Venezuela during Maduro's final moments, examining strategic implications of Moscow abandoning its allies under pressure.
+
+---
+
+# Thursday, January 8, 2026
+
+## @briantylercohen - ICE Agent Accountability
+> .@PeteButtigieg: "We have an ICE agent who should have been trained not to be in front of a vehicle and never to shoot into a moving vehicle, and yet this happened on [Kristi Noem's] watch. The whole POINT of Homeland Security is to make this country more stable and safe. And it is very clear on this administration's watch that the opposite is what's happened."
+
+- **Tweet:** https://x.com/briantylercohen/status/2009458290410050030
+- **What:** A quote from Pete Buttigieg criticizing an ICE agent incident under Kristi Noem's leadership, discussing improper training and shooting into a moving vehicle.
+
+---
+
+## @jayvanbavel - Blocking Mobile Internet Improves Mental Health and Attention
+> Blocking mobile internet on smartphones improves sustained attention, mental health, and subjective well-being
+>
+> An intervention found that blocking internet access on smartphones for 2 weeks improved mental health, subjective well-being, and objectively measured ability to sustain attention; 91% of participants improved on at least one of these outcomes.
+>
+> Why?
+>
+> Because instead of using their phone, people spent more time socializing in person, exercising, and being in nature.
+
+- **Tweet:** https://x.com/jayvanbavel/status/2009372047302955167
+- **Link:** https://academic.oup.com/pnasnexus/article/4/2/pgaf017/8016017?searchresult=1
+- **Filed:** [Internet Blocking Mental Health](./knowledge/articles/internet-blocking-mental-health.md)
+- **What:** Research paper from PNAS Nexus showing that a 2-week internet blocking intervention on smartphones significantly improved mental health, subjective well-being, and sustained attention by redirecting people to in-person socializing, exercise, and nature.
+
+---
+
+## @poetengineer__ - Podcast Timeline Visualizer
+> seeing a podcast before listening to it
+> 👁️🦻
+> been working on a podcast timeline visualizer that shows:
+> - what books/ideas/ppl are mentioned and how often
+> - key concepts and moments across the whole episode
+> - interactive scrubbing thru the ideas to get more context
+>
+> *Quoting @dela3499:* What is the most powerful possible mind?
+>
+> Is there an equivalent of Turing-Completeness, but for intelligence? Intelligence-Completeness?
+
+- **Tweet:** https://x.com/poetengineer__/status/2009336065346457846
+- **Quoted:** https://x.com/dela3499/status/2003975644234108937
+- **What:** A tool for visualizing podcast content structure, showing which books, ideas, and people are mentioned and allowing interactive navigation through the episode's concepts.
+
+---
+
+## @dejavucoder - sankalp
+> https://t.co/XlRkik4A40
+
+- **Tweet:** https://x.com/dejavucoder/status/2009330544832872491
+- **Link:** https://x.com/i/article/2009329942010724352
+- **What:** A quote tweet linking to another article or discussion on X.
+
+---
+
 # Sunday, January 4, 2026
 
 ## @trq212 - AI alignment and interpretability resources
