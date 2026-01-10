@@ -1,5 +1,122 @@
 # Friday, January 9, 2026
 
+## @frankdilo - Keeping a Work Log with Claude Code Integration
+> You should keep a worklog.
+
+A worklog is a record of what you work on day by day. I decided to keep it in the form of one markdown file per day, in a repository, connected to Claude Code. I have been keeping one for the past couple of years.
+
+During the day, I throw stuff at Claude and it translates into nice and tidy bullet points that are human-readable. At the end of the day, I share this on a # progress Slack channel with the team so everyone is up to speed with everyone else.
+
+It keeps you accountable and it's great for keeping track of what you do day to day and week to week and see if it matches your bigger plan.
+
+I also have a /checkpoint command that summarizes my progress since last week and creates a markdown file.
+
+- **Tweet:** https://x.com/frankdilo/status/2009565324061073656
+- **What:** Personal productivity tip about maintaining daily work logs in markdown format, automated with Claude Code, for team accountability and progress tracking.
+
+---
+
+## @rryssf_ - Physical Threats Improve AI Model Performance
+
+> Sergey Brin accidentally revealed something wild:
+>
+> "All models do better if you threaten them with physical violence. But people feel weird about that, so we don't talk about it."
+>
+> Now researchers have the data proving he's... partially right?
+>
+> Here's the full story: https://t.co/icoO8kMySX
+
+- **Tweet:** https://x.com/rryssf_/status/2009587531910938787
+- **What:** Claims from Sergey Brin about threatening AI models for better performance, with supporting research data.
+
+---
+
+## @edandersen - Claude Code Desktop App Auth Token Exploitation
+
+> So the reason Claude Code was so popular is because people were hijacking the desktop app's auth token and using it to call the API from other tools for 1/20th the cost of regular API calls?
+>
+> lollllllll
+
+- **Tweet:** https://x.com/edandersen/status/2009614961664999562
+- **What:** Commentary on Claude Code's popularity potentially being driven by users exploiting the desktop app's auth tokens for cheaper API access.
+
+---
+
+## @capitolhunters - Minnesota Shooting Incident Analysis
+
+> CNN posted a new video of the Minnesota shooting but missed its bombshell. ICE agent Jonathan Ross heads to his own car, turning his back on the supposed "terrorist" (L). He then walks back, filming, into the path of her ALREADY moving vehicle, stops and fires (R). Insane. 1/ https://t.co/hpzERiyx0o
+
+- **Tweet:** https://x.com/capitolhunters/status/2009671466019893606
+- **What:** Analysis and criticism of media coverage of a Minnesota incident, questioning the characterization of events involving an ICE agent.
+
+---
+
+## @capitolhunters - ICE Agent Behavior in Minnesota Incident
+
+> Here's the video as posted by X user @GinoTheGhost. Anderson Cooper doesn't notice that Ross was well clear of Renee Good's vehicle when it starts moving. The idiot walked into the path of a moving car while distracted by filming a video. Totally unprofessional. 2/ https://t.co/iWkQdm4x9g
+
+- **Tweet:** https://x.com/capitolhunters/status/2009671470562365652
+- **Parent:** https://x.com/capitolhunters/status/2009671466019893606
+- **What:** Follow-up analysis providing additional video context and criticism of the ICE agent's actions during the incident.
+
+---
+
+## @joeyferg - Federal Government Characterization of Minnesota Woman
+
+> The United States federal government really want you to believe that this soccer mom with her lab in the car who's last words were a calm "That's fine, dude. I'm not mad at you." was a domestic terrorist. Beyond insanity. https://t.co/Db52rpsMAm
+
+- **Tweet:** https://x.com/joeyferg/status/2009705297804439760
+- **What:** Commentary questioning the federal government's characterization of a woman involved in the Minnesota incident as a domestic terrorist.
+
+---
+
+## @krystalball - ICE Under Pressure to Create Content Following Officer Shooting
+> If you are wondering why Jonathan Ross was holding his iPhone in one hand and gun in the other, one possibility comes from @drewharwell reporting. ICE is under pressure from the WH to create as much content as possible. https://t.co/ES4hUfJS1K
+
+- **Tweet:** https://x.com/krystalball/status/2009709734597931398
+- **Link:** https://t.co/ES4hUfJS1K
+- **What:** Political commentary on ICE's social media strategy and the Jonathan Ross shooting incident in Minneapolis.
+
+---
+
+## @psycheureka - Cannabis Use and Psychotic Disorder Risk
+> Frequent use of high-potency (high-THC) cannabis is associated with a substantially increased risk of psychotic disorder, particularly in people with underlying vulnerability.
+>
+> Modern cannabis products often contain higher THC and relatively less CBD, a shift that may increase psychiatric and cognitive harms with early or heavy use: 🧵👇
+
+- **Tweet:** https://x.com/psycheureka/status/2009713766791782416
+- **What:** Medical/psychiatric thread discussing the association between high-THC cannabis use and psychotic disorder risk, particularly with modern cannabis products.
+
+---
+
+## @BulwarkOnline - New Footage of Renee Good Shooting in Minneapolis
+> "I will not be f*cking gaslit by these people. I will not calm down the rhetoric and tone it down....Jonathan Ross murdered her."
+>
+> @Timodc on the new footage of the Renee Good shooting: https://t.co/Jb5ApGmzV8
+
+- **Tweet:** https://x.com/BulwarkOnline/status/2009719989951967697
+- **What:** Video commentary on newly released footage of the Renee Good shooting by ICE officer Jonathan Ross in Minneapolis.
+
+---
+
+## @BulwarkOnline - Full Video: Breaking New Footage in Minneapolis Shooting
+> @Timodc Full video:
+>
+> Substack: https://t.co/4UJExlhKlG
+>
+> YouTube: https://t.co/lHyHJvOKEN
+>
+> Apple: https://t.co/JxMg6CVkiW
+>
+> Spotify: https://t.co/6PediBQ84N
+
+- **Tweet:** https://x.com/BulwarkOnline/status/2009719991386407086
+- **Parent:** https://x.com/BulwarkOnline/status/2009719989951967697
+- **Link:** https://www.thebulwark.com/p/breaking-new-footage-in-minneapolis?utm_source=twitter&utm_medium=social&utm_campaign=subs
+- **What:** Distribution post linking to full video commentary about the Minneapolis shooting footage across multiple platforms (Substack, YouTube, Apple Podcasts, Spotify).
+
+---
+
 ## @irl_danB - OpenProse Cloud Launch
 > lots of people have installed the OpenProse skill (simple, free, open source, no dependencies, steps in thread)
 >
@@ -230,6 +347,59 @@
 ---
 
 # Thursday, January 8, 2026
+
+## @MarkBourrie - Greenland Trade History: US-Denmark Deal in 1916
+> In 1916, the United States traded any interest it had in Greenland to Denmark as part of its compensation for the Danish West Indies, which are now the U.S. Virgin Islands.
+Heard about that from media or politicians?
+Teaching history is important
+https://t.co/LqEEAVQuMX
+
+- **Tweet:** https://x.com/MarkBourrie/status/2009320786604212297
+- **Link:** https://www.diis.dk/en/research/why-is-greenland-part-of-the-kingdom-of-denmark-a-short-history
+- **What:** Historical fact about the 1916 US-Denmark agreement regarding Greenland and the Danish West Indies. Educational post highlighting an overlooked piece of geopolitical history.
+
+---
+
+## @newstart_2024 - Dr. Gabor Maté on Early Childhood Parenting
+> Dr. Gabor Maté drops parenting truth in 58 seconds:
+
+The first 3 years shape everything.
+
+Get it right → almost impossible to go wrong later.
+Get it wrong → emotional absence, lack of attunement, and conditional love hurt deeply.
+
+Children need:
+• Play
+• All emotions welcome
+• Unconditional loving attachment
+• Rest from "performing" to earn your love
+
+They just need to be.
+
+58-sec clip — a wake-up call for every parent 👇
+
+Which of these needs did you miss growing up? Or which are you making sure your kids get?
+
+- **Tweet:** https://x.com/newstart_2024/status/2009486976865411332
+- **What:** Parenting wisdom from Dr. Gabor Maté about the critical importance of the first three years and key emotional needs of children (play, emotional acceptance, unconditional love, rest).
+
+---
+
+## @GinoTheGhost - ICE Shooting Footage Analysis and Accountability
+> Neighbors just released a new angle of the ICE shooting and it settles any debate on what actually happened.
+
+This was a mother doing something completely ordinary: Dropping somebody off, then trying to leave. She goes to pull out, stops for one car to pass, then waves the agents to drive past. Within seconds, those ICE agents exit their vehicle and rush her, shouting and escalating the situation. Panicked, she tries to drive away and gets shot in the face three times.
+
+She posed no threat, showed no intent to harm, and was interfering with no one. She was a civilian going about her life. The official statements that followed contradict the footage and read like an attempt to rewrite what happened.
+
+This was a reckless, unjustified killing, followed by a dishonest effort to evade responsibility. It's horrifying, and it exposes something deeply wrong with the US government and these ICE agents. They must be held accountable.
+
+This is not a partisan issue. I need you to lock in gang.
+
+- **Tweet:** https://x.com/GinoTheGhost/status/2009525021665034702
+- **What:** Critical analysis of ICE shooting incident based on newly released video footage, claiming the shooting was unjustified and advocating for accountability.
+
+---
 
 ## @briantylercohen - ICE Agent Accountability
 > .@PeteButtigieg: "We have an ICE agent who should have been trained not to be in front of a vehicle and never to shoot into a moving vehicle, and yet this happened on [Kristi Noem's] watch. The whole POINT of Homeland Security is to make this country more stable and safe. And it is very clear on this administration's watch that the opposite is what's happened."
