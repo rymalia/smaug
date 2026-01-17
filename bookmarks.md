@@ -1,4 +1,32 @@
+# Saturday, January 17, 2026
+
+## @DrDominicNg - Sleep Deprivation Increases Intrusive Thoughts by 50%
+> Sleep deprivation increased intrusive thoughts by nearly 50%.
+>
+> Even when sleep-deprived people successfully suppressed a memory, they were more likely to have it break through again later. https://t.co/eIqIAyhhXP
+
+- **Tweet:** https://x.com/DrDominicNg/status/2012435733718655393
+- **What:** Research findings on the cognitive impact of sleep deprivation, showing significantly increased intrusive thoughts and reduced memory suppression effectiveness in sleep-deprived individuals.
+
+---
+
 # Friday, January 16, 2026
+
+## @ollama - Anthropic API Compatibility for Open-Source Models
+> Ollama now has Anthropic API compatibility.
+>
+> 🦙 This enables tools like Claude Code to be used with open-source models. 😍
+>
+> Get started and learn more 👇👇👇 https://t.co/GG3kBHxVzs
+
+- **Tweet:** https://x.com/ollama/status/2012434308091224534
+- **What:** Announcement of Ollama's new Anthropic API compatibility, enabling Claude Code and other Anthropic-compatible tools to work with open-source language models running locally.
+
+## @steipete - Impressive One-Machine Architecture
+> Someone posted this on our Discord and I'm still marvelling the architecture. This is all one one machine. https://t.co/GDe0EpQwCP
+
+- **Tweet:** https://x.com/steipete/status/2012386624366088418
+- **What:** Technical architecture diagram showcasing an impressive system setup running entirely on a single machine, shared from Discord community discussion.
 
 ## @front_ukrainian - Ukraine Energy Infrastructure: Drone Impact Resilience
 > ❗️Level 2 protection has been built at virtually all substations. Almost every concrete sarcophagus has withstood Shahed drone hits. Some sarcophagi endured up to 20 Shahed impacts. There were also missile hits. They withstood those as well, – Ukraine's Energy Minister Shmyhal. https://t.co/yebPKRQXVZ
