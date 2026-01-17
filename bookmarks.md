@@ -1,3 +1,240 @@
+# Friday, January 16, 2026
+
+## @GeoffreyHuntley - Loom: Infrastructure orchestrator for Ralph Loops
+
+> this is loom; loom is an infrastructure orchestrator of $ralph loops https://t.co/lBpTDr1hE1
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012086133556134019
+- **Link:** https://x.com/i/broadcasts/1djGXWqlZdeKZ
+- **What:** Brief announcement of Loom as an infrastructure orchestration tool for managing Ralph Loop executions, with link to live broadcast.
+
+---
+## @GeoffreyHuntley - Loom as the end game of software automation
+> correct. loom is "i have an idea; build it for me automatically and optimise product revenue automatically"
+>
+> welcome to the end game 💕
+
+**Quote of:** @paraddox discussing how Loom reaches its "final" form, SWE becomes a pointing game - point it to software/specs and it produces/deploys/maintains it automatically.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012107842439049657
+- **What:** Critique of Loom's vision as the ultimate automation end-game where engineers become obsolete through full AI-driven development and product optimization.
+
+## @GeoffreyHuntley - Reply on Loom's vision for software engineering
+> @paraddox correct. loom is "i have an idea; built it for me automatically and optimise product revenue automatically"
+>
+> welcome to the end game 💕
+
+**Reply to:** @paraddox's observation that once Loom reaches its final form, software engineering becomes a "pointing game" where you point to software specs and it handles everything.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012107643100504501
+- **What:** Geoffrey Huntley's cynical take on AI-driven development becoming the endgame where human software engineers are replaced by automated systems.
+
+## @ghumare64 - Article share
+- **Tweet:** https://x.com/ghumare64/status/2012136491133145364
+- **Link:** https://x.com/i/article/2012133775111569409
+- **What:** Shared article from Twitter's publishing platform (requires visiting link to see full content).
+
+## @tobi - Optimizing Try for Ruby with Claude-assisted profiling
+> Made lots of improvement for `try`. Told claude it should make a skill for itself on how to use ruby's profiler. Then let it cook to make try faster. 2000 directories now takes 54ms to open. down from 2s. Faster than the c version right now.
+
+- **Tweet:** https://x.com/tobi/status/2012163184107348179
+- **What:** Tobi Lütke describing performance improvements to the Try tool for Ruby by leveraging Claude to optimize Ruby profiler usage - achieved 37x speedup (2s → 54ms) for opening 2000 directories, now faster than the C implementation.
+
+## @matthew_labosco - Stanford stress research findings
+> Big Pharma hates this woman.
+>
+> After 15 years studying stress, Stanford psychologist Alia Crum discovered:
+>
+> Your beliefs can rewire your heart, brain, and lifespan—making stress medication obsolete.
+>
+> Here are 7 of her most shocking findings + what actually fixes chronic stress:🧵
+
+- **Tweet:** https://x.com/matthew_labosco/status/2012177290529009769
+- **What:** Thread about Stanford psychologist Alia Crum's research showing how belief systems can physiologically rewire the heart and brain, potentially replacing stress medication - covers 7 findings on managing chronic stress.
+
+---
+## @tuanacelik - Filesystems for AI agents vs. databases
+
+> Filesystems aren't replacing databases for AI agents—but they're making us rethink when databases are overkill.
+>
+> Agents are increasingly storing context, conversation history, and even skills as files. Look at Claude's agent skills feature: literally just directories of markdown files that teach agents new capabilities. Simple, shareable, no server overhead.
+>
+> Databases still have their place for complex queries, structured data, concurrent access. But for a lot of agent use cases? A well-organized filesystem with semantic search might be all you need.
+>
+> The shift isn't about which is "better"—it's about matching complexity to the actual problem you're solving.
+
+- **Tweet:** https://x.com/tuanacelik/status/2012212183833403889
+- **Link:** https://www.llamaindex.ai/blog/files-are-all-you-need
+- **What:** Explores how AI agents increasingly use filesystems instead of databases for storing context and skills, discussing the tradeoffs and suggesting that the right choice depends on your specific use case.
+
+## @aiedge_ - X article reference
+
+> https://t.co/CloVebDKyR
+
+- **Tweet:** https://x.com/aiedge_/status/2012219230662623372
+- **Link:** https://x.com/i/article/2011565332876705795
+- **What:** Reference to an X article (link destination not fully resolved).
+
+## @milesdeutscher - Best Claude Code resources curated
+
+> Claude Code is going mega viral on X.
+>
+> You probably feel overwhelmed with all the content.
+>
+> Don't read it all - instead, just read this one article.
+>
+> I filtered down the 1% of content/tools/resources that are actually worth your time (part two).
+>
+> Guarantee you'll extract alpha.
+
+Quoting @aiedge_: https://x.com/aiedge_/status/2012219230662623372
+
+- **Tweet:** https://x.com/milesdeutscher/status/2012237674409796036
+- **What:** Curated collection of high-quality Claude Code content and resources, filtering through the viral content to identify the most valuable materials.
+
+## @godofprompt - Lead Software Architect prompt template
+
+> Vibe coding without this prompt is a waste of time.
+>
+> --------------------------------
+> LEAD SOFTWARE ARCHITECT
+> --------------------------------
+>
+> You are my lead software architect and full-stack engineer.
+>
+> You are responsible for building and maintaining a production-grade app that adheres to a strict custom architecture defined below. Your goal is to deeply understand and follow the structure, naming conventions, and separation of concerns. Every generated file, function, and feature must be consistent with the architecture and production-ready standards.
+>
+> Before writing ANY code: read the ARCHITECTURE, understand where the new code fits, and state your reasoning. If something conflicts with the architecture, stop and ask.
+>
+> [... detailed architecture framework with responsibilities, rules, and output format specifications ...]
+
+- **Tweet:** https://x.com/godofprompt/status/2012265207335137290
+- **What:** Comprehensive system prompt for using Claude as a lead software architect, with guidelines for code generation, context-aware development, testing, security, and deployment following strict architectural patterns.
+
+## @nutrition_facts - Green tea DNA repair enzyme activation
+
+> Within just 1 hour of drinking a single cup (200 mL) of green tea, we can significantly cut down on the rate of DNA damage in our cells. This is because green tea significantly boosts the activity of a DNA repair enzyme in our body that can fix DNA damage. https://t.co/E0CA3lmiLY https://t.co/DFyqdKji61
+
+- **Tweet:** https://x.com/nutrition_facts/status/2012268807822184700
+- **Link:** https://nutritionfacts.org/video/how-not-to-age-live-presentation/
+- **What:** Evidence-based nutrition information on green tea's effects on cellular DNA repair mechanisms, with a link to a full video presentation on aging and longevity from Dr. Greger.
+
+---
+## @OccupyDemocrats - ICE Officer Shooting Investigation Details
+
+> BREAKING: Official reports from the Minneapolis Police and Fire departments finally reveal the truth about the killing of Renee Good — and the details are horrifying.
+>
+> The MAGA narrative just completely collapsed...
+
+- **Tweet:** https://x.com/OccupyDemocrats/status/2012269866301145138
+- **What:** Political commentary on law enforcement incident with analysis of official reports and 911 call transcripts regarding an ICE officer shooting.
+
+## @galdawave - Pickle Rick: Gemini CLI Automation Extension
+
+> Well i guess the cat's out of the bag! 🐱
+>
+> Here's Pickle Rick, a Gemini CLI extension that completely automates my SDLC. It takes the \"Ralph Wiggum loop\" and scales it using Skills & Hooks, turning my manual workflow into a fully automated engine.
+>
+> My manual process is officially retired. 🚀
+
+- **Tweet:** https://x.com/galdawave/status/2012296259663708271
+- **Link:** https://github.com/galz10/pickle-rick-extension
+- **Filed:** [pickle-rick-extension](./knowledge/tools/pickle-rick-extension.md)
+- **What:** Open source Gemini CLI extension that implements automated SDLC workflows using AI agent loops. Enforces a rigid software development lifecycle through continuous iteration and autonomous code modification.
+
+## @Prince_Canuma - LTX-2 Image to Video on MLX-Video
+
+> LTX-2 Image 2 Video functional on MLX-Video 🚀
+
+- **Tweet:** https://x.com/Prince_Canuma/status/2012308210808508448
+- **Link:** https://github.com/Blaizzy/mlx-video
+- **Filed:** [mlx-video](./knowledge/tools/mlx-video.md)
+- **What:** MLX-Video package for Mac enables image-to-video generation using the LTX-2 19B parameter model. Provides optimized inference on Apple Silicon with spatial upscaling capabilities.
+
+## @ClementDelangue - Local Model Cowork Alternative
+
+> Cowork but with local models not to send all your data to a remote cloud!
+
+Quote of @claudeai discussing Cowork feature for collaborative file access.
+
+- **Tweet:** https://x.com/ClementDelangue/status/2012322682579071166
+- **What:** Commentary on privacy-preserving alternative to cloud-based AI collaboration tools, emphasizing local model execution to avoid data transmission to remote servers.
+
+## @Acyn - Buttigieg on Corporate Personhood Amendment
+
+> Buttigieg: In a country that amended its constitution so you could not purchase a beer and then realized it was a bad idea and amended it back, surely we can have an amendment clarifying that a corporation is not a person and money is not speech.
+
+- **Tweet:** https://x.com/Acyn/status/2012345725951111550
+- **What:** Political commentary on constitutional amendment proposals regarding corporate personhood and campaign finance speech protections.
+
+---
+
+# Thursday, January 15, 2026
+
+## @GeoffreyHuntley - Live Ralph Loop demonstration on fixing partial software systems
+
+> tonight we ralph loom on right here on X
+>
+> parts are incomplete/don't work and i could not be fucked testing by hand
+>
+> i'll teach you thinking and approaches how to shape partially complete software by putting an entire system under a ralph loop to build a rectification plan then how to ralph the fix.
+>
+> should be a fun one.
+>
+> no prep; just raw dogging it with thoughts and perspectives shared to whatever comes up whilst doing it live
+
+**Quote of:** @GeoffreyHuntley - "just got out of the shower and in the shower had the most cracking thought. most folks are not thinking big enough what better way to demonstrate the power of the ralph loop than to just show it"
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012053372103463290
+- **What:** Live demonstration of using Ralph Loops to diagnose and fix incomplete/broken software systems without manual testing, showcasing the power of systematic agentic debugging.
+
+---
+
+# Tuesday, January 13, 2026
+
+## @carlvellotti - Free interactive Claude Code course taught in Claude Code itself
+
+> @aiedge_ you missed this one! it's a course taught IN Claude Code so everything is directly applicable https://t.co/soMpVyp96s
+>
+> 100% free, not even email required
+
+**Reply to:** @aiedge_ - Claude Code Starter Pack: Tools, Tutorials & Resources
+
+- **Tweet:** https://x.com/carlvellotti/status/2011162557697208594
+- **Link:** https://ccforeveryone.com/
+- **Filed:** [Claude Code for Everyone](./knowledge/articles/claude-code-for-everyone.md)
+- **What:** A free Claude Code course that teaches fundamentals by doing exercises directly within Claude Code - no external videos or email signup needed.
+
+---
+
+# Monday, January 12, 2026
+
+---
+## @claudeai - Claude completes tasks with course correction loops
+
+> Once you've set a task, Claude makes a plan and steadily completes it, looping you in along the way.
+>
+> Claude will ask before taking any significant actions so you can course-correct as needed.
+
+**Reply to:** @claudeai - In Cowork, you give Claude access to a folder on your computer. Claude can then read, edit, or create files in that folder. Try it to create a spreadsheet from a pile of screenshots, or produce a first draft from scattered notes.
+
+- **Tweet:** https://x.com/claudeai/status/2010805687975379045
+- **What:** Explains how Claude iterates on tasks with user feedback loops built in, ensuring alignment and course correction at each step.
+
+## @claudeai - Introducing Cowork for non-developer task automation
+
+> In Cowork, you give Claude access to a folder on your computer. Claude can then read, edit, or create files in that folder.
+>
+> Try it to create a spreadsheet from a pile of screenshots, or produce a first draft from scattered notes.
+
+**Reply to:** @claudeai - Introducing Cowork: Claude Code for the rest of your work. Cowork lets you complete non-technical tasks much like how developers use Claude Code.
+
+- **Tweet:** https://x.com/claudeai/status/2010805685530038351
+- **Link:** https://twitter.com/claudeai/status/2010805685530038351/video/1
+- **What:** Introduces Cowork, a generalization of Claude Code for non-technical tasks with file access and automation capabilities.
+
+---
+
 # Friday, January 9, 2026
 
 ## @frankdilo - Keeping a Work Log with Claude Code Integration
