@@ -210,6 +210,7 @@ async function main() {
       // Run the full job (same as node src/job.js)
       const jobPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'job.js');
       const trackTokens = args.includes('--track-tokens') || args.includes('-t');
+      const verbose = args.includes('--verbose') || args.includes('-v');
 
       // Parse --limit flag
       const limitIdx = args.findIndex(a => a === '--limit' || a === '-l');
@@ -224,7 +225,7 @@ async function main() {
 
       try {
         const jobModule = await import(pathToFileURL(jobPath).href);
-        const result = await jobModule.default.run({ trackTokens, limit });
+        const result = await jobModule.default.run({ trackTokens, limit, verbose });
         process.exit(result.success ? 0 : 1);
       } catch (err) {
         console.error('Failed to run job:', err.message);
@@ -348,6 +349,7 @@ Commands:
   setup          Interactive setup wizard (start here!)
   run            Run the full job (fetch + process with Claude)
   run -t         Run with token usage tracking (--track-tokens)
+  run -v         Run with verbose output (--verbose) - shows model selection
   run --limit N  Process only N bookmarks (for large backlogs)
   fetch [n]      Fetch n tweets (default: 20)
   fetch --all    Fetch ALL bookmarks (paginated)

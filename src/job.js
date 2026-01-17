@@ -23,6 +23,20 @@ const JOB_NAME = 'smaug';
 const LOCK_FILE = path.join(os.tmpdir(), 'smaug.lock');
 
 // ============================================================================
+// Verbose Model Logging
+// ============================================================================
+
+function logModelSelection(model, config) {
+  let source = 'default';
+  if (config._claudeModelFromEnv) {
+    source = 'environment variable (CLAUDE_MODEL)';
+  } else if (config._claudeModelFromFile) {
+    source = `config file (${config._loadedFrom})`;
+  }
+  console.log(`  🎯 Claude model set to '${model}' (from ${source})`);
+}
+
+// ============================================================================
 // Lock Management - Prevents overlapping runs
 // ============================================================================
 
@@ -69,6 +83,12 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
   const timeout = config.claudeTimeout || 900000; // 15 minutes default
   const model = config.claudeModel || 'sonnet'; // or 'haiku' for faster/cheaper
   const trackTokens = options.trackTokens || false;
+  const verbose = options.verbose || false;
+
+  // Log model selection when verbose mode is enabled
+  if (verbose) {
+    logModelSelection(model, config);
+  }
 
   // Specific tool permissions instead of full YOLO mode
   // Task is needed for parallel subagent processing
@@ -371,6 +391,7 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
                   }
                 } else if (toolName === 'Task') {
                   const desc = input.description || `batch ${tasksSpawned + 1}`;
+                  const taskModel = input.model;
                   // Only count if we haven't seen this task description
                   const taskKey = `task-${desc}`;
                   if (!parallelTasks.has(taskKey)) {
@@ -380,6 +401,10 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
                       startTime: Date.now(),
                       status: 'running'
                     });
+                    // Log subagent model on first spawn (when verbose)
+                    if (tasksSpawned === 1 && verbose && taskModel) {
+                      printStatus(`  🎯 Subagent model set to '${taskModel}' (specified in Task call)\n`);
+                    }
                     printStatus(`  🐲 Summoning dragon minion: ${desc}\n`);
                     if (tasksSpawned > 1) {
                       printStatus(`     🔥 ${tasksSpawned} dragons now circling the hoard\n`);
@@ -739,7 +764,8 @@ export async function run(options = {}) {
       console.log(`[${now}] Phase 2: Invoking Claude Code for analysis...`);
 
       const claudeResult = await invokeClaudeCode(config, bookmarkCount, {
-        trackTokens: options.trackTokens
+        trackTokens: options.trackTokens,
+        verbose: options.verbose
       });
 
       if (claudeResult.success) {

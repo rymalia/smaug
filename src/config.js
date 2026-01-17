@@ -147,6 +147,7 @@ export function expandTilde(filepath) {
  */
 export function loadConfig(configPath) {
   let fileConfig = {};
+  let loadedFrom = null;  // Track which config file was loaded
 
   // Try to load config file
   const configLocations = [
@@ -161,6 +162,7 @@ export function loadConfig(configPath) {
       if (fs.existsSync(loc)) {
         const content = fs.readFileSync(loc, 'utf8');
         fileConfig = JSON.parse(content);
+        loadedFrom = loc;
         console.log(`Loaded config from ${loc}`);
         break;
       }
@@ -253,6 +255,11 @@ export function loadConfig(configPath) {
       }
     }
   }
+
+  // Track config source for verbose logging
+  config._loadedFrom = loadedFrom;
+  config._claudeModelFromEnv = !!process.env.CLAUDE_MODEL;
+  config._claudeModelFromFile = !!(fileConfig.claudeModel);  // Was it explicitly in the config file?
 
   return config;
 }
