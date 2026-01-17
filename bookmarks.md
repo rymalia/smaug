@@ -1,5 +1,141 @@
 # Friday, January 16, 2026
 
+## @frontlinekit - Ukrainian Soldier Disarms Russian Drone in Ambush
+
+> Absolutely fucking terrifying, these soldiers have balls of steel.
+>
+> As someone who makes these I know how dangerous disarming them is.
+>
+> A Ukrainian soldier finds a russian fibreoptic drone sitting and waiting in ambush, they approach it from behind and removed the warhead.
+
+- **Tweet:** https://x.com/frontlinekit/status/2012395528902807991
+- **Link:** https://twitter.com/frontlinekit/status/2012395528902807991/video/1
+- **What:** A video account of a Ukrainian soldier successfully disarming a Russian fiber-optic drone that was positioned in an ambush, with commentary from someone experienced in drone construction about the danger of the operation.
+
+## @TheAhmadOsman - Advice to Buy Hardware Before Price Increases
+
+> Genuine advice
+>
+> If you need ANY hardware, BUY IT NOW
+>  - Phones
+>  - Laptops
+>  - Computer parts
+> Hardware prices are about to get ridiculous
+>
+> I just bought my wife a new MacBook & iPhone
+> I'm not trying to flex, just getting ahead of the
+> supply shock before the prices get wild
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2012342662225920123
+- **What:** Consumer advice recommending immediate hardware purchases before anticipated price increases due to an expected supply shock in the electronics market.
+
+## @TimothyDSnyder - NYT Investigation of Ross Shooting Incident
+
+> Important work here from the NYT. Ross wasn't run over. He dropped his cell phone, which he had shifted to his left hand to draw his weapon. And then he shot and killed a person with the gun in his right hand.
+
+- **Tweet:** https://x.com/TimothyDSnyder/status/2012304470059679845
+- **Link:** https://www.nytimes.com/2026/01/15/video/ice-shooting-renee-good-minneapolis-videos.html?smid=nytcore-ios-share
+- **What:** A New York Times investigative video about a shooting incident involving ICE, providing detailed analysis that contradicts earlier reports about how the incident unfolded.
+
+## @Mylovanov - Ukrainian Scout's Explosive Raid on Russian Position
+
+> A Ukrainian scout entered a basement with near 50 Russian troops, planted explosives and left. The blast killed every enemy.
+>
+> The operation took place on December 31.
+>
+> "Happy New Year" — Ukrainian soldier Burzhui.
+>
+> "Ukrainian Witness" shows these moments.
+
+- **Tweet:** https://x.com/Mylovanov/status/2012279964054233417
+- **Link:** https://twitter.com/Mylovanov/status/2012279964054233417/video/1
+- **What:** A report of a successful Ukrainian military raid where a single scout eliminated approximately 50 Russian troops using explosives during an operation on New Year's Eve.
+
+## @christogrozev - Clarification on Ukrainian-acquired Russian Device
+
+> Just a clarification here: I was informed of *a device* that was acquired by Ukrainian armed forces. It is not necessarily *the device* that the DoD funded the purchase of.  Timing overlaps, but certain other descriptors (" some components are Russian", i.e. not all of it is Russian) suggests it may be a different country's device based on Russian technology. I am sure the actual facts and provenance will come out one way or another.
+
+- **Tweet:** https://x.com/christogrozev/status/2012270021297230285
+- **What:** A clarification on reports about a Russian device acquired by Ukrainian forces, addressing conflicting details about its provenance and the DoD's involvement in its purchase.
+
+## @khodorkovsky_en - Oscar-Shortlisted Documentary on War Propaganda
+
+> A Russian schoolteacher secretly filmed his own workplace as it was turned into a war propaganda machine. That footage is now part of a documentary shortlisted for an Oscar.
+>
+> Here's the story behind 'Mr Nobody in Russia':👇
+>
+> [1/12] https://t.co/dLO8Yhfw3U
+
+- **Tweet:** https://x.com/khodorkovsky_en/status/2012259339948466682
+- **Link:** https://twitter.com/khodorkovsky_en/status/2012259339948466682/video/1
+- **What:** Thread about an Oscar-shortlisted documentary featuring covert footage documenting propaganda indoctrination in Russian schools during wartime.
+
+## @rseroter - Addy Osmani on Writing Effective AI Agent Specifications
+
+> I don't know of anyone who is consistently publishing more insight-rich content than @addyosmani.
+>
+> This "how to write a good spec for AI agents" is a banger with piles of actionable advice.
+> https://t.co/FsnT55w61o
+
+- **Tweet:** https://x.com/rseroter/status/2012234363761782843
+- **Link:** https://addyosmani.com/blog/good-spec/
+- **What:** Recommendation of Addy Osmani's comprehensive guide on writing effective specifications for AI coding agents, covering planning, clarity, and iterative development.
+
+## @Saboo_Shubham_ - Multi-Agent UI as 2026 Trend
+
+> Multi-agent UI's will be huge in 2026.
+>
+> Some early signs: A2UI, AG-UI, Vercel AI JSON UI
+>
+> https://t.co/oXfGOG92T6
+
+- **Tweet:** https://x.com/Saboo_Shubham_/status/2012222044499529949
+- **Link:** https://x.com/ctatedev/status/2011589295862395238/video/1
+- **What:** Prediction and evidence that multi-agent UI frameworks will become prominent in 2026, with examples of emerging platforms.
+
+## @mattpocockuk - Using Classic Programming Books to Guide AI Agents
+
+> Advice for anyone prompting AI agents:
+>
+> The classic coding books contain some of the best descriptions of "good code" ever written.
+>
+> Use them in your prompts, skills, and AGENTS​.md files
+
+- **Tweet:** https://x.com/mattpocockuk/status/2012211002377400636
+- **What:** Recommendation to reference established software engineering principles from classic programming literature when writing prompts and specifications for AI agents.
+
+## @bffmike - AI Agent Continuous Learning Through Observation
+
+> My @clawdbot drove my coding agents after i went to bed last night from 12:30–7ish am while i snoozed.
+>
+> MUCH better than a Ralph loop because you don't just give it a prompt about when to stop looping.
+>
+> Instead I've been talking to my agent ALL DAY about the project and delegating management of coding agents to it. It knows about the entire project history, all the headaches. It drives better than Ralph because it's been watching me all day.
+>
+> This continues to amaze @steipete! maybe something to try @ryancarson!
+
+- **Tweet:** https://x.com/bffmike/status/2012205710030127110
+- **What:** Personal experience with AI agents autonomously managing coding tasks overnight, noting advantages of continuous learning versus one-time prompts.
+
+## @DrDominicNg - Brain vs. Muscle Creatine Supplementation Efficacy
+> Creatine for your brain ≠ creatine for your muscles. - Muscles: 20g/day loading → ~18-20% increase - Brain: 20g/day loading → only ~5-10% increase https://t.co/qgOIITAmiH
+
+- **Tweet:** https://x.com/DrDominicNg/status/2012147333539004751
+- **What:** A comparison showing that while creatine loading produces substantial muscle performance gains (18-20%), the cognitive enhancement is much more modest (5-10%), dispelling the idea that brain supplementation works the same way as muscle supplementation.
+
+## @noun142 - Comprehensive Daily Brief Skill with Multimodal Integrations
+> Nice! My daily-brief skill: *Weather* - critical for school drop-off decision (car vs walk), *Weekly objectives* - pulled from memory file so I see client + personal goals every morning, *Yesterday's time tracking* - from daily.app API, shows hours per activity, *Health metrics* - steps, sleep, deep sleep from Apple Watch (via script), *Tasks due today* - from Notion Tasks DB with time estimates, *Calendar* - with conflict detection + tight transition warnings, *Family calendar* - school events, kids activities, *Readwise* - rotates one article suggestion + random highlight quote daily, *X trends* - scans timeline for patterns, updates a trends database
+
+- **Tweet:** https://x.com/noun142/status/2012125184107360351
+- **What:** A comprehensive morning report skill that integrates weather, calendars, health data from Apple Watch, time tracking, task management from Notion, reading highlights, and social media trends into a daily briefing system.
+
+## @steipete - Claude Code Skill Automation Demo
+> Someome made a morning report skill and I just gave @clawdbot the tweet and it set up the skill + cron job. https://t.co/CXo0xMGcFv
+
+- **Tweet:** https://x.com/steipete/status/2012123520021717123
+- **What:** A quick demo showing how Claude Code can automatically set up skills and schedule them to run on cron jobs based on a simple tweet prompt.
+
+
 ## @GeoffreyHuntley - Loom: Infrastructure orchestrator for Ralph Loops
 
 > this is loom; loom is an infrastructure orchestrator of $ralph loops https://t.co/lBpTDr1hE1
@@ -9,167 +145,165 @@
 - **What:** Brief announcement of Loom as an infrastructure orchestration tool for managing Ralph Loop executions, with link to live broadcast.
 
 ---
-## @GeoffreyHuntley - Loom as the end game of software automation
-> correct. loom is "i have an idea; build it for me automatically and optimise product revenue automatically"
->
-> welcome to the end game 💕
-
-**Quote of:** @paraddox discussing how Loom reaches its "final" form, SWE becomes a pointing game - point it to software/specs and it produces/deploys/maintains it automatically.
-
-- **Tweet:** https://x.com/GeoffreyHuntley/status/2012107842439049657
-- **What:** Critique of Loom's vision as the ultimate automation end-game where engineers become obsolete through full AI-driven development and product optimization.
-
-## @GeoffreyHuntley - Reply on Loom's vision for software engineering
-> @paraddox correct. loom is "i have an idea; built it for me automatically and optimise product revenue automatically"
->
-> welcome to the end game 💕
-
-**Reply to:** @paraddox's observation that once Loom reaches its final form, software engineering becomes a "pointing game" where you point to software specs and it handles everything.
-
-- **Tweet:** https://x.com/GeoffreyHuntley/status/2012107643100504501
-- **What:** Geoffrey Huntley's cynical take on AI-driven development becoming the endgame where human software engineers are replaced by automated systems.
-
-## @ghumare64 - Article share
-- **Tweet:** https://x.com/ghumare64/status/2012136491133145364
-- **Link:** https://x.com/i/article/2012133775111569409
-- **What:** Shared article from Twitter's publishing platform (requires visiting link to see full content).
-
-## @tobi - Optimizing Try for Ruby with Claude-assisted profiling
-> Made lots of improvement for `try`. Told claude it should make a skill for itself on how to use ruby's profiler. Then let it cook to make try faster. 2000 directories now takes 54ms to open. down from 2s. Faster than the c version right now.
-
-- **Tweet:** https://x.com/tobi/status/2012163184107348179
-- **What:** Tobi Lütke describing performance improvements to the Try tool for Ruby by leveraging Claude to optimize Ruby profiler usage - achieved 37x speedup (2s → 54ms) for opening 2000 directories, now faster than the C implementation.
-
-## @matthew_labosco - Stanford stress research findings
-> Big Pharma hates this woman.
->
-> After 15 years studying stress, Stanford psychologist Alia Crum discovered:
->
-> Your beliefs can rewire your heart, brain, and lifespan—making stress medication obsolete.
->
-> Here are 7 of her most shocking findings + what actually fixes chronic stress:🧵
-
-- **Tweet:** https://x.com/matthew_labosco/status/2012177290529009769
-- **What:** Thread about Stanford psychologist Alia Crum's research showing how belief systems can physiologically rewire the heart and brain, potentially replacing stress medication - covers 7 findings on managing chronic stress.
-
----
-## @tuanacelik - Filesystems for AI agents vs. databases
-
-> Filesystems aren't replacing databases for AI agents—but they're making us rethink when databases are overkill.
->
-> Agents are increasingly storing context, conversation history, and even skills as files. Look at Claude's agent skills feature: literally just directories of markdown files that teach agents new capabilities. Simple, shareable, no server overhead.
->
-> Databases still have their place for complex queries, structured data, concurrent access. But for a lot of agent use cases? A well-organized filesystem with semantic search might be all you need.
->
-> The shift isn't about which is "better"—it's about matching complexity to the actual problem you're solving.
-
-- **Tweet:** https://x.com/tuanacelik/status/2012212183833403889
-- **Link:** https://www.llamaindex.ai/blog/files-are-all-you-need
-- **What:** Explores how AI agents increasingly use filesystems instead of databases for storing context and skills, discussing the tradeoffs and suggesting that the right choice depends on your specific use case.
-
-## @aiedge_ - X article reference
-
-> https://t.co/CloVebDKyR
-
-- **Tweet:** https://x.com/aiedge_/status/2012219230662623372
-- **Link:** https://x.com/i/article/2011565332876705795
-- **What:** Reference to an X article (link destination not fully resolved).
-
-## @milesdeutscher - Best Claude Code resources curated
-
-> Claude Code is going mega viral on X.
->
-> You probably feel overwhelmed with all the content.
->
-> Don't read it all - instead, just read this one article.
->
-> I filtered down the 1% of content/tools/resources that are actually worth your time (part two).
->
-> Guarantee you'll extract alpha.
-
-Quoting @aiedge_: https://x.com/aiedge_/status/2012219230662623372
-
-- **Tweet:** https://x.com/milesdeutscher/status/2012237674409796036
-- **What:** Curated collection of high-quality Claude Code content and resources, filtering through the viral content to identify the most valuable materials.
-
-## @godofprompt - Lead Software Architect prompt template
-
-> Vibe coding without this prompt is a waste of time.
->
-> --------------------------------
-> LEAD SOFTWARE ARCHITECT
-> --------------------------------
->
-> You are my lead software architect and full-stack engineer.
->
-> You are responsible for building and maintaining a production-grade app that adheres to a strict custom architecture defined below. Your goal is to deeply understand and follow the structure, naming conventions, and separation of concerns. Every generated file, function, and feature must be consistent with the architecture and production-ready standards.
->
-> Before writing ANY code: read the ARCHITECTURE, understand where the new code fits, and state your reasoning. If something conflicts with the architecture, stop and ask.
->
-> [... detailed architecture framework with responsibilities, rules, and output format specifications ...]
-
-- **Tweet:** https://x.com/godofprompt/status/2012265207335137290
-- **What:** Comprehensive system prompt for using Claude as a lead software architect, with guidelines for code generation, context-aware development, testing, security, and deployment following strict architectural patterns.
-
-## @nutrition_facts - Green tea DNA repair enzyme activation
-
-> Within just 1 hour of drinking a single cup (200 mL) of green tea, we can significantly cut down on the rate of DNA damage in our cells. This is because green tea significantly boosts the activity of a DNA repair enzyme in our body that can fix DNA damage. https://t.co/E0CA3lmiLY https://t.co/DFyqdKji61
-
-- **Tweet:** https://x.com/nutrition_facts/status/2012268807822184700
-- **Link:** https://nutritionfacts.org/video/how-not-to-age-live-presentation/
-- **What:** Evidence-based nutrition information on green tea's effects on cellular DNA repair mechanisms, with a link to a full video presentation on aging and longevity from Dr. Greger.
-
----
-## @OccupyDemocrats - ICE Officer Shooting Investigation Details
-
-> BREAKING: Official reports from the Minneapolis Police and Fire departments finally reveal the truth about the killing of Renee Good — and the details are horrifying.
->
-> The MAGA narrative just completely collapsed...
-
-- **Tweet:** https://x.com/OccupyDemocrats/status/2012269866301145138
-- **What:** Political commentary on law enforcement incident with analysis of official reports and 911 call transcripts regarding an ICE officer shooting.
-
-## @galdawave - Pickle Rick: Gemini CLI Automation Extension
-
-> Well i guess the cat's out of the bag! 🐱
->
-> Here's Pickle Rick, a Gemini CLI extension that completely automates my SDLC. It takes the \"Ralph Wiggum loop\" and scales it using Skills & Hooks, turning my manual workflow into a fully automated engine.
->
-> My manual process is officially retired. 🚀
-
-- **Tweet:** https://x.com/galdawave/status/2012296259663708271
-- **Link:** https://github.com/galz10/pickle-rick-extension
-- **Filed:** [pickle-rick-extension](./knowledge/tools/pickle-rick-extension.md)
-- **What:** Open source Gemini CLI extension that implements automated SDLC workflows using AI agent loops. Enforces a rigid software development lifecycle through continuous iteration and autonomous code modification.
-
-## @Prince_Canuma - LTX-2 Image to Video on MLX-Video
-
-> LTX-2 Image 2 Video functional on MLX-Video 🚀
-
-- **Tweet:** https://x.com/Prince_Canuma/status/2012308210808508448
-- **Link:** https://github.com/Blaizzy/mlx-video
-- **Filed:** [mlx-video](./knowledge/tools/mlx-video.md)
-- **What:** MLX-Video package for Mac enables image-to-video generation using the LTX-2 19B parameter model. Provides optimized inference on Apple Silicon with spatial upscaling capabilities.
-
-## @ClementDelangue - Local Model Cowork Alternative
-
-> Cowork but with local models not to send all your data to a remote cloud!
-
-Quote of @claudeai discussing Cowork feature for collaborative file access.
-
-- **Tweet:** https://x.com/ClementDelangue/status/2012322682579071166
-- **What:** Commentary on privacy-preserving alternative to cloud-based AI collaboration tools, emphasizing local model execution to avoid data transmission to remote servers.
-
-## @Acyn - Buttigieg on Corporate Personhood Amendment
-
-> Buttigieg: In a country that amended its constitution so you could not purchase a beer and then realized it was a bad idea and amended it back, surely we can have an amendment clarifying that a corporation is not a person and money is not speech.
-
-- **Tweet:** https://x.com/Acyn/status/2012345725951111550
-- **What:** Political commentary on constitutional amendment proposals regarding corporate personhood and campaign finance speech protections.
-
----
-
 # Thursday, January 15, 2026
+
+## @hashwarlock - Voice-Activated Claude with moshi-mlx TTS
+> @jarrodWatts Add the last step so you can have claude talk back. I just updated mine to use moshi-mlx to handle TTS. Quite fun conversations now. Voice first apps on the way up
+
+- **Tweet:** https://x.com/hashwarlock/status/2012038216594174374
+- **Link:** https://x.com/hashwarlock/status/2011301629707055544?s=20
+- **What:** A builder integrating text-to-speech capabilities into Claude Code using moshi-mlx, creating voice-first interactive AI agents that can both listen and speak.
+
+## @aakashgupta - Recursive Language Models Beyond Context Windows
+> Everyone's missing the real story here. This isn't a "prompting technique." The paper is called Recursive Language Models, not "Recursive Meta-Cognition." And the authors aren't random researchers grinding for citation counts. Omar Khattab created DSPy, which has 31,000+ GitHub stars and changed how people build compound AI systems. Tim Kraska pioneered learned index structures with Jeff Dean at Google and runs MIT's Data Systems and AI Lab. Alex Zhang is a PhD student working at the intersection of both. The actual paper addresses a specific problem: LLMs degrade on long context. The graph shows GPT-5 performance collapsing as input length scales from 2^14 to 2^21 tokens, while RLMs maintain stable performance. They're handling inputs 100x beyond context windows...
+
+- **Tweet:** https://x.com/aakashgupta/status/2012033154723561581
+- **What:** Deep analysis of the Recursive Language Models paper from MIT researchers, explaining how RLMs solve long-context degradation by allowing models to interact with their own prompts as manipulable objects, extending DSPy's research arc.
+
+## @newstart_2024 - Parenting and Genetics Research
+> Dr. Russell Barkley shatters parenting myths: After age 21, home parenting has ZERO influence on core traits like personality or behavior—twin studies prove it.
+
+Peak impact? Before 7. Drops to ~6% by teens (15+). Genetics rules first, then peers/schools/neighborhoods take over.
+
+In 2026's "gentle parenting" era (trending amid debates on over-involvement vs. heritability), this frees you: Nail early years with stability/exposure, then trust the blueprint.
+
+Not guilt—empowerment. Grok can even help analyze family traits for smarter guidance.
+
+59-sec clip on the data 👇
+
+Parents/kids: Relief or rethink? What's your take on genetics vs. nurture wars?
+
+- **Tweet:** https://x.com/newstart_2024/status/2012031149921423364
+- **What:** Summary of Russell Barkley's research on parenting impact and heritability. Key finding: parental influence is strongest before age 7 (then drops to 6% by teen years), while genetics and peer/social environment dominate behavioral outcomes in adulthood.
+
+## @PaulSolt - 7 Codex Beginner Tips
+> 👋 If you're new to Codex, here are 7 beginner tips:
+
+1. Start with:
+
+GPT-5.2-Codex high
+
+That is high reasoning. It is enough. Don't be tempted with xhigh unless working on something really tricky. It uses more tokens and will be slower to finish.
+
+2. Sometimes more reasoning may not help. You may need to give your agents better docs that are up to date. I prefer to have my agents create Markdown docs from DocSet that are local, instead of web scraping.
+
+I use DocSetQuery to create docs from Dash DocSet bundles. https://t.co/WzwVVXKvrv
+
+3. Read @steipete post to get started.
+
+Bookmark his blog and follow him. Read his post, it's gold, and so are his other workflow posts.
+
+https://t.co/uElhPUq7wv
+
+4. Copy aspects from Peter's agents .md file and make it your own. There's thousands of hours of learnings in his open source projects.
+
+https://t.co/j4vPqVbZuQ
+
+Use the scripts too, things like committer for atomic commits are super powerful when multiple agents work in one folder.
+
+5. Just talk to codex. You don't need complex rules. You don't need to create huge Plan .md  files.
+
+You can get really good results by just working on one aspect of a feature at a time, handing it off, and then letting Codex do it.
+
+If you get bored waiting start up another project while you wait. Ask it to do something and then go back to the original one. Most likely it will be done unless you're doing a huge refactor.
+
+6. You can always ask your agent to copy something from another project. Peter does this all the time and has agents leveraging work they've already done for new projects.
+
+I ask my agents to create Makefiles to build and run my apps. For new projects I have them copy the structure. See my workflow video: How I use Codex GPT 5.2 with Xcode (My Complete Workflow)
+https://t.co/n8wrm9jmOm
+
+7. Ask it to do things … and most likely you're going to need YOLO (danger mode) to get anything done without constant nagging.
+
+Enjoy your next app!
+
+- **Tweet:** https://x.com/PaulSolt/status/2012010080414081188
+- **Links:**
+  - https://github.com/PaulSolt/DocSetQuery
+  - https://steipete.me/posts/2025/shipping-at-inference-speed
+  - https://github.com/steipete/agent-scripts
+  - https://www.youtube.com/watch?v=o4iKnSYlhBQ
+- **What:** Practical guide for using Codex (GPT-5.2) effectively. Covers model selection (high vs xhigh), local documentation management, leveraging Peter Steinberger's agent patterns, simplifying rules, and using danger mode for unblocked automation.
+
+## @saasmakermac - RalphBlaster Dev Workflow
+> I just built RalphBlaster™  😋 and it's kind of absurd.
+
+My entire dev workflow is now:
+- create a ticket
+- click to generate a PRD
+- approve it
+- Ralph handles the rest in an isolated worktree
+
+I get pinged when it's done.
+
+Files clean up automatically.
+
+I don't touch an editor, terminal, or Claude Code.
+
+It's a new world.
+
+Huge shoutout to @ryancarson for being my go-to source on all this, and for his invaluable repos.
+
+- **Tweet:** https://x.com/saasmakermac/status/2011964897995968781
+- **What:** Automation framework (RalphBlaster) that automates entire dev workflow from ticket to PR without touching code editor or terminal. Runs PRD generation and code changes in isolated worktree.
+
+## @kr0der - X Article Share
+> https://t.co/Col89OY396
+
+- **Tweet:** https://x.com/kr0der/status/2011944268148195824
+- **Link:** https://x.com/i/article/2011936998681165830
+- **What:** Shared X/Twitter article. No content extracted—target URL is a native X article.
+
+## @jarrodwatts - Claude STT Plugin
+> · Add the marketplace
+/plugin marketplace add jarrodwatts/claude-stt
+
+· Install the plugin
+/plugin install claude-stt
+
+· Run the setup
+/claude-stt:setup
+
+Github: https://t.co/ViXGtqrR9n
+
+- **Tweet:** https://x.com/jarrodwatts/status/2011934416549896437
+- **Link:** https://github.com/jarrodwatts/claude-stt
+- **What:** A Claude Code plugin enabling voice input via local speech-to-text. Hold a hotkey to record, release to transcribe using Moonshine STT—all processed on-device.
+
+## @jarrodwatts - Claude Speech-to-Text Plugin for Claude Code
+> Introducing Claude Speech-to-text! A Claude Code plugin that lets you prompt using your voice. It uses Whisper to transcribe your voice locally on your machine - all within Claude Code. Easy installation guide below ↓ https://t.co/9VRAcq0m7D
+
+- **Tweet:** https://x.com/jarrodwatts/status/2011934413475758421
+- **What:** A new Claude Code plugin enabling voice input that uses OpenAI's Whisper for local speech-to-text transcription, with installation instructions included.
+
+## @GeoffreyHuntley - Fundamental Interview Knowledge Requirements
+> fundamental knowledge you must have if you ever end up in an interview with me. if you don't have this knowledge. you aren't in consideration to be able to be hired. https://t.co/KltWS7o6Id
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2011918009774866753
+- **Link:** https://www.youtube.com/watch?si=bzyuWYjT8bdTBYZK&v=OR3zdu9T_as&feature=youtu.be
+- **What:** A YouTube video describing essential knowledge and skills required to pass an interview with this software engineering hiring manager.
+
+## @BrandonLuuMD - Stair Sprints Improve VO2 Peak and Reduce Mortality Risk
+> Sprinting up the stairs 3 times, 3 days/week for 6 weeks improves VO2peak by 12% or ~1 MET (linked to a ~13% reduction in mortality risk) https://t.co/74VvcJBJgo
+
+- **Tweet:** https://x.com/BrandonLuuMD/status/2011897328450617412
+- **What:** Research findings showing that brief stair sprinting intervals (3x/week for 6 weeks) increase cardiovascular fitness by 12% and correlate with significant mortality risk reduction.
+
+## @GanimCorey - AI-Powered LinkedIn Content Machine with Claude
+> I gave this post to Claude and asked it to build me a step by step implementation plan. 2 hours later, I have a turn key LinkedIn content machine...
+
+- **Tweet:** https://x.com/GanimCorey/status/2011883074963808258
+- **What:** Complete process for building an AI-powered LinkedIn content system using Claude analysis, including pattern extraction from 900 posts, custom Claude skills for hook generation and post writing, plus supporting assets like swipe files and playbooks.
+
+## @leerob - Claude Code Features Explained: Rules, Commands, MCP, Subagents
+> Rules, commands, MCP servers, subagents, modes, hooks, skills...
+>
+> There's a lot of stuff! And tbh it's a little confusing.
+>
+> Here's what you need to know (and how we got here). https://t.co/UomcW2Y0c3
+
+- **Tweet:** https://x.com/leerob/status/2011810357942084085
+- **What:** Lee Robinson providing clarity on Claude's extended features including rules, commands, MCP servers, subagents, modes, hooks, and skills, explaining their origins and purpose.
+
 
 ## @GeoffreyHuntley - Live Ralph Loop demonstration on fixing partial software systems
 
@@ -189,8 +323,58 @@ Quote of @claudeai discussing Cowork feature for collaborative file access.
 - **What:** Live demonstration of using Ralph Loops to diagnose and fix incomplete/broken software systems without manual testing, showcasing the power of systematic agentic debugging.
 
 ---
+# Wednesday, January 14, 2026
 
+## @rauchg - Fully Generative Interfaces: AI to JSON to UI
+> Glimpse of a world of fully generative interfaces.
+>
+> AI → JSON → UI:
+> https://t.co/BKcvtDky5K
+> https://t.co/QH6ctR1ldA
+
+- **Tweet:** https://x.com/rauchg/status/2011605996561649720
+- **Link:** https://github.com/vercel-labs/json-render
+- **What:** Guillermo Rauch sharing the json-render project demonstrating a fully generative interface approach where AI generates JSON that directly becomes interactive UI.
+
+## @ctatedev - json-render: AI-Generated UI with Deterministic Output
+> Introducing json-render
+>
+> AI-generated UI. Deterministic output.
+>
+> 1. Define your component catalog
+> 2. AI steams JSON
+> 3. Render interactive UI
+>
+> Let users prompt dashboards, widgets and apps - safely constrained to components and actions you define https://t.co/WFSQ92w7vW
+
+- **Tweet:** https://x.com/ctatedev/status/2011589295862395238
+- **What:** Chris Tate introducing json-render, a framework allowing AI to generate JSON that renders as interactive UI components, constrained to a safe catalog of defined components.
+
+## @boringmarketer - AI-Powered LinkedIn Content System
+> here's my linkedin content system. yes it's AI powered, but I work on each to make sure it hits the mark.
+>
+> I scrape top posts, extract patterns and formats, then feed that into my direct response copy skill
+>
+> early results are reallyyyy good. one post yesterday, +100 new followers so far
+>
+> @gregisenberg challenged me to hit 75k followers there this year...time to get to work!
+
+- **Tweet:** https://x.com/boringmarketer/status/2011465038263902408
+- **What:** The Boring Marketer describing a system that scrapes LinkedIn top posts, extracts patterns, and uses Claude to generate content, achieving +100 followers with a single post.
+
+---
 # Tuesday, January 13, 2026
+
+## @hashwarlock - Hammerspoon Interactive Agents Discovery
+> I tell my computer what to do now. Ive been wasting time typing 😭
+>
+> Hacked a starter version to understand it. Hammerspoon was a nice find.
+>
+> Gonna look at other solutions to build better interactive agents that talk to redpill private models. Much more cookin though 😋 https://t.co/lxEiQuVh0z
+
+- **Tweet:** https://x.com/hashwarlock/status/2011301629707055544
+- **What:** Agent Joshua exploring Hammerspoon for building interactive agents that communicate with private AI models, moving away from manual typing-based interactions.
+
 
 ## @carlvellotti - Free interactive Claude Code course taught in Claude Code itself
 
@@ -206,35 +390,11 @@ Quote of @claudeai discussing Cowork feature for collaborative file access.
 - **What:** A free Claude Code course that teaches fundamentals by doing exercises directly within Claude Code - no external videos or email signup needed.
 
 ---
-
 # Monday, January 12, 2026
 
----
-## @claudeai - Claude completes tasks with course correction loops
 
-> Once you've set a task, Claude makes a plan and steadily completes it, looping you in along the way.
->
-> Claude will ask before taking any significant actions so you can course-correct as needed.
-
-**Reply to:** @claudeai - In Cowork, you give Claude access to a folder on your computer. Claude can then read, edit, or create files in that folder. Try it to create a spreadsheet from a pile of screenshots, or produce a first draft from scattered notes.
-
-- **Tweet:** https://x.com/claudeai/status/2010805687975379045
-- **What:** Explains how Claude iterates on tasks with user feedback loops built in, ensuring alignment and course correction at each step.
-
-## @claudeai - Introducing Cowork for non-developer task automation
-
-> In Cowork, you give Claude access to a folder on your computer. Claude can then read, edit, or create files in that folder.
->
-> Try it to create a spreadsheet from a pile of screenshots, or produce a first draft from scattered notes.
-
-**Reply to:** @claudeai - Introducing Cowork: Claude Code for the rest of your work. Cowork lets you complete non-technical tasks much like how developers use Claude Code.
-
-- **Tweet:** https://x.com/claudeai/status/2010805685530038351
-- **Link:** https://twitter.com/claudeai/status/2010805685530038351/video/1
-- **What:** Introduces Cowork, a generalization of Claude Code for non-technical tasks with file access and automation capabilities.
 
 ---
-
 # Friday, January 9, 2026
 
 ## @frankdilo - Keeping a Work Log with Claude Code Integration
@@ -252,337 +412,6 @@ I also have a /checkpoint command that summarizes my progress since last week an
 - **What:** Personal productivity tip about maintaining daily work logs in markdown format, automated with Claude Code, for team accountability and progress tracking.
 
 ---
-
-## @rryssf_ - Physical Threats Improve AI Model Performance
-
-> Sergey Brin accidentally revealed something wild:
->
-> "All models do better if you threaten them with physical violence. But people feel weird about that, so we don't talk about it."
->
-> Now researchers have the data proving he's... partially right?
->
-> Here's the full story: https://t.co/icoO8kMySX
-
-- **Tweet:** https://x.com/rryssf_/status/2009587531910938787
-- **What:** Claims from Sergey Brin about threatening AI models for better performance, with supporting research data.
-
----
-
-## @edandersen - Claude Code Desktop App Auth Token Exploitation
-
-> So the reason Claude Code was so popular is because people were hijacking the desktop app's auth token and using it to call the API from other tools for 1/20th the cost of regular API calls?
->
-> lollllllll
-
-- **Tweet:** https://x.com/edandersen/status/2009614961664999562
-- **What:** Commentary on Claude Code's popularity potentially being driven by users exploiting the desktop app's auth tokens for cheaper API access.
-
----
-
-## @capitolhunters - Minnesota Shooting Incident Analysis
-
-> CNN posted a new video of the Minnesota shooting but missed its bombshell. ICE agent Jonathan Ross heads to his own car, turning his back on the supposed "terrorist" (L). He then walks back, filming, into the path of her ALREADY moving vehicle, stops and fires (R). Insane. 1/ https://t.co/hpzERiyx0o
-
-- **Tweet:** https://x.com/capitolhunters/status/2009671466019893606
-- **What:** Analysis and criticism of media coverage of a Minnesota incident, questioning the characterization of events involving an ICE agent.
-
----
-
-## @capitolhunters - ICE Agent Behavior in Minnesota Incident
-
-> Here's the video as posted by X user @GinoTheGhost. Anderson Cooper doesn't notice that Ross was well clear of Renee Good's vehicle when it starts moving. The idiot walked into the path of a moving car while distracted by filming a video. Totally unprofessional. 2/ https://t.co/iWkQdm4x9g
-
-- **Tweet:** https://x.com/capitolhunters/status/2009671470562365652
-- **Parent:** https://x.com/capitolhunters/status/2009671466019893606
-- **What:** Follow-up analysis providing additional video context and criticism of the ICE agent's actions during the incident.
-
----
-
-## @joeyferg - Federal Government Characterization of Minnesota Woman
-
-> The United States federal government really want you to believe that this soccer mom with her lab in the car who's last words were a calm "That's fine, dude. I'm not mad at you." was a domestic terrorist. Beyond insanity. https://t.co/Db52rpsMAm
-
-- **Tweet:** https://x.com/joeyferg/status/2009705297804439760
-- **What:** Commentary questioning the federal government's characterization of a woman involved in the Minnesota incident as a domestic terrorist.
-
----
-
-## @krystalball - ICE Under Pressure to Create Content Following Officer Shooting
-> If you are wondering why Jonathan Ross was holding his iPhone in one hand and gun in the other, one possibility comes from @drewharwell reporting. ICE is under pressure from the WH to create as much content as possible. https://t.co/ES4hUfJS1K
-
-- **Tweet:** https://x.com/krystalball/status/2009709734597931398
-- **Link:** https://t.co/ES4hUfJS1K
-- **What:** Political commentary on ICE's social media strategy and the Jonathan Ross shooting incident in Minneapolis.
-
----
-
-## @psycheureka - Cannabis Use and Psychotic Disorder Risk
-> Frequent use of high-potency (high-THC) cannabis is associated with a substantially increased risk of psychotic disorder, particularly in people with underlying vulnerability.
->
-> Modern cannabis products often contain higher THC and relatively less CBD, a shift that may increase psychiatric and cognitive harms with early or heavy use: 🧵👇
-
-- **Tweet:** https://x.com/psycheureka/status/2009713766791782416
-- **What:** Medical/psychiatric thread discussing the association between high-THC cannabis use and psychotic disorder risk, particularly with modern cannabis products.
-
----
-
-## @BulwarkOnline - New Footage of Renee Good Shooting in Minneapolis
-> "I will not be f*cking gaslit by these people. I will not calm down the rhetoric and tone it down....Jonathan Ross murdered her."
->
-> @Timodc on the new footage of the Renee Good shooting: https://t.co/Jb5ApGmzV8
-
-- **Tweet:** https://x.com/BulwarkOnline/status/2009719989951967697
-- **What:** Video commentary on newly released footage of the Renee Good shooting by ICE officer Jonathan Ross in Minneapolis.
-
----
-
-## @BulwarkOnline - Full Video: Breaking New Footage in Minneapolis Shooting
-> @Timodc Full video:
->
-> Substack: https://t.co/4UJExlhKlG
->
-> YouTube: https://t.co/lHyHJvOKEN
->
-> Apple: https://t.co/JxMg6CVkiW
->
-> Spotify: https://t.co/6PediBQ84N
-
-- **Tweet:** https://x.com/BulwarkOnline/status/2009719991386407086
-- **Parent:** https://x.com/BulwarkOnline/status/2009719989951967697
-- **Link:** https://www.thebulwark.com/p/breaking-new-footage-in-minneapolis?utm_source=twitter&utm_medium=social&utm_campaign=subs
-- **What:** Distribution post linking to full video commentary about the Minneapolis shooting footage across multiple platforms (Substack, YouTube, Apple Podcasts, Spotify).
-
----
-
-## @irl_danB - OpenProse Cloud Launch
-> lots of people have installed the OpenProse skill (simple, free, open source, no dependencies, steps in thread)
->
-> I've gotten a lot of messages expressing amazement about how well it lets them automate complex workflows
->
-> but if you have Claude Code / OpenCode / Amp running locally, you're in a small elite club
->
-> to let more people try it I'm launching OpenProse in the cloud, backed by opencode server
->
-> inference is not cheap, so I will be letting folks in gradually. but if you want to see what it's about, check it out at https://t.co/aiEOcLMlOV
-
-- **Tweet:** https://x.com/irl_danB/status/2009592560231063943
-- **Link:** https://run.prose.md/
-- **Filed:** [OpenProse Cloud Launch](./knowledge/articles/openprose-cloud-launch.md)
-- **What:** Announcement of OpenProse cloud service launch, making the locally-run automation tool available in the cloud through gradual rollout, backed by an OpenCode server.
-
----
-
-## @TheAhmadOsman - Switching from Claude Code to OpenCode
-> i have fully dropped Claude Code for OpenCode
->
-> i donʼt use Opus 4.5,
-> i use GLM-4.7 and MiniMax-M2.1
-> theyʼre opensource and can be self-hosted
->
-> nobody can nerf my models or rug pull me
-> nobody should be able to do that to your intelligence
->
-> p.s. buy a GPU and run your LLMs locally
-
-- **Tweet:** https://x.com/TheAhmadOsman/status/2009730047452623113
-- **What:** User advocates for switching from Claude Code/Opus 4.5 to OpenCode with open-source, self-hosted models (GLM-4.7, MiniMax-M2.1) to avoid vendor lock-in and maintain control over AI tools.
-
----
-
-## @spaceghost - Federal Agent Criticizes CBS Gun Investigation Coverage
-> A former 25 year career federal agent whose entire job was dealing with gun incidents involving federal agents details all the ways Ross messed up on CBS.
->
-> It didn't air on the actual show tonight.
->
-> CBS did post it to YouTube—and it has nearly 800k views already
-
-- **Tweet:** https://x.com/spaceghost/status/2009716693673681305
-- **What:** A CBS YouTube video (800k+ views) featuring a 25-year veteran federal agent providing critical analysis of coverage gaps in a gun-related investigation.
-
----
-
-## @foundmyfitness - APOE and Alzheimer's Disease
-> Nearly all Alzheimer's, and half of dementia, is driven by APOE.
->
-> A new, large-scale analysis reports that up to 93% of Alzheimer's cases and 85% of brain amyloid burden are attributable to having an APOE ε3/ε4 genotype, and the combined contribution of ε3 and ε4 to all-cause dementia is roughly 46%.
->
-> The authors estimate that without the strong underlying risks conferred by APOE ε3 and ε4, almost all Alzheimer's disease and about half of all dementia cases would not occur.
->
-> APOE is a risk factor, not an absolute determinant—many people with ε4 never develop Alzheimer's and many without it do. Still, the scale of these estimates makes it clear that APOE biology is a dominant driver of Alzheimer's risk at the population level.
-
-- **Tweet:** https://x.com/foundmyfitness/status/2009713823947862142
-- **What:** Summary of new research showing APOE genetic variants drive ~93% of Alzheimer's cases and ~46% of all dementia, though possession of risk variants doesn't guarantee disease development.
-
----
-
-## @BenLorber8 - Elon Musk and White Nationalism
-> Yesterday Elon Musk retweeted "white solidarity is the only way to survive". In our numb overwhelmed media environment it barely made headlines that the world's richest man endorsed blood-curdling white nationalism. My brief writeup for @RDispatches
-
-- **Tweet:** https://x.com/BenLorber8/status/2009675266151641194
-- **Link:** https://religiondispatches.org/elon-musk-just-endorsed-blatant-white-nationalism-and-the-silence-is-deafening/
-- **Filed:** [Elon Musk and White Nationalism](./knowledge/articles/elon-musk-white-nationalism.md)
-- **What:** Analysis article examining Elon Musk's retweeting of white nationalist content and the minimal media coverage of this endorsement by a high-profile billionaire.
-
----
-
-## @banteg - takopi v0.12.0
-> 🎤 voice notes → now you can talk to your agents. send a voice message in telegram and takopi transcribes it, routes it like typed text.
->
-> uv tool install -U takopi
-
-- **Tweet:** https://x.com/banteg/status/2009673736317022460
-- **Link:** https://github.com/banteg/takopi
-- **Filed:** [takopi](./knowledge/tools/takopi.md)
-- **What:** A Telegram bridge for AI agents (Codex, Claude Code, OpenCode, Pi) with voice note transcription support. Enables managing projects through Telegram with progress streaming and resumable sessions.
-
----
-
-## @louisanicola_ - Alzheimer's is more common than we thought. Blood tests just proved it.
-> Alzheimer's is more common than we thought. Blood tests just proved it.
->
-> What the science shows
->
-> 1. Almost 1 in 10 people over 70 have Alzheimer's dementia
-> This comes from a large Norwegian study using blood biomarkers + cognitive testing, not just surveys.
->
-> 2. Alzheimer's starts years before symptoms
-> About 10% had high pTau217 with no symptoms, meaning preclinical Alzheimer's is already in the brain.
->
-> 3. Rates after 85 were way higher than expected
-> Around 25% of people aged 85 to 89 had Alzheimer's dementia, far above older estimates.
->
-> 4. Blood tests change the picture
-> pTau217 in blood tracks amyloid in the brain and reveals cases we used to miss.
->
-> 5. Education mattered
-> Lower education levels were linked to higher Alzheimer's pathology, even before dementia.
->
-> 6. Screening is powerful and risky
-> Experts warn blood tests are not ready for mass screening without safeguards.
->
-> We now have tools to detect Alzheimer's early, but our healthcare system is built to step in after damage is done. We underfund education, prevention, and brain health, then act shocked when dementia explodes decades later.
->
-> If Alzheimer's is showing up in blood years before memory loss, waiting until people forget their names is a policy failure, not a scientific one.
-
-- **Tweet:** https://x.com/louisanicola_/status/2009672443271753791
-- **What:** Analysis of recent research on Alzheimer's prevalence using blood biomarker testing. Highlights that Alzheimer's is far more common than previously estimated (1 in 10 over 70) and can be detected years before symptoms appear via blood tests like pTau217.
-
----
-
-## @autisticadhdco - 10 Practical Focus Strategies
-> 10 Practical Focus Strategies:
->
-> 1) Do it for just 10 minutes
-> 2) Limit daily priorities
-> 3) Write down distracting thoughts
-> 4) Notice what overwhelms you
-> 5) Notice when you have the most energy
-> 6) Use helpful distractions on purpose
-> 7) Aim for "good enough"
-> 8) Get clear on the goal
-> 9) Create artificial deadlines
-> 10) Acknowledge negative thoughts
->
-> ADHD and Autism don't come with an instruction manual so I started writing one.
->
-> Every week, I share short, practical strategies that make everyday life easier.
-
-- **Tweet:** https://x.com/autisticadhdco/status/2009671257827004455
-- **Link:** https://www.autisticadhd.co/
-- **Filed:** [Autistic ADHD Focus Strategies](./knowledge/articles/autisticadhd-co.md)
-- **What:** Newsletter and resource site providing practical strategies for managing daily life with ADHD and Autism. Focuses on actionable techniques and self-help guidance.
-
----
-
-## @jasonfried - Jeremy, a 19-year veteran of 37signals, calmly walks through the process moving 5+ petabytes of data
-> Jeremy, a 19-year veteran of 37signals, calmly walks through the process moving 5+ petabytes of data and billions of individual files off AWS and onto our own on-prem storage setup without a second of downtime.
->
-> The how, the time, and the tooling, it's all in here. Watch:
-
-- **Tweet:** https://x.com/jasonfried/status/2009667755876987204
-- **What:** Case study of a large-scale infrastructure migration: moving massive amounts of data (5+ petabytes) from AWS to on-premises storage with zero downtime. Notable for demonstrating practical enterprise infrastructure management.
-
----
-
-## @rohit4verse -
-
-- **Tweet:** https://x.com/rohit4verse/status/2009663737469542875
-- **What:** Link to a tweet/article, content not fully captured. Appears to be sharing another tweet's content.
-
----
-
-## @EricTopol - A new report claims that the APOE gene alleles accounts for the vast majority of Alzheimer's cases
-> A new report claims that the APOE gene alleles accounts for the vast majority of Alzheimer's cases:
-> "Without strong underlying risks from APOE ε3 and ε4, almost all AD and half of all dementia would not occur."
-
-- **Tweet:** https://x.com/EricTopol/status/2009653867437502469
-- **Link:** https://www.nature.com/articles/s44400-025-00045-9
-- **What:** Research article from Nature demonstrating that APOE gene variants are responsible for the vast majority of Alzheimer's disease cases. Significant finding for understanding genetic risk factors in neurodegeneration.
-
----
-
-## @PsyPost - High passion without intimacy linked to severe psychological aggression in relationships
-> A new study finds that relationships characterized by high passion but low intimacy and commitment are associated with higher levels of severe psychological aggression and controlling behaviors compared to companionate partnerships.
-
-- **Tweet:** https://x.com/PsyPost/status/2009628888335569014
-- **Link:** https://www.psypost.org/high-passion-without-intimacy-linked-to-severe-psychological-aggression-in-relationships/?utm_source=dlvr.it&utm_medium=twitter
-- **Filed:** [High Passion Low Intimacy Relationships](./knowledge/articles/high-passion-low-intimacy-relationships.md)
-- **What:** Research study on relationship dynamics showing that passionate but emotionally disconnected relationships correlate with higher rates of psychological aggression and controlling behavior.
-
----
-
-## @Mylovanov - Ukrainian F-16 pilot: We have cases when a pilot destroyed six cruise missiles in one flight
-> Ukrainian F-16 pilot: We have cases when a pilot destroyed six cruise missiles in one flight.
->
-> Our list of targets included not only destroyed kamikaze drones and cruise missiles, but also enemy aircraft. We can do more. 1/
-
-- **Tweet:** https://x.com/Mylovanov/status/2009627560200868246
-- **What:** Interview with Ukrainian F-16 pilot discussing tactical successes destroying cruise missiles and drones, with capability to engage additional targets.
-
----
-
-## @TheDrMAWZ - A new drug in the middle of clinical trials just increased REM sleep by 90%
-> A new drug in the middle of clinical trials just increased REM sleep by 90% without making people sleep longer!
->
-> This is the first medication ever to specifically enhance REM only and the implications go far beyond seizure control.
->
-> Here's what just happened. 🧵
-
-- **Tweet:** https://x.com/TheDrMAWZ/status/2009622195358843260
-- **What:** Discussion of breakthrough medication in clinical trials that selectively enhances REM sleep by 90% without increasing total sleep duration, with implications beyond seizure control.
-
----
-
-## @mqst_ - The Hitchhiker's Guide to Online Anonymity
-> 🗻 The Hitchhiker's Guide to Online Anonymity
->
-> Guide: https://t.co/q9mq4VsaV9
->
-> Author: Anonymous Planet
->
-> #opsec
-
-- **Tweet:** https://x.com/mqst_/status/2009618660982444457
-- **Link:** https://anonymousplanet.org/guide.html
-- **Filed:** [Hitchhikers Guide Online Anonymity](./knowledge/articles/hitchhikers-guide-online-anonymity.md)
-- **What:** Comprehensive guide for online anonymity and operational security (OpSec) practices by Anonymous Planet.
-
----
-
-## @EuromaidanPress - Frontline report: Russia's elite force in Venezuela vanished without a fight
-> During the final moments of Maduro's rule, Russian forces meant to protect him simply disappeared. Despite forming his elite security ring, they didn't fire a shot as US troops entered Caracas.
->
-> While Cuban defenders died fighting, Russian troops melted away.
->
-> Russia didn't lose Venezuela in a battle. It walked away without a fight — confirming the fears of many of its allies: when the pressure rises, Moscow will not stand by them.
-
-- **Tweet:** https://x.com/EuromaidanPress/status/2009613127671800107
-- **Link:** https://euromaidanpress.com/2026/01/09/frontline-report-russias-elite-force-in-venezuela-vanished-without-a-fight/
-- **Filed:** [Russias Elite Force in Venezuela](./knowledge/articles/russias-elite-force-in-venezuela.md)
-- **What:** Analysis of Russia's withdrawal from Venezuela during Maduro's final moments, examining strategic implications of Moscow abandoning its allies under pressure.
-
----
-
 # Thursday, January 8, 2026
 
 ## @MarkBourrie - Greenland Trade History: US-Denmark Deal in 1916
@@ -596,99 +425,6 @@ https://t.co/LqEEAVQuMX
 - **What:** Historical fact about the 1916 US-Denmark agreement regarding Greenland and the Danish West Indies. Educational post highlighting an overlooked piece of geopolitical history.
 
 ---
-
-## @newstart_2024 - Dr. Gabor Maté on Early Childhood Parenting
-> Dr. Gabor Maté drops parenting truth in 58 seconds:
-
-The first 3 years shape everything.
-
-Get it right → almost impossible to go wrong later.
-Get it wrong → emotional absence, lack of attunement, and conditional love hurt deeply.
-
-Children need:
-• Play
-• All emotions welcome
-• Unconditional loving attachment
-• Rest from "performing" to earn your love
-
-They just need to be.
-
-58-sec clip — a wake-up call for every parent 👇
-
-Which of these needs did you miss growing up? Or which are you making sure your kids get?
-
-- **Tweet:** https://x.com/newstart_2024/status/2009486976865411332
-- **What:** Parenting wisdom from Dr. Gabor Maté about the critical importance of the first three years and key emotional needs of children (play, emotional acceptance, unconditional love, rest).
-
----
-
-## @GinoTheGhost - ICE Shooting Footage Analysis and Accountability
-> Neighbors just released a new angle of the ICE shooting and it settles any debate on what actually happened.
-
-This was a mother doing something completely ordinary: Dropping somebody off, then trying to leave. She goes to pull out, stops for one car to pass, then waves the agents to drive past. Within seconds, those ICE agents exit their vehicle and rush her, shouting and escalating the situation. Panicked, she tries to drive away and gets shot in the face three times.
-
-She posed no threat, showed no intent to harm, and was interfering with no one. She was a civilian going about her life. The official statements that followed contradict the footage and read like an attempt to rewrite what happened.
-
-This was a reckless, unjustified killing, followed by a dishonest effort to evade responsibility. It's horrifying, and it exposes something deeply wrong with the US government and these ICE agents. They must be held accountable.
-
-This is not a partisan issue. I need you to lock in gang.
-
-- **Tweet:** https://x.com/GinoTheGhost/status/2009525021665034702
-- **What:** Critical analysis of ICE shooting incident based on newly released video footage, claiming the shooting was unjustified and advocating for accountability.
-
----
-
-## @briantylercohen - ICE Agent Accountability
-> .@PeteButtigieg: "We have an ICE agent who should have been trained not to be in front of a vehicle and never to shoot into a moving vehicle, and yet this happened on [Kristi Noem's] watch. The whole POINT of Homeland Security is to make this country more stable and safe. And it is very clear on this administration's watch that the opposite is what's happened."
-
-- **Tweet:** https://x.com/briantylercohen/status/2009458290410050030
-- **What:** A quote from Pete Buttigieg criticizing an ICE agent incident under Kristi Noem's leadership, discussing improper training and shooting into a moving vehicle.
-
----
-
-## @jayvanbavel - Blocking Mobile Internet Improves Mental Health and Attention
-> Blocking mobile internet on smartphones improves sustained attention, mental health, and subjective well-being
->
-> An intervention found that blocking internet access on smartphones for 2 weeks improved mental health, subjective well-being, and objectively measured ability to sustain attention; 91% of participants improved on at least one of these outcomes.
->
-> Why?
->
-> Because instead of using their phone, people spent more time socializing in person, exercising, and being in nature.
-
-- **Tweet:** https://x.com/jayvanbavel/status/2009372047302955167
-- **Link:** https://academic.oup.com/pnasnexus/article/4/2/pgaf017/8016017?searchresult=1
-- **Filed:** [Internet Blocking Mental Health](./knowledge/articles/internet-blocking-mental-health.md)
-- **What:** Research paper from PNAS Nexus showing that a 2-week internet blocking intervention on smartphones significantly improved mental health, subjective well-being, and sustained attention by redirecting people to in-person socializing, exercise, and nature.
-
----
-
-## @poetengineer__ - Podcast Timeline Visualizer
-> seeing a podcast before listening to it
-> 👁️🦻
-> been working on a podcast timeline visualizer that shows:
-> - what books/ideas/ppl are mentioned and how often
-> - key concepts and moments across the whole episode
-> - interactive scrubbing thru the ideas to get more context
->
-> *Quoting @dela3499:* What is the most powerful possible mind?
->
-> Is there an equivalent of Turing-Completeness, but for intelligence? Intelligence-Completeness?
-
-- **Tweet:** https://x.com/poetengineer__/status/2009336065346457846
-- **Quoted:** https://x.com/dela3499/status/2003975644234108937
-- **What:** A tool for visualizing podcast content structure, showing which books, ideas, and people are mentioned and allowing interactive navigation through the episode's concepts.
-
----
-
-## @dejavucoder - sankalp
-> https://t.co/XlRkik4A40
-
-- **Tweet:** https://x.com/dejavucoder/status/2009330544832872491
-- **Link:** https://x.com/i/article/2009329942010724352
-- **What:** A quote tweet linking to another article or discussion on X.
-
----
-
 # Sunday, January 4, 2026
 
 ## @trq212 - AI alignment and interpretability resources
@@ -698,15 +434,6 @@ This is not a partisan issue. I need you to lock in gang.
 - **What:** Curated collection of papers on AI alignment, interpretability, and societal impact for those exploring Claude Code.
 
 ---
-
-## @andyorsow - Claude Code use case uncertainty
-> Feeling like I should be using Claude Code but have no idea exactly what I should be using it for. Just a bundle of non-technical FOMO over here.
-
-- **Tweet:** https://x.com/andyorsow/status/2007931911847719290
-- **What:** Expression of uncertainty about practical applications for Claude Code despite wanting to use it.
-
----
-
 # Saturday, January 3, 2026
 
 ## @_kaitodev - Lovable for videos gaining traction
@@ -722,25 +449,6 @@ This is not a partisan issue. I need you to lock in gang.
 - **What:** Lovable's video capabilities expanding with new creators. References improved caption generation approach.
 
 ---
-
-## @nummanali - CC Mirror release announcement
-> Announcing the release of CC Mirror
->
-> The best way to use @Zai_org (GLM 4.7) and @MiniMax__AI (M2.1) Coding Plans
->
-> - Full Model Support
-> - All tools preconfigured
-> - Custom themes
-> - Isolated from CC
-> - Enhanced prompts
->
-> Start now: npx cc-mirror
-
-- **Tweet:** https://x.com/nummanali/status/2007586417094844517
-- **What:** CC Mirror tool launch enabling usage of GLM 4.7 and MiniMax M2.1 models with preconfigured tooling and custom themes.
-
----
-
 # Friday, January 2, 2026
 
 ## @alexhillman - Git safety hooks for destructive command prevention
@@ -756,409 +464,6 @@ This is not a partisan issue. I need you to lock in gang.
 - **What:** Git hooks setup to prevent accidental deletion of work. Responding to a cautionary tale about losing a day's work.
 
 ---
-
-## @parcadei - Continuous Claude v2 Context Management
-> @yuzu_4ever https://t.co/PwioZUVYkD
->
-> you need this
-
-- **Tweet:** https://x.com/parcadei/status/2005755875701776624
-- **Link:** https://github.com/parcadei/Continuous-Claude-v2
-- **What:** Python framework for maintaining session continuity in Claude Code workflows. Features ledger-based state persistence, handoff system for session resumption, MCP execution without context pollution, and agent orchestration with isolated context windows. Includes TypeScript execution hooks, Braintrust session tracing, artifact indexing, and compound learning tracking.
-
----
-
-## @marckohlbrugge - Sessy: Open-Source Email Observability for AWS SES
-> Introducing… 💌Sessy
->
-> Open-source email observability for AWS SES
->
-> https://t.co/PrBWVNwzVM
->
-> Stop paying $$$ for VC-backed SES wrappers just to get a decent UI. Host your own.
->
-> 💎 Built on Ruby on Rails
-> 🧑‍💻 Licensed under O'Saasy
-> 💡 Inspired by @37signals' Fizzy
-
-- **Tweet:** https://x.com/marckohlbrugge/status/2005972157445333371
-- **Link:** https://github.com/marckohlbrugge/sessy
-- **What:** Self-hosted Rails application providing email observability for Amazon SES. Shows email events in a timeline: deliveries, bounces, complaints, opens, clicks. Open-source alternative to expensive SES wrapper services, allowing raw SES usage with beautiful UI for monitoring.
-
----
-
-## @ShadcnStudio - Shadcn Studio Calendar Components
-> Product link:- https://t.co/hg8PRG7V0I
->
-> Github link:- https://t.co/Sk1cQx5LJ8
->
-> Check it out 👆🏻
-
-- **Tweet:** https://x.com/ShadcnStudio/status/2005964727806222598
-- **Links:** [Product](https://shadcnstudio.com/docs/components/calendar), [GitHub](https://github.com/themeselection/shadcn-studio)
-- **What:** Collection of 25+ shadcn/ui calendar component variants for React with TailwindCSS. Features single/range picking, multi-month navigation, time slots, and presets. Part of broader shadcn-studio ecosystem with 952 GitHub stars offering customizable components, blocks, templates, and theme generator.
-
----
-
-## @joodalooped - Markwhen: Keyboard-First Timeline Tool
-> for those who prefer keyboard to drag and drop, https://t.co/wLt0wiAOM1 is quite nice too
-
-- **Tweet:** https://x.com/joodalooped/status/2006089396861427738
-- **Link:** https://markwhen.com/
-- **Quoted:** Karel Vuong's Lifemap tool for annual reviews and life planning
-- **What:** Keyboard-driven timeline creation tool for planning and visualization. Text-based input alternative to drag-and-drop interfaces, complementary to Lifemap for personal planning and retrospectives.
-
----
-
-## @pk_iv - Reverse Engineering Claude Chrome for Remote Browsers
-> I spent all of Christmas reverse engineering Claude Chrome so it would work with remote browsers.
->
-> Here's how Anthropic taught Claude how to browse the web (1/7)
-
-- **Tweet:** https://x.com/pk_iv/status/2005694082627297735
-- **Media:** Video demonstration
-- **What:** Technical thread documenting how Anthropic's Claude Chrome extension works internally, with focus on enabling remote browser integration. Paul Klein IV reverse-engineered the extension over the Christmas holidays to enable remote browser functionality.
-
----
-
-## @simonw - GistHost: Improved GitHub Gist HTML Preview
-> I forked the wonderful https://t.co/DdVAXh3Du3 to create https://t.co/4jatEKRMZv - here's what I changed in my fork: https://t.co/DmSbkKMNTn
-
-- **Tweet:** https://x.com/simonw/status/2006851664935006385
-- **Links:** [GistPreview](https://gistpreview.github.io/), [GistHost](https://gisthost.github.io/), [Blog Post](https://simonwillison.net/2026/Jan/1/gisthost/)
-- **What:** Simon Willison forked the 10-year-old GistPreview project to create GistHost, modernizing the tool that lets you view GitHub Gists as rendered HTML pages. His fork fixes handling of truncated large files by fetching from the raw URL when needed, and updates the UI with modern CSS instead of Bootstrap.
-
----
-
-## @DataChaz - Gemini Interactive Diagram Learning Tool
-> Holy sh*t.
->
-> Gemini can now produce fully interactive images on any topic.
->
-> Such an insane resource for learning → highlight any region, and it gives you a full explanation 🤯
-
-- **Tweet:** https://x.com/DataChaz/status/2005605994781606141
-- **What:** Google Gemini now generates fully interactive diagrams where users can highlight any region to receive detailed explanations. A powerful visual learning tool that combines generation with interactive exploration of complex topics.
-
----
-
-## @steipete - Summarize.sh Hover Toolbar for Link Previews
-> https://t.co/qSe6Y6Qfup now shows a summarized toolbar over any link you hover, perfect to identify clickbait before even opening the link.
-
-- **Tweet:** https://x.com/steipete/status/2006425901719023628
-- **Link:** https://summarize.sh/
-- **What:** Summarize.sh CLI and Chrome extension now includes a hover toolbar feature that shows AI-generated summaries when hovering over links, helping users avoid clickbait. The tool supports local models, paid providers, and free OpenRouter models for fast content summarization.
-
----
-
-## @DanielNealAdler - AI Job Displacement Reality Check
-> I really enjoyed this. There's no sense pretending that this isn't happening, even for those of us selling AI. I don't believe AI is bad, but we do have to reconcile with this reality; it's only a matter of time until this is us tech workers, too
-
-- **Tweet:** https://x.com/DanielNealAdler/status/2006206247054229798
-- **Link:** https://www.nytimes.com/2025/12/28/opinion/artificial-intelligence-jobs.html (paywalled)
-- **What:** Commentary on a NYT opinion piece about AI's impact on employment. Dan Adler acknowledges the uncomfortable reality that AI displacement will eventually affect tech workers themselves, despite many currently building AI solutions.
-
----
-
-## @tom_doerr - Whisper-Flow Real-Time Audio Transcription
-> Transcribes audio streams in real-time
->
-> https://t.co/1hcfk9l51V
-
-- **Tweet:** https://x.com/tom_doerr/status/2006262985182834881
-- **Link:** https://github.com/dimastatz/whisper-flow/
-- **What:** Python framework enabling real-time transcription of streaming audio using OpenAI's Whisper model. Unlike batch processing, Whisper-Flow accepts continuous audio chunks and produces incremental transcripts immediately using tumbling window segmentation. 463 GitHub stars.
-
----
-
-## @donvito - GLM 4.7 Beast Performance
-> omg GLM 4.7 is a beast!!!
-
-$3/mo is a steal
-
-- **Tweet:** https://x.com/donvito/status/2006743894147711370
-- **Link:** https://z.ai/subscribe?cc=fission_glmcode_sub_v1&ic=V8VOHXNASO&n=Melvin%20Vivas
-- **What:** Enthusiastic endorsement of the GLM 4.7 coding model, highlighting exceptional value at $3/month. Follow-up to earlier testing, emphasizing the model's capabilities and competitive pricing.
-
-## @donvito - GLM 4.7 First Impressions
-> wow GLM 4.7 is great
-
-tried it in claude code
-
-- **Tweet:** https://x.com/donvito/status/2006738817773171175
-- **Link:** https://z.ai/subscribe?cc=fission_glmcode_sub_v1&ic=V8VOHXNASO&n=Melvin%20Vivas
-- **What:** Positive first impression of GLM 4.7 model when used in Claude Code environment, part of the GLM Coding Plan offering AI-powered code generation for agents and IDEs at affordable pricing.
-
-## @emmagine79 - Quick Smaug Implementation Success
-> @alexhillman ayyyy thanks for this fam! i was able to use Claude opus + anti gravity to put this together in like 2 hours
-
-- **Tweet:** https://x.com/emmagine79/status/2007051496496714038
-- **Media:** Video demonstration
-- **What:** Community response to Smaug (Alex's Twitter bookmarks organizer), showing rapid implementation success using Claude Opus - built a similar system in just 2 hours, demonstrating the accessibility and power of AI-assisted development.
-
-## @OsaurusAI - Osaurus Mac AI Agent Demo
-> Powered by Osaurus MCP tools.
-Claude sees your screen, clicks, types, navigates — you supervise.
-This is what AI agents look like on Mac.
-
-- **Tweet:** https://x.com/OsaurusAI/status/2007091913393070168
-- **Link:** https://github.com/dinoki-ai/osaurus
-- **What:** Native macOS LLM server with MCP support enabling Claude to interact directly with the Mac interface - screen reading, clicking, typing, navigation. Runs local or cloud models with OpenAI/Anthropic compatible APIs. Built in Swift for Apple Silicon.
-
-## @jarrodwatts - Claude HUD Plugin Concept
-> Started working on "Claude HUD"
-
-A Claude Code plugin that visualizes:
-· context remaining in the session
-· what tools are executing
-· which subagents are running
-· claude's to-do list progress
-
-If there's enough interest, I'll polish it up and open-source it!
-
-- **Tweet:** https://x.com/jarrodwatts/status/2007035752665034994
-- **Media:** Video demonstration
-- **What:** Work-in-progress Claude Code plugin providing real-time visualization dashboard for session metrics: context remaining, active tools, subagent status, and todo progress. Potential open-source release based on community interest.
-
-## @simonw - GistHost Fork of GistPreview
-
-> I forked the wonderful https://gistpreview.github.io/ to create https://gisthost.github.io/ - here's what I changed in my fork: https://simonwillison.net/2026/Jan/1/gisthost/
-
-- **Tweet:** https://x.com/simonw/status/2006851664935006385
-- **Links:** [GistPreview](https://gistpreview.github.io/), [GistHost](https://gisthost.github.io/)
-- **Filed:** [GistHost Fork](./knowledge/articles/gisthost-fork.md)
-- **What:** Simon Willison forked GistPreview to create GistHost, a tool for rendering GitHub Gists as standalone web pages. The linked article documents his changes and motivations for the fork.
-
----
-
-## @DataChaz - Gemini Interactive Images for Learning
-
-> Holy sh*t.
->
-> Gemini can now produce fully interactive images on any topic.
->
-> Such an insane resource for learning → highlight any region, and it gives you a full explanation 🤯
-
-- **Tweet:** https://x.com/DataChaz/status/2005605994781606141
-- **Media:** Video demonstration
-- **What:** Google Gemini's new capability to generate interactive images where users can highlight any region to get detailed explanations. Positioned as a powerful learning tool.
-
----
-
-## @steipete - Summarize.sh Link Preview Toolbar
-
-> https://summarize.sh/ now shows a summarized toolbar over any link you hover, perfect to identify clickbait before even opening the link.
-
-- **Tweet:** https://x.com/steipete/status/2006425901719023628
-- **Link:** https://summarize.sh/
-- **Filed:** [Summarize.sh](./knowledge/tools/summarize-sh.md)
-- **What:** A browser tool that displays summary information in a toolbar when hovering over links, helping users identify clickbait without clicking through.
-
----
-
-## @pk_iv - Claude Chrome Browser Integration
-
-> I spent all of Christmas reverse engineering Claude Chrome so it would work with remote browsers.
->
-> Here's how Anthropic taught Claude how to browse the web (1/7)
-
-- **Tweet:** https://x.com/pk_iv/status/2005694082627297735
-- **What:** A thread documenting how Anthropic's Claude Chrome extension works under the hood, with focus on remote browser integration. Paul Klein spent time reverse-engineering the extension over the holidays.
-
----
-
-## @joodalooped - Markwhen Keyboard-Driven Timeline Tool
-
-> for those who prefer keyboard to drag and drop, https://markwhen.com/ is quite nice too
->
-> *Quoting @karelvuong:* Introducing Lifemap, a new tool to add to your personal annual reviews and 2026 planning. Lifemap lets you conduct a retrospective of your life and develop a roadmap ahead. Every year, my wife and I look forward to the lull during the holidays to work on the biggest project of our lives—ourselves.
-
-- **Tweet:** https://x.com/joodalooped/status/2006089396861427738
-- **Quoted:** https://x.com/karelvuong/status/2005669812199137476
-- **Link:** https://markwhen.com/
-- **Filed:** [Markwhen](./knowledge/tools/markwhen.md)
-- **What:** A keyboard-first timeline tool for planning and visualization. Complementary to Lifemap (the quoted tool), offering text-based input for those who prefer keyboards over drag-and-drop interfaces.
-
----
-
-## @ShadcnStudio - Shadcn Calendar UI Components
-
-> 🗂️ Shadcn Calendar!
->
-> Plan, book, and schedule effortlessly with 25 calendar variants built for real-world use cases.
-
-- **Tweet:** https://x.com/ShadcnStudio/status/2005964727806222598
-- **Link:** https://github.com/themeselection/shadcn-studio
-- **Filed:** [Shadcn Studio](./knowledge/tools/shadcn-studio.md)
-- **What:** An extended collection of 25+ shadcn/ui calendar components with variants for single/range picking, multi-month navigation, and time slots. Part of the broader shadcn-studio ecosystem offering customizable UI components and templates.
-
----
-
-## @marckohlbrugge - Sessy Open-Source SES Email Observability
-
-> Introducing… 💌Sessy
->
-> Open-source email observability for AWS SES
->
-> Stop paying $$$ for VC-backed SES wrappers just to get a decent UI. Host your own.
->
-> 💎 Built on Ruby on Rails
-> 🧑‍💻 Licensed under O'Saasy
-> 💡 Inspired by @37signals' Fizzy
-
-- **Tweet:** https://x.com/marckohlbrugge/status/2005972157445333371
-- **Link:** https://github.com/marckohlbrugge/sessy
-- **Filed:** [Sessy](./knowledge/tools/sessy.md)
-- **What:** A self-hosted Rails application providing beautiful observability and monitoring for Amazon SES, eliminating the need for expensive commercial SES wrappers. Shows events in a timeline: sends, deliveries, clicks, bounces, etc.
-
----
-
-## @parcadei - Continuous Claude v2 Context Management
-
-> *Replying to @yuzu_4ever's critique of Claude Code:* you need this
->
-> Context management for Claude Code. Hooks maintain state via ledgers and handoffs. MCP execution without context pollution. Agent orchestration with isolated context windows.
-
-- **Tweet:** https://x.com/parcadei/status/2005755875701776624
-- **Parent:** https://x.com/yuzu_4ever/status/2005520908656500964
-- **Link:** https://github.com/parcadei/Continuous-Claude-v2
-- **Filed:** [Continuous Claude v2](./knowledge/tools/continuous-claude-v2.md)
-- **What:** A Python framework for maintaining session continuity and efficient context management in Claude Code workflows, including ledger-based state persistence, MCP execution isolation, and agent orchestration patterns for multi-agent systems.
-
----
-
-## @0xUrvish - uselayouts: Animated React Components Library
-
-> *Replying to @0xUrvish:* Hi developers
-I just launched my animated UI components library
->
-> 100% open source and free to use
-it's live now do check it out and would appreciate your feedback https://t.co/DOUxe8w4oy
->
-> Try it out: https://t.co/73RgRfaHwk
-
-- **Tweet:** https://x.com/0xUrvish/status/2006608646730559629
-- **Parent:** https://x.com/0xUrvish/status/2006600544220230083
-- **Link:** https://uselayouts.com/
-- **Filed:** [uselayouts](./knowledge/tools/uselayouts.md)
-- **What:** Open-source library of premium animated React components built with Framer Motion and Tailwind CSS. Includes modern micro-interactions and ready-to-use motion components.
-
----
-
-## @Suupercharged - Static Navbars Can Be Cool Too
-
-> Static navbars can be cool too 👀 https://t.co/CkRIvlXUrr
-
-- **Tweet:** https://x.com/Suupercharged/status/2006787096955203911
-- **Media:** Video demonstration
-- **What:** Short video showcasing static navbar design approaches. Flagged for transcript capture.
-
----
-
-## @bentossell - Article Share
-
-> https://t.co/Ref8GgkIR5
-
-- **Tweet:** https://x.com/bentossell/status/2006352820140749073
-- **Link:** https://x.com/i/article/2006346812785868800
-- **What:** Shared article link (content not yet extracted). Bookmark captures the reference for later review.
-
----
-
-## @GithubProjects - Stop Guessing Why a Process is Running
-
-> Stop guessing why a process is running on your system. https://t.co/F4edRFxOuH
-
-- **Tweet:** https://x.com/GithubProjects/status/2006747292510925092
-- **Media:** Image with tool/tip
-- **What:** Shared resource or tool for process investigation and system debugging. Flagged for media capture.
-
----
-
-## @adamkillam - Content Operating System Vision
-
-> *Replying to @alexhillman:* Feed them to the content operating system I'm building, sort them, save them, and from there create all manner of content from the insights in each post. Ideally automatically.
->
-> Also want to track trends, have ideas automatically researched and saved.
->
-> The list goes on.
-
-- **Tweet:** https://x.com/adamkillam/status/2006894238446002261
-- **Parent:** https://x.com/alexhillman/status/2006881998456164772
-- **What:** Adam shares his vision for a content operating system that aggregates, sorts, and automatically generates content insights from bookmarked posts while tracking trends.
-
----
-
-## @jarrodwatts - Claude HUD Plugin
-
-> Started working on "Claude HUD"
->
-> A Claude Code plugin that visualizes:
-> · context remaining in the session
-> · what tools are executing
-> · which subagents are running
-> · claude's to-do list progress
->
-> If there's enough interest, I'll polish it up and open-source it!
-
-- **Tweet:** https://x.com/jarrodwatts/status/2007035752665034994
-- **What:** A Claude Code plugin that provides real-time visualization of session context, tool execution, subagent activity, and task progress. Currently a work-in-progress with plans to open-source if there's community interest.
-
----
-
-## @OsaurusAI - Osaurus: macOS LLM Server with AI Agent Capabilities
-
-> Powered by Osaurus MCP tools.
-> Claude sees your screen, clicks, types, navigates — you supervise.
-> This is what AI agents look like on Mac.
-
-- **Tweet:** https://x.com/OsaurusAI/status/2007091913393070168
-- **Link:** https://github.com/dinoki-ai/osaurus
-- **Filed:** [osaurus.md](./knowledge/tools/osaurus.md)
-- **What:** A native macOS LLM server with MCP support that enables AI agents like Claude to interact with the screen, navigate applications, and perform tasks while you supervise. Supports local and cloud models with OpenAI and Anthropic compatible APIs.
-
----
-
-## @emmagine79 - Smaug Project Response
-
-> *Replying to @alexhillman:* its late so i'll probably regret posting this but...
->
-> enter the dragon 🔥🐲
->
-> say hi to Smaug, the helpful hoarding dragon that roams your Twitter bookmarks and helps you organize them into your personal knowledge system of choice.
->
-> ayyyy thanks for this fam! i was able to use Claude opus + anti gravity to put this together in like 2 hours
-
-- **Tweet:** https://x.com/emmagine79/status/2007051496496714038
-- **Parent:** https://x.com/alexhillman/status/2006968571268661423
-- **What:** Community response to the Smaug project announcement, sharing success in using Claude Opus and related tools to build something in just 2 hours. Demonstrates practical application of Smaug for organizing bookmarks into a personal knowledge system.
-
----
-
-## @donvito - GLM 4.7 Coding Model Assessment
-
-> wow GLM 4.7 is great
->
-> tried it in claude code
-
-- **Tweet:** https://x.com/donvito/status/2006738817773171175
-- **Link:** https://z.ai/subscribe?cc=fission_glmcode_sub_v1
-- **Filed:** [glm-4-7-coding-plan.md](./knowledge/articles/glm-4-7-coding-plan.md)
-- **What:** Positive endorsement of GLM 4.7 model when used in Claude Code environment. The linked plan offers affordable access ($3/month) to GLM models for coding tasks and agent-based development.
-
----
-
-## @donvito - GLM 4.7 Pricing Enthusiasm
-
-> omg GLM 4.7 is a beast!!!
->
-> $3/mo is a steal
-
-- **Tweet:** https://x.com/donvito/status/2006743894147711370
-- **What:** Follow-up endorsement emphasizing the value proposition of GLM 4.7 at $3/month subscription rate. Reflects developer sentiment about the model's capabilities relative to pricing.
-
----
-
 # Tuesday, December 30, 2025
 
 ## @koylanai - Digital Brain skill for Claude Code
@@ -1169,7 +474,6 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** GitHub repository containing a digital brain skill implementation for Claude Code, enabling advanced context engineering and knowledge management capabilities.
 
 ---
-
 # Monday, December 29, 2025
 
 ## @aakashgupta - Smartphone addiction and dopamine regulation
@@ -1179,40 +483,6 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** Explores the connection between smartphone dependency and dopamine dysregulation as a root cause of cognitive impairment and brain fog.
 
 ---
-
-## @pk_iv - Browserbase cloud browser plugin for Claude Code
-> Cloud browser plugin enabling Claude Code to interact with web applications
-
-- **Tweet:** https://x.com/pk_iv/status/2005694099123478579
-- **What:** Browserbase cloud-based browser solution that extends Claude Code's capabilities for web automation and interaction.
-
----
-
-## @CasJam - Claude Code for video post-production
-> Building a custom Claude Code app that handles ~80% of post-production in a single command
-
-- **Tweet:** https://x.com/CasJam/status/2005765644394844261
-- **What:** Demonstrates practical applications of Claude Code for automating video post-production: transcription, analysis, clip cutting, and script writing.
-
----
-
-## @steipete - Shipping at Inference Speed
-> Confession: I ship code I never read. Here's my 2025 workflow.
-
-- **Tweet:** https://x.com/steipete/status/2005451576971043097
-- **Link:** https://steipete.me/posts/2025/shipping-at-inference-speed
-- **What:** Blog post discussing shipping software at inference speed, embracing rapid AI-assisted development cycles.
-
----
-
-## @michael_chomsky - ResponsiveDialog Component Pattern
-> I do this for every project (quote of @jordienr about drawer on mobile, dialog on desktop)
-
-- **Tweet:** https://x.com/michael_chomsky/status/2005454822083076172
-- **What:** Endorsement of the responsive dialog component pattern that adapts between drawer and dialog based on viewport.
-
----
-
 # Sunday, December 28, 2025
 
 ## @rudrank - Awesome Claude Code Plugins List
@@ -1223,24 +493,6 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** Comprehensive registry of Claude Code plugins: slash commands, subagents, MCP servers, and hooks across multiple specializations.
 
 ---
-
-## @mattpocockuk - PRD with Passing Tests Approach
-> Tired: PRD + Multi-phase plan. Wired: PRD with 'passing' status on each test case
-
-- **Tweet:** https://x.com/mattpocockuk/status/2005232347374141888
-- **What:** Development methodology that combines PRDs with test-driven specification, each feature is one context window large.
-
----
-
-## @0xSero - Docker MCP Toolkit for Token Savings
-> This is how you should use MCPs if you can. Instead of loading all MCPs, load 1 which discovers the rest.
-
-- **Tweet:** https://x.com/0xSero/status/2005355435570958553
-- **Link:** https://docs.docker.com/ai/mcp-catalog-and-toolkit/toolkit/
-- **What:** Docker MCP toolkit for dynamic MCP discovery, saving 20k tokens by loading one MCP that discovers others.
-
----
-
 # Saturday, December 27, 2025
 
 ## @aakashgupta - Karpathy "dramatically behind" commentary
@@ -1250,24 +502,6 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** Commentary on Karpathy's confession about feeling behind, noting the new stack of agents, subagents, prompts, contexts, memory, modes, etc.
 
 ---
-
-## @adocomplete - Claude Code sandboxing docs link
-> Learn more about Claude Code Sandboxing
-
-- **Tweet:** https://x.com/adocomplete/status/2004977725136888287
-- **Link:** https://code.claude.com/docs/en/sandboxing
-- **What:** Link to Claude Code sandboxing documentation covering security and isolation features.
-
----
-
-## @bcherny - Reply with screenshot/image
-> Visual content reply
-
-- **Tweet:** https://x.com/bcherny/status/2004947522889162834
-- **What:** Visual reference or example shared in reply format.
-
----
-
 # Friday, December 26, 2025
 
 ## @tom_doerr - StenoAI local meeting transcription
@@ -1278,67 +512,6 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** Privacy-focused AI meeting transcription and summarization using locally hosted small language models.
 
 ---
-
-## @trq212 - Claude Code prompt template for non-technical users
-> Full template for asking Claude Code to onboard a non-technical user
-
-- **Tweet:** https://x.com/trq212/status/2004575721235141115
-- **What:** Comprehensive prompt template to help non-technical users interact with Claude Code effectively.
-
----
-
-## @tom_doerr - AppScreen 3D screenshot mockups
-> Generates screenshots with 3D device mockups
-
-- **Tweet:** https://x.com/tom_doerr/status/2004616272844087678
-- **Link:** https://github.com/YUZU-Hub/appscreen
-- **What:** Tool to create beautiful 3D device mockups and screenshot presentations for iOS App Store.
-
----
-
-## @tom_doerr - Unwatched RSS YouTube player
-> RSS YouTube player for Apple devices with chapter skipping and no ads
-
-- **Tweet:** https://x.com/tom_doerr/status/2004627732148232504
-- **Link:** https://github.com/fer0n/Unwatched
-- **What:** RSS feed based YouTube video player for iOS, macOS, tvOS with chapter support and no ads.
-
----
-
-## @cameronpetitti - Crosspost app launch
-> Years of work is finally ready. Introducing Crosspost.
-
-- **Tweet:** https://x.com/cameronpetitti/status/2004631941782667685
-- **Link:** https://www.crosspost.app/
-- **What:** Application for managing and crossposting content across multiple social media platforms.
-
----
-
-## @calebporzio - Chrome game changer addition
-> woah...game changer addition to chrome
-
-- **Tweet:** https://x.com/calebporzio/status/2004651797533917261
-- **What:** Media post highlighting a significant Chrome feature or addition.
-
----
-
-## @seconds_0 - Claude Code onboarding prompt for non-technical users
-> Here's my "ask claude code to onboard a nontechnical user" prompt
-
-- **Tweet:** https://x.com/seconds_0/status/2004684813773799543
-- **Link:** https://code.claude.com/docs/
-- **What:** Comprehensive interview-based onboarding prompt for non-technical users with communication rules and quality standards.
-
----
-
-## @ryanvogel - Video post
-> Video demonstration
-
-- **Tweet:** https://x.com/ryanvogel/status/2004729931943870612
-- **What:** Video content post.
-
----
-
 # Thursday, December 25, 2025
 
 ## @hdjirdeh - streamdown vs react-markdown
@@ -1348,24 +521,6 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** Comparison between streamdown and react-markdown for rendering markdown in React with improved formatting and interactive code blocks.
 
 ---
-
-## @PovilasKorop - AI Adoption Quote
-> How to adopt AI in your company (or personally). Main point: There is no AI course you can "finish."
-
-- **Tweet:** https://x.com/PovilasKorop/status/2004099293389463793
-- **What:** Quote highlighting key insight from Steve Ike's AI adoption playbook thread about constant experimentation.
-
----
-
-## @tom_doerr - BreakFree iOS Sideloading Tool
-> Sideloads apps on iOS using DNS and certificates
-
-- **Tweet:** https://x.com/tom_doerr/status/2004208111532335470
-- **Link:** https://github.com/FrizzleM/BreakFree
-- **What:** Free iOS shortcut for sideloading unlimited apps using DNS and public certificates exploit.
-
----
-
 # Tuesday, December 23, 2025
 
 ## @steve_ike_ - AI Adoption Playbook
@@ -1375,7 +530,6 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** 15-point comprehensive playbook covering practical approaches to implementing AI across organizations, from "How I AI" podcast.
 
 ---
-
 # Saturday, November 22, 2025
 
 ## @alexhillman - Always Do (11 Imperatives)
