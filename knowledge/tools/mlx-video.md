@@ -2,7 +2,7 @@
 
 **Repository:** [Blaizzy/mlx-video](https://github.com/Blaizzy/mlx-video)
 **Language:** Python
-**Stars:** 47
+**Stars:** 73 (updated Jan 16, 2026)
 
 ## Overview
 
@@ -115,6 +115,11 @@ Currently supports the distilled LTX-2 variant. Full LTX-2 feature support is co
 
 MIT
 
+## Recent Updates
+
+- **January 16, 2026:** Pull Request #10 adds LTX-2 image-to-video functionality
+
 ## Bookmarked From
 
-Prince Canuma (@Prince_Canuma), January 16, 2026
+- Prince Canuma (@Prince_Canuma), January 16, 2026 (initial bookmark)
+- Prince Canuma (@Prince_Canuma), January 16, 2026 (LTX-2 I2V update via [PR #10](https://github.com/Blaizzy/mlx-video/pull/10))

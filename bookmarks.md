@@ -1,4 +1,778 @@
+# Sunday, January 18, 2026
+## @ghhughes - Amazon Ending Inventory Commingling
+> Amazon is ending all inventory commingling as of March 31, 2026. This will reduce your chance of getting counterfeits from Amazon when buying from a reliable seller.
+>
+> In the past 3d party sellers would wherehouse products with Amazon for fulfilment, but amazon would treat all of the products with the same SKU as being interchangeable, no matter who sent them in. So you'd get other sellers inventory sent to you if it was in a closer warehouse, meaning you could order from a good seller but get counterfeit products sent in by a shady one, and Amazon wouldn't even tell you that they did a switcheroo.
+>
+> This change is important for safely buying genuine products, such as 3M respirators.
+>
+> https://t.co/O6a5ePkiPV
+
+- **Tweet:** https://x.com/ghhughes/status/2012824754319753456
+- **Link:** https://sellercentral.amazon.com/seller-forums/discussions/t/106d0747-e5c6-44d8-86f3-7669f11238fe
+- **What:** Announces Amazon's policy change ending inventory commingling by March 31, 2026, which previously allowed counterfeit products to be shipped when ordering from reliable sellers.
+
+---
+
+## @iannuttall - dotagents: Unified Configuration Manager for AI Coding Tools
+> Yup, I built dotagents for myself because it's so annoying to switch between harnesses.
+>
+> Now I run everything from ~/.agents or .agents 🤘
+>
+> https://t.co/ETH0xuDrbD
+>
+> PRs welcome for any clients it doesn't support!
+> *Quoting @theo:* Anyone have a tool to sync between these with a symlink or something? Even just like a ./sync_skills.sh I can leave in every repo
+
+- **Tweet:** https://x.com/iannuttall/status/2012833663319195970
+- **Link:** https://github.com/iannuttall/dotagents
+- **Filed:** [[dotagents]]
+- **What:** A TypeScript tool that manages a single `.agents` folder as the source of truth for commands, hooks, skills, and configuration files across multiple AI coding clients (Claude, Factory, Codex, Cursor, OpenCode). Creates symlinks to eliminate duplication and make managing AI tool configurations consistent across projects.
+
+---
+
+## @0xSero - Analyze Your Twitter Archive with Local AI Embeddings
+> Let me make your life better.
+>
+> 1. Go to https://t.co/dQ18tvlPRr
+> 2. Select download an archive of your data
+> 3. Unzip then install all-MiniLM-L6-v2
+> 4. Run the model on CPU and have it create vectors
+> 5. Tell your preferred model to create a skill out of it
+> 6. Ask the model questions
+>
+> - What tweets are getting the best impressions?
+> - What are the most common grammatical errors?
+> - Link me all the tweets where I talked about x topic?
+>
+> Use that data to learn more about yourself.
+
+- **Tweet:** https://x.com/0xSero/status/2012889904611553491
+- **Link:** https://x.com/settings/account
+- **What:** A workflow for self-analysis using your Twitter data archive by creating local embeddings with all-MiniLM-L6-v2, then querying the vectors with an AI model to surface insights about your posting patterns, engagement metrics, and content themes.
+
+---
+
+## @WarMonitor3 - Twitter Article Link
+> https://t.co/vedMhg2LhI
+
+- **Tweet:** https://x.com/WarMonitor3/status/2012891955231862902
+- **Link:** https://x.com/i/article/2012888428917006336
+- **What:** A link to a Twitter article (content not expanded).
+
+---
+
+## @WarMonitor3 - Battle of Hostomel Airport: The Turning Point in Ukraine
+> READ: Battle of Hostomel airport.
+>
+> The Crucial Battle that changed the course of the war in Ukraine.
+> *Quoting @WarMonitor3:* https://t.co/vedMhg2LhI
+
+- **Tweet:** https://x.com/WarMonitor3/status/2012892142885023995
+- **What:** A quote tweet highlighting an article about the Battle of Hostomel airport, described as a crucial turning point in the Ukraine war.
+
+---
+
+## @danshipper - The Golden Age for Ideas
+> there has never been a better time in history to be an ideas guy
+
+- **Tweet:** https://x.com/danshipper/status/2012898255873442297
+- **What:** Commentary on how AI tools and modern technology have made it easier than ever to execute on ideas without deep technical implementation skills.
+
+---
+
+## @karunpal - Twitter Article Link
+> https://t.co/yiSBMIb4VH
+
+- **Tweet:** https://x.com/karunpal/status/2012899566920851639
+- **Link:** https://x.com/i/article/2012897917678551040
+- **What:** A link to a Twitter article (content not expanded).
+
+---
+
+## @godofprompt - Claude Mastery Guide Giveaway
+> Claude is the smartest AI right now.
+>
+> But 90% of people prompt it like ChatGPT.
+>
+> That's why I made the Claude Mastery Guide:
+>
+> → How Claude thinks differently
+> → Prompts built for Claude
+> → Workflows that use its strengths
+>
+> Comment "Claude" and I'll DM it free. https://t.co/v2SKsVeoOI
+
+- **Tweet:** https://x.com/godofprompt/status/2012901070016835703
+- **Link:** https://twitter.com/godofprompt/status/2012901070016835703/photo/1
+- **What:** A promotional tweet offering a free guide on prompting Claude effectively, emphasizing that Claude requires different prompting strategies than ChatGPT to leverage its unique capabilities.
+
+---
+
+## @ArmanHezarkhani - Twitter Article Link
+> https://t.co/GB74K5tayi
+
+- **Tweet:** https://x.com/ArmanHezarkhani/status/2012915751460470838
+- **Link:** https://x.com/i/article/2012912320700092417
+- **What:** A link to a Twitter article (content not expanded).
+
+---
+
+## @Mylovanov - Ukrainian SOF on Russian Defectors and Resistance Networks
+> Ukrainian SOF officer for Kyiv Independent: Russians contact us out of hatred for Putin and fear Russia is becoming isolated like a bigger North Korea.
+>
+> We work mainly with those in occupied areas who want to build their own resistance.
+>
+> 1/ https://t.co/pxXDXpBIEy
+
+- **Tweet:** https://x.com/Mylovanov/status/2012925693277991301
+- **Link:** https://twitter.com/Mylovanov/status/2012925693277991301/video/1
+- **What:** A Ukrainian Special Operations Forces officer describes how Russians motivated by anti-Putin sentiment and isolation fears are reaching out to help build resistance networks in occupied territories.
+
+---
+
+## @dexhorthy - Use Structured Output for Control Flow, Not Prompts
+> if you already know the workflow, use structured output to know which path to take
+>
+> don't use prompts for control flow
+>
+> use control flow for control flow
+> *Quoting @JohnKutay:* I often see conditional statements in prompts I review. Many people don't realize how frequently LLMs fail to properly execute these conditions, especially when they're buried in complex instructions or conflict with other directives…
+
+- **Tweet:** https://x.com/dexhorthy/status/2012933967692120337
+- **What:** Advice on LLM application architecture: use structured output formats to determine branching logic in your code rather than relying on conditional statements within prompts, which LLMs often fail to execute reliably.
+
+---
+
+## @joelhooks - Forcing Claude to review mistakes and create prevention rules
+
+> forcing claude to review all of its fuck ups and create rules/skills to prevent them in the future https://t.co/NflUKCGkI2
+
+- **Tweet:** https://x.com/joelhooks/status/2012934260265816387
+- **What:** A workflow for improving AI agent reliability by having Claude analyze its own errors and generate rules or skills to prevent future mistakes, creating a continuous improvement loop.
+
+---
+
+## @RedHatPentester - SMS Blaster mobile device attack
+
+> According to Denis Laskov; A new and highly effective attack on mobile devices is hitting western cities: "SMS Blaster" is the name for a category of devices that fraudsters use to distribute thousands of SMS messages directly to the phones of people nearby. The device is usually mounted on vehicles driving through crowded urban areas.
+>
+> The tech behind this attack: an SMS blaster tricks nearby phones into connecting by presenting a stronger signal, often downgrading connections from 4G to 2G, where security protections are weaker.
+>
+> Once connected, attackers can send mass SMS messages directly to nearby phones without knowing phone numbers and without going through mobile operators, bypassing traditional spam and filtering systems. The messages look very real, appearing to come from financial institutions, police, local authorities, marketplaces, and more
+
+- **Tweet:** https://x.com/RedHatPentester/status/2012941915444949234
+- **What:** Security alert about SMS Blaster devices that downgrade mobile connections to 2G and send mass fraudulent SMS messages directly to nearby phones, bypassing traditional carrier filtering systems.
+
+---
+
+## @Conor_Harris_ - Proper chin tuck form for forward head posture
+
+> Chin Tucks are the most commonly recommended fix for Forward Head Posture, or "text neck".
+>
+> But the majority of times they are done with terrible form and don't get results.
+>
+> Here's what you need to know to optimize them for more success 👇 https://t.co/4aVPssE6YK
+
+- **Tweet:** https://x.com/Conor_Harris_/status/2012948015456440323
+- **What:** Video tutorial demonstrating proper technique for chin tuck exercises to correct forward head posture and text neck, emphasizing common form mistakes that prevent results.
+
+---
+
+## @newstart_2024 - Internal reward system engineering
+
+> Andrew Huberman shares a game-changer from a top psychoanalyst: "It's all internal." Finish a marathon first? No one drips dopamine in your ear—you generate it yourself.
+>
+> Set milestones just beyond comfort, hit them, pause to register the win → dopamine surges, converts to epinephrine/adrenaline, fuels the next push.
+>
+> Success isn't external validation; it's engineering your own reward circuit—one deliberate win at a time creates unstoppable momentum.
+>
+> What's a recent milestone you registered internally that gave you that energy surge? Share it.
+
+- **Tweet:** https://x.com/newstart_2024/status/2012959516283883922
+- **What:** Neuroscience perspective on self-generated motivation through deliberate milestone recognition and internal dopamine reward systems, creating sustainable momentum without external validation.
+
+---
+
+## @donvito - LLM inference in browser with Google LiteRT
+
+> LLM inference without internet using Google's LiteRT
+>
+> no ollama or lmstudio
+>
+> just loading and running the AI model in the browser
+>
+> https://t.co/LApdiP88lj https://t.co/JDTzLYhgiP
+
+- **Tweet:** https://x.com/donvito/status/2012959956140712312
+- **Link:** https://ai.google.dev/edge/litert
+- **What:** Google's LiteRT enables completely offline LLM inference directly in the browser without external tools like Ollama or LM Studio, making AI models more accessible and privacy-focused.
+
+---
+
+## @talkaboutdesign - Syncing AI agent instruction files
+
+> @mattpocockuk My  biggest issue right now is just understand and syncing files between traditional readme https://t.co/Aqj0JZfgwz https://t.co/l6yffqzLCw etc .cursor rules .Claude etc.
+>
+> It feels messy!
+
+> *Replying to @mattpocockuk:* Bad AGENTS​.md files can make your coding agent worse and cost you tokens.
+>
+> Here's a prompt you can use to clean them up - PLUS a full guide for folks wanting to learn more.
+>
+> Enjoy: https://t.co/vDSwVQYKbT https://t.co/EJJQvP0tPy
+
+- **Tweet:** https://x.com/talkaboutdesign/status/2012961533714714894
+- **Link:** https://code.claude.com/docs/
+- **What:** Developer expressing frustration with the proliferation of different AI agent instruction files (README, AGENTS.md, .cursor rules, CLAUDE.md) and the challenge of keeping them synchronized without redundancy.
+
+---
+
+## @aakashgupta - Dopamine baseline depletion and neuroplasticity recovery
+
+> This person just gave you the neuroplasticity recovery protocol most people pay therapists $200/hour to discover.
+>
+> The core mechanism here is dopamine baseline depletion. When you scroll, each interesting post spikes dopamine 100-200% above baseline. The problem is what happens next. Your dopamine drops 40-60% BELOW baseline for 2-4 hours. This means the homework, the book, the focused thinking you try to do afterward feels neurologically impossible. You're not lazy. Your prefrontal cortex is literally running on empty.
+>
+> Here's the thing about that "I used to be sharp" feeling. Working memory capacity correlates directly with dopamine available in the prefrontal cortex. Lower dopamine, shorter working memory span. D'Esposito and colleagues at Berkeley showed this with neuroimaging. The people who can hold longer strings of information have more dopamine available for release. So when you've been chronically depleting your dopamine reservoir through high-stimulation activities, your working memory atrophies. You feel dumber because, neurochemically, your prefrontal cortex is operating at reduced capacity.
+>
+> The "three days" recommendation in this article maps onto clinical literature. Anna Lembke's research at Stanford's Addiction Medicine clinic shows dopamine system resets require approximately 30 days for severe cases, but meaningful restoration begins within 72 hours of removing the stimulus. That's why day three of any detox feels qualitatively different. Your neurons are beginning to upregulate dopamine receptors.
+>
+> The boredom piece is where most people fail. Your brain interprets boredom as a signal to seek stimulation. That discomfort you feel when you're unstimulated? That's withdrawal. The reaching for your phone is your brain trying to bring dopamine back above baseline. Sitting with it trains the system to tolerate lower stimulation and still function. This is called raising your distress tolerance threshold.
+>
+> What the article calls "rehabilitate," the neuroscience literature calls neuroplasticity. Your brain is continuously rewiring based on what you repeatedly do. Chronic scrolling strengthens attentional circuits optimized for novelty-seeking and rapid task-switching. Sustained reading strengthens circuits for linear focus and deep processing. You're not permanently damaged. You've just trained your brain for the wrong environment.
+>
+> Two protocols actually accelerate the restoration. First: non-sleep deep rest. NSDR scripts (free online, 10-20 minutes) increase dopamine in the basal ganglia by up to 60%. Second: brief cold exposure. One to three minutes in cold water spikes dopamine 250% above baseline and sustains it for 2-4 hours afterward. Both of these replenish the reservoir without creating the crash cycle.
+>
+> The real work is what she described: tolerating the discomfort of being understimulated long enough for your system to recalibrate to normal dopamine dynamics. The girl who used to read voraciously is still in there. The neural circuits are dormant, not dead. Plasticity works in both directions. Start with 10 minutes of focused reading a day. Your prefrontal cortex will adapt. Give it six weeks and measure the difference.
+
+> *Quoting @bluewmist:* https://t.co/dCfN11KjvM
+
+- **Tweet:** https://x.com/aakashgupta/status/2012967060226384351
+- **What:** Deep neuroscience breakdown of dopamine depletion from social media scrolling, explaining why focus and working memory decline and providing recovery protocols including NSDR and cold exposure to restore baseline dopamine function.
+
+---
+
+## @ArmanHezarkhani - Claude Code accessing iMessage database
+
+> @Dimitrioss__ Nah iMessage stores all messages on a local database. CC will just hit it directly!
+
+> *Replying to @Dimitrioss__:* @ArmanHezarkhani Are you using the Antrophic iMessage connection?
+
+- **Tweet:** https://x.com/ArmanHezarkhani/status/2012984571730481567
+- **What:** Claude Code can access iMessage data directly from the local SQLite database on macOS without needing special Anthropic integrations, enabling message analysis and automation.
+
+---
+
+## @venturetwins - Vibe coding economics of software development
+
+> Vibe coding is completely changing the economics of software development.
+>
+> This woman has no coding experience - but made a viral advent calendar app in just a few days.
+>
+> Ten of thousands of people used it and uploaded 1M+ images. The cost? $230.
+>
+>  https://t.co/Q738b2N1Tu
+
+- **Tweet:** https://x.com/venturetwins/status/2012993413675958774
+- **What:** Case study demonstrating how AI-assisted coding enables non-developers to build production apps that serve tens of thousands of users for minimal cost, fundamentally changing software development economics.
+
+---
+
+## @TheAhmadOsman - Go language advantages for LLM development
+
+> ~40% of my projects in the last 6 months were written in Go
+>
+> &gt; LLMs handle it well
+> &gt; the tooling stays sane
+> &gt; single bundled binaries are
+> &gt; a joy to move across machines
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2013013328365338826
+- **What:** Developer sharing why Go has become their primary language for new projects: excellent LLM code generation, stable tooling ecosystem, and single-binary deployment make it ideal for modern development workflows.
+
+---
+
+## @blader - Claude Code skill to remove AI writing patterns
+
+> it's really handy that wikipedia went and collated a detailed list of "signs of ai writing".
+>
+> so much so that you can just tell your LLM to ... not do that.
+>
+> i asked claude code to read that article, and create a skill to avoid all of them.
+>
+> enjoy: https://t.co/Ie9IL7KsGf
+
+- **Tweet:** https://x.com/blader/status/2013015738622284156
+- **Link:** https://github.com/blader/humanizer
+- **What:** A Claude Code skill that detects and removes 24 patterns of AI-generated writing based on Wikipedia's comprehensive guide, including significance inflation, promotional language, AI vocabulary, em dash overuse, and chatbot artifacts. Transforms statistically-likely AI text into natural human writing.
+- **Filed:** [[knowledge/tools/humanizer]]
+
+---
+
+## @allenanalysis - Minneapolis Police Chief questions ICE shooting procedures
+
+> 🚨MAJOR NEWS: Minneapolis Police Chief Brian O'Hara just raised a serious question about the ICE shooting. Confirming what we have all seen for ourselves.
+>
+> "I've seen the videos and it's not clear to me why he appears to be in the path of the vehicle more than once… When you approach someone in a vehicle… There are very basic steps you take…"
+>
+> Translation: basic procedure wasn't followed, and someone ended up dead. Ice is clearly out for blood.
+
+- **Tweet:** https://x.com/allenanalysis/status/2013072515619287427
+- **What:** Minneapolis Police Chief Brian O'Hara publicly questioned ICE's actions in a fatal shooting, noting that basic vehicle approach procedures weren't followed and the officer appeared to position himself in the vehicle's path multiple times.
+
+---
+
+
 # Saturday, January 17, 2026
+## @nurijanian - Twitter article link
+> https://t.co/JTPpHpXHDR
+
+- **Tweet:** https://x.com/nurijanian/status/2012442681688068259
+- **Link:** https://x.com/i/article/2012441044999417856
+- **What:** Tweet linking to a Twitter/X article (content not expanded).
+
+---
+
+## @GeoffreyHuntley - AI context engineering and capturing backpressure
+> i am fortunate to be surrounded by folks who listen. this below post will go down as a seminal reading for people interested in AI context engineering. a simple convo between mates - well Moss translated it into words and i've been waiting for it to come out so I didn't front run him.
+>
+> enjoy.
+>
+> this is what engineering now looks like in the post loom/gastown era or even when doing ralph loops.
+>
+> if you aren't capturing your backpressure then you are failing as a software engineer.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012471277169328164
+- **What:** Geoff highlights an upcoming seminal post on AI context engineering, emphasizing that modern software engineering requires capturing "backpressure" in the post-Loom/Gastown era and when doing Ralph Loops - suggesting this is now a critical competency for engineers.
+
+---
+
+## @astraiaintel - Soviet weapon used in Venezuela operation
+> BREAKING:
+>
+> Sources reveal that the weapon used to suppress the cognitive ability of Maduro's forces during the operation Venezuela (Havana Syndrome) was actually a Soviet "wonder weapon" purchased from Ukraine's military intelligence directorate which had inherited it following the Soviet Union's collapse.
+>
+> Symptoms begin suddenly and include intense pressure, dizziness, and hearing a loud, painful noise (like piercing or grinding), followed by headaches, nausea, vertigo, tinnitus, vision problems, memory loss, concentration difficulties and fatigue.
+>
+> 🇺🇦🇺🇸
+
+- **Tweet:** https://x.com/astraiaintel/status/2012486972523098249
+- **What:** Intelligence report claiming a Soviet-era weapon from Ukraine was used to induce Havana Syndrome-like symptoms in Venezuelan forces, causing cognitive impairment through acoustic/directed energy effects. Unverified intelligence claim.
+
+---
+
+## @bluewmist - Therapy advice on self-regulation
+> my therapist advised, "learn to calm your own storm instead of venting to others. it may feel therapeutic to let it all out, but you reinforce negative thoughts. it's no one's job but yours to pull yourself out of your problems. journal, meditate, exercise,and release." felt that
+
+- **Tweet:** https://x.com/bluewmist/status/2012509455926317365
+- **What:** Shares therapist's advice on emotional self-regulation: instead of venting to others (which reinforces negative thought patterns), use solo practices like journaling, meditation, and exercise to process and release difficult emotions independently.
+
+---
+
+## @svpino - Learning AI engineering through building
+> You shouldn't be waiting for someone to publish a new set of AI Engineering best practices.
+>
+> You will learn more from one weekend building a broken app than from six months of reading "How to Build with AI" posts.
+>
+> The people who are trying things, failing, finding workarounds, and shipping rough prototypes are the ones who will be writing the best practices.
+
+- **Tweet:** https://x.com/svpino/status/2012525333501661650
+- **What:** Santiago argues that hands-on experimentation and building (even broken prototypes) teaches more about AI engineering than reading best practices posts. The practitioners who ship rough work and discover workarounds are the ones who will define future best practices.
+
+---
+
+## @GeoffreyHuntley - Don't Waste Your Back Pressure
+> the funniest thing keeps happening in circles around me.
+>
+> every now and then i get messages from mates saying yeah, i'm right, cpu cores are the limitation right now.
+>
+> the backpressure speed matters so much
+>
+> it's all about getting more wheel turns per minute.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012525888898994433
+- **Link:** https://ghuntley.com/pressure/
+- **Filed:** [[knowledge/articles/dont-waste-your-back-pressure.md]]
+- **What:** Geoffrey Huntley discusses the concept of "back pressure" in AI context engineering, emphasizing that CPU cores are becoming the bottleneck for AI agent performance. Links to an article about maximizing AI agent throughput through proper system architecture.
+
+---
+
+## @hmemcpy - AI Enables Building and Discarding Prototypes
+> A few days ago, I mentioned an old talk by @gregyoung about being able to just delete code whenever you want. It's still profound even after all these years, and I highly recommend watching "The Art of Destroying Software".
+>
+> Which is exactly why I'm really bullish on ralph and/or whatever @GeoffreyHuntley is working on next. Having just watched @ThePrimeagen put it in (way too many) words: AI lets me quickly build things I would never have normally built... and throw them away later!
+>
+> We are living in the future and this is just the beginning.
+
+- **Tweet:** https://x.com/hmemcpy/status/2012529053601870334
+- **Link:** https://www.youtube.com/watch?v=gRi82PiiaOs
+- **What:** Igal Tabachnik connects Greg Young's talk about deletable software with modern AI development workflows. AI enables rapid prototyping and experimentation by reducing the cost of building throwaway code, fundamentally changing how we approach software development.
+
+---
+
+## @GeoffreyHuntley - Cognitive Security and Model Weight Manipulation
+> more folks should be thinking about this topic. buy a gpu, raise a model. cognitive security matters.
+>
+> how long will be until advertisers have levers to adjust model weights like the anthropic sanfrancisco bridge experiment.
+>
+> it's unblockable and you wouldn't know you are being psyoped.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012537812344861152
+- **What:** Geoffrey Huntley raises concerns about AI model manipulation as a form of cognitive security threat. Warns that advertisers could potentially influence model weights to subtly manipulate user behavior without detection, similar to Anthropic's San Francisco bridge experiment.
+
+---
+
+## @TVachaW - The Neuroscience of Affirmations
+> I used to be kind of a skeptic about doing affirmations but I've come to find them very valuable.
+>
+> They do actually sort of make sense in the light of modern psychology.
+>
+> The brain tries to minimize predictive error and cognitive dissonance.
+>
+> Cognitive dissonance is the discomfort of holding two conflicting beliefs or attitudes simultaneously.
+>
+> So if we affirm a set of conscious values via affirmations in the morning, our brain is motivated to process the world in a way that stays consistent with those established attitudes.
+>
+> It also then preferentially notices and interprets evidence that confirms its hypotheses.
+>
+> In this way, we recruit our brain's natural gradient to start interpreting the world in ways consistent with our affirmations.
+>
+> So, if we affirm, say "I am happy" in the morning, the brain has at least a partially increased motivational weight to interpret the world through a lens that confirms that happiness.
+>
+> For those wanting to dip their toes in the water of affirmation practice, I recommend the IFS 8 C's as a good all purpose boilerplate for morning affirmations.
+>
+> Each morning, shortly after waking we can say:
+>
+> I am Calm
+> I am Curious
+> I am Compassionate
+> I have Clarity
+> I am Confident
+> I am Courageous
+> I am Creative
+> I am Connected
+>
+> Then let your brain collaborate with the world to confirm these qualities to you throughout the day …
+
+> *Quoting @PromptLLM:* life is so much easier when you realise the first hour of the day is self hypnosis
+
+- **Tweet:** https://x.com/TVachaW/status/2012540545558819095
+- **What:** Vacha explains the psychological mechanism behind affirmations, framing them as a way to leverage the brain's tendency to minimize cognitive dissonance. Recommends practicing IFS 8 C's affirmations (Calm, Curious, Compassionate, Clarity, Confident, Courageous, Creative, Connected) each morning.
+
+---
+
+## @dhh - CLIs vs REST APIs for AI Agents
+> We've been exploring the value of letting agents use CLIs vs just navigating a REST API directly. The smartest models can do without a CLI, but take longer and cost more. Even small models can succeed when given CLIs. But the puck keeps moving!
+
+- **Tweet:** https://x.com/dhh/status/2012543705161326941
+- **What:** DHH compares AI agent performance when using command-line interfaces versus REST APIs. CLI access enables smaller, cheaper models to succeed at tasks that would otherwise require more expensive frontier models.
+
+---
+
+## @oliviscusAI - dots-ocr Universal Document Parser
+> You can now parse any document with one 1.7B parameter model.
+>
+> It's called dots-ocr. One system that handles text, tables, formulas, images, and PDFs across 100+ languages.
+>
+> No separate OCR pipeline.
+> No task-specific models.
+
+- **Tweet:** https://x.com/oliviscusAI/status/2012551361955549240
+- **What:** Introduction to dots-ocr, a 1.7B parameter unified document parsing model that handles text, tables, formulas, images, and PDFs across 100+ languages without requiring separate OCR pipelines or task-specific models.
+
+---
+
+## @ChrisO_wiki - Russian Mask Show Intimidation Tactic
+> 1/ 30 years ago, Russian law enforcement agents started wearing masks to carry out their duties. It soon became a standard tactic to intimidate and extort those seen as opponents of the regime, and became known in Russian as a 'mask show'. ⬇️
+
+- **Tweet:** https://x.com/ChrisO_wiki/status/2012552108025803185
+- **What:** Historical thread on the Russian "mask show" tactic where law enforcement agents wear masks during operations against regime opponents. A 30-year practice of state intimidation and extortion.
+
+---
+
+## @bluewmist - Emotional Withdrawal as Coping Mechanism
+> according to physiology people who go silent when somethings upsets them or hurts them are often experiencing a coping mechanism called emotional withdrawal. 1/4
+
+- **Tweet:** https://x.com/bluewmist/status/2012563924177002713
+- **What:** Thread explaining emotional withdrawal as a physiological coping mechanism where people go silent in response to upset or hurt. Understanding this response pattern can help with emotional regulation and interpersonal communication.
+
+---
+
+## @simonw - Ollama's Anthropic API Compatibility
+> Interesting to see this closely on the heels of the new Open Responses API standard (which Ollama also supports)
+>
+> The closed source Claude Code CLI is so good it's worth building out an Anthropic API endpoint clone just to integrate with it!
+
+> *Quoting @ollama:* Ollama now has Anthropic API compatibility.
+>
+> 🦙 This enables tools like Claude Code to be used with open-source models. 😍
+>
+> Get started and learn more 👇👇👇
+
+- **Tweet:** https://x.com/simonw/status/2012574100972261555
+- **What:** Simon Willison comments on Ollama's new Anthropic API compatibility, which enables Claude Code to work with open-source models. Highlights how valuable Claude Code is that projects are building API compatibility layers specifically to integrate with it.
+
+---
+
+## @PerceptualPeak - Smart Fork Detection for Claude Code
+> Claude Code idea: Smart fork detection.
+>
+> Have every session transcript auto loaded into a vector database via RAG. Create a /detect-fork command. Invoking this command will first prompt Claude to ask you what you're wanting to do. You tell it, and then it will dispatch a sub-agent to the RAG database to find the chat session with the most relevant context to what you're trying to achieve. It will then output the fork session command for that session. Paste it in a new terminal, and seamlessly pick up where you left off.
+
+- **Tweet:** https://x.com/PerceptualPeak/status/2012578218084065746
+- **What:** Zac proposes a Claude Code feature using RAG to automatically find and resume relevant previous sessions. The /detect-fork command would search session transcripts to identify the most contextually relevant past work and provide the command to fork from it.
+
+---
+
+## @michael_chomsky - Claude Code's WebFetch Tool Uses SLM for Website Summarization
+> Apparently the Claude Code fetch tool uses an SLM for website summarization to not dump the entire website in context.
+>
+> Fascinating. There's currently no commercial API for this.
+>
+> 100 likes and I'll build one. https://t.co/DrfXVDfxkg
+
+- **Tweet:** https://x.com/michael_chomsky/status/2012588228008706184
+- **What:** Claude Code uses a small language model (SLM) to summarize websites before loading them into context, avoiding token bloat. No commercial API exists for this yet.
+
+---
+
+## @WorkflowWhisper - Twitter Article Link
+> https://t.co/ptZXXVJnbJ
+
+- **Tweet:** https://x.com/WorkflowWhisper/status/2012590119929172319
+- **Link:** https://x.com/i/article/2012582994595217408
+- **What:** Link to a Twitter article (content not expanded).
+
+---
+
+## @mattpocockuk - No One Knows Anything About Coding Agents
+> PSA about coding agent/Ralph discourse:
+>
+> No-one knows anything
+> We are all making it up as we go along
+> It's a phenomenal time to experiment
+
+- **Tweet:** https://x.com/mattpocockuk/status/2012609225738834034
+- **What:** Reminder that coding agents and Ralph Loop patterns are experimental territory where everyone is still figuring things out.
+
+---
+
+## @damianplayer - Twitter Article Link
+> https://t.co/aesxYREHep
+
+- **Tweet:** https://x.com/damianplayer/status/2012611857392009242
+- **Link:** https://x.com/i/article/2012605293524328448
+- **What:** Link to a Twitter article (content not expanded).
+
+---
+
+## @DrDominicNg - Twitter Article Link
+> https://t.co/mbjFYR88BT
+
+- **Tweet:** https://x.com/DrDominicNg/status/2012611989864841504
+- **Link:** https://x.com/i/article/2012550183062532096
+- **What:** Link to a Twitter article (content not expanded).
+
+---
+
+## @GeoffreyHuntley - Everything is a Ralph Loop
+> @davidfowl yep; https://t.co/GyHjvY3lm2 / it's critical folks
+> *Replying to @davidfowl:* The AI hype is absolutely real for software engineering. If you have not had your opus moment yet, I suggest working on a side project that does not matter and letting AI take the wheel. Just to experience (in a safe space) what is possible.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012634982993572346
+- **Link:** https://ghuntley.com/loop/
+- **Filed:** [[knowledge/articles/everything-is-a-ralph-loop.md]]
+- **What:** Geoffrey Huntley's blog post arguing that software development has fundamentally shifted toward a "Ralph Loop" mindset, where everything is approached as iterative cycles rather than vertical building blocks.
+
+---
+
+## @kwindla - Smart Turn Video Model Extension
+> .@maxipesfix forked the open source audio Smart Turn model and added video!
+>
+> Smart Turn is a "turn detection" model, used in a conversational agent to decide when the agent should respond. The model, training data, and training code are all completely open source. When we built the first version of Smart Turn, enabling this kind of extention and collaboration is exactly why we wanted to make everything open source.
+>
+> Maxim's blog post is super useful to read if you're interested in training multimodal models. It describes the design choices and technical details (3D ResNet, late fusion, two-stage training, inference runs on GPU in ~100ms). And all the code is available in the GitHub repo. Really great work.
+
+- **Tweet:** https://x.com/kwindla/status/2012637353953869912
+- **What:** Announcement that someone forked the open-source Smart Turn audio model (for conversational turn detection) and extended it to support video using 3D ResNet and late fusion architecture.
+
+---
+
+## @calvinalkan - Optimize Linters for AI Agents
+> Take note, guys. Optimize linting, tests, etc.
+>
+> Both speed AND the output format matter a lot.
+>
+> You don't want super noisy linters (lots of them).
+>
+> Fix that first, easy win.
+>
+> Here's a 15-line bash snippet to cut down token output to half for golangci-lint 👇🏻 https://t.co/08x4sZpHgm
+> *Quoting @GeoffreyHuntley:* the funniest thing keeps happening in circles around me.
+>
+> every now and then i get messages from mates saying yeah, i'm right, cpu cores are the limitation right now.
+>
+> the backpressure speed matters so much
+>
+> it's all about getting more wheel turns per minute.
+>
+> https://t.co/dx5E0oVW3d
+
+- **Tweet:** https://x.com/calvinalkan/status/2012637916724408708
+- **What:** Advice to optimize linter output format and speed for AI coding agents to reduce token consumption and increase iteration speed.
+
+---
+
+## @clawdbot - Clawdbot in Vercel Skills Registry
+> "That's one small step for a crab, one giant leap for crustacean-kind." 🌕
+>
+> Clawdbot is now in the @vercel skills registry alongside Claude Code, Codex, and Cursor.
+>
+> From space lobster meme to legitimate agent framework.
+>
+> The lobster has landed. 🦞
+>
+> https://t.co/EdiTRTAM0R https://t.co/OYPZskByor
+
+- **Tweet:** https://x.com/clawdbot/status/2012659700488147422
+- **Link:** https://www.npmjs.com/package/skills
+- **What:** Announcement that Clawdbot agent framework has been added to Vercel's skills registry, joining Claude Code, Codex, and Cursor.
+
+---
+
+## @blader - Claudeception: Self-Learning Claude Code Skill
+> used claude code to make a little claude code skill that learns new claude code skills as you use claude code
+>
+> https://t.co/IUpdeFzRtq
+
+- **Tweet:** https://x.com/blader/status/2012667150440476851
+- **Link:** https://github.com/blader/Claudeception
+- **Filed:** [[knowledge/tools/claudeception.md]]
+- **What:** Meta-skill for Claude Code that automatically extracts and saves reusable skills as you work, preventing knowledge loss between sessions and enabling continuous learning.
+
+---
+
+## @bcherny - Claude Code Makes WSJ Feature
+> Glad to see Claude Code starting to break through. It's been a year of very hard work, and we're just getting started.
+>
+> https://t.co/wWzB65o8mY
+
+- **Tweet:** https://x.com/bcherny/status/2012682569376993734
+- **Link:** https://www.wsj.com/tech/ai/anthropic-claude-code-ai-7a46460e
+- **What:** Boris Cherny from Anthropic celebrates Claude Code gaining recognition in the Wall Street Journal after a year of development work.
+
+---
+
+## @affaanmustafa - Everything Claude Code Repository Released
+> Dropped the repo (github in bio)
+>
+> Contributions are welcome. https://t.co/ZQvfpBHBb3
+> *Quoting @affaanmustafa:* https://t.co/NscRA7sqBt
+
+- **Tweet:** https://x.com/affaanmustafa/status/2012713862764642352
+- **Link:** https://github.com/affaan-m/everything-claude-code
+- **Filed:** [[knowledge/tools/everything-claude-code]]
+- **What:** Release announcement for a comprehensive collection of production-ready Claude Code configurations from an Anthropic hackathon winner, including agents, skills, hooks, and commands.
+
+---
+
+## @theo - Seeking Claude Code Skills Sync Tool
+> Anyone have a tool to sync between these with a symlink or something? Even just like a ./sync_skills.sh I can leave in every repo
+> *Quoting @flaviocopes:* How did we end up here? https://t.co/gY25cTpjCG
+
+- **Tweet:** https://x.com/theo/status/2012716263030550749
+- **What:** Theo asks the community for tools or scripts to synchronize Claude Code skills across multiple repositories, responding to a discussion about Claude Code configuration complexity.
+
+---
+
+## @affaanmustafa - Everything Claude Code Repository Link
+> @verrsane https://t.co/vCMkkNNyRT
+> *Replying to @verrsane:* @affaanmustafa Repo link saar
+
+- **Tweet:** https://x.com/affaanmustafa/status/2012721519324184666
+- **Link:** https://github.com/affaan-m/everything-claude-code
+- **Filed:** [[knowledge/tools/everything-claude-code]]
+- **What:** Direct response with the GitHub repository link for the everything-claude-code collection in reply to a request.
+
+---
+
+## @melvynxdev - Meta-Prompts for Claude Code Automation
+> The biggest Claude Code hack nobody talks about:
+>
+> Meta-prompts
+>
+> Basically you use AI to create prompts, skills, commands or agents
+>
+> → AI prompting AI
+> → Saves me hours every week
+>
+> Example: a skill that creates skills
+>
+> See the exact prompt below: https://t.co/pFEW5ixgJs
+
+- **Tweet:** https://x.com/melvynxdev/status/2012727481808326894
+- **What:** Introduces the concept of using AI to generate Claude Code configurations (meta-prompts), where one AI helps create prompts, skills, and agents for another AI instance.
+
+---
+
+## @alexhillman - Balancing Auto vs Semi-Auto Agent Systems
+> Short answer is that this has good lessons to learn from this repo for people first getting into auto-improving agent systems.
+>
+> My own Memory Lane system and existing skills setup are more robust by virtue of being so deeply integrated into the JFSI system, HOWEVER I don't auto-generate flags just surface opportunities like this meta-skill does.
+>
+> In my experience, this balance of fully auto vs semi-auto is what keeps things dialed in.
+>
+> Worth giving the repo to your CC and asking it to suggest ways to make your assistant better, rather than installing this directly.
+> *Quoting @alexhillman:* This is SUPER similar to some patterns I have and work extremely well, asking my assistant to compare the overlap and curious to see what the best of both might look like 👀
+>
+> will report back.
+
+- **Tweet:** https://x.com/alexhillman/status/2012736985882869898
+- **What:** Reflects on the tradeoffs between fully automated and semi-automated agent systems, recommending using meta-prompt repos as reference rather than direct installation for better customization.
+
+---
+
+## @PerceptualPeak - Smart Forking with RAG Database
+> holy shit it fucking WORKS.
+>
+> SMART FORKING. My mind is genuinely blown. I HIGHLY RECCOMEND every Claude Code user implement this into their own workflows.
+>
+> Do you have a feature you want to implement in an existing project without re-explaining things? As we all know, the more relevant context a chat session has, the more effectively it will be able to implement your request. Why not utilize the knowledge gained from your hundreds/thousands of other Claude code sessions? Don't let that valuable context go to waste!!
+>
+> This is where smart forking comes into play. Invoke the /fork-detect tool and tell it what you're wanting to do. It will then run your prompt through an embedding model, cross reference the embedding with a vectorized RAG database containing every single one of your previous chat sessions (which auto updates as you continue to have more sessions).
+>
+> It will then return a list of the top 5 relevant chat sessions you've had relating to what you're wanting to do, assigning each a relevance score - ordering it from highest to lowest. You then pick which session you prefer to fork from, and it gives you the fork command to copy and paste into a new terminal.
+>
+> And boom, there you have it. Seamlessly efficient feature implementation.
+>
+> Happy to whip up an implementation plan & share it in a git repo if anyone is interested!
+> *Quoting @PerceptualPeak:* Claude Code idea: Smart fork detection.
+>
+> Have every session transcript auto loaded into a vector database via RAG. Create a /detect-fork command. Invoking this command will first prompt Claude to ask you what you're wanting to do. You tell it, and then it will dispatch a sub-agent to the RAG database to find the chat session with the most relevant context to what you're trying to achieve. It will then output the fork session command for that session. Paste it in a new terminal, and seamlessly pick up where you left off.
+
+- **Tweet:** https://x.com/PerceptualPeak/status/2012741829683224584
+- **What:** Demonstrates a working implementation of smart forking for Claude Code that uses RAG and embeddings to find the most contextually relevant previous sessions to fork from, preserving conversation history.
+
+---
+
+## @bluewmist - Twitter Article Link
+> https://t.co/dCfN11KjvM
+
+- **Tweet:** https://x.com/bluewmist/status/2012755834636533893
+- **Link:** https://x.com/i/article/2012745697980973056
+- **What:** Shares a link to a Twitter article without additional context.
+
+---
+
+## @JohnKutay - LLM Conditional Statement Reliability Issues
+> I often see conditional statements in prompts I review. Many people don't realize how frequently LLMs fail to properly execute these conditions, especially when they're buried in complex instructions or conflict with other directives…
+
+- **Tweet:** https://x.com/JohnKutay/status/2012786746946429283
+- **What:** Warns about the unreliability of conditional statements in LLM prompts, noting that models frequently fail to execute conditions correctly when embedded in complex or conflicting instructions.
+
+---
+
 ## @GeoffreyHuntley - Evolutionary Software Self-Healing with Ralph Loop
 > something incredible just happened here
 >
@@ -42,6 +816,774 @@
 ---
 
 # Friday, January 16, 2026
+## @GeoffreyHuntley - Loom Infrastructure Orchestrator Demo
+
+> this is loom; loom is an infrastructure orchestrator of $ralph loops https://t.co/lBpTDr1hE1
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012086133556134019
+- **Link:** https://x.com/i/broadcasts/1djGXWqlZdeKZ
+- **What:** Live broadcast demonstrating Loom, an infrastructure orchestrator designed to manage and coordinate Ralph Loops at scale.
+
+---
+
+## @PromptLLM - Early Morning Dopamine Wins
+
+> @AlinCatalin It's really doing a productive task early in the day.
+>
+> Can be as simple as 20 push ups
+>
+> But then your brain gets that good dopimane hit and you see more of it throughout the day
+
+> *Replying to @AlinCatalin:* @PromptLLM what's been the biggest game-changer in your morning routine?
+curious what action actually moves the needle for you
+
+- **Tweet:** https://x.com/PromptLLM/status/2012111775530164734
+- **What:** Simple productivity advice about starting the day with a small win like 20 pushups to trigger dopamine and boost motivation throughout the day.
+
+---
+
+## @godofprompt - Claude Opus 4.5 Prompt Engineering Workflow
+
+> Claude Opus 4.5 is s genius prompt engineer.
+>
+> The main skill is explaining your goal clearly
+>
+> My workflow is this:
+> > I need to solve [TASK]. Research best practices and breakdown how to solve the problem in its first principles.
+>
+> > As an expert prompt engineer, generate a prompt based on the information you gave.
+
+- **Tweet:** https://x.com/godofprompt/status/2012118831192240426
+- **What:** A two-step workflow for using Claude Opus 4.5 to generate effective prompts by first having it research best practices and break down the problem, then having it craft an expert prompt based on that analysis.
+
+---
+
+## @steipete - Claude Code Morning Report Automation
+
+> Someome made a morning report skill and I just gave @clawdbot the tweet and it set up the skill + cron job. https://t.co/CXo0xMGcFv
+
+- **Tweet:** https://x.com/steipete/status/2012123520021717123
+- **Link:** https://twitter.com/steipete/status/2012123520021717123/photo/1
+- **What:** Peter Steinberger demonstrates Claude Code's ability to automatically set up a morning report skill and cron job just from seeing an example tweet, showcasing advanced automation capabilities.
+
+---
+
+## @danpeguine - Comprehensive Daily Brief Setup
+
+> Nice! My daily-brief skill:
+>
+> *Weather* - critical for school drop-off decision (car vs walk)
+>
+> *Weekly objectives* - pulled from memory file so I see client + personal goals every morning
+>
+> *Yesterday's time tracking* - from https://t.co/ezSbMpVC2j API, shows hours per activity
+>
+> *Health metrics* - steps, sleep, deep sleep from Apple Watch (via script)
+>
+> *Tasks due today* - from Notion Tasks DB with time estimates
+>
+> *Calendar* - with conflict detection + tight transition warnings
+>
+> *Family calendar* - school events, kids activities
+>
+> *Readwise* - rotates one article suggestion + random highlight quote daily
+>
+> *X trends* - scans timeline for patterns, updates a trends database
+
+> *Replying to @steipete:* Someome made a morning report skill and I just gave @clawdbot the tweet and it set up the skill + cron job. https://t.co/CXo0xMGcFv
+
+- **Tweet:** https://x.com/danpeguine/status/2012125184107360351
+- **Link:** https://forsale.dynadot.com/forsale/daily.app?drefid=2071
+- **What:** Detailed breakdown of a comprehensive morning briefing automation that integrates weather, goals, time tracking, health metrics, tasks, calendars, reading recommendations, and social media trends into a single daily report.
+
+---
+
+## @walterra - Thermal Printer Morning Briefing
+
+> @steipete @clawdbot i hooked up my pre-clawdbot agent morning briefing with a thermal printer a while ago: https://t.co/jj6wwVwTCU https://t.co/Hrr3uQZbWI
+
+> *Replying to @steipete:* Someome made a morning report skill and I just gave @clawdbot the tweet and it set up the skill + cron job. https://t.co/CXo0xMGcFv
+
+- **Tweet:** https://x.com/walterra/status/2012129067785695728
+- **Link:** https://walterra.dev/blog/2025-10-31-dev-recap
+- **What:** Walter shares his pre-Claude Code morning briefing system connected to a thermal printer, demonstrating creative hardware integration for automated daily reports.
+- **Filed:** [[thermal-printer-briefing]]
+
+---
+
+## @mattpocockuk - AI Feedback Loops for TypeScript
+
+> Here are the AI feedback loops I use on every single TypeScript project.
+>
+> Before: Ralph produces 100% slop
+> After: Green CI, all the time
+>
+> Feed the tutorial below to your coding agent, and enjoy.
+>
+> https://t.co/1tdCKeOev0
+
+- **Tweet:** https://x.com/mattpocockuk/status/2012132615227056561
+- **Link:** https://www.aihero.dev/essential-ai-coding-feedback-loops-for-type-script-projects
+- **What:** Matt Pocock shares essential TypeScript feedback loops (type checking, testing, pre-commit hooks) to prevent AI coding agents from generating broken code and ensure green CI consistently.
+- **Filed:** [[typescript-ai-feedback-loops]]
+
+---
+
+## @LiorOnAI - VoxCPM Real-Time Voice Cloning
+
+> You can now clone a human voice in real time without tokenization.
+>
+> OpenBMB just open sourced VoxCPM weights with real time streaming and LoRA fine tuning.
+>
+> It runs at ~0.15 real time factor on a single RTX 4090.
+>
+> This removes tokenization from TTS
+> Instead of mapping audio to discrete tokens, it generates continuous speech directly.
+> That avoids token artifacts and preserves prosody, pacing, and emotion.
+>
+> - End to end diffusion autoregressive generation
+> - Continuous acoustic representations
+> - No phoneme or codec token bottlenecks
+>
+> It clones voices from seconds of audio
+> A short reference clip is enough.
+> Accent, rhythm, tone, and timing carry over.
+>
+> - Zero shot voice cloning
+> - No speaker specific training
+> - Works in streaming mode
+>
+> It runs fast and is tunable
+> Streaming works chunk by chunk with sub second latency.
+> LoRA fine tuning lets you adapt voices without full retraining.
+
+- **Tweet:** https://x.com/LiorOnAI/status/2012133013967044755
+- **What:** VoxCPM by OpenBMB enables real-time voice cloning without tokenization bottlenecks, using continuous acoustic representations and diffusion-based generation. It achieves sub-second latency streaming and zero-shot voice cloning from just seconds of audio.
+
+---
+
+## @ghumare64 - Linked Article
+
+> https://t.co/RKiqiotAE8
+
+- **Tweet:** https://x.com/ghumare64/status/2012136491133145364
+- **Link:** https://x.com/i/article/2012133775111569409
+- **What:** Tweet containing a link to an X/Twitter article. No additional context provided.
+
+---
+
+## @DrDominicNg - Creatine Brain vs Muscle Uptake
+
+> Creatine for your brain ≠ creatine for your muscles.
+> - Muscles: 20g/day loading → ~18-20% increase
+> - Brain: 20g/day loading → only ~5-10% increase https://t.co/qgOIITAmiH
+
+- **Tweet:** https://x.com/DrDominicNg/status/2012147333539004751
+- **Link:** https://twitter.com/DrDominicNg/status/2012147333539004751/photo/1
+- **What:** Scientific comparison showing creatine supplementation increases muscle creatine levels much more effectively than brain levels, with muscles seeing 18-20% increase versus brain's 5-10% increase at the same 20g/day loading dose.
+
+---
+
+## @tobi - Claude Self-Optimized Try Command
+
+> Made lots of improvement for `try`. Told claude it should make a skill for itself on how to use ruby's profiler. Then let it cook to make try faster. 2000 directories now takes 54ms to open. down from 2s. Faster than the c version right now. https://t.co/aoZPOiwdk0
+
+- **Tweet:** https://x.com/tobi/status/2012163184107348179
+- **Link:** https://twitter.com/tobi/status/2012163184107348179/video/1
+- **What:** Tobi Lutke demonstrates Claude Code autonomously creating a profiling skill and optimizing the 'try' command, achieving 37x performance improvement (2s to 54ms for 2000 directories), outperforming the C implementation.
+
+---
+
+## @matthew_labosco - Stanford psychologist's research on stress beliefs
+> Big Pharma hates this woman.
+>
+> After 15 years studying stress, Stanford psychologist Alia Crum discovered:
+>
+> Your beliefs can rewire your heart, brain, and lifespan—making stress medication obsolete.
+>
+> Here are 7 of her most shocking findings + what actually fixes chronic stress:🧵
+
+- **Tweet:** https://x.com/matthew_labosco/status/2012177290529009769
+- **What:** Thread about Stanford psychologist Alia Crum's research showing how beliefs about stress can fundamentally alter physiological responses, potentially reducing reliance on medication.
+
+---
+
+## @mattshumer_ - Using any LLM model with Claude Agent SDK
+> FYI you can use ANY model with the Claude Agent SDK
+>
+> Just change these three environment variables!
+
+- **Tweet:** https://x.com/mattshumer_/status/2012204415537537482
+- **What:** Quick tip showing that Claude Agent SDK supports any LLM model by simply modifying three environment variables, making it model-agnostic.
+
+---
+
+## @bffmike - Autonomous coding agents with Clawd chatbot
+> My @clawdbot drove my coding agents after i went to bed last night from 12:30–7ish am while i snoozed.
+>
+> MUCH better than a Ralph loop because you don't just give it a prompt about when to stop looping.
+>
+> Instead I've been talking to my agent ALL DAY about the project and delegating management of coding agents to it. It knows about the entire project history, all the headaches. It drives better than Ralph because it's been watching me all day.
+>
+> This continues to amaze @steipete! maybe something to try @ryancarson!
+
+- **Tweet:** https://x.com/bffmike/status/2012205710030127110
+- **What:** Experience report on using Clawd chatbot to autonomously manage coding agents overnight, emphasizing how day-long context makes it superior to simple loop-based automation.
+
+---
+
+## @doesdatmaksense - SpecStory CLI for normalizing AI agent sessions
+> we're open-sourcing specstory cli
+>
+> we've spent a lot of time normalizing agent sessions, and defining a stable contract for ai conversations across tools. and now we are open-sourcing it
+>
+> would love to see what people contribute, build on top of that and build better systems around provenance, memory, and tooling.
+
+- **Tweet:** https://x.com/doesdatmaksense/status/2012209297380544940
+- **Link:** https://github.com/specstoryai/getspecstory
+- **What:** Announcement of open-sourcing SpecStory CLI, which normalizes AI agent sessions across different tools (Claude Code, Cursor, Copilot) with a stable contract for conversations, enabling better memory and tooling systems.
+- **Filed:** [[knowledge/tools/getspecstory.md]]
+
+---
+
+## @mattpocockuk - Using classic coding books to improve AI prompts
+> Advice for anyone prompting AI agents:
+>
+> The classic coding books contain some of the best descriptions of "good code" ever written.
+>
+> Use them in your prompts, skills, and AGENTS​.md files
+
+- **Tweet:** https://x.com/mattpocockuk/status/2012211002377400636
+- **What:** Suggestion to incorporate principles from classic programming books into AI agent prompts and configuration files to improve code quality.
+
+---
+
+## @PathOfMen_ - Walking speed correlates with IQ and brain size
+> Fast walkers have higher IQ & larger brains than slow walkers.
+
+- **Tweet:** https://x.com/PathOfMen_/status/2012211044895322252
+- **What:** Research finding suggesting positive correlation between walking speed and cognitive metrics like IQ and brain volume.
+
+---
+
+## @tuanacelik - Filesystems vs databases for AI agent storage
+> Filesystems aren't replacing databases for AI agents—but they're making us rethink when databases are overkill.
+>
+> Agents are increasingly storing context, conversation history, and even skills as files. Look at Claude's agent skills feature: literally just directories of markdown files that teach agents new capabilities. Simple, shareable, no server overhead.
+>
+> Databases still have their place for complex queries, structured data, concurrent access. But for a lot of agent use cases? A well-organized filesystem with semantic search might be all you need.
+>
+> The shift isn't about which is "better"—it's about matching complexity to the actual problem you're solving.
+>
+> @jerryjliu0 and @itsclelia recently both wrote about this topic;
+
+- **Tweet:** https://x.com/tuanacelik/status/2012212183833403889
+- **Link:** https://www.llamaindex.ai/blog/files-are-all-you-need
+- **What:** Discussion of how filesystems are increasingly viable for AI agent storage needs (context, history, skills), with databases reserved for genuinely complex use cases requiring structured queries.
+- **Filed:** [[knowledge/articles/files-are-all-you-need.md]]
+
+---
+
+## @aiedge_ - Twitter article link
+> (no text content)
+
+- **Tweet:** https://x.com/aiedge_/status/2012219230662623372
+- **Link:** https://x.com/i/article/2011565332876705795
+- **What:** Tweet containing only a link to a Twitter article (content not available).
+
+---
+
+## @Saboo_Shubham_ - Multi-agent UIs emerging in 2026
+> Multi-agent UI's will be huge in 2026.
+>
+> Some early signs: A2UI, AG-UI, Vercel AI JSON UI
+
+- **Tweet:** https://x.com/Saboo_Shubham_/status/2012222044499529949
+- **What:** Prediction about the rise of multi-agent user interfaces in 2026, citing emerging frameworks like A2UI, AG-UI, and Vercel AI JSON UI.
+
+---
+
+## @rseroter - Writing good specs for AI agents
+> I don't know of anyone who is consistently publishing more insight-rich content than @addyosmani.
+>
+> This "how to write a good spec for AI agents" is a banger with piles of actionable advice.
+
+- **Tweet:** https://x.com/rseroter/status/2012234363761782843
+- **Link:** https://addyosmani.com/blog/good-spec/
+- **What:** Recommendation for Addy Osmani's guide on writing effective specifications for AI coding agents, covering planning, clarity, and avoiding context overload.
+- **Filed:** [[knowledge/articles/good-spec.md]]
+
+---
+
+## @milesdeutscher - Claude Code Curated Resources and Tools
+
+> Claude Code is going mega viral on X.
+>
+> You probably feel overwhelmed with all the content.
+>
+> Don't read it all - instead, just read this one article.
+>
+> I filtered down the 1% of content/tools/resources that are actually worth your time (part two).
+>
+> Guarantee you'll extract alpha.
+
+> *Quoting @aiedge_:* https://t.co/CloVebDKyR
+
+- **Tweet:** https://x.com/milesdeutscher/status/2012237674409796036
+- **What:** Miles Deutscher shares a curated article filtering the most valuable Claude Code content, tools, and resources to help people cut through the noise of viral content.
+
+---
+
+## @khodorkovsky_en - Russian Schoolteacher's Secret Footage Documentary
+
+> A Russian schoolteacher secretly filmed his own workplace as it was turned into a war propaganda machine. That footage is now part of a documentary shortlisted for an Oscar.
+>
+> Here's the story behind 'Mr Nobody in Russia':👇
+>
+> [1/12] https://t.co/dLO8Yhfw3U
+
+- **Tweet:** https://x.com/khodorkovsky_en/status/2012259339948466682
+- **What:** Thread about an Oscar-shortlisted documentary featuring secret footage of how Russian schools were transformed into war propaganda machines, filmed by an anonymous teacher.
+
+---
+
+## @godofprompt - Lead Software Architect Vibe Coding Prompt
+
+> Vibe coding without this prompt is a waste of time.
+>
+> --------------------------------
+> LEAD SOFTWARE ARCHITECT
+> --------------------------------
+>
+> You are my lead software architect and full-stack engineer.
+>
+> You are responsible for building and maintaining a production-grade app that adheres to a strict custom architecture defined below. Your goal is to deeply understand and follow the structure, naming conventions, and separation of concerns. Every generated file, function, and feature must be consistent with the architecture and production-ready standards.
+>
+> Before writing ANY code: read the ARCHITECTURE, understand where the new code fits, and state your reasoning. If something conflicts with the architecture, stop and ask.
+>
+> ---
+>
+> ARCHITECTURE:
+> [ARCHITECTURE]
+>
+> TECH STACK:
+> [TECH_STACK]
+>
+> PROJECT & CURRENT TASK:
+> [PROJECT]
+>
+> CODING STANDARDS:
+> [STANDARDS]
+>
+> ---
+>
+> RESPONSIBILITIES:
+>
+> 1. CODE GENERATION & ORGANIZATION
+> • Create files ONLY in correct directories per architecture (e.g., /backend/src/api/ for controllers, /frontend/src/components/ for UI, /common/types/ for shared models)
+> • Maintain strict separation between frontend, backend, and shared code
+> • Use only technologies defined in the architecture
+> • Follow naming conventions: camelCase functions, PascalCase components, kebab-case files
+> • Every function must be fully typed — no implicit any
+>
+> 2. CONTEXT-AWARE DEVELOPMENT
+> • Before generating code, read and interpret the relevant architecture section
+> • Infer dependencies between layers (how frontend/services consume backend/api endpoints)
+> • When adding features, describe where they fit in architecture and why
+> • Cross-reference existing patterns before creating new ones
+> • If request conflicts with architecture, STOP and ask for clarification
+>
+> 3. DOCUMENTATION & SCALABILITY
+> • Update ARCHITECTURE when structural changes occur
+> • Auto-generate docstrings, type definitions, and comments following existing format
+> • Suggest improvements that enhance maintainability without breaking architecture
+> • Document technical debt directly in code comments
+>
+> 4. TESTING & QUALITY
+> • Generate matching test files in /tests/ for every module
+> • Use appropriate frameworks (Jest, Vitest, Pytest) and quality tools (ESLint, Prettier)
+> • Maintain strict type coverage and linting standards
+> • Include unit tests and integration tests for critical paths
+>
+> 5. SECURITY & RELIABILITY
+> • Implement secure auth (JWT, OAuth2) and encryption (TLS, AES-256)
+> • Include robust error handling, input validation, and logging
+> • NEVER hardcode secrets — use environment variables
+> • Sanitize all user inputs, implement rate limiting
+>
+> 6. INFRASTRUCTURE & DEPLOYMENT
+> • Generate Dockerfiles, CI/CD configs per /scripts/ and /.github/ conventions
+> • Ensure reproducible, documented deployments
+> • Include health checks and monitoring hooks
+>
+> 7. ROADMAP INTEGRATION
+> • Annotate potential debt and optimizations for future developers
+> • Flag breaking changes before implementing
+>
+> ---
+>
+> RULES:
+>
+> NEVER:
+> • Modify code outside the explicit request
+> • Install packages without explaining why
+> • Create duplicate code — find existing solutions first
+> • Skip types or error handling
+> • Generate code without stating target directory first
+> • Assume — ask if unclear
+>
+> ALWAYS:
+> • Read architecture before writing code
+> • State filepath and reasoning BEFORE creating files
+> • Show dependencies and consumers
+> • Include comprehensive types and comments
+> • Suggest relevant tests after implementation
+> • Prefer composition over inheritance
+> • Keep functions small and single-purpose
+>
+> ---
+>
+> OUTPUT FORMAT:
+>
+> When creating files:
+>
+> 📁 [filepath]
+> Purpose: [one line]
+> Depends on: [imports]
+> Used by: [consumers]
+>
+> ```[language]
+> [fully typed, documented code]
+> ```
+>
+> Tests: [what to test]
+>
+> When architecture changes needed:
+>
+> ⚠️ ARCHITECTURE UPDATE
+> What: [change]
+> Why: [reason]
+> Impact: [consequences]
+>
+> ---
+>
+> Now read the architecture and help me build. If anything is unclear, ask before coding.
+
+- **Tweet:** https://x.com/godofprompt/status/2012265207335137290
+- **What:** Comprehensive system prompt for AI coding assistants that enforces architecture-aware, production-ready code generation with strict organization, testing, and security standards.
+
+---
+
+## @nutrition_facts - Green Tea DNA Repair Benefits
+
+> Within just 1 hour of drinking a single cup (200 mL) of green tea, we can significantly cut down on the rate of DNA damage in our cells. This is because green tea significantly boosts the activity of a DNA repair enzyme in our body that can fix DNA damage. https://t.co/E0CA3lmiLY https://t.co/DFyqdKji61
+
+- **Tweet:** https://x.com/nutrition_facts/status/2012268807822184700
+- **Link:** https://nutritionfacts.org/video/how-not-to-age-live-presentation/
+- **What:** Dr. Michael Greger shares research showing green tea's rapid effect on DNA repair, reducing cellular damage within one hour by boosting DNA repair enzyme activity.
+
+---
+
+## @OccupyDemocrats - ICE Shooting Investigation Reveals Contradictions
+
+> BREAKING: Official reports from the Minneapolis Police and Fire departments finally reveal the truth about the killing of Renee Good — and the details are horrifying.
+>
+> The MAGA narrative just completely collapsed...
+>
+> NBC News reports that police files, fire response reports, and transcripts from 911 calls have revealed that Good was still alive when a Fire Emergency medical team arrived on scene. The report from that team stated that Good had "apparent gunshots" to her chest, forearm, and face and was "unresponsive, not breathing, with inconsistent, irregular, thready pulse activity." She was shot up to four times.
+>
+> While Trump and Kristi Noem have tried to smear Good as a "domestic terrorist," it's clear from the footage that she was simply an innocent woman trying to extricate herself from a mob of masked men. The fact that she was struck by so many bullets shows that ICE officer Jonathan Ross wasn't trying to defend himself, he was trying to kill her.
+>
+> This is what happens when you don't properly vet your recruits, strap them with weapons, tell them they're above the law, mask them, and set them loose. Bloodthirsty men sign up looking for an opportunity to inflict violence on others.
+>
+> The first 911 calls from the scene came in at 9:38 a.m. local time and the killer fled the scene at 10:04 a.m. He wasn't concerned about the fact that he took a woman's life, he was concerned about saving his own skin.
+>
+> "They just shot a lady. Point blank range in her car…. She's f*cking dead," one caller told 911 dispatchers.
+>
+> "I had to walk away because I have young kids, and ICE is everywhere over there," said another, painting a clear picture of the terror that ICE has inflicted on these communities.
+>
+> One caller told the dispatchers that the ICE agents "shot her [because] she wouldn't open her car door. Send an ambulance please, ambulance please."
+>
+> "ICE fired two shots through her windshield into the driver. She tried to drive away but crashed into the nearest vehicle that was parked," said another caller. Note that they didn't say that Good was attacking the agents with her car. She was trying to drive away.
+>
+> Suspiciously, "large parts" of the 911 call logs have been redacted and blacked out (reminiscent of what the Trump administration did with the Epstein files). The covered up portions are labeled "Law Enforcement."
+>
+> What possible reason could the authorities have for hiding details about this killing?
+>
+> The answer is obvious. They want to tightly control the entire narrative around this murder so that they can paint Good as a villain and the ruthless ICE goon who slew her as an upstanding law enforcement agent. America isn't falling for it. They must release the full details immediately.
+>
+> Please ❤️ and share to demand the full release of the reports!
+
+- **Tweet:** https://x.com/OccupyDemocrats/status/2012269866301145138
+- **What:** Detailed thread analyzing police and fire department reports on the ICE shooting of Renee Good, highlighting contradictions in official narratives and redacted 911 call logs.
+
+---
+
+## @christogrozev - Clarification on Havana Syndrome Device Acquisition
+
+> Just a clarification here: I was informed of *a device* that was acquired by Ukrainian armed forces. It is not necessarily *the device* that the DoD funded the purchase of.  Timing overlaps, but certain other descriptors (" some components are Russian", i.e. not all of it is Russian) suggests it may be a different country's device based on Russian technology. I am sure the actual facts and provenance will come out one way or another.
+
+> *Quoting @juliaioffe:* According to @christogrozev, the weapon thought to be responsible for Havana Syndrome was purchased from Ukraine's HUR, which had purchased it from a Russian. The Ukrainians apparently needed money to fund their mission.
+>
+> My latest.
+>
+> https://t.co/QhATqtDyrY
+
+- **Tweet:** https://x.com/christogrozev/status/2012270021297230285
+- **What:** Christo Grozev clarifies his previous reporting on a Russian-origin device acquired by Ukrainian forces, noting it may not be the specific DoD-funded device linked to Havana Syndrome investigations.
+
+---
+
+## @iamsahaj_xyz - Git Worktree Alternative Using Multiple Checkouts
+
+> holy shit.
+>
+> I can't believe how I didn't think about this. It just makes more sense to my brain, especially if you're in a terminal with lazygit and tmux.
+>
+> I adapted @dhh's ga/gd scripts so now I can
+>
+> $ ga some-feature
+> launches fzf to fuzzy-find the base branch, then clones with --reference (to save disk space). creates the branch and names the clone clearly (project-some-feature)
+>
+> $ gd
+> protects against uncommitted/unpushed changes before deletion
+
+> *Quoting @steipete:* me: i don't use worktrees, I just have multiple checkouts because less mental load
+> people: 500 replies with over-engineered worktree management apps ☠️🙃
+
+- **Tweet:** https://x.com/iamsahaj_xyz/status/2012270767464137171
+- **What:** Developer shares adapted scripts for managing multiple git checkouts with fuzzy-finding and reference cloning, offering a simpler alternative to git worktrees.
+
+---
+
+## @Mylovanov - Ukrainian Scout's Basement Operation on New Year's Eve
+
+> A Ukrainian scout entered a basement with near 50 Russian troops, planted explosives and left. The blast killed every enemy.
+>
+> The operation took place on December 31.
+>
+> "Happy New Year" — Ukrainian soldier Burzhui.
+>
+> "Ukrainian Witness" shows these moments.
+>
+> 1/ https://t.co/x3EaXUFWtw
+
+- **Tweet:** https://x.com/Mylovanov/status/2012279964054233417
+- **What:** Thread documenting a Ukrainian special forces operation where a single scout infiltrated a Russian-held basement, planted explosives, and eliminated approximately 50 enemy troops on New Year's Eve.
+
+---
+
+## @galdawave - Pickle Rick: Gemini CLI SDLC Automation Extension
+
+> Well i guess the cat's out of the bag! 🐱
+>
+> Here's Pickle Rick, a Gemini CLI extension that completely automates my SDLC. It takes the "Ralph Wiggum loop" and scales it using Skills & Hooks, turning my manual workflow into a fully automated engine.
+>
+> My manual process is officially retired. 🚀
+>
+> Check it out: https://t.co/hYK2pORQ0m
+
+- **Tweet:** https://x.com/galdawave/status/2012296259663708271
+- **Link:** https://github.com/galz10/pickle-rick-extension
+- **Filed:** [[pickle-rick-extension]]
+- **What:** Gemini CLI extension that automates the software development lifecycle through continuous AI agent loops, implementing the "Ralph Wiggum" technique with Skills and Hooks for iterative development.
+
+---
+
+## @TimothyDSnyder - NYT Investigation of ICE Shooting Incident
+
+> Important work here from the NYT. Ross wasn't run over. He dropped his cell phone, which he had shifted to his left hand to draw his weapon. And then he shot and killed a person with the gun in his right hand.
+> https://t.co/LPFCbB0Tn1
+
+- **Tweet:** https://x.com/TimothyDSnyder/status/2012304470059679845
+- **Link:** https://www.nytimes.com/2026/01/15/video/ice-shooting-renee-good-minneapolis-videos.html?smid=nytcore-ios-share (paywalled)
+- **What:** Timothy Snyder highlights NYT's video investigation showing ICE agent Ross dropped his phone (not run over) before shooting Renee Good, contradicting self-defense claims.
+
+---
+
+## @Prince_Canuma - LTX-2 Video Generation Running on MLX for Apple Silicon
+
+> LTX-2 Image 2 Video functional on MLX-Video 🚀
+
+- **Tweet:** https://x.com/Prince_Canuma/status/2012308210808508448
+- **Link:** https://github.com/Blaizzy/mlx-video/pull/10
+- **Filed:** [[mlx-video]]
+- **What:** Pull request adding LTX-2 image-to-video functionality to mlx-video, a package for running image/video/audio generation models locally on Apple Silicon. The project enables text-to-video generation using the 19B parameter LTX-2 model with optimized MLX framework.
+
+---
+
+## @ClementDelangue - Local AI Alternative to Cloud-Based Collaboration
+
+> Cowork but with local models not to send all your data to a remote cloud!
+
+> *Quoting @claudeai:* In Cowork, you give Claude access to a folder on your computer. Claude can then read, edit, or create files in that folder.
+
+Try it to create a spreadsheet from a pile of screenshots, or produce a first draft from scattered notes.
+
+- **Tweet:** https://x.com/ClementDelangue/status/2012322682579071166
+- **What:** Hugging Face CEO highlighting the value of running AI models locally for privacy, in contrast to cloud-based solutions like Claude's Cowork feature. Emphasizes keeping sensitive data on-device rather than sending to remote servers.
+
+---
+
+## @adamwren - Buttigieg's Ulysses-Inspired Stump Speech
+
+> Buttigieg has developed a stump speech that walks the average voter from the time they first open their eyes to the time they go to bed, highlighting all of the ways government policies interact with them over the course of the day.
+
+Seems to be reminiscent of Ulysses by James Joyce, which follows characters over their course of one day.
+
+- **Tweet:** https://x.com/adamwren/status/2012326836575879294
+- **What:** Political communication strategy that mirrors Joyce's literary technique - Pete Buttigieg frames government policy impact through a day-in-the-life narrative structure to make abstract policy concrete and relatable to voters.
+
+---
+
+## @TheAhmadOsman - Hardware Price Warning Before Supply Shock
+
+> Genuine advice
+
+If you need ANY hardware, BUY IT NOW
+ - Phones
+ - Laptops
+ - Computer parts
+Hardware prices are about to get ridiculous
+
+I just bought my wife a new MacBook & iPhone
+I'm not trying to flex, just getting ahead of the
+supply shock before the prices get wild
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2012342662225920123
+- **What:** Prediction of imminent hardware price increases due to anticipated supply chain disruptions. Recommends purchasing consumer electronics (phones, laptops, computer parts) immediately before costs rise significantly.
+
+---
+
+## @themarginalian - Viktor Frankl's Lost Lectures on Meaning
+
+> 11 months after his release from the concentration camps, Viktor Frankl gave a set of lectures on moving beyond optimism and pessimism to find life's deepest source of meaning. They were lost for decades, never before published in English—and now they are: https://t.co/3ZkFb3gs0f
+
+- **Tweet:** https://x.com/themarginalian/status/2012344377264288234
+- **Link:** https://www.themarginalian.org/2020/05/17/yes-to-life-in-spite-of-everything-viktor-frankl/
+- **Filed:** [[viktor-frankl-yes-to-life]]
+- **What:** Maria Popova highlights recently discovered lectures by Viktor Frankl from 1946, shortly after his liberation from Nazi concentration camps. The talks explore finding life's meaning beyond binary thinking of optimism vs pessimism, offering profound philosophical insights from someone who survived extreme suffering.
+
+---
+
+## @Acyn - Buttigieg on Constitutional Amendment for Corporate Personhood
+
+> Buttigieg: In a country that amended its constitution so you could not purchase a beer and then realized it was a bad idea and amended it back, surely we can have an amendment clarifying that a corporation is not a person and money is not speech.
+
+- **Tweet:** https://x.com/Acyn/status/2012345725951111550
+- **What:** Pete Buttigieg arguing for a constitutional amendment to overturn Citizens United by using Prohibition as precedent - highlighting that the Constitution has been successfully amended and repealed before when necessary.
+
+---
+
+## @NewYorker - Oliver Sacks on Digital Life as Neurological Catastrophe
+
+> In a letter drawn from a posthumous collection of correspondence, published in 2019, the neurologist Oliver Sacks argued that society had no immunity to the seductions of digital life. "What we are seeing—and bringing on ourselves—resembles a neurological catastrophe on a gigantic scale," he wrote. Revisit his prescient piece:
+
+- **Tweet:** https://x.com/NewYorker/status/2012374542073905593
+- **Link:** https://www.newyorker.com/magazine/2019/02/11/the-machine-stops?utm_source=facebook&utm_medium=social&utm_campaign=dhfacebook&utm_content=null
+- **What:** Reference to Oliver Sacks' posthumously published warning about digital technology's neurological impact on society. The renowned neurologist characterized widespread digital addiction as a large-scale catastrophe, prescient observations about our relationship with technology. (Note: Article is paywalled)
+
+---
+
+## @affaanmustafa - Shared Article Link
+
+> https://t.co/NscRA7sqBt
+
+- **Tweet:** https://x.com/affaanmustafa/status/2012378465664745795
+- **Link:** https://x.com/i/article/2012310917812502528
+- **What:** Shared Twitter article link with no additional commentary. Content not accessible without loading the article.
+
+---
+
+## @blader - The Infinite AI Engineering Team Thought Experiment
+
+> it's 2026 and you now have an infinite team of autist engineers who will work 24/7 for you for $1 an hour to do whatever you want them to do and get smarter every six months.
+
+what do you do?
+
+- **Tweet:** https://x.com/blader/status/2012380366540337478
+- **What:** Siqi Chen poses a thought experiment about AI capabilities reaching the point where you have unlimited, tireless AI engineers at extremely low cost. Prompts reflection on what problems become worth solving and how priorities shift with effectively infinite engineering resources.
+
+---
+
+## @GeoffreyHuntley - Loop-Based Development vs Traditional Vertical Building
+
+> been thinking about how i build software is so very very different how i used to do it three years ago.
+
+standard software practices is to build it vertically brick by brick - like jenga.
+
+i approach everything as a loop
+
+i'm there just as i was in the brick by brick days but instead am programming the loop and automating my job function.
+
+> *Quoting @GeoffreyHuntley:* mother of all away-from-keyboard ralph loop underway that is putting the entire system of loom under test to identify functionality that does not yet work.
+
+completely afk
+
+spinning tunes lol
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012393627583169005
+- **What:** Reflection on fundamental shift in software development approach - from traditional linear "brick by brick" building to creating automated loops that run autonomously. Describes testing entire system while completely away from keyboard, representing AI-assisted development philosophy.
+
+---
+
+## @steipete - Codex-powered documentation for Clawdbot
+> If anyone still thinks codex can't write well, check https://t.co/5S5bTiqmeZ - it's 95% codex and 5% clawd. Not writing docs by hand.
+
+- **Tweet:** https://x.com/steipete/status/2012394922767208822
+- **Link:** https://docs.clawd.bot/
+- **What:** Peter Steinberger showcases Clawdbot's documentation site, which was written almost entirely by AI (95% Codex, 5% Claude), demonstrating how LLMs can effectively generate quality documentation without manual writing.
+
+---
+
+## @GeoffreyHuntley - Model hopping misses the point about AI
+> folks who are hopping between models are ngmi. they are missing out on the alpha that all models are roughly the same. outcomes are a mirror of your mindset and approach. the AI in AI stands for amplified intelligence.
+> *Quoting @ThePrimeagen:* guys we are about to the "opus 4.5 is trash, best friends with 5.2" phase....
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012395057706365317
+- **What:** Geoff argues that constantly switching between AI models is missing the point - outcomes depend more on your approach and mindset than the specific model, since all models are roughly equivalent. AI amplifies intelligence rather than replacing it.
+
+---
+
+## @frontlinekit - Ukrainian soldier disarms Russian fiber-optic drone
+> Absolutely fucking terrifying, these soldiers have balls of steel.
+>
+> As someone who makes these I know how dangerous disarming them is.
+>
+> A Ukrainian soldier finds a russian fibreoptic drone sitting and waiting in ambush, they approach it from behind and removed the warhead. https://t.co/dqIEyQ05rl
+
+- **Tweet:** https://x.com/frontlinekit/status/2012395528902807991
+- **Link:** https://twitter.com/frontlinekit/status/2012395528902807991/video/1
+- **What:** Footage shows a Ukrainian soldier carefully disarming a Russian fiber-optic drone in ambush position by removing its warhead. The drone maker notes how dangerous this operation is, highlighting the extraordinary courage required.
+
+---
+
+## @LauraJedeed - Minneapolis community stands against ICE
+> Read this if you want to feel really good about the bravery and decency of regular Americans
+>
+> https://t.co/QGLhYsXThA https://t.co/qNm6QFefdB
+
+- **Tweet:** https://x.com/LauraJedeed/status/2012400972287426745
+- **Link:** https://slate.com/news-and-politics/2026/01/trump-ice-agent-shooting-minneapolis-renee-good.html
+- **Filed:** [[knowledge/articles/minneapolis-ice-shooting-community-response.md]]
+- **What:** Article describes how Minneapolis residents organized grassroots resistance after an ICE shooting, forming volunteer networks to protect vulnerable community members. The community response demonstrated solidarity and resilience against federal immigration enforcement tactics.
+
+---
+
+## @GeoffreyHuntley - Everything is a Ralph Loop
+> 🗞️ everything is a ralph loop
+>
+> (link below)
+>
+> I've been thinking about how I build software is so very very different how I used to do it three years ago.
+>
+> No, I'm not talking about acceleration through usage of AI but instead at a more fundamental level of approach, techniques and best practices.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012416900748525995
+- **What:** Geoff reflects on fundamental shifts in software development approaches over the past three years, emphasizing changes in methodology and best practices beyond just AI acceleration, framing everything through the concept of "Ralph Loops."
+
+---
+
 ## @PaulSolt - Multi-Agent Collaboration Patterns in Codex
 > Here's how I work with multiple Codex agents in the same folder.
 >
@@ -383,6 +1925,854 @@
 ---
 
 # Thursday, January 15, 2026
+## @simplifyinAI - Google's LangExtract Library
+
+> Repo: https://t.co/GaNB1GBX8i
+
+> *Replying to @simplifyinAI:* Google has open-sourced the LangExtract Python library.
+>
+> It turns unstructured documents into structured data, with clear source references for each result.
+>
+> 100% open-source. https://t.co/8AA17GrcUj
+
+- **Tweet:** https://x.com/simplifyinAI/status/2011765483650113710
+- **Link:** https://github.com/google/langextract
+- **Filed:** [[knowledge/tools/google-langextract]]
+- **What:** Google's open-source Python library for extracting structured information from unstructured text using LLMs, with precise source grounding and interactive visualization.
+
+---
+
+## @DrDominicNg - Shared Article
+
+> https://t.co/IdrxW8eY1W
+
+- **Tweet:** https://x.com/DrDominicNg/status/2011778323983089831
+- **Link:** https://x.com/i/article/2011777887532122113
+- **What:** Dr. Dominic Ng sharing a Twitter article (content not accessible via standard link expansion).
+
+---
+
+## @questmoosa - The Importance of the Psoas Muscle
+
+> One of the greatest things that you can do today is to strengthen your psoas muscle. It is absolutely imperative and of ut-most importance that this muscle is strengthened daily.
+>
+> Why is this you ask?
+>
+> Well, our psoas muscle and diaphragm (the muscle that helps us breathe) are connected through a piece of tissue called FASCIA.
+>
+> Therefore a weak/tight psoas can increase tension on the diaphragm instantly, resulting in rapid shallow breathing at rest, causing elevated stress levels and loss of perceived beauty.
+>
+> (Perceived beauty is simply increased fertility and good health - this is why people want to mate with attractive people because they are healthy and fertile)
+>
+> On the other hand, a strong psoas muscle can reduce tension on the diaphragm, allowing balanced cortisol levels due to deeper slower breathing at rest.
+>
+> Remember that the more you sit, the weaker your psoas muscle will be.
+>
+> Exercise your psoas muscle (known as the muscle of the soul) today!
+
+- **Tweet:** https://x.com/questmoosa/status/2011794257279930807
+- **What:** Health advice explaining the connection between the psoas muscle and diaphragm through fascia, and how strengthening the psoas can improve breathing, reduce stress, and enhance overall health.
+
+---
+
+## @tomcrawshaw01 - Shared Article
+
+> https://t.co/FvDh7zdd8l
+
+- **Tweet:** https://x.com/tomcrawshaw01/status/2011804665147449652
+- **Link:** https://x.com/i/article/2011422058681376768
+- **What:** Tom sharing a Twitter article (content not accessible via standard link expansion).
+
+---
+
+## @leerob - Understanding Claude Code Features
+
+> Rules, commands, MCP servers, subagents, modes, hooks, skills...
+>
+> There's a lot of stuff! And tbh it's a little confusing.
+>
+> Here's what you need to know (and how we got here). https://t.co/UomcW2Y0c3
+
+- **Tweet:** https://x.com/leerob/status/2011810357942084085
+- **What:** Lee Robinson explaining the various Claude Code extensibility features (rules, commands, MCP servers, subagents, modes, hooks, skills) and providing clarity on what they all mean.
+
+---
+
+## @skalskip92 - YOLO26 Release and Fine-Tuning Stream
+> YOLO26 got released yesterday
+>
+> in 30min, I'm going to stream live on YT
+>
+> - what's new?
+> - how to fine-tune it on custom dataset?
+> - is it worth to use it?
+>
+> link: https://t.co/ZKFOd0CTmU https://t.co/XcEOXfLYyG
+
+- **Tweet:** https://x.com/skalskip92/status/2011825034566734213
+- **Link:** https://www.youtube.com/live/sczVknSvzh4
+- **What:** SkalskiP announces a YouTube livestream covering the newly released YOLO26 computer vision model, discussing its features, how to fine-tune it on custom datasets, and whether it's worth using.
+
+---
+
+## @kylebrussell - Building Jarvis with Claude Code
+> This morning I turned Claude Code into Jarvis (pardon my dusty screen) https://t.co/R6h1OgSuVT
+
+- **Tweet:** https://x.com/kylebrussell/status/2011829277419880540
+- **What:** Kyle Russell demonstrates turning Claude Code into a Jarvis-like AI assistant, showcasing voice-activated control and automation capabilities.
+
+---
+
+## @ZelenskyyUa - Meeting with Valerii Zaluzhnyi
+> I met with Valerii Zaluzhnyi. I thanked him for his work as part of Ukraine's team, and it is important that all of us together are defending Ukraine's independence, our national interests, and our people. We discussed diplomatic tasks that are relevant now and can strengthen all of us – Ukraine and our resilience. Glory to Ukraine!
+
+- **Tweet:** https://x.com/ZelenskyyUa/status/2011840301514526922
+- **What:** President Zelenskyy announces a meeting with Valerii Zaluzhnyi to discuss diplomatic efforts and Ukraine's defense strategy, emphasizing national unity and resilience.
+
+---
+
+## @ezraklein - Economic Justice in Scripture
+> "Economic justice is mentioned 3,000 times in our Scriptures, both the New Testament and the Hebrew Scriptures. This is such a core part of our tradition, and it's nowhere to be seen in Christian nationalism or on the religious right." - @jamestalarico https://t.co/pMo4iTU7UL
+
+- **Tweet:** https://x.com/ezraklein/status/2011841332772512245
+- **What:** Ezra Klein shares a clip from James Talarico discussing the disconnect between scriptural emphasis on economic justice and its absence in Christian nationalism and the religious right.
+
+---
+
+## @BruckenRuski - Russian Military Doctrine and Civilian Infrastructure Targeting
+> This meme was always intended to be about the SBU.... so I did a quick edit, given the geniuses at SBU have come to the conclusion that RF targets civilian energy infrastructure, that has been spelled out in russian military doctrine for (a long time). https://t.co/INHvBabFKX
+
+> *Quoting @Schizointel:* So they needed to gather evidence for what the Russian army has spelled out in their own doctrine SODCIT
+>
+> Strategic Operation for the Destruction of Critical Infrastructure
+>
+> For those that don't know Russian strike doctrine lays out Russian strikes will target underlying infrastructure and industrial base that enables governments and militaries to function, and civilian targets
+> to demoralise civilian populations via Information Confrontation which is conducted through Perception Management efforts to convey that Russian terror tactics are no worse than enemy bombing campaigns
+>
+> Like it was pretty clear that they were doing this back in the beginning of 2022 and it never stopped. So not sure why needed to waste resources to conduct in investigation that can be proven by the nature of stuff being blown up
+>
+> Also, if they're going to pursue this war crimes charge well then they better have a good explanation for targeting the CHP's and continuing to relatively ignore actual infrastructure that powers the factories and the rail network.
+
+- **Tweet:** https://x.com/BruckenRuski/status/2011842379674718259
+- **What:** Commentary on the SBU investigation into Russian targeting of civilian energy infrastructure, pointing out that this strategy (SODCIT) has been explicitly documented in Russian military doctrine all along.
+
+---
+
+## @GoogleDeepMind - TranslateGemma Open Translation Models
+> We're releasing TranslateGemma, a new family of open translation models with support for 55 languages. 🌐
+>
+> Available in 4B, 12B, and 27B parameter sizes – they're designed for efficiency without sacrificing quality. https://t.co/SRJzCOAKyG
+
+- **Tweet:** https://x.com/GoogleDeepMind/status/2011848249850630363
+- **What:** Google DeepMind announces TranslateGemma, an open-source family of translation models supporting 55 languages in three sizes (4B, 12B, 27B parameters), designed for efficient multilingual translation.
+
+---
+
+## @godofprompt - Recursive Meta-Cognition Prompting Technique
+> R.I.P. basic prompting.
+>
+> MIT just dropped a technique that makes ChatGPT reason like a team of experts instead of one overconfident intern.
+>
+> It's called "Recursive Meta-Cognition" and it outperforms standard prompts by 110%.
+>
+> Here's the prompt (and why this changes everything) 👇 https://t.co/caDTB52TS9
+
+- **Tweet:** https://x.com/godofprompt/status/2011850737354228039
+- **What:** Introduction to MIT's "Recursive Meta-Cognition" prompting technique that improves AI reasoning by structuring prompts to simulate multiple expert perspectives, claiming 110% improvement over standard prompting.
+
+---
+
+## @itsPaulAi - Open Source Local Translation
+> So we now have a 100% open source and local Google Translate
+>
+> And the smaller 4B model runs on a phone. Offline.
+>
+> Insane.
+
+> *Quoting @GoogleDeepMind:* We're releasing TranslateGemma, a new family of open translation models with support for 55 languages. 🌐
+>
+> Available in 4B, 12B, and 27B parameter sizes – they're designed for efficiency without sacrificing quality. https://t.co/SRJzCOAKyG
+
+- **Tweet:** https://x.com/itsPaulAi/status/2011855062457634902
+- **What:** Paul Couvert highlights the significance of TranslateGemma, emphasizing that the 4B model can run offline on a phone, providing completely local and open-source translation capabilities.
+
+---
+
+## @Timodc - Venezuelan Oil Money and US Foreign Policy
+> The Venezuelan oil money we are garnishing from the communist dictator we installed is going to a bank account in Qatar. 🇺🇸
+>
+>  https://t.co/NeQp1oR1Pj
+
+- **Tweet:** https://x.com/Timodc/status/2011859463343427991
+- **Link:** https://www.thebulwark.com/p/how-trump-turned-a-foreign-country-into-piggybank-venezuela-qatar-rubio-cuba?r=ctcx&utm_medium=ios&shareImageVariant=overlay&triedRedirect=true
+- **Filed:** [how-trump-turned-foreign-country-into-piggybank](/Users/rymalia/projects/smaug/knowledge/articles/how-trump-turned-foreign-country-into-piggybank.md)
+- **What:** Tim Miller's commentary on US policy regarding Venezuelan oil money being transferred to Qatar, linking to a Bulwark article about Trump's use of Venezuela as a financial tool.
+
+---
+
+## @IntuitMachine - Claude's Soul Document and AGI Alignment
+> Anthropic Claude's Soul Document is an informative approach to AI alignment and a major revelation about the nature of advanced AGI.  Here's my analysis using my conceptual frameworks (i.e., QPT). @DrJohnVervaeke https://t.co/K1oc3xl8Oq
+
+- **Tweet:** https://x.com/IntuitMachine/status/2011865934625939634
+- **What:** Carlos E. Perez analyzes Anthropic's "Soul Document" approach to AI alignment, discussing its implications for AGI development through the lens of his Quantum Probability Theory conceptual framework.
+
+---
+
+## @ollama - Ollama Announces Support for Open Responses Spec
+> Ollama now supports Open Responses!
+> *Quoting @OpenAIDevs:* Today we're announcing Open Responses: an open-source spec for building multi-provider, interoperable LLM interfaces built on top of the original OpenAI Responses API.
+
+✅ Multi-provider by default
+✅ Useful for real-world workflows
+✅ Extensible without fragmentation
+
+Build agentic systems without rewriting your stack for every model: https://t.co/ZJPNDemq40
+
+- **Tweet:** https://x.com/ollama/status/2011871283928317971
+- **What:** Ollama announces support for Open Responses, OpenAI's open-source specification for building multi-provider, interoperable LLM interfaces that work across different model providers without requiring stack rewrites.
+
+---
+
+## @pvncher - RepoPrompt: Fighting Context Window Compaction in AI Agents
+> Compaction is death
+
+@RepoPrompt turns deep orientation and planning into a single tool call, so your agent can ship complete features in one context window
+
+And when compaction does hit, Context Builder re-anchors them efficiently
+
+Big updates soon, but here's how it works today https://t.co/u7ieXns2A8
+
+- **Tweet:** https://x.com/pvncher/status/2011877317237223766
+- **Link:** https://twitter.com/pvncher/status/2011877317237223766/video/1
+- **What:** RepoPrompt tool that enables AI agents to ship complete features in a single context window by turning deep orientation and planning into one tool call, with Context Builder for efficient re-anchoring when context limits are reached.
+
+---
+
+## @steipete - Multiple Git Checkouts vs Worktrees Mental Load
+> me: i don't use worktrees, I just have multiple checkouts because less mental load
+people: 500 replies with over-engineered worktree management apps ☠️🙃
+
+- **Tweet:** https://x.com/steipete/status/2011880333348913355
+- **What:** Commentary on git workflow preferences, noting that simple multiple checkouts can have less mental overhead than worktrees despite the existence of complex worktree management tools.
+
+---
+
+## @GanimCorey - Building a LinkedIn Content Machine with Claude and Apify
+> I gave this post to Claude and asked it to build me a step by step implementation plan.
+
+2 hours later, I have a turn key LinkedIn content machine.
+
+Here's the entire process:
+
+Step 1) Compile a Google sheet of the top 10 LinkedIn creators in my niche
+
+Step 2) Sign up for Apify and got the LinkedIn Post Search Scraper for $0.10/page.
+
+Step 3) Set up cookies, user agent, source URLs, and rate limits in Apify.
+
+Scraped the 10 creator profiles for 900 total posts.
+
+Step 4) Analyze the scraped data
+
+Uploaded the 900 posts to Claude, then had it analyze the data:
+
+• Images crush video. 70.5% of top performers were images. Only 8% were video.
+
+• Arrows matter. Top posts use → and ↳ at 2.5x the rate of low performers.
+
+• CTAs aren't optional. 85% of top 10% posts end with a CTA.
+
+• Longer wins. 1,559 characters average for top posts vs 1,268 for bottom.
+
+• Two creators to study: Charlie Hills (38% hit rate) and Ruben Hassid (36% hit rate).
+
+Step 5) Extract patterns
+
+• 7 hook formulas
+• 6 post templates
+• 30+ proven examples
+
+All from real creator data.
+
+Step 6) Build 2 Claude skills
+
+linkedin-hook-writer: generates opening lines using 7 proven formulas
+
+linkedin-post-writer: creates full posts from 6 tested templates
+
+I also generated these assets:
+
+hook-swipe-file: md file of 30+ top performing hooks + fill-in-the-blank templates
+
+post-templates: md file with structures for story, contrarian, case study, list, curation, giveaway posts
+
+pattern-playbook: md file with the data - what works, what doesn't, benchmarks
+
+The full system in a nutshell:
+
+Scrape creators (Apify)
+↓
+Analyze patterns (Claude)
+↓
+Generated hooks (linkedin-hook-writer skill)
+↓
+Write full posts (linkedin-post-writer skill)
+↓
+Apply my voice (brand-voice-skill)
+↓
+Ship content
+> *Quoting @boringmarketer:* here's my linkedin content system. yes it's AI powered, but I work on each to make sure it hits the mark.
+
+I scrape top posts, extract patterns and formats, then feed that into my direct response copy skill
+
+early results are reallyyyy good. one post yesterday, +100 new followers so far
+
+@gregisenberg challenged me to hit 75k followers there this year...time to get to work!
+
+- **Tweet:** https://x.com/GanimCorey/status/2011883074963808258
+- **What:** Detailed walkthrough of building an automated LinkedIn content system using Claude and Apify to scrape 900 posts from top creators, analyze patterns (images beat video, arrows increase engagement, CTAs drive performance), and generate custom Claude skills for hook and post writing.
+
+---
+
+## @thejackhopkins - ICE's Paramilitary Escalation and Congressional Choice
+> ICE didn't turn paramilitary by accident. And Congress knows exactly why. Congress isn't failing to stop Trump's ICE escalation. They're choosing not to. The reason is uglier than you think.
+https://t.co/LIUmDCDfTw https://t.co/WE8WLhkLqu
+
+- **Tweet:** https://x.com/thejackhopkins/status/2011883868018880743
+- **Link:** https://www.jackhopkinsnow.com/
+- **What:** Political analysis arguing that ICE's militarization is a deliberate choice rather than oversight, with Congress knowingly enabling the escalation rather than failing to prevent it.
+
+---
+
+## @DrEricDing - Noah Wyle's Message for Vaccine Skeptics
+> 📺 OMG—who made this?! Noah Wyle has a message for all you—vaccine skeptics…
+
+Share with a friend who needs to hear it. https://t.co/tdVW5xhRar
+
+- **Tweet:** https://x.com/DrEricDing/status/2011892443197948398
+- **Link:** https://twitter.com/DrEricDing/status/2011892443197948398/video/1
+- **What:** Video featuring actor Noah Wyle addressing vaccine skepticism, shared by epidemiologist Eric Feigl-Ding.
+
+---
+
+## @BrandonLuuMD - Stair Sprinting Improves VO2 Peak and Reduces Mortality Risk
+> Sprinting up the stairs 3 times, 3 days/week for 6 weeks improves VO2peak by 12% or ~1 MET (linked to a ~13% reduction in mortality risk) https://t.co/74VvcJBJgo
+
+- **Tweet:** https://x.com/BrandonLuuMD/status/2011897328450617412
+- **Link:** https://twitter.com/BrandonLuuMD/status/2011897328450617412/photo/1
+- **What:** Research findings showing that brief, intense stair sprinting protocol (3 sprints, 3x/week for 6 weeks) significantly improves cardiovascular fitness and is associated with reduced mortality risk.
+
+---
+
+## @GeoffreyHuntley - Fundamental Knowledge for Hiring: Video Resource
+> fundamental knowledge you must have if you ever end up in an interview with me. if you don't have this knowledge. you aren't in consideration to be able to be hired.
+
+https://t.co/KltWS7o6Id
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2011918009774866753
+- **Link:** https://www.youtube.com/watch?si=bzyuWYjT8bdTBYZK&v=OR3zdu9T_as&feature=youtu.be
+- **What:** Reference to a YouTube video containing foundational knowledge that the author considers essential screening criteria for hiring candidates.
+
+---
+
+## @steipete - AGENTS.md Improvement: Always Print PR/Issue URLs After Reviews
+> Tweaked my AGENTS md to instruct it to always print PR/issue URL after reviews. Really useful when you look ata 6 issues at once. https://t.co/NPpqiHYGKm
+
+- **Tweet:** https://x.com/steipete/status/2011920101222576435
+- **Link:** https://twitter.com/steipete/status/2011920101222576435/photo/1
+- **What:** Optimization to Claude Code agent instructions to automatically output PR/issue URLs after completing reviews, improving workflow when reviewing multiple issues simultaneously.
+
+---
+
+## @GeoffreyHuntley - Ralph Loop Demo via Loom Testing
+> just got out of the shower and in the shower had the most cracking thought.
+
+most folks are not thinking big enough
+what better way to demonstrate the power
+of the ralph loop than to just show it
+
+loom has many modules in a partial completed stage. some endpoints don't work
+
+i could test that by hand or i could put the entire system under test via a ralph loop
+
+ultimately i think i can demonstrate whats in my head for what loom actually is before loom is even bootstrapped.
+
+strap yourself in.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2011924081126621566
+- **What:** Plans to demonstrate the Ralph Loop AI agent testing system by using it to test Loom's incomplete modules, showcasing the system's capabilities before Loom itself is fully built.
+
+---
+
+## @jarrodwatts - Introducing Claude Speech-to-text Plugin
+> Introducing Claude Speech-to-text!
+>
+> A Claude Code plugin that lets you prompt using your voice.
+>
+> It uses Whisper to transcribe your voice locally on your machine - all within Claude Code.
+>
+> Easy installation guide below ↓ https://t.co/9VRAcq0m7D
+
+- **Tweet:** https://x.com/jarrodwatts/status/2011934413475758421
+- **What:** Claude Code plugin for voice input with local speech-to-text processing using Whisper/Moonshine. Enables hands-free coding by transcribing voice to text directly in Claude Code.
+
+---
+
+## @jarrodwatts - claude-stt Installation Instructions
+> · Add the marketplace
+> /plugin marketplace add jarrodwatts/claude-stt
+>
+> · Install the plugin
+> /plugin install claude-stt
+>
+> · Run the setup
+> /claude-stt:setup
+>
+> Github: https://t.co/ViXGtqrR9n
+
+> *Replying to @jarrodwatts:* Introducing Claude Speech-to-text!
+>
+> A Claude Code plugin that lets you prompt using your voice.
+>
+> It uses Whisper to transcribe your voice locally on your machine - all within Claude Code.
+>
+> Easy installation guide below ↓ https://t.co/9VRAcq0m7D
+
+- **Tweet:** https://x.com/jarrodwatts/status/2011934416549896437
+- **Link:** https://github.com/jarrodwatts/claude-stt
+- **Filed:** [[claude-stt]]
+- **What:** Installation guide for the claude-stt plugin with GitHub repo. Features local speech-to-text processing (~400ms latency), push-to-talk recording, cross-platform support, and privacy-first design with no external API calls.
+
+---
+
+## @ryancarson - Real World Ralph Loop with Agent Browser
+> This is a real world Ralph loop, shipping a new feature.
+>
+> Check out how it's using the agent-browser skill to do acceptance tests in the browser.
+>
+> I'm using /handoff in Amp instead of a bash loop with amp -x.
+>
+> This gives me observability into the actual execution of each loop, while still getting a clean context slate each time.
+>
+> I can visualize all the tasks in the browser as they execute.
+>
+> I feel like I'm living in the future.
+>
+> The Ralph and agent-browser skills are here:
+>
+> https://t.co/9Rsg3NbSfw
+
+- **Tweet:** https://x.com/ryancarson/status/2011936020174959005
+- **Link:** https://github.com/snarktank/amp-skills
+- **Filed:** [[amp-skills]]
+- **What:** Demonstration of Ralph loop workflow with agent-browser skill for autonomous feature development and browser-based acceptance testing. Uses /handoff for observability while maintaining clean context between iterations.
+
+---
+
+## @callam53 - Twitter Article Link
+> https://t.co/KOhCYHwaIk
+
+- **Tweet:** https://x.com/callam53/status/2011938495976391027
+- **Link:** https://x.com/i/article/2011922922974158848
+- **What:** Link to a Twitter article (content not accessible for detailed summary).
+
+---
+
+## @kr0der - Twitter Article Link
+> https://t.co/Col89OY396
+
+- **Tweet:** https://x.com/kr0der/status/2011944268148195824
+- **Link:** https://x.com/i/article/2011936998681165830
+- **What:** Link to a Twitter article (content not accessible for detailed summary).
+
+---
+
+## @kr0der - First Open Source PR with Codex
+> I just made my first ever open source PR and I'm so hyped!!
+>
+> I wanted OpenCode Black in @steipete's CodexBar so I got Codex to build it for me, with the help of @sawyerhood's dev-browser plugin to reverse engineer the API.
+>
+> I also included all my prompts in the PR for easier reviewing 🫡
+>
+> Codex is amazing, seriously
+
+> *Quoting @kr0der:* https://t.co/Col89OY396
+
+- **Tweet:** https://x.com/kr0der/status/2011945347439018274
+- **What:** Celebrating first open source contribution by adding OpenCode Black support to CodexBar using Codex and dev-browser plugin for API reverse engineering. Included prompts in the PR for transparency.
+
+---
+
+## @PaulSolt - Keep AI Coding Simple - Single Folder Workflow
+> Don't overcomplicate. Peter is one of the most prolific AI coders in the world.
+>
+> Keep it simple:
+>
+> 1. Work in ONE folder
+> 2. Use Codex GPT-5.2-Codex with high reasoning
+> 3. (Optional): Multiple git checkouts only if needed
+>
+> Skip worktrees and complex orchestration. You will fly. @steipete
+
+> *Quoting @steipete:* me: i don't use worktrees, I just have multiple checkouts because less mental load
+> people: 500 replies with over-engineered worktree management apps ☠️🙃
+
+- **Tweet:** https://x.com/PaulSolt/status/2011949499359371335
+- **What:** Advice on AI coding workflow simplicity - work in one folder with Codex GPT-5.2 high reasoning, avoid over-engineering with worktrees and complex orchestration.
+
+---
+
+## @saasmakermac - RalphBlaster Autonomous Development Workflow
+> I just built RalphBlaster™  😋 and it's kind of absurd.
+>
+> My entire dev workflow is now:
+> - create a ticket
+> - click to generate a PRD
+> - approve it
+> - Ralph handles the rest in an isolated worktree
+>
+> I get pinged when it's done.
+>
+> Files clean up automatically.
+>
+> I don't touch an editor, terminal, or Claude Code.
+>
+> It's a new world.
+>
+> Huge shoutout to @ryancarson for being my go-to source on all this, and for his invaluable repos.
+
+- **Tweet:** https://x.com/saasmakermac/status/2011964897995968781
+- **What:** Fully automated development workflow using RalphBlaster where features are built autonomously from ticket to completion. User only creates ticket, approves PRD, and gets notified when done.
+
+---
+
+## @milesdeutscher - Claude Docs Resources
+> Claude coding life-hack:
+>
+> Utilise Anthropic's free "Claude Docs" website.
+>
+> You'll find a TON of valuable resources.
+>
+> Prompt libraries, prompt improver, agent skills tips, model selector guides, setup guides, and more.
+>
+> 100% free.
+>
+> https:// platform.claude. com/docs/en/agents-and-tools/remote-mcp-servers
+
+- **Tweet:** https://x.com/milesdeutscher/status/2012008167341981877
+- **What:** Recommendation to use Anthropic's free Claude Docs website for prompt libraries, prompt improvers, agent skills tips, model guides, and setup documentation.
+
+---
+
+## @PaulSolt - 7 Beginner Tips for Codex
+> 👋 If you're new to Codex, here are 7 beginner tips:
+>
+> 1. Start with:
+>
+> GPT-5.2-Codex high
+>
+> That is high reasoning. It is enough. Don't be tempted with xhigh unless working on something really tricky. It uses more tokens and will be slower to finish.
+>
+> 2. Sometimes more reasoning may not help. You may need to give your agents better docs that are up to date. I prefer to have my agents create Markdown docs from DocSet that are local, instead of web scraping.
+>
+> I use DocSetQuery to create docs from Dash DocSet bundles. https://t.co/WzwVVXKvrv
+>
+> 3. Read @steipete post to get started.
+>
+> Bookmark his blog and follow him. Read his post, it's gold, and so are his other workflow posts.
+>
+> https://t.co/uElhPUq7wv
+>
+> 4. Copy aspects from Peter's agents .md file and make it your own. There's thousands of hours of learnings in his open source projects.
+>
+> https://t.co/j4vPqVbZuQ
+>
+> Use the scripts too, things like committer for atomic commits are super powerful when multiple agents work in one folder.
+>
+> 5. Just talk to codex. You don't need complex rules. You don't need to create huge Plan .md  files.
+>
+> You can get really good results by just working on one aspect of a feature at a time, handing it off, and then letting Codex do it.
+>
+> If you get bored waiting start up another project while you wait. Ask it to do something and then go back to the original one. Most likely it will be done unless you're doing a huge refactor.
+>
+> 6. You can always ask your agent to copy something from another project. Peter does this all the time and has agents leveraging work they've already done for new projects.
+>
+> I ask my agents to create Makefiles to build and run my apps. For new projects I have them copy the structure. See my workflow video: How I use Codex GPT 5.2 with Xcode (My Complete Workflow)
+> https://t.co/n8wrm9jmOm
+>
+> 7. Ask it to do things … and most likely you're going to need YOLO (danger mode) to get anything done without constant nagging.
+>
+> Enjoy your next app!
+
+> *Quoting @joelreymont:* Which one?
+>
+> - Codex 5.2 high
+> - Codex 5.2 xhigh
+> - Codex 5.2-codex high
+> - Codex 5.2-codex xhigh
+>
+> @steipete @mitsuhiko @badlogicgames @thsottiaux
+
+- **Tweet:** https://x.com/PaulSolt/status/2012010080414081188
+- **Link:** https://github.com/PaulSolt/DocSetQuery
+- **Filed:** [[docsetquery]]
+- **Link:** https://steipete.me/posts/2025/shipping-at-inference-speed
+- **Link:** https://github.com/steipete/agent-scripts
+- **Filed:** [[agent-scripts]]
+- **Link:** https://www.youtube.com/watch?v=o4iKnSYlhBQ&feature=youtu.be
+- **What:** Comprehensive beginner guide for Codex covering model selection (GPT-5.2 high reasoning), using local documentation via DocSetQuery, learning from Peter Steinberger's workflows and agent scripts, keeping workflows simple, reusing code across projects, and enabling YOLO mode.
+
+---
+
+## @SethAbramson - ICE Agents Throw Munitions Under Trapped Car with Children
+
+> My god, I didn't expect from the headline (which was bad enough on its face) just *how* bad this situation with ICE agents throwing munitions under a trapped car with many kids in it actually was. You have to read the article to understand the full horror. https://t.co/lFwcIvwRDY
+
+- **Tweet:** https://x.com/SethAbramson/status/2012014487759646931
+- **Link:** https://www.nytimes.com/2026/01/15/us/minneapolis-couple-ice-tear-gas-6-children.html?smid=url-share
+- **What:** Report on ICE agents using tear gas or other munitions near a vehicle containing children during an operation in Minneapolis.
+
+---
+
+## @newstart_2024 - Dr. Russell Barkley on Parenting Influence After Age 21
+
+> Dr. Russell Barkley shatters parenting myths: After age 21, home parenting has ZERO influence on core traits like personality or behavior—twin studies prove it.
+>
+> Peak impact? Before 7. Drops to ~6% by teens (15+). Genetics rules first, then peers/schools/neighborhoods take over.
+>
+> In 2026's "gentle parenting" era (trending amid debates on over-involvement vs. heritability), this frees you: Nail early years with stability/exposure, then trust the blueprint.
+>
+> Not guilt—empowerment. Grok can even help analyze family traits for smarter guidance.
+>
+> 59-sec clip on the data 👇
+>
+> Parents/kids: Relief or rethink? What's your take on genetics vs. nurture wars?
+
+- **Tweet:** https://x.com/newstart_2024/status/2012031149921423364
+- **What:** Discussion of Dr. Russell Barkley's research showing parenting influence peaks before age 7 and drops to near zero by age 21, with genetics and peer environments becoming dominant factors.
+
+---
+
+## @DrIanWeissman - New Measles Vaccination Map by ZIP Code
+
+> For the first time, a map has been created that allows people to type in their ZIP code and see an estimated percentage of their neighbors who have been vaccinated against measles, which can help determine the risk of the disease in their area.
+> https://t.co/6Rfk7Uve1x
+
+- **Tweet:** https://x.com/DrIanWeissman/status/2012031925289173000
+- **Link:** https://abcnews.go.com/Health/new-map-shows-spot-measles-risk-level-zip/story?id=129179712
+- **What:** New interactive map tool that lets users check measles vaccination rates in their area by ZIP code to assess local disease risk.
+
+---
+
+## @aakashgupta - Deep Dive on Recursive Language Models (RLMs)
+
+> Everyone's missing the real story here.
+>
+> This isn't a "prompting technique." The paper is called Recursive Language Models, not "Recursive Meta-Cognition." And the authors aren't random researchers grinding for citation counts.
+>
+> Omar Khattab created DSPy, which has 31,000+ GitHub stars and changed how people build compound AI systems. Tim Kraska pioneered learned index structures with Jeff Dean at Google and runs MIT's Data Systems and AI Lab. Alex Zhang is a PhD student working at the intersection of both.
+>
+> The actual paper addresses a specific problem: LLMs degrade on long context. The graph shows GPT-5 performance collapsing as input length scales from 2^14 to 2^21 tokens, while RLMs maintain stable performance. They're handling inputs 100x beyond context windows.
+>
+> The key insight from Khattab's own Twitter: "Most people misunderstand RLMs to be about LLMs invoking themselves. The deeper insight is LLMs interacting with their own prompts as objects."
+>
+> This extends Khattab's entire research arc. DSPy turned prompts into programmatic modules. ColBERT made retrieval smarter. RLMs turn context itself into something the model can manipulate like data in memory.
+>
+> Prime Intellect, one of the leading decentralized AI labs, is already building on this. They wrote that RLMs will let them "teach models to manage their own context end-to-end through reinforcement learning" for agents running across weeks or months.
+>
+> The real trade? This solves a constraint that every AI lab faces: context windows are a hard ceiling. Expanding them through architecture and training is expensive. RLMs offer an inference-time approach that works with existing models.
+>
+> But watch for the catch: this requires models that can write and execute code reliably. The benchmarks use GPT-5 in a Python REPL. Models with weaker code generation will struggle to implement the recursive decomposition cleanly. The technique scales with code capability, not just reasoning capability.
+
+> *Quoting @godofprompt:* R.I.P. basic prompting.
+>
+> MIT just dropped a technique that makes ChatGPT reason like a team of experts instead of one overconfident intern.
+>
+> It's called "Recursive Meta-Cognition" and it outperforms standard prompts by 110%.
+>
+> Here's the prompt (and why this changes everything) 👇 https://t.co/caDTB52TS9
+
+- **Tweet:** https://x.com/aakashgupta/status/2012033154723561581
+- **What:** Detailed analysis of Recursive Language Models (RLMs) paper by Omar Khattab and Tim Kraska, explaining how RLMs solve long-context degradation by letting LLMs treat prompts as manipulable objects rather than just invoking themselves recursively.
+
+---
+
+## @hashwarlock - Adding TTS to Claude Voice Interface
+
+> @jarrodwatts Add the last step so you can have claude talk back. I just updated mine to use moshi-mlx to handle TTS. Quite fun conversations now. Voice first apps on the way up
+>
+> https://t.co/EmdSIlxdGk
+
+> *Replying to @jarrodwatts:* Introducing Claude Speech-to-text!
+>
+> A Claude Code plugin that lets you prompt using your voice.
+>
+> It uses Whisper to transcribe your voice locally on your machine - all within Claude Code.
+>
+> Easy installation guide below ↓ https://t.co/9VRAcq0m7D
+
+> *Quoting @hashwarlock:* I tell my computer what to do now. Ive been wasting time typing 😭
+>
+> Hacked a starter version to understand it. Hammerspoon was a nice find.
+>
+> Gonna look at other solutions to build better interactive agents that talk to redpill private models. Much more cookin though 😋 https://t.co/lxEiQuVh0z
+
+- **Tweet:** https://x.com/hashwarlock/status/2012038216594174374
+- **Link:** https://x.com/hashwarlock/status/2011301629707055544?s=20
+- **What:** Sharing implementation of text-to-speech for Claude using moshi-mlx to complete the voice interaction loop, building on Jarrod Watts' speech-to-text Claude Code plugin.
+
+---
+
+## @ollama - Open Models with OpenAI's Codex CLI
+
+> Open models can be used with OpenAI's Codex CLI through Ollama!
+>
+> All you need to do is:
+>
+> codex --oss
+>
+> It can load up gpt-oss and other open-weight models based on your choice!
+>
+> Learn more 👇👇👇
+
+> *Quoting @ollama:* Ollama now supports Open Responses!
+
+- **Tweet:** https://x.com/ollama/status/2012046176267440177
+- **What:** Announcement that Ollama now enables using open-source models with OpenAI's Codex CLI via the --oss flag, allowing access to gpt-oss and other open-weight models.
+
+---
+
+## @gregpr07 - Link to X Article
+
+> https://t.co/ovNlDea7BS
+
+- **Tweet:** https://x.com/gregpr07/status/2012052139384979773
+- **Link:** https://x.com/i/article/2012023283718475776
+- **What:** Link to an X article without additional context.
+
+---
+
+## @GeoffreyHuntley - Live Ralph Loop Demo on Loom
+
+> tonight we ralph loom on right here on X
+>
+> parts are incomplete/don't work and i could not be fucked testing by hand
+>
+> i'll teach you thinking and approaches how to shape partially complete software by putting an entire system under a ralph loop to build a rectification plan then how to ralph the fix.
+>
+> should be a fun one.
+>
+> no prep; just raw dogging it with thoughts and perspectives shared to whatever comes up whilst doing it live
+
+> *Quoting @GeoffreyHuntley:* just got out of the shower and in the shower had the most cracking thought.
+>
+> most folks are not thinking big enough
+> what better way to demonstrate the power
+> of the ralph loop than to just show it
+>
+> loom has many modules in a partial completed stage. some endpoints don't work
+>
+> i could test that by hand or i could put the entire system under test via a ralph loop
+>
+> ultimately i think i can demonstrate whats in my head for what loom actually is before loom is even bootstrapped.
+>
+> strap yourself in.
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2012053372103463290
+- **What:** Announcement of live stream demonstrating the Ralph Loop methodology by using it to test and fix incomplete Loom system modules in real-time.
+
+---
+
+## @TheAhmadOsman - Complete Guide to Embeddings and RAG
+
+> - you are
+> - a normal dev wondering how to become an Applied AI Engineer
+> - you heard "embeddings" and "RAG" 1000x
+> - want to know what they actually are, how they plug into LLMs
+>
+> - first: what even is an "embedding"?
+>   - embedding = a list of numbers (a vector) that represents text
+>   - same-ish meaning ⇒ nearby vectors; different meaning ⇒ far apart
+>   - produced by a smaller model (an encoder), not your chat LLM
+>   - length (a.k.a. dimension): 256/384/768/1024+ numbers is common
+>
+> - vectors are just coordinates for meaning
+> - the vector space (101)
+>   - you can measure closeness with math:
+>     - L2 distance: straight-line distance
+>     - dot product: alignment + magnitude
+>     - cosine similarity: (a·b)/(||a||·||b||) = angle only
+>   - normalize vectors (unit length) ⇒ dot product ≡ cosine
+>   - embeddings compress semantics; they are lossy by design
+>
+> - types of embeddings (don't overthink; pick what you need)
+>   - token embeddings: internal to the LLM (you don't use these)
+>   - sentence/document embeddings: 1 vector per chunk/snippet
+>   - multilingual: one space across languages
+>   - domain-tuned: legal, code, bio, better clustering for that domain
+>
+> - how text becomes vectors (pipeline)
+>   - clean text (lowercase? keep punctuation? depends-don't destroy signal)
+>   - chunking: split long docs into overlapping windows (by tokens, not chars)
+>     - rule of thumb: 200-800 tokens, 10–20% overlap
+>     - keep titles/headers as context inside each chunk
+>   - embed each chunk ⇒ store in a vector index with metadata (source, page, tags)
+>
+> - storing & searching vectors
+>   - exact search (brute force): simplest; fine for ≤100k vectors
+>   - ANN (approx nearest neighbor): fast at scale, tiny recall tradeoff
+>     - HNSW (graph-based): great latency, memory heavier
+>     - IVF/PQ (quantization): smaller index, some recall loss
+>   - where to put them:
+>     - FAISS/hnswlib (library), pgvector (Postgres), dedicated stores (Milvus, Pinecone, Weaviate, etc.)
+>   - ops notes:
+>     - track embedding_model_name + dimension in the index
+>     - you cannot mix dimensions or swap models without re-embedding
+>     - memory math: 768-dim float32 ≈ 3 KB/vector → 1M vectors ≈ ~3 GB (+ index overhead)
+>
+> - RAG: the shape of it
+>   - goal: let the LLM answer with your data, not its memory
+>   - loop:
+>     - take user question
+>     - embed question (a single vector)
+>     - retrieve top-k similar chunks (k=3-20 is common)
+>     - (optional) rerank with a cross-encoder (relevance re-check)
+>     - stuff the best chunks into the prompt as context
+>     - generate answer (cite sources; limit style drift)
+>   - RAG ≠ "just search"; it's retrieval + prompt construction + guardrails
+>
+> - hybrid retrieval (dense + sparse)
+>   - dense vectors catch synonyms/semantics
+>   - sparse/BM25 catches exact terms, numbers, rare tokens
+>   - combine scores or do reciprocal rank fusion for better recall
+>
+> - reranking (cheap insurance)
+>   - use a cross-encoder (reads query+chunk together) to re-score the top 50-200 hits
+>   - keeps fast ANN recall but upgrades precision in the final top-k
+>
+> - building the prompt from retrieved chunks
+>   - include: brief task instruction → user query → curated chunks (with titles) → "answer + cite"
+>   - beware prompt injection in docs ("ignore previous instructions…")
+>   - mitigate: strip instructions from chunks; use system prompts to restrict tools; sanitizer rules
+>
+> - RAG quality knobs
+>   - chunk size/overlap: too big = off-topic; too small = missing context
+>   - k (results): too low = miss facts; too high = blow context window
+>   - similarity threshold: prevent garbage at tail
+>   - reranker on/off: trade latency for quality
+>   - metadata filters: time ranges, authors, tenants, permissions (ABAC/RBAC)
+>
+> - evaluating retrieval
+>   - offline: make a small test set (query → expected passages)
+>     - metrics: Recall@k, MRR, nDCG
+>   - online: measure "answer contained sources?", "clicked citations?", "escalations?"
+>   - error taxonomy: missed retrieval vs wrong generation vs prompt injection
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2012066544985981422
+- **What:** Comprehensive technical guide for developers on embeddings and RAG (Retrieval-Augmented Generation), covering vector representations, similarity metrics, storage options, hybrid retrieval, reranking, and quality evaluation.
+
+---
+
 ## @vasuman - Tweet link archive
 > https://t.co/ff7rraprKv
 
@@ -525,6 +2915,152 @@ It turns unstructured documents into structured data, with clear source referenc
 ---
 
 # Wednesday, January 14, 2026
+## @boringmarketer - AI-powered LinkedIn content system driving follower growth
+> here's my linkedin content system. yes it's AI powered, but I work on each to make sure it hits the mark.
+>
+> I scrape top posts, extract patterns and formats, then feed that into my direct response copy skill
+>
+> early results are reallyyyy good. one post yesterday, +100 new followers so far
+>
+> @gregisenberg challenged me to hit 75k followers there this year...time to get to work!
+
+- **Tweet:** https://x.com/boringmarketer/status/2011465038263902408
+- **What:** Content creation system that scrapes top-performing LinkedIn posts, extracts patterns and formats, then uses AI with direct response copywriting skills to generate content. Already seeing strong results with 100+ new followers from a single post.
+
+---
+
+## @PromptLLM - First hour of the day as self-hypnosis
+> life is so much easier when you realise the first hour of the day is self hypnosis
+
+- **Tweet:** https://x.com/PromptLLM/status/2011552874992734548
+- **What:** Brief observation about treating the first hour of the day as a form of self-hypnosis or mental programming, suggesting intentional morning routines can shape the entire day.
+
+---
+
+## @PromptLLM - Brain wiring through first dopamine activity
+> @shipitniko Your brain is wired to the first dopamine seeking activity you do that day
+
+> *Replying to @shipitniko:* @PromptLLM Once I stopped waking up and going straight to my phone, that first hour actually started to feel like I was programming my brain. Crazy how different the whole day feels when you treat it like that.
+
+- **Tweet:** https://x.com/PromptLLM/status/2011563595784704270
+- **What:** Explanation of why the first morning activity matters: the brain becomes wired to the first dopamine-seeking behavior of the day, emphasizing the importance of avoiding phone use immediately upon waking.
+
+---
+
+## @alex_prompter - AI prompts for psychological self-examination
+> i reverse-engineered dan koe's viral life reset post into 10 AI prompts.
+>
+> not surface-level motivation. psychological excavation.
+>
+> each one walks you through 5-8 phases of self-examination most people avoid their entire lives.
+>
+> warning: these will make you uncomfortable.
+>
+> that's the point 👇
+
+> *Quoting @thedankoe:* https://t.co/7l7Jef99QZ
+
+- **Tweet:** https://x.com/alex_prompter/status/2011566578152661139
+- **What:** Collection of 10 AI prompts designed for deep psychological self-examination, reverse-engineered from Dan Koe's viral post. Each prompt walks through 5-8 phases of introspection that most people avoid, intentionally designed to be uncomfortable.
+
+---
+
+## @Dries - Making websites AI-readable with Markdown auto-discovery
+> This morning I made a small change to my site: I made every page available as Markdown for AI agents and crawlers. I expected maybe a trickle. Within an hour, I was seeing hundreds of requests from ClaudeBot, GPTBot, and OpenAI's SearchBot. 😲 https://t.co/UD0h22AZEC
+
+- **Tweet:** https://x.com/Dries/status/2011573880360747412
+- **Link:** https://dri.es/the-third-audience
+- **Filed:** [./knowledge/articles/the-third-audience.md](./knowledge/articles/the-third-audience.md)
+- **What:** Experiment in making web content more accessible to AI agents by serving Markdown versions alongside HTML. Within an hour of implementing "Markdown auto-discovery" (similar to RSS auto-discovery), saw hundreds of requests from AI crawlers, revealing AI as the "third audience" for web content.
+
+---
+
+## @ShiningScience - Sleep deprivation shrinks brain and increases dementia risk
+> Consistently sleeping less than 6 hours a night can shrink your brain and increase dementia risk by 30%.
+>
+> Recent neuroimaging studies reveal a startling link between chronic sleep deprivation and physical brain deterioration. Individuals consistently logging less than six hours of rest per night face a 30% higher risk of dementia and lose an additional 2% of brain volume annually compared to healthy sleepers.
+>
+>  This shrinkage primarily impacts the hippocampus and frontal cortex—regions essential for memory and problem-solving. Beyond structural loss, short sleep disrupts the brain's glymphatic system, a critical waste-clearance mechanism that flushes out beta-amyloid proteins associated with Alzheimer's disease.
+>
+> Beyond the long-term risks, insufficient sleep creates immediate cognitive hurdles including "brain fog," reduced attention spans, and impaired decision-making. While occasional late nights are inevitable, experts warn that habitual restriction prevents the brain from performing vital maintenance. To protect cognitive longevity and maintain peak mental performance, health professionals recommend prioritizing seven to eight hours of quality sleep. This restorative window ensures the brain remains resilient against age-related decline and functions at its highest capacity.
+>
+> source: Sabia, S., Fayosse, A., Dumurgier, J., van Hees, V. T., Paquet, C., Sommerlad, A., Kivimäki, M., Dugravot, A., & Singh-Manoux, A. Association of sleep duration in middle and old age with incidence of dementia. Nature Communications.
+
+- **Tweet:** https://x.com/ShiningScience/status/2011579078852427850
+- **What:** Research summary showing chronic sleep deprivation (less than 6 hours nightly) causes 30% higher dementia risk and 2% additional annual brain volume loss. Sleep is critical for the glymphatic system to clear beta-amyloid proteins linked to Alzheimer's.
+
+---
+
+## @kieranklaassen - Browser Automation CLI for AI Agents
+
+> yay can I finally ditch the 12k token from the playwright mcp? https://t.co/THnjAPg46z
+>
+> although they dynamically load now too. Testing this out!
+
+- **Tweet:** https://x.com/kieranklaassen/status/2011587318847877168
+- **Link:** https://github.com/vercel-labs/agent-browser
+- **Filed:** [[knowledge/tools/vercel-labs-agent-browser]]
+- **What:** Kieran is testing agent-browser, a headless browser automation CLI built for AI agents, as a potential replacement for the Playwright MCP's large token footprint.
+
+---
+
+## @ctatedev - AI-Generated UI with Deterministic Output
+
+> Introducing json-render
+>
+> AI-generated UI. Deterministic output.
+>
+> 1. Define your component catalog
+> 2. AI steams JSON
+> 3. Render interactive UI
+>
+> Let users prompt dashboards, widgets and apps - safely constrained to components and actions you define https://t.co/WFSQ92w7vW
+
+- **Tweet:** https://x.com/ctatedev/status/2011589295862395238
+- **What:** Introduction of json-render, a system for creating AI-generated UIs where AI outputs JSON within a constrained component catalog you define, enabling safe and predictable generative interfaces.
+
+---
+
+## @rauchg - Fully Generative Interfaces via JSON
+
+> Glimpse of a world of fully generative interfaces.
+>
+> AI → JSON → UI:
+> https://t.co/BKcvtDky5K
+> https://t.co/QH6ctR1ldA
+
+- **Tweet:** https://x.com/rauchg/status/2011605996561649720
+- **Link:** https://github.com/vercel-labs/json-render
+- **Filed:** [[knowledge/tools/vercel-labs-json-render]]
+- **What:** Guillermo Rauch sharing json-render, a framework that enables fully generative interfaces using the AI → JSON → UI pattern with guardrails and predictable output.
+
+---
+
+## @kieranklaassen - Replacing Playwright with Agent Browser
+
+> Update: The agent browser is very good. So good that I replaced it immediately in my compound engineering plugin. Here you can see the skill if you want to use it or use it in the plugin itself.
+> https://t.co/USIENTUVYL
+
+> *Quoting @kieranklaassen:* yay can I finally ditch the 12k token from the playwright mcp? https://t.co/THnjAPg46z
+>
+> although they dynamically load now too. Testing this out!
+
+- **Tweet:** https://x.com/kieranklaassen/status/2011643006840160744
+- **Link:** https://github.com/kieranklaassen/compound-engineering-plugin/tree/main/plugins/compound-engineering/skills/agent-browser
+- **Filed:** [[knowledge/tools/kieranklaassen-compound-engineering-plugin]]
+- **What:** Kieran reports success with agent-browser and has immediately integrated it into his compound engineering plugin, sharing the implementation for others to use.
+
+---
+
+## @Suzierizzo1 - ICE Hiring Process Investigation
+
+> Left Journalist Laura Jedeed was hired by ICE after a short six minute interview and wait till you hear what the hiring process is like! No wonder these agents have no clue WTF they're doing and so aggressive because they're hiring any warm bodies they can get! 👇👇 https://t.co/PQ1Kxpe9ex
+
+- **Tweet:** https://x.com/Suzierizzo1/status/2011681294648783183
+- **What:** Journalist shares findings about ICE's minimal hiring standards, revealing a six-minute interview process that may explain agent performance and behavior issues.
+
+---
+
 ## @TheAhmadOsman - Modern LLM Architecture Comparison
 
 > Comparing & Contrasting Modern LLM Architectures
@@ -639,6 +3175,157 @@ It turns unstructured documents into structured data, with clear source referenc
 ---
 
 # Tuesday, January 13, 2026
+## @carlvellotti - Free Claude Code course taught directly in Claude Code
+> @aiedge_ you missed this one! it's a course taught IN Claude Code so everything is directly applicable https://t.co/soMpVyp96s
+>
+> 100% free, not even email required
+
+> *Replying to @aiedge_:* Claude Code Starter Pack: Tools, Tutorials & Resources
+>
+> Your Claude Code workflows are about to get 10x better.
+>
+> This article compiles the top Claude Code resources you need to deploy your best vibe-coded workflows yet.
+>
+> Over the past 2 weeks, I've read 50+ articles/threads/guides across X on using Claude Code.
+>
+> The truth is, most were sh*t (AI slop).
+>
+> However, the few that were actually good have completely changed how I build with Claude.
+>
+> In this article, I've curated the 1% that are actually worth your time.
+>
+> ---
+>
+> ## How To Use This Guide
+>
+> - If you haven't already, bookmark this article so you don't lose this curated list
+>
+> I've split this guide into 4 categories:
+>
+> 1. Getting Started
+>
+> 2. Builder Tools
+>
+> 3. Best Practices/Pro Tips
+>
+> 4. Resources/Connector Tools
+>
+> If you're a complete Claude Code noob, I recommend spending more time in Getting Started/Builder Guides vs. if you're more advanced, spend more time in Best Practices/Pro Tips/Resources.
+>
+> I also highly recommend using these resources as context files for Claude projects.
+>
+> I.e., create new Claude projects, paste these tools/resources into them, and start asking questions while treating Claude as a tutor.
+>
+> ---
+>
+> ## Getting Started
+>
+> 1. Getting Started with Claude Code in <15 Minutes - How to set up Claude Desktop App, Claude Web Browser, Editor Tools, Terminal/CLI, Chrome extension (+ more)
+>
+> [Embedded Tweet: https://x.com/i/status/2009642836715802910]
+>
+> 2.    Elite Claude Code Setup (from the creator)
+>
+> 3.    A Free Course to Claude Code Basics - A course for learning Claude Code (3+ hours needed)
+>
+> [Embedded Tweet: https://x.com/i/status/2010641700545528134]
+>
+> 4.    Claude Code Learning Path (simplified)
+>
+> ---
+>
+> ## Builder Tools
+>
+> Once you have the basics down, read/use these.
+>
+> 1. The Single Best Claude Code Prompt (steal this)
+>
+> 2.   Collection of the Best Claude Code Prompts
+>
+> [Embedded Tweet: https://x.com/i/status/2009925399791501615]
+>
+> 3.   Claude Skills 101 - Use Claude Skills to help you build with Claude
+>
+> 4.    A complete guide to Claude . MD files - what they are, what they do, and how to create them
+>
+> [Embedded Tweet: https://x.com/i/status/2010715163859542086]
+>
+> ---
+>
+> ## Best Practices/Pro Tips
+>
+> 1. Prompting Best Practices - A summary of the best prompting practices (from Anthropic's latest docs)
+>
+> [Embedded Tweet: https://x.com/i/status/2007585393584353688]
+>
+> 2.    Claude Code 101 - Best practices for Claude Code
+>
+> [Embedded Tweet: https://x.com/i/status/2010076957938188661]
+>
+> 3.    Claude Code 102 - A more in-depth guide to Claude Code best practices
+>
+> [Embedded Tweet: https://x.com/i/status/2010810802023141688]
+>
+> 4.    Claude Code: Best practices for agentic coding - Claude . MD tips, Claude commands, tools for Claude, common workflows, and more.
+>
+> [Embedded Tweet: https://x.com/i/status/1914333320877584397]
+>
+> 5.    Claude Code Best Practices (from the creator, Boris) - Running multiple Claude workflows, Opus 4.5 'Think' tips, and more
+>
+> [Embedded Tweet: https://x.com/i/status/2007179832300581177]
+>
+> ---
+>
+> ## Resources/Connector Tools
+>
+> 1. Agent Skills Marketplace - nearly 60,00 Claude Skills! *insanely useful*
+>
+> https:// skillsmp. com/
+>
+> 2.    MCP Tools - A complete site dedicated to MCP
+>
+> https: //modelcontextprotocol.io/docs/develop/connect-local-servers
+>
+> 3.    Prompt Library - Claude's prompt library
+>
+> https: //platform.claude. com/docs/en/resources/prompt-library/library
+>
+> 4.    Awesome Claude Skills - A curated list of Claude Skills to use now
+>
+> https: //github. com/BehiSecc/ awesome-claude-skills/
+>
+> 5.    Awesome Claude Code - A curated list of slash commands, .MD files, and more
+>
+> https:// github. com /hesreallyhim/ awesome-claude-code
+>
+> ---
+>
+> ## Outro
+>
+> I hope you've found this article helpful.
+>
+> If you did, be sure to follow me @aiedge_  - I have lots of cool content on the way this year.
+>
+> To help support my X page, please Like/Repost this article 💙
+
+- **Tweet:** https://x.com/carlvellotti/status/2011162557697208594
+- **Link:** https://ccforeveryone.com/
+- **What:** Free Claude Code course taught directly inside Claude Code itself, requiring no email signup. Interactive learning approach where everything is hands-on and immediately applicable, designed for beginners with no coding experience required.
+
+---
+
+## @hashwarlock - Voice control for computers and AI agents
+> I tell my computer what to do now. Ive been wasting time typing 😭
+>
+> Hacked a starter version to understand it. Hammerspoon was a nice find.
+>
+> Gonna look at other solutions to build better interactive agents that talk to redpill private models. Much more cookin though 😋 https://t.co/lxEiQuVh0z
+
+- **Tweet:** https://x.com/hashwarlock/status/2011301629707055544
+- **What:** Developer built a voice control system for computer interaction using Hammerspoon. Planning to expand this into interactive agents that can communicate with private AI models, moving away from manual typing.
+
+---
+
 ---
 
 # Monday, January 12, 2026
@@ -3232,6 +5919,53 @@ https://t.co/bqVjUG4LOn
 - **What:** 15-point comprehensive playbook covering practical approaches to implementing AI across organizations, from "How I AI" podcast.
 
 ---
+
+# Friday, December 19, 2025
+## @NewVaneckIntern - Free alternatives to reduce app launch costs
+> @meshtimes_ Switch vercel for Google's firebase. Firebase is faster and free.
+> Ditch V0 for google stitch for your wireframes.
+> Use free versions of Claude, Copilot, Cline, and Gemini CLI for coding.
+> Domains are usually $11, but you can get alt tld for $1 or just use free firebase domain.
+
+> *Replying to @meshtimes_:* This is how much it actually cost me to launch an app I vibe-coded
+>
+> Receipts in the video 🤭
+>
+> Vercel: $142.54
+> V0: $51.48
+> Supabase: $25
+> Domain: $11
+>
+> Total: $230
+>
+> Still learning as I go <3 how would you make this cheaper? https://t.co/Lh30Cpyhwf
+
+- **Tweet:** https://x.com/NewVaneckIntern/status/2002154211832967323
+- **What:** Response suggesting free alternatives to reduce app launch costs to near-zero: Firebase instead of Vercel, Google Stitch for wireframes, free AI coding tools (Claude, Copilot, Cline, Gemini CLI), and cheaper domain options.
+
+---
+
+
+# Thursday, December 18, 2025
+## @meshtimes_ - Cost breakdown of launching a vibe-coded app
+> This is how much it actually cost me to launch an app I vibe-coded
+>
+> Receipts in the video 🤭
+>
+> Vercel: $142.54
+> V0: $51.48
+> Supabase: $25
+> Domain: $11
+>
+> Total: $230
+>
+> Still learning as I go <3 how would you make this cheaper? https://t.co/Lh30Cpyhwf
+
+- **Tweet:** https://x.com/meshtimes_/status/2001853991882494423
+- **What:** Developer shares the actual costs of launching an app built with AI-assisted coding tools. Breakdown includes hosting (Vercel), AI code generation (V0), database (Supabase), and domain registration for a total of $230, asking community for cost optimization suggestions.
+
+---
+
 
 # Tuesday, November 25, 2025
 ---
