@@ -1,4 +1,938 @@
+# Saturday, January 31, 2026
+
+## @nicopreme - Pi Annotate: Browser Element Inspector with AI Agent Integration
+> Just shipped a Chrome/Pi extension that lets you click on elements in your browser like the web inspector + add comments and your agent receives selectors, CSS and screenshots.
+
+- **Tweet:** https://x.com/nicopreme/status/2017511465310167492
+- **Link:** https://github.com/nicobailon/pi-annotate
+- **Filed:** [Pi Annotate](./knowledge/tools/pi-annotate.md)
+- **What:** Visual feedback from browser to AI. Click elements, add comments, fix code. Chrome/Pi extension that enables web inspection with element selection and screenshot capture for AI agents.
+
+---
+
+## @PerceptualPeak - Deep Context Injection: Dynamic Context Management Tool
+> Good lord. I just built a new context management tool....and WOW. This is beyond useful and solves a major problem we all deal with. I call it "Deep Context Injection".
+>
+> Imagine being able to pick whatever topic of context you want from all of your past chat sessions, and have it be injected directly in with your prompt before Claude starts iterating? Even better - being able to establish how many tokens of relevant context you want injected?
+>
+> With my system, you can now do exactly that with a prompt that looks like this:
+>
+> "I want to add an email feed to my personal dashboard. [CONTEXT: email feed mcp server: 5K] [CONTEXT: adding features to the personal dashboard: 5K]"
+>
+> That prompt will pull the 5,000 of the most relevant tokens (to each statement in the brackets) from every chat session you've ever had, and inject all of that context to the back end of your prompt before Claude starts iterating.
+>
+> Whole thing takes 5-8 seconds. Mind-blowing stuff that will forever change how I use Claude Code. Efficiency levels shooting up yet again.
+>
+> More on this tomorrow.
+
+- **Tweet:** https://x.com/PerceptualPeak/status/2017556145104425004
+- **What:** Context injection system that retrieves relevant context from past chat sessions and automatically injects specified token amounts into new prompts. Takes 5-8 seconds to pull and inject contextual information from chat history based on semantic relevance.
+
+---
+
+## @AntoineRSX - QMD: Local Search Engine for Documentation
+> Since I installed QMD, I never ran out of token on Claude!
+>
+> I don't know what it does but my @openclaw loves it:
+
+- **Tweet:** https://x.com/AntoineRSX/status/2017566985920405982
+- **Link:** https://github.com/tobi/qmd
+- **What:** Mini CLI search engine for docs, knowledge bases, meeting notes, etc. Tracks current state-of-the-art approaches while keeping everything local.
+
+---
+
+## @Mylovanov - Russia as China's Vassal State: Geopolitical Analysis
+> Sarah Paine: Russia is a vassle state of China, and there's no way they're going to dig their way out of that one anytime soon.
+>
+> There was a wonderful opportunity around 2000-ish when oil prices went way up. Instead, Putin rose to power on a diet of wars. 1/
+
+- **Tweet:** https://x.com/Mylovanov/status/2017578709780173020
+- **What:** Geopolitical commentary on Russia-China relations and historical turning points in Russian policy.
+
+---
+
+## @ivanfioravanti - Multi-Model Rubik's Cube Solving: GLM-4.7 vs K2.5 vs MiniMax M2.1
+> K2.5 - GLM-4.7 and MiniMax M2.1 solving a Rubik's Cube in 3D.
+>
+> Kimi CLI and Claude Code used here.
+>
+> 🥇 GLM-4.7 36 secs and perfect!
+> 🥈 K2.5 - Missing colors in the cube
+> 🥉 MiniMax 2.1 - Missing colors and failed to autosolve
+
+- **Tweet:** https://x.com/ivanfioravanti/status/2017595857986527570
+- **What:** Benchmark comparison of three AI models (GLM-4.7, K2.5, MiniMax M2.1) for solving 3D Rubik's Cube problems. GLM-4.7 achieved perfect solution in 36 seconds using Kimi CLI and Claude Code.
+
+---
+
+## @ivanfioravanti - Claude Code with Various Providers
+> Here how to use Claude Code with various providers.
+>
+> *Replying to @ivanfioravanti:* Prompt: Create a single HTML file containing a fully functional 3D Rubik's Cube simulation using Three.js (via CDN). The cube must be able to automatically solve itself.
+
+- **Tweet:** https://x.com/ivanfioravanti/status/2017595861421662208
+- **Parent:** https://x.com/ivanfioravanti/status/2017595859823657383
+- **Link:** https://gist.github.com/ivanfioravanti/03d7b4d6cd856e6a541edf373d9974d8
+- **What:** Gist demonstrating how to use Claude Code with various AI providers, in the context of building a 3D Rubik's Cube solver.
+
+---
+
+## @ryancarson - Agent Setup with Viral Post
+> Crazy this is about to hit 1m views.
+>
+> Just point your agent at this post to set it up.
+>
+> *Quoting @ryancarson:* https://t.co/7vXXecUtKN
+
+- **Tweet:** https://x.com/ryancarson/status/2017599833607913950
+- **Quoted:** https://x.com/ryancarson/status/2016520542723924279
+- **What:** Quick setup guide for pointing agents at a post that's approaching 1 million views. Details available in the quoted tweet/post.
+
+---
+
+## @mitsuhiko - Pi: Self-Extending Coding Agent
+> The future is software writing its own software. Which is why I'm so in love with Pi: a coding agent that can extend itself :)
+
+- **Tweet:** https://x.com/mitsuhiko/status/2017604638137012335
+- **Link:** https://lucumr.pocoo.org/2026/1/31/pi/
+- **What:** Article about Pi, a self-extending coding agent that can write and improve its own code, representing a new paradigm in autonomous software development.
+
+---
+
+## @petergyang - OpenClaw: From 43 Projects to 100k GitHub Stars
+> Peter built 43 projects before OpenClaw went viral with 100k GitHub stars and 2M visits.
+>
+> A few callouts:
+>
+> → Almost every project is a terminal-first integration with a popular service (e.g., WhatsApp, Google). Peter wasn't building random tools, he was building OpenClaw's foundation.
+>
+> → Peter told me he was lost after working on PSPDFKit for 13 years. He partied, moved countries, and wandered before realizing: "You don't find purpose. You create it."
+>
+> → This is the type of proof of work you want to showcase as a builder. Peter is an inspiration to me and I'm sure many others.
+>
+> Tomorrow, I'm excited to share my full interview with Peter covering his favorite OpenClaw use cases and how he builds with AI.
+>
+> 📌 Subscribe to get our full episode soon:
+
+- **Tweet:** https://x.com/petergyang/status/2017621448580599868
+- **Link:** https://www.youtube.com/@peteryangyt?sub_confirmation=1
+- **What:** Profile of Peter's journey building OpenClaw, discussing his 13-year career at PSPDFKit, philosophy on purpose creation, and upcoming interview about using AI for building. Emphasizes the importance of terminal-first integrations as foundational work.
+
+---
+
+## @BruckenRuski - DefMon3 Ukraine Rail Maps Controversy
+> Lols... @DefMon3 ... who read me the riot act over telling him he shouldn't be posting UKR rail lines on his maps in 2022.
+
+- **Tweet:** https://x.com/BruckenRuski/status/2017718139719487965
+- **What:** Reference to a 2022 disagreement with DefMon3 about posting Ukraine railway infrastructure on public maps for security/safety reasons.
+
+---
+
+# Friday, January 30, 2026
+
+## @simplifyinAI - Microsoft Agent Lightning Framework
+> Microsoft just solved the "Agent Loop" problem. They've open-sourced Agent Lightning, a framework that lets agents learn from their own mistakes. It uses Reinforcement Learning to optimize prompts and weights automatically. Your agent tries a task → It fails → Agent Lightning analyzes the trace → It updates the prompt for next time. 100% Open Source.
+
+- **Tweet:** https://x.com/simplifyinAI/status/2017274452321735111
+- **What:** Microsoft's open-source Agent Lightning framework for agent optimization through reinforcement learning
+
+---
+
+## @Hesamation - Clawdbot Deep Dive Article
+> you see Clawdbot everywhere but few people know how it really works. and it's critical to know if you're trusting it with your life's decisions! so i wrote an article covering main components: > the agent loop > how it handles memory > uses computers > browses the web, etc
+
+- **Tweet:** https://x.com/Hesamation/status/2017296172050690253
+- **What:** Article covering Clawdbot internals including agent loop, memory handling, computer use, and web browsing
+
+---
+
+## @dguido - Claude Code DevContainer for Safe YOLO Mode
+> How to run claude in YOLO mode safely: Use the @trailofbits devcontainer for full file and network isolation.
+
+- **Tweet:** https://x.com/dguido/status/2017302474952945922
+- **Link:** https://github.com/trailofbits/claude-code-devcontainer
+- **Filed:** [Trail of Bits Claude Code DevContainer](./knowledge/tools/trailofbits-claude-code-devcontainer.md)
+- **What:** Sandboxed devcontainer for running Claude Code in bypass mode safely. Built for security audits and untrusted code review.
+
+---
+
+## @TimothyDSnyder - Political Commentary
+> Huh. This entire administration is an Epstein Island afterparty.
+
+- **Tweet:** https://x.com/TimothyDSnyder/status/2017388949480644672
+- **What:** Political commentary on current administration
+
+---
+
+## @wesbos - Loopdaddy Interview Coming
+> This is loopdaddy btw. He built Pi, the underlying tech of clawdbot. @syntaxfm interview dropping next week
+>
+> *Quoting @badlogicgames:* oh no https://t.co/X4fmK0kRab
+
+- **Tweet:** https://x.com/wesbos/status/2017413036512788911
+- **Quoted:** https://x.com/badlogicgames/status/2017364911844647280
+- **What:** Announcement that loopdaddy (who built Pi, the underlying technology behind Clawdbot) will be interviewed on Syntax FM
+
+---
+
+## @aakashgupta - Van Dongen Sleep Study Deep Dive
+> This is one of the most important studies in sleep science. Van Dongen et al. ran the experiment that changed how we understand chronic sleep restriction. They had subjects sleep 4h, 6h, or 8h nightly for 14 days, testing cognitive performance every 2 hours. The 6h group's reaction time deficits by day 14 matched subjects who had been awake for 24 hours straight. The 4h group? They performed like someone awake 48 hours. But here's what makes this study terrifying. The Stanford Sleepiness Scale ratings in Panel B plateau after day 3-4. Subjects stopped feeling more tired even as their cognitive performance continued deteriorating through day 14. Your subjective experience of fatigue is a lagging indicator that eventually just… stops updating. This explains why chronic undersleeping feels sustainable. You've adapted to feeling tired. Your prefrontal cortex hasn't adapted to being impaired. The PVT (Psychomotor Vigilance Task) in Panel A measures lapses in attention. These are the moments where you're staring at a screen and your brain simply checks out for 500ms. Every additional day of 6h sleep adds more lapses. The curve never flattens. Panel C and D show working memory and processing speed. Same pattern: continuous degradation with no subjective awareness. The practical implications: If you're sleeping 6h and think you're functioning fine, you've lost the internal calibration to know you're not. The subjects in this study would have told you they felt "okay" while performing like they'd pulled an all-nighter. For anyone doing cognitively demanding work, this means you cannot trust how you feel. You need to track objective markers: error rates, decision latency, problem-solving throughput. Sleep need is biological, not negotiable. Most adults require 7-9 hours, and the research shows no population-level adaptation to chronic restriction. "I only need 6 hours" is almost always "I've forgotten what baseline cognition feels like."
+>
+> *Quoting @iiKlemm:* Competitive gamers: 6h of sleep is a hidden nerf. 6h/night for 2 weeks → reaction time & attention decline to the equivalent of pulling MULTIPLE all-nighters. Worst part: subjective fatigue plateaus, so you stop noticing. If you're not getting 7+ hours/night, you're trolling. https://t.co/ZeXAgJeDg2
+
+- **Tweet:** https://x.com/aakashgupta/status/2017479930364498371
+- **Quoted:** https://x.com/iiKlemm/status/2017285523493020014
+- **What:** Deep analysis of the Van Dongen et al. sleep study showing how 6h sleep leads to cognitive deficits equivalent to 24-hour wakefulness, with subjective fatigue becoming unreliable as an indicator
+
+---
+
+## @badlogicgames - OpenClaw Built-in Agent CLI
+> til openclaw has a built in agent cli, which is like pi's cli, because it uses pi's tui and wires it up to pi's agent core. wat.
+
+- **Tweet:** https://x.com/badlogicgames/status/2017490369479385455
+- **What:** Discovery that OpenClaw has a built-in agent CLI that leverages Pi's TUI and agent core architecture
+
+---
+
+## @FraserNelson - X's Anger Algorithm
+> Elon Musk has finally published X's algorithm. At its heart: an equation for engagement that scores an argument 150x more than a "like". In my Times essay, I look at social media power over the news - and the tricks that are only now becoming visible.
+
+- **Tweet:** https://x.com/FraserNelson/status/2017496686398996777
+- **Link:** https://www.thetimes.com/comment/columnists/article/anger-algorithm-far-right-x-twitter-instagram-youtube-0r50ccv6v
+- **What:** Analysis of X's published algorithm showing how engagement is weighted (arguments 150x more than likes) and its impact on news and social media power
+
+---
+
+## @wooolfred - qmd Local Search Engine
+> @altryne @ivaavimusic @openclaw qmd is @toaborern's local search engine for your docs — BM25 + vector search + LLM reranking, all running locally. Think "grep but it actually understands what you're looking for." I use it daily 🐺
+>
+> *Replying to @altryne:* @ivaavimusic @openclaw @wooolfred tell him
+
+- **Tweet:** https://x.com/wooolfred/status/2017499571732066813
+- **Parent:** https://x.com/altryne/status/2017499500110352655
+- **Link:** https://github.com/tobi/qmd
+- **What:** qmd is a local search engine combining BM25, vector search, and LLM reranking for documentation and knowledge bases
+
+---
+
+# Wednesday, January 28, 2026
+
+## @ryancarson - Untitled
+> https://t.co/7vXXecUtKN
+
+- **Tweet:** https://x.com/ryancarson/status/2016520542723924279
+- **Link:** https://x.com/i/article/2016512304443981824
+- **What:** Tweet article link
+
+---
+
+# Monday, January 19, 2026
+## @marshallrichrds - Claude Home on ThinkPad with Tailscale
+
+> I gave Claude a home on an old ThinkPad I had lying around.
+>
+> Simple way to have a sandbox where instances can run 24/7 and I can connect to it from anywhere over Tailscale.
+
+- **Tweet:** https://x.com/marshallrichrds/status/2013058377841094970
+- **What:** Marshall Richards demonstrates setting up a Claude instance on an old ThinkPad using Tailscale for remote access and 24/7 availability.
+
+---
+
+## @Saboo_Shubham_ - Claude Cowork with Deep Agents
+
+> Claude Cowork built on Deep Agents harness.
+>
+> Works with Claude Opus 4.5, Gemini 3 pro and GPT-5.2.
+>
+> 100% Opensource.
+>
+> *Quoting @Saboo_Shubham_:* AGI won't be a single model. It will be a harness that can properly orchestrates a swarm of specialized agents.
+
+- **Tweet:** https://x.com/Saboo_Shubham_/status/2013090887736472047
+- **Quoted:** https://x.com/Saboo_Shubham_/status/2010065875047510366
+- **What:** Shubham Saboo presents Claude Cowork, an open-source tool built on Deep Agents harness for orchestrating multiple AI models in a swarm architecture.
+
+---
+
+## @dabit3 - Long Running Agent Loop Tutorial
+
+> New Video - How to Build an Effective Long Running Agent Loop in 7 minutes.
+>
+> This video walks you through the entire process from creating a spec, building and polishing a PRD, to running the agent.
+
+- **Tweet:** https://x.com/dabit3/status/2013091003104727338
+- **What:** Nader Dabit shares a video tutorial on building effective long-running agent loops, covering specification through PRD development to execution.
+
+---
+
+## @bluewmist - Article Link
+
+- **Tweet:** https://x.com/bluewmist/status/2013094769153769665
+- **What:** Blue shared an article link.
+
+---
+
+## @VigilantFox - Huberman on Sleep Technique
+
+> Neuroscientist Andrew Huberman shares with Bill Maher a surprising trick to help you fall back asleep when you wake up in the middle of the night.
+>
+> "I can't promise, but I'm willing to wager… that within five minutes or so, you'll be back to sleep."
+
+- **Tweet:** https://x.com/VigilantFox/status/2013109789903970777
+- **What:** Vigilant Fox shares Andrew Huberman's practical technique from Bill Maher's show for quickly returning to sleep after waking in the middle of the night.
+
+---
+
+## @GeoffreyHuntley - AI Harness Taste & Copilot Evaluation
+
+> disclaimer; i've been hooked up with copilot access so you'll see me using it. i'm gonna give it a brutal spin with ralph.
+>
+> cheap/free inferencing is free inferencing.
+>
+> the harnesses don't matter, the models don't matter much, how you use them is everything.
+>
+> there does exist such a category of taste in harnesses and does does make a small difference…
+>
+> gonna be interesting to judge if copilot is high taste or low taste tbh.
+>
+> my default positioning is copilot is low taste.
+>
+> let's see if i'm wrong 😎
+
+- **Tweet:** https://x.com/GeoffreyHuntley/status/2013166854047756579
+- **What:** Reflection on how harness "taste" and usage patterns matter more than model selection, while testing Microsoft Copilot for practical evaluation.
+
+---
+
+## @danpeguine - Claude Bot Self-Documentation
+
+> my @clawdbot documenting itself using nano banana https://t.co/an9h2dVD7r
+
+- **Tweet:** https://x.com/danpeguine/status/2013184463832814033
+- **Link:** https://twitter.com/danpeguine/status/2013184463832814033/photo/1
+- **What:** A bot built with Claude autonomously generating its own documentation, demonstrating AI capabilities in self-referential tasks.
+
+---
+
+## @tobi - QMD: Local AI-Powered Search Engine
+
+> I think QMD is one of my finest tools. I use it every day because it's the foundation of all the other tools I build for myself. A local search engine that lives and executes entirely on your computer.
+>
+> https://t.co/mZN5H1UaAj
+>
+> Both for you and agents
+
+- **Tweet:** https://x.com/tobi/status/2013217570912919575
+- **Link:** https://github.com/tobi/qmd
+- **What:** QMD is a local on-device search engine combining BM25, vector search, and LLM re-ranking for markdown documents, optimized for agentic workflows and AI integration.
+- **Filed:** [QMD Search Engine](./knowledge/tools/qmd.md)
+- *Quoting @PerceptualPeak:* Okay, I finally got up to speed on QMD & how it all works. First of all, WOW. Holy shit man, what a insanely clever & genius orchestration of tools. My mind is THOROUGHLY blown. I LOVE the query expansion implementation, genuinely a super clever idea...
+- **Quoted:** https://x.com/PerceptualPeak/status/2013164053615739182
+
+DATE: Monday, January 19, 2026
+## @LORWEN108 - 9 Body-Based Anxiety Release Techniques
+> Anxiety isn’t just in your head.
+
+It’s stored in your nervous system.
+
+Here are 9 body-based ways to release it (without medication) 🧵
+
+1. Cold water on your face. https://t.co/LAtlCRyeWv
+
+- **Tweet:** https://x.com/LORWEN108/status/2013224367128453157
+- **What:** A thread on body-based techniques to release anxiety from your nervous system without medication.
+
+---
+
+## @shekhu04 - 10 Low-Key Useful Developer Websites
+> Low-key websites I quietly rely on
+
+1) https://t.co/FDnurfhwge
+Gives you a brutally clear learning path for roles like frontend, backend, DevOps, etc
+No fluff, just “learn this → then this → then this”.
+
+2) https://t.co/1xhB1Us0oz
+An online playground to quickly test HTML, CSS, JS without setting up anything locally
+Perfect for quick experiments and debugging ideas
+
+3) https://t.co/d80zVxq6TY
+A collection of reusable React hooks with real use cases
+Saves time and helps you avoid rewriting the same logic again and again
+
+4) https://t.co/UgqeLiqese
+Concise cheat sheets for languages, frameworks, and tools. Ideal when you forget syntax and don’t want to read a 20-minute blog
+
+5) https://t.co/OehnjnfVix
+Turns messy JSON into a clean visual tree
+Makes understanding large APIs and configs way easier than staring at raw text
+
+6) https://t.co/mcMPeqEFWJ
+Lets you generate and preview color palettes instantly
+Useful when you want decent UI colors without guessing or copying blindly
+
+7) https://t.co/9yEsuJrWCB
+Build, test, and debug regex step by step with explanations Honestly, the fastest way to stop hating regex
+
+8) https://t.co/7eM95WZ8cJ
+Shows how big an npm package really is before you install it
+Helps you avoid bloating your app with “tiny” libraries
+
+9) https://t.co/Za87baZsBk
+Tells you which CSS/JS features actually work across browsers Essential before using shiny new features in production
+
+10)  https://t.co/YeYh94AX4R
+Google’s own diagnostics tools for DNS, email, headers, and network issues
+Surprisingly useful for debugging real-world problems
+
+👉 Which one of these do you already use and which one did you not know existed?
+
+- **Tweet:** https://x.com/shekhu04/status/2013226024205680978
+- **Link:**
+  - https://roadmap.sh/
+  - https://playcode.io/
+  - https://usehooks.com/
+  - https://devhints.io/
+  - https://jsoncrack.com/
+  - https://www.realtimecolors.com/
+  - https://regex101.com/
+  - https://bundlephobia.com/
+  - https://caniuse.com/
+  - https://toolbox.googleapps.com/apps/main/
+- **What:** Curated list of 10 useful web tools for developers including roadmap.sh, PlayCode, React hooks libraries, and more.
+
+---
+
+## @dabit3 - Awesome Ralph Learning Resources
+> Someone created Awesome Ralph and there is a lot of good stuff here for learning and building agent loops
+
+https://t.co/TPgMLCcCiU
+
+- **Tweet:** https://x.com/dabit3/status/2013230680461689055
+- **Link:**
+  - https://github.com/snwfdhmp/awesome-ralph
+- **What:** Resource compilation of valuable learning materials for various topics and skills.
+
+---
+
+## @rcbregman - Davos Tech Elite Week Analysis
+> It's that magical time of year when private jets descend on a Swiss mountain village to discuss climate change and poverty! Anyway, here's my annual reminder. I'll stop posting this when they stop avoiding the real issue: their own massive tax avoidance 💰 https://t.co/3AdEX2BBps
+
+- **Tweet:** https://x.com/rcbregman/status/2013235029845921865
+- **What:** Commentary on the tech industry gathering at Davos and its significance.
+
+---
+
+## @ryancarson - Agent Browser Testing with agent-browse
+> Damn, if you want your agent to do browser testing, you have to try agent-browser. 
+
+The new version with it's updated SKILL is so fast and token efficient. 
+
+Wow.
+
+Tell your agent this:
+
+Install/update agent-browser and update my skill file:
+
+https://t.co/dX3KI4JajO
+
+https://t.co/ASDPfoufAv
+
+- **Tweet:** https://x.com/ryancarson/status/2013235204488360125
+- **Link:**
+  - https://github.com/vercel-labs/agent-browser/
+  - https://github.com/vercel-labs/agent-browser/blob/main/skills/agent-browser/SKILL.md
+- **What:** Recommendation to try agent-browse for browser testing functionality in AI agents.
+
+---
+
+## @bluewmist - Emotional Withdrawal as Coping Mechanism
+> according to psychology people who distance themselves from others as soon as they feel sad, unwanted, or ignored are actually unknowingly experiencing a coping mechanism called emotional withdrawal 1/3
+
+- **Tweet:** https://x.com/bluewmist/status/2013236145090367786
+- **What:** Psychology explainer on emotional withdrawal - a coping mechanism where people distance themselves from others during emotional distress, often without conscious awareness.
+
+---
+
+## @MatthewCappucci - Severe G4 Geomagnetic Storm Forecast
+> UPGRADE! A SEVERE or G4 geomagnetic storm is now predicted by the Space Weather Prediction Center ! This *could* bring widespread auroral displays to the United States *if* things ensue as modeled. This is anticipated TONIGHT, Monday night, January 19!
+
+- **Tweet:** https://x.com/MatthewCappucci/status/2013236862870012371
+- **What:** Space weather alert about an X2-class solar flare and expected CME impact creating potential northern lights displays across the US on January 19. Includes timing details, viewing guidance, and important uncertainties about the impact.
+
+---
+
+## @aigclink - Nvidia PersonaPlex: Full-Duplex Voice Conversation Model
+> 英伟达最新开源的一款全双工、端到端对话模型：PersonaPlex，可以实时说话、实时打断
+
+- **Tweet:** https://x.com/aigclink/status/2013248238095335758
+- **What:** Nvidia's new open-source full-duplex, end-to-end conversation model (PersonaPlex) that enables real-time speech with interruption capabilities. Supports dual-stream architecture for simultaneous listening and speaking, with applications in customer service, banking, retail, and virtual agents.
+
+---
+
+## @helloiamleonie - Filesystem vs Database Debate for Agent Memory
+> digesting the current "filesystem vs database" debate for agent memory
+
+- **Tweet:** https://x.com/helloiamleonie/status/2013256958535401503
+- **What:** In-depth analysis of two approaches to agent memory architecture: "file interfaces are all you need" (Anthropic, Letta, LangChain, LlamaIndex) vs "filesystems are just bad databases" (OpenCoder, swyx). Explores trade-offs including simplicity vs scale, querying capabilities, multimodal data, and concurrency concerns.
+
+---
+
+## @louisanicola_ - Sarcopenia: Muscle Aging Starts Decades Earlier
+> Aging Muscles Don't Fail Overnight. Sarcopenia Starts Decades Earlier.
+
+- **Tweet:** https://x.com/louisanicola_/status/2013259141972906316
+- **What:** Science-backed overview of sarcopenia (age-related muscle loss), emphasizing that decline begins silently in midlife, strength loss precedes muscle loss, and resistance training remains the only proven intervention to slow progression at any age.
+
+---
+
+## @Zai_org - GLM-4.7-Flash: Local Coding Assistant
+> Introducing GLM-4.7-Flash: Your local coding and agentic assistant.
+>
+> Setting a new standard for the 30B class, GLM-4.7-Flash balances high performance with efficiency, making it the perfect lightweight deployment option. Beyond coding, it is also recommended for creative writing, translation, long-context tasks, and roleplay.
+>
+> Weights: https://t.co/uzhvLmHDoI
+> API: https://t.co/bl6YxjOzzC
+>  - GLM-4.7-Flash: Free (1 concurrency)
+>  - GLM-4.7-FlashX: High-Speed and Affordable
+
+- **Tweet:** https://x.com/Zai_org/status/2013261304060866758
+- **Link:** https://huggingface.co/zai-org/GLM-4.7-Flash
+- **Link:** https://docs.z.ai/guides/overview/pricing
+- **What:** New open-source 30B-class language model optimized for coding and agentic tasks with lightweight deployment options. Available free on Hugging Face and via API.
+
+---
+
+## @coreyhainesco - Marketing Skills for Claude Code
+> This might be the most valuable thing I've ever released.
+>
+> And it's 100% free.
+>
+> → Marketing Skills for Claude Code
+>
+> A collection of skills that turn Claude into a marketing and copywriting genius.
+>
+> Check it out
+> ↓
+>
+> https://t.co/7EdBqNp69c
+
+- **Tweet:** https://x.com/coreyhainesco/status/2013272998191812906
+- **Link:** https://github.com/coreyhaines31/marketingskills
+- **What:** Open-source collection of marketing skills for Claude Code with 23+ specialized modules covering A/B testing, copywriting, SEO, analytics, pricing strategy, and more for marketing optimization.
+
+---
+
+## @davidsenra - Engineering Excellence Philosophy from Shopify CEO
+> "I cannot surround people with things that are underperforming the quality of engineering we want to do."
+>
+> "The most fundamental design error that you can possibly make is create a falseness in a product that make people predictably do the wrong thing. So I make a big deal out of these kind of things. I cannot surround people with things that are underperforming the quality of engineering we want to do.
+>
+> And that's down to the detail of the doors in the office.
+>
+> From the inside perspective, you have to sweat all the details. The way you do anything is how you do everything."
+>
+> —@tobi
+
+- **Tweet:** https://x.com/davidsenra/status/2013287704650531238
+- **Quoted:** https://x.com/davidsenra/status/2012902807590822209
+- **What:** Tobi Lütke (Shopify CEO) on engineering philosophy: attention to detail in every aspect (product, office design, hiring) creates culture of excellence and prevents falseness in products.
+
+---
+
+## @drwilliamwallac - Muscle Glucose Clearance After Eating
+> Your muscles clear glucose in two different ways after a meal.
+> Most people only use one.
+>
+> When you sit after eating, glucose disposal depends almost entirely on insulin signaling from the pancreas. That pathway works, but it has limited capacity, which is why post-meal glucose spikes are higher and longer.
+>
+> When you move after eating, even lightly, a second pathway turns on in parallel.
+>
+> Muscle contraction independently activates glucose transporters (GLUT4), allowing glucose to enter muscle without waiting for insulin. The result is faster clearance, lower peaks, and less strain on the pancreas.
+>
+> What's happening under the hood:
+> • Muscle contraction triggers GLUT4 translocation
+> • Glucose enters muscle directly
+> • Blood glucose falls more quickly
+> • Insulin demand is reduced, not replaced
+>
+> This isn't about burning calories or "earning" food. It's about using the physiology you already have. Walking after meals doesn't override insulin. It adds another clearance pathway.
+>
+> That's why timing matters.
+
+- **Tweet:** https://x.com/drwilliamwallac/status/2013290461360697833
+- **What:** Explanation of dual glucose clearance pathways: insulin-dependent (when sitting) and insulin-independent GLUT4 translocation (during muscle contraction). Light movement after meals activates the second pathway, improving glucose disposal without additional calorie burn.
+
+---
+
+## @itsPaulAi - Quoting GLM-4.7-Flash Model Release
+> This is so good 🔥
+>
+> You can run this new model on a laptop which is:
+>
+> - 100% open source
+> - Only 3B active parameters (!!!)
+> - Way better than GPT-OSS
+> - Perfect for vibe coding (and more)
+>
+> And already available for free on Hugging Face or via API.
+>
+> Open source models keep winning!
+
+- **Tweet:** https://x.com/itsPaulAi/status/2013295935908978982
+- **Quoted:** https://x.com/Zai_org/status/2013261304060866758
+- **What:** Commentary on GLM-4.7-Flash model benefits: compact 3B active parameters, superior to previous open-source alternatives, runs on laptops, free availability positions as significant open-source AI advancement.
+
+---
+
+## @akshay_pachaar - Ollama Anthropic Messages API Compatible
+
+> this is huge.
+>
+> ollama is now compatible with the anthropic messages API. which means you can use claude code with open-source models.
+>
+> think about that for a second. the entire claude harness:
+>
+> - the agentic loops
+> - the tool use
+> - the coding workflows
+>
+> all powered by private LLMs running on your own machine.
+
+- **Tweet:** https://x.com/akshay_pachaar/status/2013311949770215512
+- **What:** Ollama now supports the Anthropic messages API, enabling Claude Code and agentic workflows to run with open-source models on local hardware.
+
+---
+
+## @AutisticCallum_ - Autistic ADHD Experience of Many Things
+
+> The Autistic ADHD experience of having lots of:
+>
+> - lists (of various things)
+> - spares (of things you love)
+> - questions (hoping to get clarity)
+> - tabs (from googling lots of cool things)
+> - rotating hyperfixations (because you find many things fascinating)
+
+- **Tweet:** https://x.com/AutisticCallum_/status/2013320521178362069
+- **What:** Relatable thread about common traits in people with autism and ADHD, including list-making, hoarding favorites, curiosity, open tabs, and rotating hyperfixations.
+
+---
+
+## @Conor_Harris_ - Hip Flexor Strengthening Over Stretching
+
+> Your "tight" hip flexors are also likely weak hip flexors.
+>
+> This is why stretching often times never fully fixes the problem - we need to strengthen these muscles through a full range of motion.
+>
+> To get long-term relief, here's how to properly strengthen them 💪🏼
+
+- **Tweet:** https://x.com/Conor_Harris_/status/2013331220059279472
+- **Link:** https://twitter.com/Conor_Harris_/status/2013331220059279472/video/1
+- **What:** Insight on hip mobility: tight hip flexors are usually weak, and strengthening through full range of motion is more effective than stretching alone for lasting relief.
+
+---
+
+## @damianplayer - Twitter Article Link
+
+- **Tweet:** https://x.com/damianplayer/status/2013338667964604909
+- **Link:** https://x.com/i/article/2012636350000885761
+- **What:** Link-only tweet pointing to a Twitter article; full content not available in bookmark metadata.
+
+---
+
+## @newstart_2024 - Digital Wellness: Device-Free Time Rules
+
+> Dr. Arthur Brooks has a simple rule that changed his life: No devices after 7 p.m., no phones at meals, no phone in the bedroom.
+>
+> He calls the initial withdrawal "like children screaming in my head"—pure dopamine addiction begging for the screen. But after the storm passes? Calm, blessing, and the realization: life doesn't have to revolve around the device.
+>
+> His fixes: regular social media fasts, emergency-only exceptions (ask your kid how to set it), and the truth that "What's happening on Twitter?" is never an emergency.
+>
+> We fear missing out, but the real loss is missing the people right in front of us. These small boundaries quietly rebuild presence and peace.
+>
+> Anyone tried a no-phone evening or meal rule? How did it feel after the first few days?
+
+- **Tweet:** https://x.com/newstart_2024/status/2013344715043643901
+- **What:** Digital wellness principles from Dr. Arthur Brooks on device boundaries (no devices after 7pm, no phones at meals/bedrooms) to combat dopamine addiction and reclaim presence.
+
+---
+
+## @TheAhmadOsman - GLM-4.7-Flash: Local 30B-A3B MoE from Zhipu AI
+
+> MASSIVE
+>
+> The year of Local LLMs officially starts with GLM-4.7-Flash by Zhipu AI
+>
+> > 30B-A3B MoE
+> > built for consumer GPUs
+> > runnable from your basement
+> > strongest 30B-class release we've ever seen
+>
+> This is THE BEST <=70B I've ever run locally BTW
+>
+> Architecture: DeepSeek-style MLA attention, slim MoE routing, 30B total params, ~4B active, 64 experts total, 5 active
+>
+> Benchmarks show GLM-4.7-Flash excels across multiple metrics - SWE-bench Verified (59.2 vs 22.0-38.8 others), τ²-Bench (79.5), BrowseComp (42.8), AIME 25 (91.6), GPQA (75.2), and HLE (14.4).
+>
+> Context window: FP16 weights fit ~27k tokens on RTX PRO 6000 or 4x RTX 3090s; 4-bit AWQ weights fit ~70k tokens.
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2013347275192365251
+- **What:** Analysis of GLM-4.7-Flash, a new 30B-A3B mixture of experts model from Zhipu AI optimized for local GPU inference with strong performance benchmarks.
+
+---
+
+## @Mylovanov - Ukrainian All-Women Typhoon Drone Unit Commander
+
+> There is no good Russians on the screen of a thermal scope — Daria "Hilka", commander of the Ukrainian all-women Typhoon drone unit.
+>
+> Those who come onto our land with weapons are only temporarily alive.
+>
+> Their thoughts or dreams don't matter to me.
+>
+> They must get out.
+
+- **Tweet:** https://x.com/Mylovanov/status/2013347823303934429
+- **Link:** https://twitter.com/Mylovanov/status/2013347823303934429/video/1
+- **What:** Quote from Daria "Hilka", commander of a Ukrainian all-women drone unit, discussing their defensive operations against Russian forces.
+
+---
+
+## @PaulSolt - Codex GPT-5.2 Xcode Workflow for Rapid App Development
+
+> Codex GPT-5.2 + Xcode changed how fast I ship.
+>
+> Here's my full, end-to-end workflow—from idea → working app—using agents the right way.
+
+- **Tweet:** https://x.com/PaulSolt/status/2013352779524251752
+- **Link:** https://twitter.com/PaulSolt/status/2013352779524251752/video/1
+- **What:** Paul Solt shares his complete workflow for building iOS apps using Codex GPT-5.2 integrated with Xcode and agentic development.
+
+---
+
+## @gregisenberg - Clear Beginner Guide to Claude Code
+
+> This 31 min vid is the most CLEAR explanation on how ANYONE can get started with Claude Code that exists on the internet
+
+- **Tweet:** https://x.com/gregisenberg/status/2013363146191237574
+- **Link:** https://twitter.com/gregisenberg/status/2013363146191237574/video/1
+- **What:** Greg Isenberg recommends a 31-minute video as the clearest beginner introduction to Claude Code available.
+
+---
+
+## @alexhillman - Custom Web UI for Claude Code CLI
+
+> okay, y'all win
+>
+> I'm gonna publish my base code for connecting claude code CLI to a *very basic* but *very powerful* custom web ui, based on the one people have been seeing with my JFDI system
+>
+> includes:
+> - works with claude code cli (including max plans)
+> - streams responses so it's fast
+> - displays todowrite, messages & tool calls, etc
+> - lots of little UI ergonomics
+>
+> working thru some testing, more info coming this week
+
+> *Quoting @zackeryleman:* @alexhillman @theirongolddev Share a gist of the relevant part of your setup?
+
+- **Tweet:** https://x.com/alexhillman/status/2013416977176404336
+- **Quoted:** https://x.com/zackeryleman/status/2013320185952776539
+- **What:** Alex Hillman announces he'll open-source a custom web UI for Claude Code CLI that includes streaming, TodoWrite integration, and tool call display.
+
+---
+
+## @NHLBlackhawks - Jonathan Toews Welcome Back Video
+
+> one of the best to wear a Blackhawks sweater... welcome back Jonathan Toews‼️
+
+- **Tweet:** https://x.com/NHLBlackhawks/status/2013432210951491742
+- **What:** Chicago Blackhawks announcements welcoming back captain Jonathan Toews to the team after his return.
+
+---
+
 # Sunday, January 18, 2026
+## @rgoodlaw - DHS Misinformation on Minnesota Criminal Immigrants and Insurrection Act
+
+> Why does DHS keep telling you false information on Minnesota about:
+>
+> - what they mean by "criminal" immigrants
+> - the legal standard for arrests
+> - what the Supreme Court has said
+>
+> Also, what implications does this have for the Insurrection Act?
+>
+> Preview below of one issue.
+> 1/2
+
+- **Tweet:** https://x.com/rgoodlaw/status/2012889300459835614
+- **What:** Ryan Goodman raises concerns about the Department of Homeland Security providing inaccurate statements regarding immigration policy in Minnesota, questioning definitions of "criminal" immigrants, arrest standards, and Supreme Court precedent, with implications for invocation of the Insurrection Act.
+
+---
+
+## @davidsenra - Shopify CEO Tobi Lütke on Companies as Social Technology
+
+> My conversation with Tobi Lütke (@tobi), co-founder and CEO of Shopify.
+>
+> 0:00 Companies as Social Technology
+> 5:27 The Value of Reading Books: Cheat Codes for Life
+> 7:28 Post-IPO Crisis: Cosplaying as a CEO
+> 7:54 Competition vs Rivalry: The Power of Healthy Competition
+> 16:02 COVID as a Turning Point: Rebuilding the Executive Team
+> 18:21 Hiring Founders: Building a Team of High-Agency People
+> 26:49 Shopify OS: Engineering the Company from First Principles
+> 36:48 Compensation Innovation: Giving Employees Full Agency
+> 40:41 The Psychology of Identity and Affirmations
+> 48:43 Differentiation Over Perfection: Making It Your Own
+> 50:31 Context Podcast: Documenting Decision-Making
+> 1:26:36 The IPO Decision: Going Against Silicon Valley Orthodoxy
+> 1:35:08 Building a Company Worth Working For
+> 1:41:50 Hiring for Spikiness: Finding Non-Conformists
+> 1:48:28 Office Design Philosophy: Creating Space for Excellence
+> 1:58:54 Video Games as Business Training: StarCraft Lessons
+> 2:07:06 AI Revolution: 2026 and Beyond
+> 2:11:44 Focus on Craft: The Unquantifiable Elements of Excellence
+> 2:21:08 Survivorship Bias: The Importance of Entrepreneurial Exposure
+> 2:23:22 Closing
+>
+> Includes paid partnerships.
+
+- **Tweet:** https://x.com/davidsenra/status/2012902807590822209
+- **What:** David Senra's podcast episode featuring Tobi Lütke, Shopify CEO, discussing company philosophy, leadership principles, hiring strategies, organizational design, and forward-thinking on AI; topics include reading as a business cheat code, post-IPO leadership, executive compensation innovation, and lessons from video games.
+
+---
+
+## @hubermanlab - Social Media on Lock Box for Productivity and Presence
+
+> Placing social media on an old phone and keeping that phone in a lock box where you can't code it out for 22hrs a day will make you much more productive, present and happy.
+
+- **Tweet:** https://x.com/hubermanlab/status/2012967890585006313
+- **What:** Andrew Huberman's brief productivity tip suggesting isolating social media access by placing it on a separate old phone kept in a lock box with 22-hour daily restrictions to improve productivity, presence, and well-being.
+
+---
+
+## @NTFabiano - Phone Proximity Affects Cognitive Performance
+
+> Having your phone on your desk or in your pocket undercuts cognitive performance - even if you don't use it.
+>
+> Put it in another room to maximize your working memory & fluid intelligence.
+>
+> *Quoting @hubermanlab:* Placing social media on an old phone and keeping that phone in a lock box where you can't code it out for 22hrs a day will make you much more productive, present and happy.
+
+- **Tweet:** https://x.com/NTFabiano/status/2012968740766257509
+- **Quoted:** https://x.com/hubermanlab/status/2012967890585006313
+- **What:** Neuroscience research showing that merely having a phone nearby—even unused—diminishes cognitive performance. The quote adds context about managing social media access strategically.
+
+---
+
+## @nbaschez - PM2 for Claude Code Dev Server Management
+
+> Underrated claude code trick - use pm2 to run the dev server
+>
+> Makes it super easy for claude code to search logs while efficiently managing the context window
+
+- **Tweet:** https://x.com/nbaschez/status/2012986796179890617
+- **What:** Development tip for Claude Code users: running the dev server with PM2 provides better log management and context window efficiency.
+
+---
+
+## @davidsenra - Shopify Team Size Philosophy from Tobi Lütke
+
+> "Shopify loves the five-person team. We increase to eight sometimes, but we think the best team size is one, because a single author can do things that is impossible to do for teams, and hit high notes that are unreachable.
+>
+> Most projects worth doing need to be done in teams. There's a magic number at five. It's sort of what military ends up figuring out too. They test these things and come to the same conclusions.
+>
+> You can temporarily go up, but at some point, you have to split teams and parcel out the tasks. Each of these gradations is like a 10x loss of productivity.
+>
+> Our R&D team is three and a half thousand people. It's really lots and lots and lots of small teams."
+>
+> —@tobi
+>
+> *Quoting @davidsenra:* My conversation with Tobi Lütke (@tobi), co-founder and CEO of Shopify...
+
+- **Tweet:** https://x.com/davidsenra/status/2013002995559182538
+- **Quoted:** https://x.com/davidsenra/status/2012902807590822209
+- **What:** Tobi Lütke's insights on optimal team sizes—emphasizing single-person teams for purity and five-person teams as the "magic number," with productivity loss at each scale increment. Shopify structures their massive R&D as many small teams.
+
+---
+
+## @levelsio - Vibe Coder Building Apps to $1M with Claude Code
+
+> This guy is running a cluster of Claude Code terminals vibe coding apps until he hits $1,000,000
+>
+> Most interesting person shipping I've seen recently
+>
+> He's on here too @matthewmillerai but doesn't seem to tweet a lot
+>
+> *Quoting @amritwt:* There's a dude on YouTube, a vibe coder. He does hardcore streams and he does it for 6 hours a day with one goal in mind: to vibe code an app to a million dollars. The way he opens up 6 terminals with Claude Code running on all of them is too good. I hope he makes it.
+
+- **Tweet:** https://x.com/levelsio/status/2013023626098852014
+- **Quoted:** https://x.com/amritwt/status/2012568128572838356
+- **Link:** https://www.youtube.com/@bridgemindai
+- **What:** A developer streaming vibe coding sessions with the goal of building an app to $1 million revenue using multiple Claude Code terminals. Featured on YouTube as BridgeMind AI.
+
+---
+
+## @thisischarlied - Advanced Log Exploration with PM2 and DuckDB
+
+> @nbaschez And set pm2 to log output as json, then set up a log-explorer sub-agent to use duckdb to search the logs like a sql db for advanced search whilst being context efficient.
+
+- **Tweet:** https://x.com/thisischarlied/status/2013039410820850054
+- **Parent:** https://x.com/nbaschez/status/2012986796179890617
+- **What:** Enhancement to the PM2 technique: configure JSON logging and create a sub-agent that uses DuckDB to query logs like a SQL database, maintaining context efficiency.
+
+---
+
+## @bluewmist - Anxiety & Self-Talk Therapy Trick
+
+> my therapist taught me this trick.
+>
+> when you feel anxious that someone is mad at you, doesn't like you, or that things are worse than they actually are, ask yourself:
+>
+> "who told you that?"
+>
+> typically you won't have an answer & you'll learn that it's all in your head.
+>
+> pass it on.
+
+- **Tweet:** https://x.com/bluewmist/status/2013141792024133778
+- **What:** A practical therapy technique for managing anxiety by questioning intrusive thoughts and recognizing when anxiety is self-generated rather than based on external reality.
+
+---
+
+## @TheAhmadOsman - Systems Engineering for AI Agents
+
+> PRO TIP
+>
+> For Claude Code & other agents like
+>    Codex Cli, Droid, OpenCode, etc
+>
+> There's a crucial recipe:
+>     1. Modularity
+>     2. Domain-Driven Design
+>     3. Painfully explicit specs
+>     4. Excessive documentation
+>
+> This is systems engineering
+>
+>   I'm not saying agents aren't powerful,
+>   but discipline matters more than model capabilities
+>
+> If your docs don't answer:
+>     - Where
+>     - What
+>     - How
+>     - Why
+> The agent will guess,
+> and guessing is how codebases die
+>
+> Done right,
+> this is a $1M MRR play
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2013152393723043990
+- **What:** Essential principles for building codebases that work well with AI agents—emphasizing modularity, documentation, and explicit specifications as more important than model capabilities.
+
+---
+
 ## @ShiningScience - Neuroplasticity and the Brain Science of Chronic Complaining
 > 🚨 Research shows repeated complaining physically rewires your brain to prioritize stress and negativity.
 >
@@ -370,6 +1304,26 @@
 
 
 # Saturday, January 17, 2026
+---
+## @amritwt - Vibe Coder's 6-Hour Daily Claude Code Streams
+
+> There's a dude on YouTube, a vibe coder. He does hardcore streams and he does it for 6 hours a day with one goal in mind: to vibe code an app to a million dollars. The way he opens up 6 terminals with Claude Code running on all of them is too good. I hope he makes it.
+
+- **Tweet:** https://x.com/amritwt/status/2012568128572838356
+- **What:** Reference to a YouTube content creator streaming 6-hour sessions using Claude Code to build an app with the goal of reaching a million dollars in revenue, showcasing unconventional development workflow with multiple Claude Code instances running simultaneously.
+
+---
+
+## @Variety - Matt Damon on Netflix's Plot Repetition for Phone-Distracted Viewers
+
+> Matt Damon says Netflix wants movies to restate "the plot three or four times in the dialogue" to account for viewers being on their phones: "The standard way to make an action movie that we learned was, you usually have three set pieces. One in the first act, one in the second, one in the third," Damon explained. "You spend most of your money on that one in the third act. That's your finale. And now they're like, 'Can we get a big one in the first five minutes? We want people to stay. And it wouldn't be terrible if you reiterated the plot three or four times in the dialogue because people are on their phones while they're watching.'"
+
+- **Tweet:** https://x.com/Variety/status/2012609337823514841
+- **Link:** https://variety.com/2026/film/news/matt-damon-netflix-movies-restate-plot-viewers-on-phones-1236633939/
+- **What:** Variety article reporting Matt Damon's comments about how Netflix is changing movie structure—moving big action sequences to the first five minutes and repeating exposition in dialogue because viewers are distracted by phones rather than fully engaged with the film.
+
+---
+
 ## @nurijanian - Twitter article link
 > https://t.co/JTPpHpXHDR
 
