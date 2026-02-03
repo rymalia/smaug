@@ -4,6 +4,8 @@ Archive your Twitter/X bookmarks (and/or optionally, likes) to markdown. Automat
 
 *Like a dragon hoarding treasure, Smaug collects the valuable things you bookmark and like.*
 
+> **Multi-model support:** Smaug works with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (default) and [OpenCode](https://github.com/opencode-ai/opencode), giving you access to a wide range of AI models. Results may vary depending on the model you choose — test carefully and find what works best for your workflow. See [AI CLI Integration](#ai-cli-integration) for setup details.
+
 ## Contents
 
 - [Quick Start](#quick-start-5-minutes)
@@ -14,7 +16,7 @@ Archive your Twitter/X bookmarks (and/or optionally, likes) to markdown. Automat
 - [Automation](#automation)
 - [Output](#output)
 - [Configuration](#configuration)
-- [Claude Code Integration](#claude-code-integration)
+- [AI CLI Integration](#ai-cli-integration)
 - [Troubleshooting](#troubleshooting)
 - [Credits](#credits)
 
@@ -84,7 +86,11 @@ If you don't want to use the wizard to make it easy, you can manually put your s
 
 1. **Fetches bookmarks** from Twitter/X using the bird CLI (can also fetch likes, or both)
 2. **Expands t.co links** to reveal actual URLs
-3. **Extracts content** from linked pages (GitHub repos, articles, quote tweets)
+3. **Extracts content** from linked pages:
+   - GitHub repos (via API: stars, description, README)
+   - External articles (title, author, content)
+   - X/Twitter long-form articles (full content via bird CLI)
+   - Quote tweets and reply threads (full context)
 4. **Invokes Claude Code** to analyze and categorize each tweet
 5. **Saves to markdown** organized by date with rich context
 6. **Files to knowledge library** - GitHub repos to `knowledge/tools/`, articles to `knowledge/articles/`
@@ -145,11 +151,31 @@ Categories define how different bookmark types are handled. Smaug comes with sen
 
 | Category | Matches | Action | Destination |
 |----------|---------|--------|-------------|
-| **article** | blogs, news sites, papers, medium.com, substack, etc | file | `./knowledge/articles/` |
 | **github** | github.com | file | `./knowledge/tools/` |
+| **article** | medium.com, substack.com, dev.to, blogs | file | `./knowledge/articles/` |
+| **x-article** | x.com/i/article/* | file | `./knowledge/articles/` |
 | **tweet** | (fallback) | capture | bookmarks.md only |
 
-🔜 _Note: Transcription coming soon for podcasts, videos, etc but feel free to edit your own and submit back suggestions!_
+🔜 _Note: Transcription is flagged but not yet automated. PRs welcome!_
+
+### X/Twitter Long-Form Articles
+
+X articles (`x.com/i/article/*`) are Twitter's native long-form content format. Smaug extracts the full article text using bird CLI:
+
+1. **Direct extraction**: If the bookmarked tweet is the article author's original post, content is extracted directly
+2. **Search fallback**: If you bookmark someone sharing/quoting an article, Smaug searches for the original author's tweet and extracts the full content from there
+3. **Metadata fallback**: If search fails, basic metadata (title, description) is captured
+
+Example X article bookmark:
+```markdown
+## @joaomdmoura - Lessons From 2 Billion Agentic Workflows
+> [Full article content extracted]
+
+- **Tweet:** https://x.com/joaomdmoura/status/123456789
+- **Link:** https://x.com/i/article/987654321
+- **Filed:** [lessons-from-2-billion-agentic-workflows.md](./knowledge/articles/lessons-from-2-billion-agentic-workflows.md)
+- **What:** Deep dive into patterns from scaling CrewAI to billions of agent executions.
+```
 
 ### Actions
 
@@ -328,13 +354,16 @@ Example `smaug.config.json`:
 | `includeMedia` | `false` | **EXPERIMENTAL**: Include media attachments (photos, videos, GIFs) |
 | `archiveFile` | `./bookmarks.md` | Main archive file |
 | `timezone` | `America/New_York` | For date formatting |
+| `cliTool` | `claude` | AI CLI to use: `claude` or `opencode` |
 | `autoInvokeClaude` | `true` | Auto-run Claude Code for analysis |
 | `claudeModel` | `sonnet` | Model to use (`sonnet`, `haiku`, or `opus`) |
+| `autoInvokeOpencode` | `true` | Auto-run OpenCode for analysis |
+| `opencodeModel` | `opencode/glm-4.7-free` | OpenCode model (see OpenCode docs) |
 | `claudeTimeout` | `900000` | Max processing time (15 min) |
 | `parallelThreshold` | `8` | Min bookmarks before parallel processing kicks in |
 | `webhookUrl` | `null` | Discord/Slack webhook for notifications |
 
-Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
+Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLI_TOOL`, `CLAUDE_MODEL`, `OPENCODE_MODEL`, etc.
 
 ### Experimental: Media Attachments
 
@@ -361,9 +390,40 @@ When enabled, the `media[]` array is included in the pending JSON with:
 1. **Requires bird with media support** - PR [#14](https://github.com/steipete/bird/pull/14) adds media extraction. Until merged, you'll need a fork with this PR or wait for an upstream release. Without it, `--media` is a no-op (empty array).
 2. **Workflow still being refined** - Short screengrabs (< 30s) don't need transcripts, but longer videos might. We're still figuring out the best handling.
 
-## Claude Code Integration
+## AI CLI Integration
 
-Smaug uses Claude Code for intelligent bookmark processing. The `.claude/commands/process-bookmarks.md` file contains instructions for:
+Smaug supports multiple AI CLI tools for intelligent bookmark processing:
+
+- **Claude Code** (default) - Anthropic's Claude CLI
+- **OpenCode** - Alternative AI CLI with support for multiple models
+
+### Using OpenCode (Alternative to Claude)
+
+To use OpenCode instead of Claude Code:
+
+```json
+{
+  "cliTool": "opencode",
+  "opencodeModel": "opencode/glm-4.7-free",
+  "autoInvokeOpencode": true
+}
+```
+
+Available OpenCode models include:
+- `opencode/glm-4.7-free` (free tier)
+- `opencode/kimi-k2.5-free` (free tier)
+- `opencode/claude-sonnet-4-5` (Claude via OpenCode)
+- `opencode/gpt-5.2` (GPT via OpenCode)
+
+Set via environment variable:
+```bash
+export CLI_TOOL=opencode
+export OPENCODE_MODEL=opencode/kimi-k2.5-free
+```
+
+### Claude Code Integration
+
+Smaug uses Claude Code by default for intelligent bookmark processing. The `.claude/commands/process-bookmarks.md` file contains instructions for:
 
 - Generating descriptive titles (not generic "Article" or "Tweet")
 - Filing GitHub repos to `knowledge/tools/`
