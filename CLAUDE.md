@@ -150,6 +150,10 @@ npx smaug fetch --source likes
 # Fetch from both bookmarks AND likes
 npx smaug fetch --source both
 
+# Disable thread expansion (fetch single tweets only)
+npx smaug fetch --no-threads
+npx smaug fetch --source both
+
 # Force re-fetch (include already-archived tweets)
 npx smaug fetch --force
 
@@ -293,6 +297,10 @@ Enable with `--media` flag or `includeMedia: true` in config. Captures:
   "timezone": "America/New_York",
   "includeMedia": false,           // Experimental: include media attachments
 
+  // Thread expansion (fetches author's self-reply chain for each bookmark)
+  "expandThreads": true,           // Default: true - fetch full threads
+  "threadExpansionMode": "author-chain",  // "author-chain", "author-only", or "none"
+
   "twitter": {
     "authToken": "your_auth_token",  // From browser cookies
     "ct0": "your_ct0"                // From browser cookies
@@ -323,6 +331,8 @@ Enable with `--media` flag or `includeMedia: true` in config. Captures:
 - `OPENCODE_MODEL` - e.g., "opencode/glm-4.7-free"
 - `TIMEZONE` - e.g., "America/Los_Angeles"
 - `INCLUDE_MEDIA` - true/false
+- `EXPAND_THREADS` - true/false
+- `THREAD_EXPANSION_MODE` - author-chain/author-only/none
 
 **Config source tracking** (for `--verbose` flag):
 - `_loadedFrom` - Which config file was loaded
@@ -363,6 +373,50 @@ You can add custom categories in your config:
   }
 }
 ```
+
+### Thread Expansion
+
+When you bookmark the first tweet of a thread, important links may be in subsequent tweets. Thread expansion automatically fetches the author's self-reply chain for each bookmark.
+
+**Example problem (without thread expansion):**
+- Tweet #1: "Just released a new tool..." (you bookmark this)
+- Tweet #2: "Link: https://github.com/..." (this link is LOST!)
+
+**With thread expansion enabled (default):**
+- Both tweets are fetched and processed together
+- Links from ALL thread tweets are captured
+- The `allLinks[]` array contains links from the entire thread
+
+**Thread expansion modes:**
+| Mode | Description |
+|------|-------------|
+| `author-chain` | Connected self-reply chain only (recommended, default) |
+| `author-only` | All author tweets in thread (even disconnected replies) |
+| `none` | Disable thread expansion |
+
+**Output format when thread expansion is enabled:**
+```json
+{
+  "id": "123",
+  "text": "First tweet...",
+  "links": [...],           // Links from primary tweet only
+  "isThread": true,
+  "threadPosition": "root", // "root", "middle", "end", "standalone"
+  "threadRootId": "123",
+  "threadTweets": [
+    { "id": "123", "text": "First tweet...", "links": [...] },
+    { "id": "124", "text": "Second tweet with link...", "links": [...] }
+  ],
+  "allLinks": [...]         // Aggregated links from ALL thread tweets
+}
+```
+
+**CLI flag:**
+```bash
+npx smaug fetch --no-threads  # Disable thread expansion for this fetch
+```
+
+**Performance note:** Thread expansion adds ~1 second per bookmark (bird's rate limiting) and increases timeout by 50%.
 
 ## AI CLI Tools
 

@@ -1,0 +1,74 @@
+{
+  "description": "Sample bird output with --author-chain --thread-meta flags",
+  "tweets": [
+    {
+      "id": "2018425788098293866",
+      "text": "Claude Code just got its own Product Manager...\n\nMeet @bjroger, the first PM hire at @AnthropicAI focused on Claude Code!",
+      "author": { "username": "dr_cintas", "name": "Alvaro Cintas" },
+      "conversationId": "2018425788098293866",
+      "createdAt": "Mon Feb 02 20:46:23 +0000 2026",
+      "isThread": true,
+      "threadPosition": "root",
+      "hasSelfReplies": true,
+      "threadRootId": "2018425788098293866"
+    },
+    {
+      "id": "2018425794775658857",
+      "text": "Link: https://t.co/VROqVDj6fm\n\nAnd if you want more practical AI gems like this, check out my newsletter below.",
+      "author": { "username": "dr_cintas", "name": "Alvaro Cintas" },
+      "conversationId": "2018425788098293866",
+      "inReplyToStatusId": "2018425788098293866",
+      "createdAt": "Mon Feb 02 20:46:24 +0000 2026",
+      "isThread": true,
+      "threadPosition": "end",
+      "hasSelfReplies": false,
+      "threadRootId": "2018425788098293866"
+    },
+    {
+      "id": "2018391750134374440",
+      "text": "Extensions now support Agent Skills in the latest release of Gemini CLI! This opens up a whole new world of possibilities.",
+      "author": { "username": "geminicli", "name": "Gemini CLI" },
+      "conversationId": "2018391750134374440",
+      "createdAt": "Mon Feb 02 18:30:00 +0000 2026",
+      "isThread": true,
+      "threadPosition": "root",
+      "hasSelfReplies": true,
+      "threadRootId": "2018391750134374440"
+    },
+    {
+      "id": "2018391751715651940",
+      "text": "Check out the release notes: https://t.co/eVsElGus6P\n\nKey features:\n- Custom agent skills\n- MCP server support\n- Tool chaining",
+      "author": { "username": "geminicli", "name": "Gemini CLI" },
+      "conversationId": "2018391750134374440",
+      "inReplyToStatusId": "2018391750134374440",
+      "createdAt": "Mon Feb 02 18:30:01 +0000 2026",
+      "isThread": true,
+      "threadPosition": "middle",
+      "hasSelfReplies": true,
+      "threadRootId": "2018391750134374440"
+    },
+    {
+      "id": "2018391752500000000",
+      "text": "Full documentation is available here: https://t.co/DocLink123\n\nLet us know what you build!",
+      "author": { "username": "geminicli", "name": "Gemini CLI" },
+      "conversationId": "2018391750134374440",
+      "inReplyToStatusId": "2018391751715651940",
+      "createdAt": "Mon Feb 02 18:30:02 +0000 2026",
+      "isThread": true,
+      "threadPosition": "end",
+      "hasSelfReplies": false,
+      "threadRootId": "2018391750134374440"
+    },
+    {
+      "id": "2018500000000000000",
+      "text": "Just discovered an amazing paper on transformer architectures. Really changes how I think about attention mechanisms.",
+      "author": { "username": "ai_researcher", "name": "AI Researcher" },
+      "conversationId": "2018500000000000000",
+      "createdAt": "Mon Feb 02 22:00:00 +0000 2026",
+      "isThread": false,
+      "threadPosition": "standalone",
+      "hasSelfReplies": false,
+      "threadRootId": "2018500000000000000"
+    }
+  ]
+}

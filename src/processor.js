@@ -264,6 +264,65 @@ function buildBirdEnv(config) {
   return env;
 }
 
+/**
+ * Groups tweets by conversationId (thread) and identifies which were originally bookmarked.
+ *
+ * When bird returns with --author-chain, it returns a flat array where multiple tweets
+ * may belong to the same thread. This function groups them and tracks which were bookmarked.
+ *
+ * @param {Object[]} tweets - Flat array of tweets from bird CLI
+ * @param {Set<string>} [originalBookmarkIds] - IDs that were in the original (non-expanded) fetch
+ * @returns {Object[]} Array of { primaryTweet, threadTweets, threadId, bookmarkedTweetIds, isExpanded }
+ */
+export function groupThreadTweets(tweets, originalBookmarkIds = null) {
+  // If no originalBookmarkIds provided, all tweets are considered "original"
+  // This handles the case where we can't determine which were bookmarked
+  const bookmarkedIds = originalBookmarkIds || new Set(tweets.map(t => t.id));
+
+  const threadGroups = new Map(); // conversationId/threadRootId -> tweets[]
+
+  for (const tweet of tweets) {
+    // Use threadRootId (from --thread-meta) or conversationId or fall back to tweet id
+    const threadId = tweet.threadRootId || tweet.conversationId || tweet.id;
+
+    if (!threadGroups.has(threadId)) {
+      threadGroups.set(threadId, []);
+    }
+    threadGroups.get(threadId).push(tweet);
+  }
+
+  const result = [];
+
+  for (const [threadId, threadTweets] of threadGroups) {
+    // Sort chronologically (oldest first)
+    threadTweets.sort((a, b) => {
+      const dateA = a.createdAt ? Date.parse(a.createdAt) : 0;
+      const dateB = b.createdAt ? Date.parse(b.createdAt) : 0;
+      return dateA - dateB;
+    });
+
+    // Find the primary tweet: prefer the first bookmarked one (chronologically), else use the root
+    const bookmarkedInThread = threadTweets.filter(t => bookmarkedIds.has(t.id));
+    // Sort bookmarked tweets chronologically to pick the earliest
+    bookmarkedInThread.sort((a, b) => {
+      const dateA = a.createdAt ? Date.parse(a.createdAt) : 0;
+      const dateB = b.createdAt ? Date.parse(b.createdAt) : 0;
+      return dateA - dateB;
+    });
+    const primaryTweet = bookmarkedInThread[0] || threadTweets[0];
+
+    result.push({
+      primaryTweet,
+      threadTweets,
+      threadId,
+      bookmarkedTweetIds: bookmarkedInThread.map(t => t.id),
+      isExpanded: threadTweets.length > 1
+    });
+  }
+
+  return result;
+}
+
 export function fetchBookmarks(config, count = 10, options = {}) {
   try {
     const env = buildBirdEnv(config);
@@ -273,27 +332,47 @@ export function fetchBookmarks(config, count = 10, options = {}) {
     const useAll = options.all || count > 50;
     const folderId = options.folderId;
 
-    let cmd;
+    // Thread expansion configuration
+    const expandThreads = options.expandThreads ?? config.expandThreads ?? true;
+    const threadMode = config.threadExpansionMode ?? 'author-chain';
+
+    // Build command parts
+    const cmdParts = [birdCmd, 'bookmarks'];
+
+    if (folderId) {
+      cmdParts.push('--folder-id', folderId);
+    }
+
     if (useAll) {
       // Paginated fetch - use longer timeout
       // Calculate maxPages from count (bird returns ~20 per page, use 25 as buffer)
       const estimatedPagesNeeded = Math.ceil(count / 20);
       const maxPages = options.maxPages || Math.max(estimatedPagesNeeded, 10);
-      cmd = folderId
-        ? `${birdCmd} bookmarks --folder-id ${folderId} --all --max-pages ${maxPages} --json`
-        : `${birdCmd} bookmarks --all --max-pages ${maxPages} --json`;
+      cmdParts.push('--all', '--max-pages', maxPages);
     } else {
-      cmd = folderId
-        ? `${birdCmd} bookmarks --folder-id ${folderId} -n ${count} --json`
-        : `${birdCmd} bookmarks -n ${count} --json`;
+      cmdParts.push('-n', count);
     }
+
+    // Add thread expansion flags when enabled
+    if (expandThreads && threadMode !== 'none') {
+      const threadFlag = threadMode === 'author-only' ? '--author-only' : '--author-chain';
+      cmdParts.push(threadFlag, '--thread-meta');
+    }
+
+    cmdParts.push('--json');
+    const cmd = cmdParts.join(' ');
 
     console.log(`  Running: ${cmd.replace(/--json/, '').trim()}`);
 
     // Use temp file to work around bird CLI pipe buffering bug
     const tmpFile = path.join(os.tmpdir(), `smaug-bookmarks-${Date.now()}.json`);
+
+    // Increase timeout by 50% when thread expansion is enabled
+    const baseTimeout = useAll ? 180000 : 60000;
+    const timeout = expandThreads ? Math.round(baseTimeout * 1.5) : baseTimeout;
+
     execSync(`${cmd} > "${tmpFile}"`, {
-      timeout: useAll ? 180000 : 60000, // 3 min for --all, 60s otherwise
+      timeout,
       env,
       shell: true
     });
@@ -306,7 +385,10 @@ export function fetchBookmarks(config, count = 10, options = {}) {
 
     // Respect the count parameter - truncate if we fetched more than requested
     // (paginated mode may return more bookmarks than asked for)
-    if (bookmarks.length > count) {
+    // NOTE: When thread expansion is enabled, we skip truncation here because
+    // the count should apply to bookmark GROUPS, not individual tweets.
+    // Truncation happens after grouping in fetchAndPrepareBookmarks().
+    if (!expandThreads && bookmarks.length > count) {
       console.log(`  Fetched ${bookmarks.length} bookmarks, limiting to requested ${count}`);
       bookmarks = bookmarks.slice(0, count);
     }
@@ -317,14 +399,38 @@ export function fetchBookmarks(config, count = 10, options = {}) {
   }
 }
 
-export function fetchLikes(config, count = 10) {
+export function fetchLikes(config, count = 10, options = {}) {
   try {
     const env = buildBirdEnv(config);
     const birdCmd = config.birdPath || 'bird';
+
+    // Thread expansion configuration
+    const expandThreads = options.expandThreads ?? config.expandThreads ?? true;
+    const threadMode = config.threadExpansionMode ?? 'author-chain';
+
+    // Build command parts
+    const cmdParts = [birdCmd, 'likes', '-n', count];
+
+    // Add thread expansion flags when enabled
+    if (expandThreads && threadMode !== 'none') {
+      const threadFlag = threadMode === 'author-only' ? '--author-only' : '--author-chain';
+      cmdParts.push(threadFlag, '--thread-meta');
+    }
+
+    cmdParts.push('--json');
+    const cmd = cmdParts.join(' ');
+
+    console.log(`  Running: ${cmd.replace(/--json/, '').trim()}`);
+
     // Use temp file to work around bird CLI pipe buffering bug
     const tmpFile = path.join(os.tmpdir(), `smaug-likes-${Date.now()}.json`);
-    execSync(`${birdCmd} likes -n ${count} --json > "${tmpFile}"`, {
-      timeout: 60000,
+
+    // Increase timeout by 50% when thread expansion is enabled
+    const baseTimeout = 60000;
+    const timeout = expandThreads ? Math.round(baseTimeout * 1.5) : baseTimeout;
+
+    execSync(`${cmd} > "${tmpFile}"`, {
+      timeout,
       env,
       shell: true
     });
@@ -344,10 +450,10 @@ export function fetchFromSource(config, count = 10, options = {}) {
   if (source === 'bookmarks') {
     return fetchBookmarks(config, count, options);
   } else if (source === 'likes') {
-    return fetchLikes(config, count);
+    return fetchLikes(config, count, options);
   } else if (source === 'both') {
     const bookmarks = fetchBookmarks(config, count, options);
-    const likes = fetchLikes(config, count);
+    const likes = fetchLikes(config, count, options);
     // Merge and dedupe by ID
     const seen = new Set();
     const merged = [];
@@ -587,10 +693,14 @@ export async function fetchAndPrepareBookmarks(options = {}) {
   const configWithOptions = { ...config, source, includeMedia };
   const count = options.count || 20;
 
-  // Build fetch options for pagination
+  // Thread expansion configuration
+  const expandThreads = options.expandThreads ?? config.expandThreads ?? true;
+
+  // Build fetch options for pagination and thread expansion
   const fetchOptions = {
     all: options.all || count > 50,
-    maxPages: options.maxPages
+    maxPages: options.maxPages,
+    expandThreads
   };
 
   let tweets = [];
@@ -621,32 +731,69 @@ export async function fetchAndPrepareBookmarks(options = {}) {
     }
   } catch (e) {}
 
-  // Determine which tweets to process
-  let toProcess;
-  if (options.specificIds) {
-    toProcess = tweets.filter(b => options.specificIds.includes(b.id.toString()));
-  } else if (options.force) {
-    // Force mode: skip duplicate checking, process all fetched tweets
-    toProcess = tweets;
+  // Group tweets by thread when thread expansion is enabled
+  let threadGroups;
+  if (expandThreads && tweets.some(t => t.isThread)) {
+    // Identify originally bookmarked tweets:
+    // - Tweets with threadPosition 'root' or 'standalone' are likely the bookmarked ones
+    // - Or if the tweet has no inReplyToStatusId, it's likely the bookmarked one
+    const likelyBookmarkedIds = new Set(
+      tweets
+        .filter(t => t.threadPosition === 'root' || t.threadPosition === 'standalone' || !t.inReplyToStatusId)
+        .map(t => t.id)
+    );
+
+    threadGroups = groupThreadTweets(tweets, likelyBookmarkedIds);
+    console.log(`Found ${threadGroups.length} bookmark groups (${tweets.length} total tweets with thread expansion)`);
   } else {
-    toProcess = tweets.filter(b => {
-      const id = b.id.toString();
+    // No thread expansion - each tweet is its own group
+    threadGroups = tweets.map(t => ({
+      primaryTweet: t,
+      threadTweets: [t],
+      threadId: t.id,
+      bookmarkedTweetIds: [t.id],
+      isExpanded: false
+    }));
+  }
+
+  // Determine which thread groups to process (filter by primary tweet)
+  let toProcessGroups;
+  if (options.specificIds) {
+    toProcessGroups = threadGroups.filter(g => options.specificIds.includes(g.primaryTweet.id.toString()));
+  } else if (options.force) {
+    // Force mode: skip duplicate checking, process all fetched groups
+    toProcessGroups = threadGroups;
+  } else {
+    toProcessGroups = threadGroups.filter(g => {
+      const id = g.primaryTweet.id.toString();
       return !existingIds.has(id) && !pendingIds.has(id);
     });
   }
 
-  if (toProcess.length === 0) {
+  if (toProcessGroups.length === 0) {
     console.log('No new tweets to process');
     return { bookmarks: [], count: 0 };
   }
 
-  console.log(`Preparing ${toProcess.length} tweets...`);
+  // Apply count limit to bookmark groups (not individual tweets)
+  // This ensures "fetch 20" means 20 bookmarks, not 20 tweets across threads
+  if (toProcessGroups.length > count) {
+    console.log(`Found ${toProcessGroups.length} bookmark groups, limiting to requested ${count}`);
+    toProcessGroups = toProcessGroups.slice(0, count);
+  }
+
+  const threadInfo = expandThreads && tweets.some(t => t.isThread) ? ` (${toProcessGroups.filter(g => g.isExpanded).length} threads)` : '';
+  console.log(`Preparing ${toProcessGroups.length} bookmark groups${threadInfo}...`);
 
   const prepared = [];
 
-  for (const bookmark of toProcess) {
+  for (const group of toProcessGroups) {
+    const { primaryTweet, threadTweets, threadId, isExpanded } = group;
+    const bookmark = primaryTweet;  // Backward compatibility for existing code
+
     try {
-      console.log(`\nProcessing bookmark ${bookmark.id}...`);
+      const threadInfo = isExpanded ? ` (thread: ${threadTweets.length} tweets)` : '';
+      console.log(`\nProcessing bookmark ${bookmark.id}${threadInfo}...`);
       const text = bookmark.text || bookmark.full_text || '';
 
       // Format date from tweet's createdAt, falling back to current date
@@ -659,20 +806,55 @@ export async function fetchAndPrepareBookmarks(options = {}) {
       }
       const author = bookmark.author?.username || bookmark.user?.screen_name || 'unknown';
 
-      const tcoLinks = text.match(/https?:\/\/t\.co\/\w+/g) || [];
-      
-      // Bookmarks API returns truncated quotedTweet data, so check it for links too
+      // Collect ALL t.co links from ALL thread tweets
+      const allTcoLinks = new Set();
+      const tweetLinkSources = new Map(); // link -> tweet IDs that contain it
+
+      for (const tweet of threadTweets) {
+        const tweetText = tweet.text || tweet.full_text || '';
+        const linkMatches = tweetText.match(/https?:\/\/t\.co\/\w+/g) || [];
+
+        for (const link of linkMatches) {
+          if (!allTcoLinks.has(link)) {
+            allTcoLinks.add(link);
+            if (tweet.id !== bookmark.id) {
+              console.log(`  Found t.co link in thread tweet ${tweet.id}: ${link}`);
+            }
+          }
+          if (!tweetLinkSources.has(link)) {
+            tweetLinkSources.set(link, []);
+          }
+          tweetLinkSources.get(link).push(tweet.id);
+        }
+
+        // Also check quoted tweets in each thread tweet
+        if (tweet.quotedTweet?.text) {
+          const quotedLinks = tweet.quotedTweet.text.match(/https?:\/\/t\.co\/\w+/g) || [];
+          for (const link of quotedLinks) {
+            if (!allTcoLinks.has(link)) {
+              allTcoLinks.add(link);
+              console.log(`  Found t.co link in thread tweet ${tweet.id}'s quote: ${link}`);
+            }
+          }
+        }
+      }
+
+      // For backward compat, also check bookmark's quotedTweet (if not already covered)
       if (bookmark.quotedTweet?.text) {
         const quotedLinks = bookmark.quotedTweet.text.match(/https?:\/\/t\.co\/\w+/g) || [];
         for (const link of quotedLinks) {
-          if (!tcoLinks.includes(link)) {
-            tcoLinks.push(link);
+          if (!allTcoLinks.has(link)) {
+            allTcoLinks.add(link);
             console.log(`  Found t.co link in quoted tweet: ${link}`);
           }
         }
       }
-      
-      const links = [];
+
+      // Convert to array for processing
+      const tcoLinks = Array.from(allTcoLinks);
+
+      const links = [];  // Links from primary tweet (backward compat)
+      const allLinks = [];  // Aggregated from all thread tweets
 
       const expandedResults = await Promise.all(
         tcoLinks.map(async (link) => {
@@ -773,12 +955,21 @@ export async function fetchAndPrepareBookmarks(options = {}) {
           }
         }
 
-        links.push({
+        const linkData = {
           original: link,
           expanded,
           type,
           content
-        });
+        };
+
+        // Add to allLinks (aggregated from all thread tweets)
+        allLinks.push(linkData);
+
+        // Also add to links if it came from the primary tweet
+        const sourceTweets = tweetLinkSources.get(link) || [];
+        if (sourceTweets.includes(bookmark.id)) {
+          links.push(linkData);
+        }
       }
 
       // Fallback for tweets with article metadata but no t.co link to expand
@@ -855,6 +1046,40 @@ export async function fetchAndPrepareBookmarks(options = {}) {
         tags.push(bookmark._folderTag);
       }
 
+      // Build threadTweets array with per-tweet info when thread is expanded
+      let threadTweetsData = undefined;
+      if (isExpanded) {
+        threadTweetsData = threadTweets.map(t => {
+          // Truncate text to 500 chars for very long threads to avoid JSON bloat
+          const tweetText = t.text || t.full_text || '';
+          const truncatedText = tweetText.length > 500 ? tweetText.slice(0, 500) + '...' : tweetText;
+
+          // Find links that came from this specific tweet
+          const tweetLinksFromSource = [];
+          for (const [link, sourceTweets] of tweetLinkSources.entries()) {
+            if (sourceTweets.includes(t.id)) {
+              // Find the expanded link data
+              const expandedLink = allLinks.find(l => l.original === link);
+              if (expandedLink) {
+                tweetLinksFromSource.push({
+                  original: expandedLink.original,
+                  expanded: expandedLink.expanded,
+                  type: expandedLink.type
+                });
+              }
+            }
+          }
+
+          return {
+            id: t.id,
+            text: truncatedText,
+            createdAt: t.createdAt,
+            threadPosition: t.threadPosition || null,
+            links: tweetLinksFromSource
+          };
+        });
+      }
+
       prepared.push({
         id: bookmark.id,
         author,
@@ -862,19 +1087,26 @@ export async function fetchAndPrepareBookmarks(options = {}) {
         text,
         tweetUrl: `https://x.com/${author}/status/${bookmark.id}`,
         createdAt: bookmark.createdAt,
-        links,
+        links,  // Links from primary tweet only (backward compat)
         media,
         tags,
         date,
         isReply: !!bookmark.inReplyToStatusId,
         replyContext,
         isQuote: !!quoteContext,
-        quoteContext
+        quoteContext,
+        // Thread data (only included when thread is expanded)
+        isThread: isExpanded,
+        threadPosition: bookmark.threadPosition || 'standalone',
+        threadRootId: isExpanded ? threadId : null,
+        threadTweets: threadTweetsData,
+        allLinks: isExpanded ? allLinks : undefined  // Only if thread expanded
       });
 
       const mediaInfo = media.length > 0 ? ` (${media.length} media)` : '';
       const tagInfo = tags.length > 0 ? ` [${tags.join(', ')}]` : '';
-      console.log(`  Prepared: @${author} with ${links.length} links${mediaInfo}${tagInfo}${replyContext ? ' (reply)' : ''}${quoteContext ? ' (quote)' : ''}`);
+      const threadLinksInfo = isExpanded && allLinks.length > links.length ? ` (${allLinks.length} total from thread)` : '';
+      console.log(`  Prepared: @${author} with ${links.length} links${threadLinksInfo}${mediaInfo}${tagInfo}${replyContext ? ' (reply)' : ''}${quoteContext ? ' (quote)' : ''}`);
 
     } catch (error) {
       console.error(`  Error processing bookmark ${bookmark.id}: ${error.message}`);

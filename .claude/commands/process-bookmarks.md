@@ -112,6 +112,19 @@ Each bookmark includes:
 - `isReply`, `replyContext` - parent tweet info if this is a reply
 - `isQuote`, `quoteContext` - quoted tweet info if this is a quote tweet
 
+### Thread Data (when `isThread: true`)
+
+When a bookmark is part of an author's self-thread, additional fields are included:
+
+- `isThread` (boolean) - True if this bookmark has thread expansion data
+- `threadPosition` - Position of bookmarked tweet: `"root"`, `"middle"`, `"end"`, `"standalone"`
+- `threadRootId` - ID of the thread's first tweet
+- `threadTweets[]` - All tweets in the author's self-thread, each with:
+  - `id`, `text` (truncated to 500 chars), `createdAt`, `threadPosition`
+  - `links[]` - links found in that specific tweet
+- `allLinks[]` - **IMPORTANT:** Aggregated links from ALL thread tweets (use this for categorization!)
+
+
 ## Categories System
 
 Categories define how different bookmark types are handled. Each category has:
@@ -167,8 +180,11 @@ Don't use generic titles like "Article" or "Tweet". Based on the content:
 - Quote tweets: Capture the key insight being highlighted
 - Reply threads: Include parent context in the summary
 - Plain tweets: Use the key point being made
+- **Threads:** Read ALL `threadTweets[].text` to understand full context, create title from complete thread content
 
 #### b. Categorize using the categories config
+
+**IMPORTANT for threads:** When `isThread: true`, use `allLinks[]` instead of `links[]` for categorization. The key link (GitHub repo, article, etc.) may be in a later tweet in the thread!
 
 Match each bookmark's links against category patterns (check `match` arrays). Use the first matching category, or fall back to `tweet`.
 
@@ -246,6 +262,23 @@ The file must be in **descending chronological order** (newest dates at TOP, old
 - **Tags:** [[tag1]] [[tag2]] (if bookmark has tags)
 - **What:** {description}
 ```
+
+**For threads (when `isThread: true`):**
+```markdown
+## @{author} - {descriptive_title_from_full_thread_content}
+> **Thread ({threadTweets.length} tweets):**
+> 1. {first_tweet_text_truncated_to_100_chars}...
+> 2. {second_tweet_text_truncated_to_100_chars}...
+> ...
+
+- **Thread:** {tweetUrl} (links to bookmarked tweet, usually the root)
+- **Link:** {primary_link_from_allLinks}
+- **Tags:** [[tag1]] [[tag2]] (if bookmark has tags)
+- **Filed:** [{filename}](./knowledge/...) (if filed)
+- **What:** {description_based_on_full_thread_context}
+```
+
+Note: For threads, create the title and description based on the FULL thread content (read all `threadTweets[].text`), not just the bookmarked tweet.
 
 Separate entries with `---` only between different dates, not between entries on the same day.
 

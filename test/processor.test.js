@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { isPaywalled, stripQuerystring, fetchXArticleContent } from '../src/processor.js';
+import { isPaywalled, stripQuerystring, fetchXArticleContent, groupThreadTweets } from '../src/processor.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -619,5 +619,191 @@ describe('X article integration tests (requires bird credentials)', { skip: !BIR
     // Should return structure without failing
     assert.ok(result.articleId, 'should have articleId');
     assert.strictEqual(result.articleId, '9999999999999999999');
+  });
+});
+
+describe('groupThreadTweets', () => {
+  test('groups tweets by conversationId', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1', threadRootId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+      { id: '2', conversationId: 'conv1', threadRootId: 'conv1', createdAt: '2026-01-01T10:01:00Z' },
+      { id: '3', conversationId: 'conv2', threadRootId: 'conv2', createdAt: '2026-01-01T10:00:00Z' },
+    ];
+    const originalIds = new Set(['1', '3']);
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups.length, 2, 'should create 2 groups');
+    const group1 = groups.find(g => g.threadId === 'conv1');
+    const group2 = groups.find(g => g.threadId === 'conv2');
+    assert.strictEqual(group1.threadTweets.length, 2, 'conv1 group should have 2 tweets');
+    assert.strictEqual(group2.threadTweets.length, 1, 'conv2 group should have 1 tweet');
+  });
+
+  test('sorts thread tweets chronologically', () => {
+    const tweets = [
+      { id: '2', conversationId: 'conv1', createdAt: '2026-01-01T10:01:00Z' },
+      { id: '1', conversationId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+    ];
+
+    const groups = groupThreadTweets(tweets, new Set(['1']));
+
+    assert.strictEqual(groups[0].threadTweets[0].id, '1', 'oldest tweet should be first');
+    assert.strictEqual(groups[0].threadTweets[1].id, '2', 'newer tweet should be second');
+  });
+
+  test('identifies primary tweet from bookmarked IDs', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+      { id: '2', conversationId: 'conv1', createdAt: '2026-01-01T10:01:00Z' },
+    ];
+    const originalIds = new Set(['2']); // User bookmarked tweet #2 (not root)
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups[0].primaryTweet.id, '2', 'primary tweet should be the bookmarked one');
+    assert.deepStrictEqual(groups[0].bookmarkedTweetIds, ['2']);
+  });
+
+  test('handles standalone tweets (no thread)', () => {
+    const tweets = [
+      { id: '1', conversationId: '1', createdAt: '2026-01-01T10:00:00Z' },
+    ];
+
+    const groups = groupThreadTweets(tweets, new Set(['1']));
+
+    assert.strictEqual(groups.length, 1);
+    assert.strictEqual(groups[0].threadTweets.length, 1);
+    assert.strictEqual(groups[0].isExpanded, false, 'single tweet should not be expanded');
+  });
+
+  test('handles multiple bookmarks in same thread', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+      { id: '2', conversationId: 'conv1', createdAt: '2026-01-01T10:01:00Z' },
+      { id: '3', conversationId: 'conv1', createdAt: '2026-01-01T10:02:00Z' },
+    ];
+    const originalIds = new Set(['1', '3']); // User bookmarked both #1 and #3
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups.length, 1, 'should be ONE group, not two');
+    assert.deepStrictEqual(groups[0].bookmarkedTweetIds, ['1', '3'], 'should track both bookmarked IDs');
+    assert.strictEqual(groups[0].primaryTweet.id, '1', 'primary should be first bookmarked (chronologically)');
+  });
+
+  test('uses threadRootId over conversationId when available', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1', threadRootId: 'root1', createdAt: '2026-01-01T10:00:00Z' },
+      { id: '2', conversationId: 'conv1', threadRootId: 'root1', createdAt: '2026-01-01T10:01:00Z' },
+    ];
+
+    const groups = groupThreadTweets(tweets, new Set(['1']));
+
+    assert.strictEqual(groups[0].threadId, 'root1', 'should use threadRootId');
+  });
+
+  test('handles missing createdAt gracefully', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1' },
+      { id: '2', conversationId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+    ];
+
+    const groups = groupThreadTweets(tweets, new Set(['1']));
+
+    assert.strictEqual(groups.length, 1);
+    assert.strictEqual(groups[0].threadTweets.length, 2);
+  });
+
+  test('falls back to tweet id when no conversationId or threadRootId', () => {
+    const tweets = [
+      { id: '123', createdAt: '2026-01-01T10:00:00Z' },
+    ];
+
+    const groups = groupThreadTweets(tweets, new Set(['123']));
+
+    assert.strictEqual(groups.length, 1);
+    assert.strictEqual(groups[0].threadId, '123', 'should fall back to tweet id');
+  });
+
+  test('marks multi-tweet threads as expanded', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+      { id: '2', conversationId: 'conv1', createdAt: '2026-01-01T10:01:00Z' },
+    ];
+
+    const groups = groupThreadTweets(tweets, new Set(['1']));
+
+    assert.strictEqual(groups[0].isExpanded, true, 'multi-tweet thread should be expanded');
+  });
+
+  test('handles no originalBookmarkIds (treats all as bookmarked)', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+      { id: '2', conversationId: 'conv1', createdAt: '2026-01-01T10:01:00Z' },
+    ];
+
+    // Pass null for originalBookmarkIds
+    const groups = groupThreadTweets(tweets, null);
+
+    assert.strictEqual(groups.length, 1);
+    // When no original IDs provided, all tweets are considered bookmarked
+    assert.deepStrictEqual(groups[0].bookmarkedTweetIds, ['1', '2']);
+  });
+
+  test('picks earliest bookmarked tweet as primary when multiple are bookmarked', () => {
+    const tweets = [
+      { id: '1', conversationId: 'conv1', createdAt: '2026-01-01T10:00:00Z' },
+      { id: '2', conversationId: 'conv1', createdAt: '2026-01-01T10:01:00Z' },
+      { id: '3', conversationId: 'conv1', createdAt: '2026-01-01T10:02:00Z' },
+    ];
+    // User bookmarked #3 first, then #1 (but #1 is earlier chronologically)
+    const originalIds = new Set(['3', '1']);
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups[0].primaryTweet.id, '1', 'should pick earliest bookmarked tweet');
+  });
+});
+
+describe('Thread bookmarks fixture', () => {
+  test('loads thread-bookmarks.json fixture', () => {
+    const fixturePath = path.join(__dirname, 'fixtures/thread-bookmarks.json');
+    if (!fs.existsSync(fixturePath)) {
+      // Skip if fixture doesn't exist yet
+      return;
+    }
+
+    const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
+    assert.ok(Array.isArray(fixture.tweets), 'fixture should have tweets array');
+    assert.ok(fixture.tweets.length >= 2, 'fixture should have at least 2 tweets');
+
+    // Verify thread metadata fields are present
+    const rootTweet = fixture.tweets.find(t => t.threadPosition === 'root');
+    assert.ok(rootTweet, 'should have a root tweet');
+    assert.strictEqual(rootTweet.isThread, true);
+    assert.ok(rootTweet.threadRootId, 'root tweet should have threadRootId');
+  });
+
+  test('groups fixture tweets correctly', () => {
+    const fixturePath = path.join(__dirname, 'fixtures/thread-bookmarks.json');
+    if (!fs.existsSync(fixturePath)) {
+      return;
+    }
+
+    const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
+    const rootTweets = fixture.tweets.filter(t => t.threadPosition === 'root' || !t.inReplyToStatusId);
+    const likelyBookmarkedIds = new Set(rootTweets.map(t => t.id));
+
+    const groups = groupThreadTweets(fixture.tweets, likelyBookmarkedIds);
+
+    // Should group all tweets in the same thread together
+    assert.ok(groups.length >= 1, 'should create at least one group');
+
+    // Find the thread group (if any)
+    const threadGroup = groups.find(g => g.isExpanded);
+    if (threadGroup) {
+      assert.ok(threadGroup.threadTweets.length >= 2, 'thread group should have multiple tweets');
+    }
   });
 });

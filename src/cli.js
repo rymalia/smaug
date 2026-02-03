@@ -240,6 +240,7 @@ async function main() {
       const force = args.includes('--force') || args.includes('-f');
       const includeMedia = args.includes('--media') || args.includes('-m');
       const fetchAll = args.includes('--all') || args.includes('-a') || args.includes('-all');
+      const noThreads = args.includes('--no-threads');
 
       // Parse --source flag
       const sourceIdx = args.findIndex(a => a === '--source' || a === '-s');
@@ -266,7 +267,8 @@ async function main() {
         source,
         includeMedia,
         all: fetchAll,
-        maxPages
+        maxPages,
+        expandThreads: !noThreads
       });
 
       if (result.count > 0) {
@@ -356,6 +358,7 @@ Commands:
   fetch --max-pages N  Limit pagination to N pages (default: 10)
   fetch --force  Re-fetch even if already archived
   fetch --source <source>  Fetch from: bookmarks, likes, or both
+  fetch --no-threads  Disable thread expansion (single tweets only)
   fetch --media  EXPERIMENTAL: Include media attachments
   process        Show pending tweets
   status         Show current status

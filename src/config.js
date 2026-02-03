@@ -19,6 +19,16 @@ const DEFAULT_CONFIG = {
   // Off by default - enable with --media flag or config
   includeMedia: false,
 
+  // Thread expansion: fetch author's self-reply chain for each bookmark
+  // When enabled, bookmarks include all tweets in the author's connected thread
+  expandThreads: true,
+
+  // Thread expansion mode:
+  // - 'author-chain': Connected self-reply chain only (recommended, default)
+  // - 'author-only': All author tweets in thread (even disconnected replies)
+  // - 'none': Disable thread expansion
+  threadExpansionMode: 'author-chain',
+
   // Where to store the markdown archive
   archiveFile: './bookmarks.md',
 
@@ -228,6 +238,15 @@ export function loadConfig(configPath) {
   }
   if (process.env.INCLUDE_MEDIA !== undefined) {
     config.includeMedia = process.env.INCLUDE_MEDIA === 'true';
+  }
+  if (process.env.EXPAND_THREADS !== undefined) {
+    config.expandThreads = process.env.EXPAND_THREADS.toLowerCase() === 'true';
+  }
+  if (process.env.THREAD_EXPANSION_MODE) {
+    const mode = process.env.THREAD_EXPANSION_MODE.toLowerCase();
+    if (['author-chain', 'author-only', 'none'].includes(mode)) {
+      config.threadExpansionMode = mode;
+    }
   }
   if (process.env.AUTH_TOKEN) {
     config.twitter.authToken = process.env.AUTH_TOKEN;
