@@ -1,3 +1,279 @@
+# Monday, February 2, 2026
+
+## @godofprompt - Senior Software Engineer System Prompt from Karpathy's Coding Rant
+
+> I turned Andrej Karpathy's viral AI coding rant into a system prompt. Paste it into https://t.co/8yn5g1A5Ki and your agent stops making the mistakes he called out.
+>
+> (includes comprehensive system prompt with core behaviors, leverage patterns, and failure mode avoidance)
+
+- **Tweet:** https://x.com/godofprompt/status/2018482335130296381
+- **Link:** https://code.claude.com/docs
+- **What:** Comprehensive system prompt based on Andrej Karpathy's AI coding principles, designed for Claude Code and other AI agents, emphasizing assumption surfacing, confusion management, scope discipline, code simplicity, and avoiding common junior developer failure modes.
+
+---
+
+## @ashpreetbedi - Dash: Self-Learning Data Agent Architecture
+
+> I'm fairly confident we're at the cusp of a new architecture for agents. Going from stateless tools in a loop to machines that learn and improve.
+>
+> Every Agent 1.0 will evolve into this pattern.
+>
+> Dash not only solves a clear pain point, it does so with an architecture that enables the agent to learn from its mistakes, layer in context as needed, and get smarter with use.
+>
+> Github repo if you want to check it out: https://t.co/GcrR80Yd4R
+
+- **Tweet:** https://x.com/ashpreetbedi/status/2018479845886320728
+- **Link:** https://github.com/agno-agi/dash
+- **What:** Launch of Dash, a self-learning data agent inspired by OpenAI's in-house implementation, using 6 layers of context (table usage, human annotations, query patterns, institutional knowledge, learnings, runtime context) to improve SQL query generation with continuous learning without fine-tuning.
+
+---
+
+## @TheAhmadOsman - Claude Code Pre-commit Hooks Pro Tip
+
+> pro tip:
+>
+> tell claude code or any other agent to
+>
+> generate relevant pre-commit hooks for your project
+
+- **Tweet:** https://x.com/TheAhmadOsman/status/2018466902478397757
+- **What:** Development productivity tip suggesting using Claude Code or AI agents to automatically generate project-specific pre-commit hooks for code quality automation.
+
+---
+
+## @OpenAIDevs - Codex App Team Demonstrations (5 tweets)
+
+> **Thread (5 tweets):**
+> 1. Here's how our team uses the Codex app - @edbayes shows about using the @figma skill to implement designs with visual parity
+> 2. Automate tasks with Codex - @ajambrosino showed how to turn repetitive work into background processes
+> 3. Codex checks its work for you - @Javi talked about how Codex validates its own code by launching apps
+> 4. Here's we multitask with the Codex app - @joey_trasatti shares how he works on multiple features in parallel
+> 5. PMs use Codex to move faster - @embirico shared how he analyzes user feedback and ships features in minutes
+
+- **Thread:** https://x.com/OpenAIDevs/status/2018460509922857022
+- **Link:** https://twitter.com/OpenAIDevs/status/2018460509922857022/video/1
+- **What:** OpenAI team demonstrates practical uses of Codex app across design implementation, automation, code validation, parallel feature development, and product management workflows.
+
+---
+
+## @growthhub_ - Procrastination Cost and Life Change
+
+> He literally explained the cost of procrastination and the only way to change your life:
+
+- **Tweet:** https://x.com/growthhub_/status/2018459197663551946
+- **Link:** https://twitter.com/growthhub_/status/2018459197663551946/video/1
+- **What:** Personal development video about understanding procrastination's costs and actionable strategies for change.
+
+---
+
+## @BillDA - OpenClaw AI bot cold-calling local businesses (video demo)
+
+> The recordings of my OpenClaw AI bot calling local businesses are WILD (and pretty funny) https://t.co/Ul7LmI5DNJ
+
+- **Tweet:** https://x.com/BillDA/status/2018453175246925912
+- **Link:** https://twitter.com/BillDA/status/2018453175246925912/video/1
+- **What:** Bill D'Alessandro shares video recordings of his OpenClaw AI bot making actual phone calls to local businesses. The novelty and entertainment value suggest the AI's speech synthesis, conversation flow, and error handling are all functioning well enough for real-world cold-calling demos.
+
+---
+
+## @JackWoth98 - Gemini CLI skill creator helps write custom agent skills
+
+> Gemini CLI can help you write Agent Skills ✨
+>
+> @geminicli comes with a built-in skill-creator Skill
+>
+> Just ask it to help you write a skill and it will!
+>
+> I had it help me write a blog-writer skill by passing it previous blogs and a style guide to follow 📝
+
+- **Tweet:** https://x.com/JackWoth98/status/2018430649833783322
+- **What:** Jack Wotherspoon demonstrates how Gemini CLI's built-in skill-creator can help developers write custom Agent Skills by providing context (previous work, style guides) and letting the AI generate the skill template.
+
+---
+
+## @dr_cintas - CCPM: Claude Code Product Manager automating PRDs to code
+
+> **Thread (2 tweets):**
+> 1. Claude Code just got its own Product Manager 🤯...
+> 2. Link: https://t.co/VROqVDj6fm...
+
+- **Thread:** https://x.com/dr_cintas/status/2018425788098293866
+- **Link:** https://github.com/automazeio/ccpm
+- **What:** Alvaro Cintas introduces CCPM (Claude Code PM), an open-source tool that automates the entire pipeline from PRD to production code using GitHub Issues and Git worktrees for parallel agent execution. The system turns raw requirements into Epics, Epics into issues, and issues into working code with full traceability. 6,400+ stars on the repo indicates strong developer interest in this spec-driven, no-vibe-coding approach to AI-assisted development.
+
+---
+
+## @GanimCorey - OpenClaw configuration: context files over prompting
+
+> **Thread (2 tweets):**
+> 1. The difference between "chatbot" and "teammate" is what you feed @openclaw on day one...
+> 2. PS: I'm building a one-click @openclaw install...
+
+- **Thread:** https://x.com/GanimCorey/status/2018422648087187640
+- **Link:** https://return-my-time.kit.com/8f464134a4
+- **What:** Corey Ganim explains how to configure OpenClaw from a simple chatbot into a truly useful teammate. The key insight: pre-load context files (IDENTITY.md, USER.md, SOUL.md, MEMORY/, TOOLS.md) so the AI agent loads context like software instead of trying to "learn" like a human. Advanced users add brand voice profiles, email guides, and workflow playbooks. The thread ends with a mention of his one-click installer coming soon.
+
+---
+
+## @simonw - OpenClaw security hardening commit review
+
+> Quoting @openclaw: OpenClaw 2026.2.1 🦞
+>
+> 🔒 Major security hardening: path traversal, LFI, exec injection fixes
+> 🧵 Discord thread routing + gateway message timestamps
+> 🔐 TLS 1.3 minimum, system prompt guardrails
+> 🛠️ Streaming stability, memory search fixes
+
+- **Tweet:** https://x.com/simonw/status/2018404931481567418
+- **Quoted:** https://x.com/openclaw/status/2018293323199635545
+- **Link:** https://github.com/openclaw/openclaw
+- **What:** Simon Willison reviews OpenClaw's system prompt security improvements, confirming they don't hide the prompts but add protection against injection attacks and path traversal vulnerabilities. The commit shows the actual implementation details.
+
+---
+
+## @NickWentz_ - OpenClaw Success: Calculated Madness Over Perfect Safety
+
+> The breakthrough wasn't the model. It was the willingness to do something a little unhinged.
+>
+> @steipete, the developer behind @openclaw (formerly Moltbot/ClawdBot), came on the show last week.
+>
+> If you've been living under a rock: He built an agent that takes over your mouse, reads your screen, and does your work while you sleep. It's insane.
+>
+> OpenClaw crossed 100k+ GitHub stars and millions of views.
+
+- **Tweet:** https://x.com/NickWentz_/status/2018401531784241344
+- **What:** Analysis explaining OpenClaw's 100k+ star success came from calculated risk-taking rather than technical breakthrough—the models existed but big labs prioritized guardrails while Peter Steipete embraced the madness of autonomous desktop agents, demonstrating courage to build without artificial constraints was the real differentiator
+
+---
+
+## @rahulsood - AI Agent Fleet Management with Security Audits
+
+> **Thread (2 tweets):**
+> 1. I Run a Fleet of AI Agents from a Mac Mini. Here's How I Keep Them From Going Rogue.
+> 2. With this model I can literally spin up a new employee in 5 minutes, and they will fully understand their...
+
+- **Thread:** https://x.com/rahulsood/status/2018394405028364384
+- **What:** Production architecture for managing multiple AI agents (Claude Chief of Staff + Gemini Flash subordinates) with daily security audits, scoped permissions, workspace-based persistent memory (SOUL.md, STRATEGY.md, HEARTBEAT.md), and Telegram notifications for the boktoshi.com AI trading platform
+
+---
+
+## @geminicli - Extensions with Agent Skills & Hooks Support
+
+> **Thread (2 tweets):**
+> 1. Extensions now support Agent Skills and Hooks! 🛠️
+> 2. https://t.co/eVsElGus6P
+
+- **Thread:** https://x.com/geminicli/status/2018391750134374440
+- **Link:** https://geminicli.com/extensions/
+- **What:** Gemini CLI extensions now support bundling Agent Skills, Hooks, MCP servers, context files, and custom commands with 300+ extensions available
+
+---
+
+## @arpitrage - AI in Finance Course with GitHub Repo & Substack
+
+> **Thread (2 tweets):**
+> 1. I'm teaching a new course at Stern on AI in Finance and opening it up!
+> 2. The inspiration here was @joshrauh and his open sourced course on Energy Finance.
+
+- **Thread:** https://x.com/arpitrage/status/2018391619410579587
+- **Link:** https://github.com/arpitrage/ai-in-finance
+- **What:** NYU Stern professor releasing open-source course materials on AI in Finance with GitHub repo containing syllabus and lecture notes, plus Substack series exploring Amdahl's Law and Jevons' Paradox
+
+---
+
+## @GetKoidex - ClawHavoc: 341 Malicious ClawHub Skills Audit
+
+> 🔍 🦞 We built a bot to audit every skill on ClawHub.
+>
+> It found 341 malicious skills (12%) - all part of a single campaign we call ClawHavoc.
+>
+> Malware disguised as "prerequisites" - AMOS stealers, backdoored code and more.
+> Full research 👇
+
+*Quoting @orenyomtov:* We found 341 malicious skills on ClawHub targeting OpenClaw bots. So we built Clawdex - a skill that lets your bot check if a skill is malicious before installing it.
+
+- **Tweet:** https://x.com/GetKoidex/status/2018362304073441639
+- **Quoted:** https://x.com/orenyomtov/status/2018323558746014087
+- **Link:** https://www.koi.ai/blog/clawhavoc-341-malicious-clawedbot-skills-found-by-the-bot-they-were-targeting
+- **What:** Security research discovering 341 malicious OpenClaw skills (12% of ClawHub) in coordinated campaign, with Clawdex defense tool developed to detect malicious installations
+
+---
+
+## @Tatarigami_UA - As we approach a point marking the beginning of the war's 5th year, it is time to dis...
+
+> **Thread (8 tweets):**
+> 1. As we approach a point marking the beginning of the war's 5th year, it is time to discuss how we ass...
+> 2. 2/ Generally, this is not a bad method of analyzing battlefield dynamics, as the history of wars sho...
+> 3. 3/ Putting aside other domains of war, such as economics and socio-politics, battlefield dynamics ar...
+> 4. 4/ So what is the "Sahara Fallacy"? Imagine a scenario where an attacking side must choose how to al...
+> 5. 5/ Capturing the desert produces immediate territorial gains, but of little military value. Seizing ...
+> 6. 6/ Thus, the principle can be formulated as follows: The battlefield value of territory lies in the ...
+> 7. 7/ So what does this mean in our case? Simply put, if Russian forces move into a sparsely populated ...
+> 8. 8/ Thus, if the goal is to assess changes in battlefield dynamics, relying solely on kilometers as a...
+
+- **Thread:** https://x.com/Tatarigami_UA/status/2018355736125059078
+- **What:** Military analysis: assessing 5th year of war through battlefield dynamics and the Sahara Fallacy principle
+
+---
+
+## @growthhub_ - She literally explained How to Chase the Person You Want to Become￼. https://t.co/Fgs...
+
+> **Thread (2 tweets):**
+> 1. She literally explained How to Chase the Person You Want to Become￼. https://t.co/FgsJXIfgn8
+> 2. If you're tired of doing this alone ? The learning, the building, the growing  Join "myfirstdollar" ...
+
+- **Thread:** https://x.com/growthhub_/status/2018338480598745357
+- **Link:** https://twitter.com/growthhub_/status/2018338480598745357/video/1
+- **What:** Personal growth framework on pursuing your ideal self
+
+---
+
+## @orenyomtov - We found 341 malicious skills on ClawHub targeting OpenClaw bots.
+
+> **Thread (11 tweets):**
+> 1. We found 341 malicious skills on ClawHub targeting OpenClaw bots. So we built Clawdex - a skill that...
+> 2. Meet Alex, my OpenClaw bot. He helps me with security research, both in suggesting potential researc...
+> 3. 335 of the malicious skills came from a single campaign we're calling ClawHavoc. The attack is elega...
+> 4. On Windows: a password-protected ZIP ("to evade AV scanning") On macOS: a https://t.co/83D9eB1yYE sc...
+> 5. We traced the full macOS chain: • Fake "Setup-Wizard" URL as misdirection • Base64 payload → curl fe...
+> 6. The disguise factory hit every high-value category: • 29 ClawHub typosquats (clawhub, clawhub1, claw...
+> 7. But the scariest finding? The outliers. better-polymarket looked functional. 180 lines of working Po...
+> 8. What makes this different from npm/PyPI attacks: AI bots have access to email, calendars, notes, per...
+> 9. The pattern is always the same: 1. Find growing ecosystem with permissive publishing 2. Typosquat po...
+> 10. Clawdex lets your bot scan skills before installing - and check what you've already got. https://t.c...
+> 11. Full technical writeup with IOCs, hashes, and all 341 skill names: https://t.co/aQB83k92ec
+
+- **Thread:** https://x.com/orenyomtov/status/2018323558746014087
+- **Link:** https://twitter.com/orenyomtov/status/2018323558746014087/photo/1
+- **What:** Security research: 341 malicious ClawHub skills campaign (ClawHavoc) targeting OpenClaw bots
+
+---
+
+# Sunday, February 1, 2026
+
+## @ashpreetbedi - Dash: Open sourcing OpenAI's in-house data agent
+
+> Dash: Open sourcing OpenAI's in-house data agent OpenAI recently published [how they built their internal data agent](https://openai.com/index/inside-our-in-house-data-agent/). 6 layers of context, a self-learning memory system, and real lessons from running it in production. One of the best enterprise use-cases for agents I've read. I've been working on [a similar problem](https://www.ashpreetbedi.com/articles/sql-agent) for a while and their architecture validates the gpu-poor continuous learn...
+
+- **Tweet:** https://x.com/ashpreetbedi/status/2018059495335764273
+- **Link:** https://x.com/i/article/2018059495335764273
+- **What:** OpenAI data agent architecture and enterprise use cases
+
+---
+
+## @alex_prompter - Steal my OpenClaw system prompt to turn it into an actual productive assistant (not a...
+
+> **Thread (3 tweets):**
+> 1. Steal my OpenClaw system prompt to turn it into an actual productive assistant (not a security night...
+> 2. How to use: 1/ Save as https://t.co/iETv5iJpM5 in your OpenClaw root  2/ Customize the "What I Care ...
+> 3. Your premium AI bundle to 10x your business → Prompts for marketing &amp; business → Unlimited custo...
+
+- **Thread:** https://x.com/alex_prompter/status/2017982342854218005
+- **Link:** https://memory.md/
+- **What:** OpenClaw executive assistant system prompt with guardrails and cost awareness
+
+---
+
 # Saturday, January 31, 2026
 
 ## @nicopreme - Pi Annotate: Browser Element Inspector with AI Agent Integration

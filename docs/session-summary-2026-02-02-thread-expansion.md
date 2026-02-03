@@ -5,7 +5,7 @@
 
 ## Summary
 
-Implemented thread expansion for Smaug bookmarks. When a user bookmarks the first tweet of a thread, Smaug now automatically fetches the author's self-reply chain and captures links from ALL thread tweets, solving the common problem where important links (GitHub repos, articles) appear in tweet #2 or later.
+Implemented thread expansion for Smaug bookmarks. When a user bookmarks the first tweet of a thread, Smaug now automatically fetches the author's self-reply chain and captures links from ALL thread tweets, solving the common problem where further content and/or important links (GitHub repos, articles) appear in tweet #2 or later.
 
 ## Problem Solved
 
@@ -149,10 +149,11 @@ The implementation is **high quality** and **faithful to the plan**. All planned
 
 ## Next Steps
 
-### Completed
-- [x] Process the pending bookmarks with Claude to verify AI handles thread data correctly
-- [x] Consider adding thread summary generation (combine all tweet texts)
-- [x] Monitor performance impact on large fetches
+### Initial Recommendations
+- [ ] Update README.md with any necessary details and usage notes
+- [ ] Process the pending bookmarks with Claude to verify AI handles thread data correctly
+- [ ] Consider adding thread summary generation (combine all tweet texts)
+- [ ] Monitor performance impact on large fetches
 
 ### New Recommendations from Code Review
 
