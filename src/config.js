@@ -29,7 +29,7 @@ const DEFAULT_CONFIG = {
   stateFile: './.state/bookmarks-state.json',
 
   // Timezone for date formatting
-  timezone: 'America/New_York',
+  timezone: 'America/Los_Angeles',
 
   // Path to bird CLI (if not in PATH)
   birdPath: null,

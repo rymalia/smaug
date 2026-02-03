@@ -266,7 +266,7 @@ git add knowledge/
 # Commit with descriptive message
 git commit -m "Process N Twitter bookmarks from $DATE
 
-🤖 Generated
+🔥 Smaug
 
 # Push immediately
 git push
