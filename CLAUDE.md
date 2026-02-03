@@ -7,8 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Smaug is a Twitter/X bookmark archiver that:
 1. Fetches your bookmarks (and optionally likes) from Twitter
 2. Expands shortened t.co links to reveal actual URLs
-3. Extracts content from linked pages (GitHub repos, articles, quote tweets)
-4. Uses Claude Code to analyze and categorize each tweet
+3. Extracts content from linked pages (GitHub repos, articles, X articles, quote tweets)
+4. Uses an AI CLI (Claude Code or OpenCode) to analyze and categorize each tweet
 5. Saves everything to organized markdown files
 
 *Like a dragon hoarding treasure, Smaug collects and organizes the valuable things you bookmark.*
@@ -114,12 +114,19 @@ You only need to run this once after cloning, or again if `package.json` changes
 ### Running Smaug
 
 ```bash
-# Full workflow: fetch bookmarks + process with Claude Code
+# Full workflow: fetch bookmarks + process with AI CLI
 npx smaug run
 
-# Same, but with token usage/cost tracking at the end
+# With token usage/cost tracking
 npx smaug run -t
 npx smaug run --track-tokens
+
+# With verbose model selection logging
+npx smaug run --verbose
+npx smaug run -v
+
+# Process only a subset of pending bookmarks
+npx smaug run --limit 50
 ```
 
 **What is `npx`?** It's a tool that comes with npm that runs executables from `node_modules/.bin/` or from packages. `npx smaug` runs the smaug CLI defined in this project's `package.json`.
@@ -132,6 +139,10 @@ npx smaug fetch
 
 # Fetch a specific number
 npx smaug fetch 50
+
+# Fetch ALL bookmarks (paginated)
+npx smaug fetch --all
+npx smaug fetch --all --max-pages 5
 
 # Fetch from likes instead of bookmarks
 npx smaug fetch --source likes
@@ -189,18 +200,19 @@ Smaug works in two distinct phases:
 │ PHASE 1: FETCH (processor.js)                                   │
 │                                                                 │
 │  Twitter API ──► Expand t.co links ──► Extract content          │
-│  (via bird)      (curl redirects)      (GitHub API, articles)   │
+│  (via bird)      (curl redirects)      (GitHub, articles, X)    │
 │                                                                 │
 │  Output: .state/pending-bookmarks.json                          │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ PHASE 2: PROCESS (job.js → Claude Code)                         │
+│ PHASE 2: PROCESS (job.js → AI CLI)                              │
 │                                                                 │
 │  Read pending JSON ──► Categorize ──► Write markdown files      │
 │                        (AI analysis)   (bookmarks.md, knowledge/)│
 │                                                                 │
+│  AI CLI: Claude Code (default) or OpenCode                      │
 │  Uses: .claude/commands/process-bookmarks.md for instructions   │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -210,20 +222,23 @@ Smaug works in two distinct phases:
 ```
 src/
 ├── cli.js        # CLI entry point - handles command-line arguments
-│                 # Commands: setup, run, fetch, process, status
+│                 # Commands: setup, run, fetch, process, status, init
+│                 # Flags: --verbose, --track-tokens, --limit, --source, --media
 │
 ├── job.js        # Scheduled job runner
 │                 # - Lock management (prevents overlapping runs)
-│                 # - Invokes Claude Code with the pending bookmarks
+│                 # - invokeAICLI() - unified AI invocation (Claude or OpenCode)
+│                 # - getCLISettings() - platform-specific CLI configuration
+│                 # - findClaude() / findOpenCode() - cross-platform binary detection
 │                 # - Dragon-themed progress output 🐉
-│                 # - Token usage tracking
+│                 # - Token usage tracking with cost calculation
 │                 # - Webhook notifications (Discord/Slack)
 │
 ├── processor.js  # Bookmark fetching and preparation
 │                 # - Calls bird CLI to get bookmarks/likes
 │                 # - Expands t.co shortened URLs
 │                 # - Fetches GitHub repo info via API
-│                 # - Fetches article content
+│                 # - Fetches article content and X articles
 │                 # - Resolves quote tweets and reply threads
 │                 # - Outputs to .state/pending-bookmarks.json
 │
@@ -231,6 +246,7 @@ src/
 │                 # - Loads from smaug.config.json
 │                 # - Falls back to environment variables
 │                 # - Merges with defaults
+│                 # - Tracks config source for verbose logging
 │
 └── index.js      # Library exports (for programmatic use)
 ```
@@ -241,16 +257,32 @@ src/
 .state/
 ├── pending-bookmarks.json   # Bookmarks waiting to be processed
 │                            # Contains full tweet data, expanded links, content
-└── bookmarks-state.json     # Tracks last check time, processing state
+├── bookmarks-state.json     # Tracks last check time, processing state
+└── batch-N.md               # Temporary files during parallel processing
 
 bookmarks.md                 # Main archive file - all bookmarks by date
 
 knowledge/
 ├── tools/                   # GitHub repos filed here
 │   └── {repo-name}.md
-└── articles/                # Blog posts and articles filed here
-    └── {article-slug}.md
+├── articles/                # Blog posts and articles filed here
+│   └── {article-slug}.md
+├── videos/                  # YouTube, Vimeo, etc. (transcription flagged)
+│   └── {video-slug}.md
+└── podcasts/                # Podcast episodes (transcription flagged)
+    └── {podcast-slug}.md
 ```
+
+### Media Attachments (Experimental)
+
+Enable with `--media` flag or `includeMedia: true` in config. Captures:
+- `type`: "photo", "video", "animated_gif"
+- `url`: Full-size media URL
+- `previewUrl`: Thumbnail
+- `width`, `height`: Dimensions
+- `videoUrl`, `durationMs`: For videos only
+
+**Note:** Requires bird CLI with media support (PR #14).
 
 ### Configuration (smaug.config.json)
 
@@ -259,14 +291,23 @@ knowledge/
   "source": "bookmarks",           // or "likes" or "both"
   "archiveFile": "./bookmarks.md",
   "timezone": "America/New_York",
+  "includeMedia": false,           // Experimental: include media attachments
 
   "twitter": {
     "authToken": "your_auth_token",  // From browser cookies
     "ct0": "your_ct0"                // From browser cookies
   },
 
+  // AI CLI settings
+  "cliTool": "claude",             // or "opencode"
   "claudeModel": "sonnet",         // or "haiku" (faster/cheaper) or "opus"
   "autoInvokeClaude": true,        // Auto-run Claude after fetching
+  "opencodeModel": "opencode/glm-4.7-free",  // Model for OpenCode
+  "autoInvokeOpencode": true,      // Auto-run OpenCode after fetching
+
+  // Processing settings
+  "claudeTimeout": 900000,         // 15 min timeout
+  "parallelThreshold": 8,          // Min bookmarks before parallel subagents
 
   "categories": {
     // Custom category definitions (see Category System below)
@@ -277,8 +318,16 @@ knowledge/
 **Environment variables** can override config values:
 - `AUTH_TOKEN`, `CT0` - Twitter credentials
 - `SOURCE` - bookmarks/likes/both
+- `CLI_TOOL` - claude/opencode
 - `CLAUDE_MODEL` - sonnet/haiku/opus
+- `OPENCODE_MODEL` - e.g., "opencode/glm-4.7-free"
 - `TIMEZONE` - e.g., "America/Los_Angeles"
+- `INCLUDE_MEDIA` - true/false
+
+**Config source tracking** (for `--verbose` flag):
+- `_loadedFrom` - Which config file was loaded
+- `_claudeModelFromEnv` - True if model came from CLAUDE_MODEL env var
+- `_claudeModelFromFile` - True if model was in config file
 
 ### Category System
 
@@ -288,14 +337,18 @@ Categories determine how different types of bookmarks are handled:
 |----------|--------------|--------|-------------|
 | github | github.com | file | knowledge/tools/ |
 | article | medium.com, substack.com, blog | file | knowledge/articles/ |
-| podcast | podcasts.apple.com, spotify.com/episode | transcribe | (flagged) |
-| youtube | youtube.com, youtu.be | transcribe | (flagged) |
+| x-article | x.com/i/article/* | file | knowledge/articles/ |
+| podcast | podcasts.apple.com, spotify.com/episode | transcribe | knowledge/podcasts/ |
+| youtube | youtube.com, youtu.be | transcribe | knowledge/videos/ |
+| video | vimeo.com, loom.com | transcribe | knowledge/videos/ |
 | tweet | (fallback) | capture | bookmarks.md only |
 
 **Actions:**
 - `file` - Create a separate markdown file with rich metadata
 - `capture` - Just add to bookmarks.md (no separate file)
 - `transcribe` - Flag for future transcription, add note to bookmarks.md
+
+**X Articles:** Twitter's native long-form content (`x.com/i/article/*`). Smaug uses bird CLI with search fallback for quoted articles. Note: Some X articles are JS-rendered and may have limited content extraction.
 
 You can add custom categories in your config:
 ```json
@@ -311,20 +364,90 @@ You can add custom categories in your config:
 }
 ```
 
+## AI CLI Tools
+
+Smaug supports two AI CLI tools for processing bookmarks:
+
+### Claude Code (default)
+- Binary: `claude`
+- Model config: `claudeModel` (sonnet/haiku/opus)
+- Auto-invoke: `autoInvokeClaude: true`
+
+### OpenCode (alternative)
+- Binary: `opencode`
+- Model config: `opencodeModel` (e.g., 'opencode/glm-4.7-free')
+- Auto-invoke: `autoInvokeOpencode: true`
+- Set `cliTool: 'opencode'` in config to use
+
+The `getCLISettings()` function in `job.js` handles platform-specific binary detection and argument building for both tools.
+
+### Verbose Mode
+
+```bash
+npx smaug run --verbose    # or -v
+```
+
+Shows model selection with source attribution:
+```
+🎯 Claude model set to 'sonnet' (from config file (./smaug.config.json))
+🎯 Claude model set to 'haiku' (from environment variable (CLAUDE_MODEL))
+🎯 Subagent model set to 'haiku' (specified in Task call)
+```
+
+### Cross-Platform Support
+
+`job.js` includes cross-platform binary detection:
+- `findClaude()` / `findOpenCode()` - checks platform-specific paths (macOS, Linux, Windows)
+- `getPathSeparator()` - returns `;` for Windows, `:` for Unix
+- Windows uses shell mode for spawning processes
+
 ## The /process-bookmarks Skill
 
 When Smaug invokes Claude Code, it runs the instructions in `.claude/commands/process-bookmarks.md`. This file tells Claude how to:
 
 1. Read the pending bookmarks JSON
 2. Create a todo list to track progress
-3. For 3+ bookmarks: **Use parallel Task subagents** with `model="haiku"` for cost efficiency
+3. For 8+ bookmarks: **Use parallel Task subagents** with `model="haiku"` for cost efficiency
 4. Categorize each bookmark based on URL patterns
 5. Write entries to bookmarks.md (newest first within each date)
 6. Create separate files in knowledge/ for GitHub repos and articles
 7. Clean up the pending file after processing
 8. Commit and push changes to git
 
-**Cost optimization:** For batches of 3+ bookmarks, the skill spawns parallel subagents using Haiku instead of Sonnet. This cuts costs ~50% while maintaining quality for categorization tasks.
+### Parallel Processing (≥8 bookmarks)
+
+When processing 8+ bookmarks (configurable via `parallelThreshold`):
+1. Spawns multiple Task subagents with `model="haiku"` for cost efficiency
+2. Each subagent writes to `.state/batch-N.md` (avoids race conditions)
+3. Main agent merges batch files into `bookmarks.md` using Edit tool
+4. **Critical:** Never use Write tool on bookmarks.md (causes data loss—always use Edit)
+
+**Cost optimization:** Parallel subagents using Haiku instead of Sonnet cuts costs ~50% while maintaining quality for categorization tasks.
+
+### Token Usage Tracking
+
+Use `-t` or `--track-tokens` to display cost breakdown:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 TOKEN USAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Main (sonnet):
+  Input:               85 tokens  <$0.01
+  Output:           5,327 tokens  $0.08
+  Cache Read:     724,991 tokens  $0.22
+  Cache Write:     62,233 tokens  $0.23
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 TOTAL COST: $0.53
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Pricing (per million tokens) in `job.js`:
+| Model | Input | Output | Cache Read | Cache Write |
+|-------|-------|--------|------------|-------------|
+| Sonnet | $3.00 | $15.00 | $0.30 | $3.75 |
+| Haiku | $0.25 | $1.25 | $0.025 | $0.30 |
+| Opus | $15.00 | $75.00 | $1.50 | $18.75 |
 
 ## How bird CLI Integrates
 
@@ -425,11 +548,14 @@ npx smaug run
 ### bird CLI 403 errors
 Your Twitter cookies expired. Get fresh `auth_token` and `ct0` from your browser's Developer Tools → Application → Cookies → twitter.com.
 
-### Claude Code not found
-The job.js file looks for Claude in common locations. Make sure `claude` is in your PATH:
+### Claude Code or OpenCode not found
+The job.js file looks for the AI CLI binary in common locations. Make sure the binary is in your PATH:
 ```bash
-which claude    # Should show the path
+which claude    # For Claude Code
+which opencode  # For OpenCode
 ```
+
+If using OpenCode, set `cliTool: 'opencode'` in your config.
 
 ### Processing is slow
 - Use `haiku` model in config for faster (cheaper) processing
