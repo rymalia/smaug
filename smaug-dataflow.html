@@ -1014,10 +1014,10 @@
       processor: {
         title: "Bookmark Processor",
         controller: "programmatic",
-        description: "<strong>Important:</strong> Bird CLI doesn't know what's already processed — it just returns your N most recent bookmarks. The Processor then: <ol><li>Reads <code>bookmarks.md</code> to find already-archived tweet IDs</li><li>Reads <code>pending-bookmarks.json</code> to find IDs waiting to be processed</li><li>Filters out any tweets matching those IDs</li><li>Only processes the remaining 'new' tweets</li></ol>This means if you fetch 20 bookmarks but 18 are already archived, only 2 get processed.",
+        description: "<strong>Node.js does ALL aggregation work here</strong> — by the time data reaches Claude, everything is prepared.<br><br>The Processor: <ol><li>Deduplicates against <code>bookmarks.md</code> + <code>pending.json</code></li><li>Groups thread tweets and builds <code>allLinks[]</code></li><li>Expands t.co links and fetches content</li><li>Stores each tweet's text separately in <code>threadTweets[]</code></li></ol>Claude receives ready-to-interpret JSON, not raw data.",
         file: "src/processor.js",
-        dataIn: "Config with Twitter credentials, fetch count",
-        dataOut: "Filtered new bookmarks → .state/pending-bookmarks.json"
+        dataIn: "Config, raw tweets from Bird CLI",
+        dataOut: "Pre-aggregated JSON: allLinks[], threadTweets[].text (separate), expanded content"
       },
       bird: {
         title: "Bird CLI",
@@ -1085,26 +1085,26 @@
       threadFetch: {
         title: "Thread Fetcher",
         controller: "programmatic",
-        description: "When thread expansion is enabled, Bird CLI is called with <code>--author-chain --thread-meta</code> flags to fetch the author's self-reply chain for each bookmark.",
+        description: "<strong>Node.js controls all thread fetching</strong> — Bird CLI is called with <code>--author-chain --thread-meta</code> flags. Thread expansion happens during fetch, not after.<br><br>Returns flat array of tweets with thread metadata that will be grouped by the next step.",
         file: "src/processor.js:fetchBookmarks()",
-        dataIn: "Bird CLI with thread expansion flags",
-        dataOut: "Tweets with threadRootId, threadPosition metadata"
+        dataIn: "Bird CLI command with thread expansion flags",
+        dataOut: "Flat tweet array with threadRootId, threadPosition, conversationId"
       },
       threadGroup: {
         title: "Thread Grouper",
         controller: "programmatic",
-        description: "Groups fetched tweets by conversationId/threadRootId. Identifies which tweets were originally bookmarked vs which are expanded context.",
+        description: "Groups fetched tweets by conversationId/threadRootId. Identifies which tweets were originally bookmarked vs which are expanded context.<br><br><strong>Key data structure:</strong> Creates a <code>tweetLinkSources</code> Map that tracks which tweet(s) contain each link. Enables attribution (knowing where a link came from) and deduplication (same link in multiple tweets).",
         file: "src/processor.js:groupThreadTweets()",
         dataIn: "Flat array of tweets",
-        dataOut: "Array of { primaryTweet, threadTweets[], bookmarkedTweetIds }"
+        dataOut: "{ primaryTweet, threadTweets[], bookmarkedTweetIds, tweetLinkSources Map }"
       },
       allLinks: {
         title: "Link Aggregator",
         controller: "programmatic",
-        description: "Collects links from ALL tweets in a thread, not just the bookmarked one. Critical for threads where the important link is in a later tweet.",
-        file: "src/processor.js",
-        dataIn: "threadTweets[].links",
-        dataOut: "allLinks[] - aggregated links for categorization"
+        description: "<strong>Only links are aggregated</strong> — tweet texts remain separate in <code>threadTweets[].text</code> (each truncated to 500 chars).<br><br>Collects links from ALL tweets in a thread into a single <code>allLinks[]</code> array. Critical for threads where the important link is in a later tweet. Claude must read the separate <code>threadTweets[].text</code> entries itself to understand full context.",
+        file: "src/processor.js:809-857",
+        dataIn: "threadTweets[].links (per-tweet)",
+        dataOut: "allLinks[] (flat array for categorization) + threadTweets[].text (separate, NOT concatenated)"
       },
       invokeAI: {
         title: "AI CLI Invoker",
@@ -1117,18 +1117,18 @@
       claudeRead: {
         title: "Read Pending (AI)",
         controller: "ai-driven",
-        description: "Claude's first action: read the pending bookmarks JSON using the Read tool. This is triggered by the prompt instructions, not programmatic code.",
+        description: "Claude's first action: read the pending bookmarks JSON. <strong>Data is already aggregated</strong> by Node.js — links collected into <code>allLinks[]</code>, tweets grouped by thread, content fetched.<br><br>Claude receives ready-to-interpret data, not raw tweets.",
         tool: "Read",
-        dataIn: ".state/pending-bookmarks.json",
-        dataOut: "Parsed bookmark array in Claude's context"
+        dataIn: ".state/pending-bookmarks.json (pre-aggregated by Phase 1)",
+        dataOut: "Bookmark objects with allLinks[], threadTweets[], expanded content"
       },
       categorize: {
         title: "Categorization (AI)",
         controller: "ai-driven",
-        description: "Claude analyzes each bookmark's links against category patterns (github, article, video, podcast, tweet). Uses allLinks[] for threads. Decides action: file, capture, or transcribe.",
-        tool: "AI reasoning",
-        dataIn: "Bookmark with links[] or allLinks[]",
-        dataOut: "Category decision (github->file, article->file, video->transcribe, tweet->capture)"
+        description: "<strong>Claude interprets pre-aggregated data</strong> — it does NOT aggregate or group tweets (that's already done by Node.js).<br><br>For threads: Uses <code>allLinks[]</code> for categorization, reads each <code>threadTweets[].text</code> separately for context. Decides category (github, article, video, podcast, tweet) and action (file, capture, or transcribe).",
+        tool: "AI reasoning (following process-bookmarks.md instructions)",
+        dataIn: "Pre-aggregated bookmark: allLinks[] (aggregated), threadTweets[].text (separate)",
+        dataOut: "Category decision + title/description based on full thread context"
       },
       spawnAgents: {
         title: "Spawn Subagents (AI)",

@@ -418,6 +418,8 @@ The agent deviated in two ways:
 
 This is a fundamental characteristic of AI-driven phases: the agent interprets instructions rather than executing them literally, which can lead to reasonable but undocumented deviations.
 
+For AI-driven phases, always verify empirically what the agent actually does — don't assume it follows instructions literally.
+
 ---
 
 ## Implementation Patterns Used
