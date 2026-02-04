@@ -336,3 +336,121 @@ This makes it fully portable and functional offline.
 3. **Diff view**: Show what changes between steps (e.g., JSON before/after filtering)
 4. **Error simulation**: Show what happens when Bird CLI fails, when Claude times out, etc.
 5. **Cost calculator**: Estimate API costs based on bookmark count and model selection
+
+---
+
+## Architectural Insights Discovered (2026-02-04)
+
+These insights emerged while building and refining the visualization. They document non-obvious behaviors in Smaug's data flow.
+
+### 1. In-Memory Processing Before File Write
+
+**Key insight:** Data returned from Bird CLI is held entirely in memory and processed through multiple stages before anything is written to `pending-bookmarks.json`.
+
+The actual flow is:
+1. Bird returns tweets → **held in memory**
+2. Deduplication filters in memory (against bookmarks.md + pending.json IDs)
+3. t.co link expansion (HTTP HEAD requests, results stored in memory)
+4. Content fetching (GitHub API, article scraping, results stored in memory)
+5. **Only then** → write everything to `pending-bookmarks.json`
+
+This means if Smaug crashes mid-processing, no partial data is written. The file write is atomic at the end.
+
+### 2. Deduplication Happens Against Two Sources
+
+The processor filters incoming tweets against **two** ID sets:
+- `bookmarks.md` — IDs already archived (fully processed)
+- `pending-bookmarks.json` — IDs already queued (waiting for Claude)
+
+This prevents both re-archiving old tweets AND re-fetching tweets that are sitting in the pending queue.
+
+### 3. Thread Expansion Timing
+
+When thread expansion is enabled, Bird CLI is called with `--author-chain --thread-meta` flags. This means thread expansion happens **during the fetch phase**, not after.
+
+The execution order is:
+1. Bird fetches bookmarks WITH thread data already included
+2. Processor receives pre-grouped thread data
+3. Then deduplication and link processing happen
+
+The visualization reflects this by moving the Thread Expansion row above Deduplication when thread mode is active.
+
+### 4. Bird CLI Has No Knowledge of Smaug State
+
+Bird CLI simply returns your N most recent bookmarks. It has no cursor for "bookmarks since tweet X" and doesn't know what Smaug has already processed.
+
+This "fetch everything, filter locally" approach means:
+- If you have 1000 unprocessed bookmarks, `fetch 20` gets the 20 most recent (which might ALL be already-processed)
+- The `--all` flag is needed for large backlogs to paginate through everything
+- The "intelligence" about what's new lives entirely in Smaug's Processor
+
+### 5. Return Flow in Data Pipelines
+
+When visualizing bidirectional data flow (request going right, response coming left), arrows pointing only one direction are confusing. The visualization now flips arrows using CSS `transform: scaleX(-1)` during return-flow steps, making it clear when data is flowing back through the pipeline.
+
+---
+
+## Implementation Patterns Used
+
+These patterns were developed while building the visualization and may be useful for similar projects.
+
+### Marker-Based Step Insertion
+
+Instead of finding insertion points by matching description text (fragile):
+```javascript
+// BAD: breaks if description changes
+const idx = steps.findIndex(s => s.description.includes('categorizes'));
+```
+
+Use explicit markers:
+```javascript
+// GOOD: stable insertion point
+{ nodes: ['categorize'], marker: 'after-categorize', description: '...' }
+const idx = steps.findIndex(s => s.marker === 'after-categorize');
+```
+
+### Progressive Disclosure with Disabled States
+
+Rather than hiding inactive sections with `display: none`, keep them visible but greyed out:
+```css
+.sub-flow.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+```
+
+This helps users understand the complete pipeline structure even when parts are inactive.
+
+### Dynamic Descriptions
+
+For animation steps that need conditional text based on state:
+```javascript
+{
+  nodes: ['bird'],
+  description: 'Bird CLI invoked: bird bookmarks -n 20 --json',
+  dynamicDescription: () => {
+    return state.threadExpansion
+      ? 'Bird CLI invoked: bird bookmarks -n 20 --author-chain --thread-meta --json'
+      : 'Bird CLI invoked: bird bookmarks -n 20 --json';
+  }
+}
+```
+
+Then in the execution:
+```javascript
+const description = step.dynamicDescription ? step.dynamicDescription() : step.description;
+```
+
+### CSS Flexbox Order for Conditional Layout
+
+To reorder elements without moving DOM nodes:
+```css
+.phase-content { display: flex; flex-direction: column; }
+.phase-content > #threadFlow { order: 4; } /* default: last */
+.phase.thread-active > .phase-content > #threadFlow { order: 2; } /* when active: second */
+```
+
+Toggle a class on the parent to trigger reordering:
+```javascript
+document.getElementById('phase1').classList.toggle('thread-active', threadActive);
+```
