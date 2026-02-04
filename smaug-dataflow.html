@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smaug Data Flow Visualization</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --accent-blue: #58a6ff;
+      --accent-green: #3fb950;
+      --accent-orange: #d29922;
+      --accent-red: #f85149;
+      --accent-purple: #a371f7;
+      --programmatic: #58a6ff;
+      --ai-driven: #a371f7;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .sidebar h1 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .section-header {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin: 20px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .legend {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.programmatic { background: var(--programmatic); }
+    .legend-dot.ai-driven { background: var(--ai-driven); }
+
+    .tweet-selector {
+      margin-bottom: 16px;
+    }
+
+    .tweet-selector label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    .tweet-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tweet-btn {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    .tweet-btn:hover {
+      border-color: var(--accent-blue);
+    }
+
+    .tweet-btn.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-group input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent-blue);
+    }
+
+    .control-group label {
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .play-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .play-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .play-btn.primary {
+      background: var(--accent-green);
+      color: #fff;
+    }
+
+    .play-btn.primary:hover {
+      background: #2ea043;
+    }
+
+    .play-btn.secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .play-btn.secondary:hover {
+      border-color: var(--accent-blue);
+    }
+
+    .speed-control {
+      margin-top: 12px;
+    }
+
+    .speed-control label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .speed-control input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-blue);
+    }
+
+    /* Main content */
+    .main {
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .flow-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .phase {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .phase-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .phase-header h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .phase-badge {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .phase-badge.programmatic {
+      background: rgba(88, 166, 255, 0.15);
+      color: var(--programmatic);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+    }
+
+    .phase-badge.ai-driven {
+      background: rgba(163, 113, 247, 0.15);
+      color: var(--ai-driven);
+      border: 1px solid rgba(163, 113, 247, 0.3);
+    }
+
+    .phase-content {
+      padding: 20px;
+    }
+
+    .flow-row {
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .node {
+      background: var(--bg-tertiary);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      min-width: 140px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .node.active {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+    }
+
+    .node.programmatic {
+      border-color: var(--programmatic);
+    }
+
+    .node.programmatic.active {
+      background: rgba(88, 166, 255, 0.1);
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+    }
+
+    .node.ai-driven {
+      border-color: var(--ai-driven);
+    }
+
+    .node.ai-driven.active {
+      background: rgba(163, 113, 247, 0.1);
+      box-shadow: 0 0 20px rgba(163, 113, 247, 0.4);
+    }
+
+    .node.external {
+      border-color: var(--accent-orange);
+      border-style: dashed;
+    }
+
+    .node.external.active {
+      background: rgba(210, 153, 34, 0.1);
+      box-shadow: 0 0 20px rgba(210, 153, 34, 0.4);
+    }
+
+    .node-icon {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+
+    .node-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .node-subtitle {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .node-file {
+      font-size: 0.65rem;
+      color: var(--accent-blue);
+      font-family: monospace;
+      margin-top: 4px;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      min-width: 30px;
+    }
+
+    .arrow.active {
+      color: var(--accent-green);
+    }
+
+    .data-packet {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 10px var(--accent-green);
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .data-packet.visible {
+      opacity: 1;
+    }
+
+    /* Details panel */
+    .details-panel {
+      margin-top: 24px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .details-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .details-content {
+      padding: 16px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .details-content code {
+      background: var(--bg-tertiary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+
+    .details-content .data-sample {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      margin-top: 12px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+    }
+
+    .step-indicator .step-num {
+      background: var(--accent-blue);
+      color: #fff;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Timeline */
+    .timeline {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .timeline-header {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .timeline-bar {
+      height: 8px;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .timeline-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--programmatic) 0%, var(--programmatic) 50%, var(--ai-driven) 50%, var(--ai-driven) 100%);
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .timeline-step {
+      position: absolute;
+      top: -4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      border: 2px solid var(--border);
+      transform: translateX(-50%);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .timeline-step:hover,
+    .timeline-step.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+    }
+
+    .timeline-step.completed {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+    }
+
+    /* Sub-flow rows */
+    .sub-flow {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .sub-flow-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub-flow-label .conditional {
+      color: var(--accent-orange);
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .flow-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h1>Smaug Data Flow</h1>
+      <p class="subtitle">Twitter bookmark archiver pipeline</p>
+
+      <div class="section-header">Controller Legend</div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot programmatic"></div>
+          <span>Programmatic (Node.js)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ai-driven"></div>
+          <span>AI-Driven (Claude Agent)</span>
+        </div>
+      </div>
+
+      <div class="section-header">Simulate Tweet Type</div>
+      <div class="tweet-selector">
+        <div class="tweet-buttons">
+          <button class="tweet-btn active" data-type="basic">Basic</button>
+          <button class="tweet-btn" data-type="image">Image</button>
+          <button class="tweet-btn" data-type="video">Video</button>
+          <button class="tweet-btn" data-type="url">URL</button>
+          <button class="tweet-btn" data-type="thread">Thread</button>
+        </div>
+      </div>
+
+      <div class="section-header">Options</div>
+      <div class="controls">
+        <div class="control-group">
+          <input type="checkbox" id="threadExpansion" checked>
+          <label for="threadExpansion">Thread Expansion</label>
+        </div>
+        <div class="control-group">
+          <input type="checkbox" id="parallelProcessing" checked>
+          <label for="parallelProcessing">Parallel Processing (8+)</label>
+        </div>
+        <div class="control-group">
+          <input type="checkbox" id="showDataSamples" checked>
+          <label for="showDataSamples">Show Data Samples</label>
+        </div>
+      </div>
+
+      <div class="play-controls">
+        <button class="play-btn primary" id="playBtn">Play Animation</button>
+        <button class="play-btn secondary" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="speed-control">
+        <label>Animation Speed</label>
+        <input type="range" id="speedSlider" min="0.5" max="3" step="0.5" value="1">
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="flow-container">
+        <div class="step-indicator">
+          <div class="step-num" id="currentStep">1</div>
+          <span id="stepDescription">Ready to simulate data flow</span>
+        </div>
+
+        <!-- Phase 1: Fetch -->
+        <div class="phase" id="phase1">
+          <div class="phase-header">
+            <h2>Phase 1: FETCH</h2>
+            <span class="phase-badge programmatic">Programmatic (Node.js)</span>
+          </div>
+          <div class="phase-content">
+            <div class="flow-row">
+              <div class="node programmatic" id="cli" data-info="cli">
+                <div class="node-icon">CLI</div>
+                <div class="node-title">CLI Entry</div>
+                <div class="node-subtitle">Command parsing</div>
+                <div class="node-file">src/cli.js</div>
+              </div>
+              <div class="arrow" id="arrow1">&#8594;</div>
+              <div class="node programmatic" id="job" data-info="job">
+                <div class="node-icon">&#9881;</div>
+                <div class="node-title">Job Runner</div>
+                <div class="node-subtitle">Lock & orchestration</div>
+                <div class="node-file">src/job.js</div>
+              </div>
+              <div class="arrow" id="arrow2">&#8594;</div>
+              <div class="node programmatic" id="processor" data-info="processor">
+                <div class="node-icon">&#128736;</div>
+                <div class="node-title">Processor</div>
+                <div class="node-subtitle">Fetch & prepare</div>
+                <div class="node-file">src/processor.js</div>
+              </div>
+              <div class="arrow" id="arrow3">&#8594;</div>
+              <div class="node external" id="bird" data-info="bird">
+                <div class="node-icon">&#128038;</div>
+                <div class="node-title">Bird CLI</div>
+                <div class="node-subtitle">Twitter API wrapper</div>
+                <div class="node-file">@steipete/bird</div>
+              </div>
+              <div class="arrow" id="arrow4">&#8594;</div>
+              <div class="node external" id="twitter" data-info="twitter">
+                <div class="node-icon">&#120143;</div>
+                <div class="node-title">X/Twitter</div>
+                <div class="node-subtitle">GraphQL API</div>
+              </div>
+            </div>
+
+            <div class="sub-flow" id="linkExpansion">
+              <div class="sub-flow-label">Link Expansion & Content Fetch</div>
+              <div class="flow-row">
+                <div class="node programmatic" id="tcoExpand" data-info="tcoExpand">
+                  <div class="node-icon">&#128279;</div>
+                  <div class="node-title">t.co Expander</div>
+                  <div class="node-subtitle">HEAD redirect follow</div>
+                </div>
+                <div class="arrow" id="arrow5">&#8594;</div>
+                <div class="node programmatic" id="contentFetch" data-info="contentFetch">
+                  <div class="node-icon">&#128196;</div>
+                  <div class="node-title">Content Fetch</div>
+                  <div class="node-subtitle">GitHub API, articles</div>
+                </div>
+                <div class="arrow" id="arrow6">&#8594;</div>
+                <div class="node programmatic" id="pendingJson" data-info="pendingJson">
+                  <div class="node-icon">&#128190;</div>
+                  <div class="node-title">Pending JSON</div>
+                  <div class="node-subtitle">Write output</div>
+                  <div class="node-file">.state/pending-bookmarks.json</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sub-flow" id="threadFlow" style="display: none;">
+              <div class="sub-flow-label">Thread Expansion <span class="conditional">(when enabled)</span></div>
+              <div class="flow-row">
+                <div class="node programmatic" id="threadFetch" data-info="threadFetch">
+                  <div class="node-icon">&#128172;</div>
+                  <div class="node-title">Thread Fetch</div>
+                  <div class="node-subtitle">--author-chain flag</div>
+                </div>
+                <div class="arrow">&#8594;</div>
+                <div class="node programmatic" id="threadGroup" data-info="threadGroup">
+                  <div class="node-icon">&#127760;</div>
+                  <div class="node-title">Group Threads</div>
+                  <div class="node-subtitle">groupThreadTweets()</div>
+                </div>
+                <div class="arrow">&#8594;</div>
+                <div class="node programmatic" id="allLinks" data-info="allLinks">
+                  <div class="node-icon">&#128279;</div>
+                  <div class="node-title">Aggregate Links</div>
+                  <div class="node-subtitle">allLinks[] array</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2: Process -->
+        <div class="phase" id="phase2">
+          <div class="phase-header">
+            <h2>Phase 2: PROCESS</h2>
+            <span class="phase-badge ai-driven">AI-Driven (Claude Agent)</span>
+          </div>
+          <div class="phase-content">
+            <div class="flow-row">
+              <div class="node programmatic" id="invokeAI" data-info="invokeAI">
+                <div class="node-icon">&#9889;</div>
+                <div class="node-title">Invoke AI CLI</div>
+                <div class="node-subtitle">Spawn Claude process</div>
+                <div class="node-file">src/job.js:invokeAICLI()</div>
+              </div>
+              <div class="arrow" id="arrow7">&#8594;</div>
+              <div class="node ai-driven" id="claudeRead" data-info="claudeRead">
+                <div class="node-icon">&#128269;</div>
+                <div class="node-title">Read Pending</div>
+                <div class="node-subtitle">Read tool</div>
+              </div>
+              <div class="arrow" id="arrow8">&#8594;</div>
+              <div class="node ai-driven" id="categorize" data-info="categorize">
+                <div class="node-icon">&#127991;</div>
+                <div class="node-title">Categorize</div>
+                <div class="node-subtitle">AI decision-making</div>
+              </div>
+            </div>
+
+            <div class="sub-flow" id="parallelFlow" style="display: none;">
+              <div class="sub-flow-label">Parallel Processing <span class="conditional">(when 8+ bookmarks)</span></div>
+              <div class="flow-row">
+                <div class="node ai-driven" id="spawnAgents" data-info="spawnAgents">
+                  <div class="node-icon">&#128126;</div>
+                  <div class="node-title">Spawn Subagents</div>
+                  <div class="node-subtitle">Task tool, model=haiku</div>
+                </div>
+                <div class="arrow">&#8594;</div>
+                <div class="node ai-driven" id="batchFiles" data-info="batchFiles">
+                  <div class="node-icon">&#128195;</div>
+                  <div class="node-title">Batch Files</div>
+                  <div class="node-subtitle">Write to .state/batch-N.md</div>
+                </div>
+                <div class="arrow">&#8594;</div>
+                <div class="node ai-driven" id="mergeFiles" data-info="mergeFiles">
+                  <div class="node-icon">&#128203;</div>
+                  <div class="node-title">Merge Batches</div>
+                  <div class="node-subtitle">Edit tool (NOT Write!)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sub-flow">
+              <div class="sub-flow-label">Output & Commit</div>
+              <div class="flow-row">
+                <div class="node ai-driven" id="writeKnowledge" data-info="writeKnowledge">
+                  <div class="node-icon">&#128218;</div>
+                  <div class="node-title">Knowledge Files</div>
+                  <div class="node-subtitle">Write tool</div>
+                  <div class="node-file">knowledge/tools/*.md</div>
+                </div>
+                <div class="arrow" id="arrow9">&#8594;</div>
+                <div class="node ai-driven" id="editBookmarks" data-info="editBookmarks">
+                  <div class="node-icon">&#128221;</div>
+                  <div class="node-title">Edit Archive</div>
+                  <div class="node-subtitle">Edit tool (preserves data)</div>
+                  <div class="node-file">bookmarks.md</div>
+                </div>
+                <div class="arrow" id="arrow10">&#8594;</div>
+                <div class="node ai-driven" id="cleanup" data-info="cleanup">
+                  <div class="node-icon">&#128465;</div>
+                  <div class="node-title">Cleanup</div>
+                  <div class="node-subtitle">Remove processed</div>
+                </div>
+                <div class="arrow" id="arrow11">&#8594;</div>
+                <div class="node ai-driven" id="gitCommit" data-info="gitCommit">
+                  <div class="node-icon">&#128230;</div>
+                  <div class="node-title">Git Commit</div>
+                  <div class="node-subtitle">Bash tool</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <div class="timeline-header">Processing Timeline</div>
+          <div class="timeline-bar">
+            <div class="timeline-progress" id="timelineProgress"></div>
+          </div>
+          <div class="timeline-labels">
+            <span>CLI Start</span>
+            <span>Bird Fetch</span>
+            <span>Link Expand</span>
+            <span>AI Invoke</span>
+            <span>Categorize</span>
+            <span>Write Files</span>
+            <span>Complete</span>
+          </div>
+        </div>
+
+        <!-- Details Panel -->
+        <div class="details-panel">
+          <div class="details-header">
+            <span>&#128712;</span>
+            <span id="detailsTitle">Click a node to see details</span>
+          </div>
+          <div class="details-content" id="detailsContent">
+            <p>Select any component in the data flow diagram to see detailed information about its role, the data it processes, and example payloads.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // State
+    const state = {
+      selectedTweetType: 'basic',
+      threadExpansion: true,
+      parallelProcessing: true,
+      showDataSamples: true,
+      isPlaying: false,
+      currentStep: 0,
+      speed: 1,
+      activeNode: null
+    };
+
+    // Sample tweet data for different types
+    const sampleTweets = {
+      basic: {
+        id: "1234567890123456789",
+        author: "developer",
+        authorName: "Dev Person",
+        text: "Just discovered this amazing pattern for handling async state in React. Game changer!",
+        tweetUrl: "https://x.com/developer/status/1234567890123456789",
+        createdAt: "2026-02-03T10:30:00.000Z",
+        date: "Monday, February 3, 2026",
+        links: [],
+        isThread: false,
+        isReply: false,
+        isQuote: false
+      },
+      image: {
+        id: "1234567890123456790",
+        author: "designer",
+        authorName: "Design Pro",
+        text: "New UI concept for dark mode settings. What do you think?",
+        tweetUrl: "https://x.com/designer/status/1234567890123456790",
+        createdAt: "2026-02-03T11:00:00.000Z",
+        date: "Monday, February 3, 2026",
+        links: [],
+        media: [{ type: "photo", url: "https://pbs.twimg.com/media/example.jpg", width: 1200, height: 800 }],
+        isThread: false
+      },
+      video: {
+        id: "1234567890123456791",
+        author: "techyoutuber",
+        authorName: "Tech YouTuber",
+        text: "Check out my latest video on building CLI tools with Node.js!",
+        tweetUrl: "https://x.com/techyoutuber/status/1234567890123456791",
+        createdAt: "2026-02-03T12:00:00.000Z",
+        date: "Monday, February 3, 2026",
+        links: [
+          { original: "https://t.co/abc123", expanded: "https://youtube.com/watch?v=xyz789", type: "video" }
+        ],
+        isThread: false
+      },
+      url: {
+        id: "1234567890123456792",
+        author: "ossdev",
+        authorName: "Open Source Dev",
+        text: "Just released v2.0 of my CLI tool! Major performance improvements and new features.",
+        tweetUrl: "https://x.com/ossdev/status/1234567890123456792",
+        createdAt: "2026-02-03T14:00:00.000Z",
+        date: "Monday, February 3, 2026",
+        links: [
+          {
+            original: "https://t.co/def456",
+            expanded: "https://github.com/ossdev/awesome-cli",
+            type: "github",
+            content: {
+              name: "awesome-cli",
+              fullName: "ossdev/awesome-cli",
+              description: "A blazingly fast CLI tool for developers",
+              stars: 1250,
+              language: "TypeScript",
+              topics: ["cli", "developer-tools", "typescript"]
+            }
+          }
+        ],
+        isThread: false
+      },
+      thread: {
+        id: "1234567890123456793",
+        author: "threadmaster",
+        authorName: "Thread Master",
+        text: "1/ Let me explain how modern build tools work. A thread on bundlers, transpilers, and optimization.",
+        tweetUrl: "https://x.com/threadmaster/status/1234567890123456793",
+        createdAt: "2026-02-03T15:00:00.000Z",
+        date: "Monday, February 3, 2026",
+        links: [],
+        isThread: true,
+        threadPosition: "root",
+        threadRootId: "1234567890123456793",
+        threadTweets: [
+          { id: "1234567890123456793", text: "1/ Let me explain how modern build tools work...", threadPosition: "root", links: [] },
+          { id: "1234567890123456794", text: "2/ First, the bundler collects all your modules...", threadPosition: "middle", links: [] },
+          { id: "1234567890123456795", text: "3/ Then transpilers convert modern syntax...", threadPosition: "middle", links: [] },
+          { id: "1234567890123456796", text: "4/ Here's a great resource to learn more:", threadPosition: "end",
+            links: [{ original: "https://t.co/ghi789", expanded: "https://github.com/example/bundler-guide", type: "github" }] }
+        ],
+        allLinks: [
+          { original: "https://t.co/ghi789", expanded: "https://github.com/example/bundler-guide", type: "github" }
+        ]
+      }
+    };
+
+    // Node information
+    const nodeInfo = {
+      cli: {
+        title: "CLI Entry Point",
+        controller: "programmatic",
+        description: "The command-line interface entry point. Parses arguments like <code>--track-tokens</code>, <code>--limit N</code>, <code>--source bookmarks|likes|both</code>. Routes to the appropriate command handler.",
+        file: "src/cli.js",
+        dataIn: "Command line arguments",
+        dataOut: "Parsed options object passed to job runner"
+      },
+      job: {
+        title: "Job Runner",
+        controller: "programmatic",
+        description: "Orchestrates the two-phase workflow. Manages lock files to prevent overlapping runs. Handles timeouts and token usage tracking. Contains the dragon-themed progress animations.",
+        file: "src/job.js",
+        dataIn: "Parsed CLI options",
+        dataOut: "Calls processor.fetchAndPrepareBookmarks() then invokeAICLI()"
+      },
+      processor: {
+        title: "Bookmark Processor",
+        controller: "programmatic",
+        description: "The heart of Phase 1. Coordinates fetching bookmarks via Bird CLI, expanding t.co links, fetching content from GitHub/articles, and writing the prepared JSON bundle.",
+        file: "src/processor.js",
+        dataIn: "Config with Twitter credentials, fetch options",
+        dataOut: "Writes to .state/pending-bookmarks.json"
+      },
+      bird: {
+        title: "Bird CLI",
+        controller: "external",
+        description: "External dependency (<code>@steipete/bird</code>) that interfaces with Twitter's undocumented GraphQL API using cookie-based authentication. Commands used: <code>bird bookmarks</code>, <code>bird likes</code>, <code>bird read &lt;id&gt;</code>, <code>bird search</code>.",
+        commands: ["bird bookmarks -n 20 --author-chain --thread-meta --json", "bird read <tweet_id> --json", "bird search <query> --json"],
+        dataIn: "AUTH_TOKEN and CT0 cookies via environment",
+        dataOut: "JSON array of tweet objects"
+      },
+      twitter: {
+        title: "X/Twitter API",
+        controller: "external",
+        description: "Twitter's GraphQL API endpoints. Requires valid authentication cookies. Rate limited. May return different structures for paginated vs non-paginated requests.",
+        dataIn: "GraphQL queries with auth headers",
+        dataOut: "Tweet data, user data, media attachments"
+      },
+      tcoExpand: {
+        title: "t.co Link Expander",
+        controller: "programmatic",
+        description: "Expands Twitter's shortened t.co URLs to reveal the actual destination. Uses HTTP HEAD requests with redirect following.",
+        file: "src/processor.js:expandTcoLink()",
+        dataIn: "https://t.co/abc123",
+        dataOut: "https://github.com/user/repo (actual URL)"
+      },
+      contentFetch: {
+        title: "Content Fetcher",
+        controller: "programmatic",
+        description: "Fetches rich content based on URL type. For GitHub: uses GitHub API to get repo info and README. For articles: fetches HTML. For X articles: uses Bird CLI with search fallback.",
+        file: "src/processor.js:fetchContent()",
+        dataIn: "Expanded URL + type classification",
+        dataOut: "Content object (repo info, article text, etc.)"
+      },
+      pendingJson: {
+        title: "Pending Bookmarks JSON",
+        controller: "programmatic",
+        description: "The output of Phase 1. A JSON file containing all prepared bookmarks with expanded links, fetched content, thread data, and metadata. Sorted oldest-first for correct processing order.",
+        file: ".state/pending-bookmarks.json",
+        dataIn: "Processed bookmark objects",
+        dataOut: "JSON file ready for AI processing"
+      },
+      threadFetch: {
+        title: "Thread Fetcher",
+        controller: "programmatic",
+        description: "When thread expansion is enabled, Bird CLI is called with <code>--author-chain --thread-meta</code> flags to fetch the author's self-reply chain for each bookmark.",
+        file: "src/processor.js:fetchBookmarks()",
+        dataIn: "Bird CLI with thread expansion flags",
+        dataOut: "Tweets with threadRootId, threadPosition metadata"
+      },
+      threadGroup: {
+        title: "Thread Grouper",
+        controller: "programmatic",
+        description: "Groups fetched tweets by conversationId/threadRootId. Identifies which tweets were originally bookmarked vs which are expanded context.",
+        file: "src/processor.js:groupThreadTweets()",
+        dataIn: "Flat array of tweets",
+        dataOut: "Array of { primaryTweet, threadTweets[], bookmarkedTweetIds }"
+      },
+      allLinks: {
+        title: "Link Aggregator",
+        controller: "programmatic",
+        description: "Collects links from ALL tweets in a thread, not just the bookmarked one. Critical for threads where the important link is in a later tweet.",
+        file: "src/processor.js",
+        dataIn: "threadTweets[].links",
+        dataOut: "allLinks[] - aggregated links for categorization"
+      },
+      invokeAI: {
+        title: "AI CLI Invoker",
+        controller: "programmatic",
+        description: "Spawns the Claude CLI process with appropriate arguments. Passes the prompt referencing process-bookmarks.md instructions. Parses stream-json output for progress display.",
+        file: "src/job.js:invokeAICLI()",
+        dataIn: "Config, bookmark count, options",
+        dataOut: "Spawned Claude process with --print --verbose --output-format stream-json"
+      },
+      claudeRead: {
+        title: "Read Pending (AI)",
+        controller: "ai-driven",
+        description: "Claude's first action: read the pending bookmarks JSON using the Read tool. This is triggered by the prompt instructions, not programmatic code.",
+        tool: "Read",
+        dataIn: ".state/pending-bookmarks.json",
+        dataOut: "Parsed bookmark array in Claude's context"
+      },
+      categorize: {
+        title: "Categorization (AI)",
+        controller: "ai-driven",
+        description: "Claude analyzes each bookmark's links against category patterns (github, article, video, podcast, tweet). Uses allLinks[] for threads. Decides action: file, capture, or transcribe.",
+        tool: "AI reasoning",
+        dataIn: "Bookmark with links[] or allLinks[]",
+        dataOut: "Category decision (github->file, article->file, video->transcribe, tweet->capture)"
+      },
+      spawnAgents: {
+        title: "Spawn Subagents (AI)",
+        controller: "ai-driven",
+        description: "For 8+ bookmarks, Claude spawns parallel Task subagents in ONE message. Uses model='haiku' for cost efficiency (~50% savings). Each subagent processes a batch of ~5 bookmarks.",
+        tool: "Task",
+        dataIn: "Batched bookmark arrays",
+        dataOut: "Multiple concurrent Task invocations"
+      },
+      batchFiles: {
+        title: "Batch Files (AI)",
+        controller: "ai-driven",
+        description: "Each subagent writes its processed entries to a separate batch file (.state/batch-N.md) to avoid race conditions. NEVER writes directly to bookmarks.md.",
+        tool: "Write",
+        dataIn: "Processed bookmark entries",
+        dataOut: ".state/batch-0.md, batch-1.md, etc."
+      },
+      mergeFiles: {
+        title: "Merge Batches (AI)",
+        controller: "ai-driven",
+        description: "After all subagents complete, main agent reads batch files and merges into bookmarks.md using Edit tool. CRITICAL: Must use Edit (not Write) to preserve existing entries.",
+        tool: "Edit",
+        dataIn: ".state/batch-*.md files",
+        dataOut: "Merged entries in bookmarks.md"
+      },
+      writeKnowledge: {
+        title: "Knowledge Files (AI)",
+        controller: "ai-driven",
+        description: "For categories with action='file', Claude creates separate markdown files in the knowledge/ directory using templates (tool, article, podcast, video).",
+        tool: "Write",
+        dataIn: "Bookmark with GitHub/article content",
+        dataOut: "knowledge/tools/{slug}.md, knowledge/articles/{slug}.md"
+      },
+      editBookmarks: {
+        title: "Edit Archive (AI)",
+        controller: "ai-driven",
+        description: "Inserts new entries into bookmarks.md at the correct chronological position. MUST use Edit tool (not Write) to preserve existing data. Entries organized by date sections.",
+        tool: "Edit",
+        dataIn: "Formatted bookmark entry",
+        dataOut: "Updated bookmarks.md with new entries"
+      },
+      cleanup: {
+        title: "Cleanup (AI)",
+        controller: "ai-driven",
+        description: "Removes processed bookmark IDs from the pending JSON file. Updates the count. Deletes batch files if parallel processing was used.",
+        tool: "Edit/Bash",
+        dataIn: "Processed bookmark IDs",
+        dataOut: "Cleaned pending-bookmarks.json"
+      },
+      gitCommit: {
+        title: "Git Commit (AI)",
+        controller: "ai-driven",
+        description: "Commits all changes to git with a descriptive message. Stages bookmarks.md and knowledge/ directory. Pushes to remote.",
+        tool: "Bash",
+        dataIn: "git add, git commit, git push commands",
+        dataOut: "Committed and pushed changes"
+      }
+    };
+
+    // Animation steps
+    const animationSteps = [
+      { nodes: ['cli'], arrows: [], step: 1, description: 'CLI parses command: smaug run --track-tokens' },
+      { nodes: ['cli', 'job'], arrows: ['arrow1'], step: 2, description: 'Job runner acquires lock, loads config' },
+      { nodes: ['job', 'processor'], arrows: ['arrow2'], step: 3, description: 'Processor begins bookmark fetch' },
+      { nodes: ['processor', 'bird'], arrows: ['arrow3'], step: 4, description: 'Bird CLI called: bird bookmarks -n 20 --json' },
+      { nodes: ['bird', 'twitter'], arrows: ['arrow4'], step: 5, description: 'Bird queries Twitter GraphQL API' },
+      { nodes: ['twitter', 'bird', 'processor'], arrows: ['arrow4', 'arrow3'], step: 6, description: 'Tweet data returned with t.co links' },
+      { nodes: ['processor', 'tcoExpand'], arrows: ['arrow5'], step: 7, description: 'Expanding t.co shortened URLs' },
+      { nodes: ['tcoExpand', 'contentFetch'], arrows: ['arrow5'], step: 8, description: 'Fetching content (GitHub API, articles)' },
+      { nodes: ['contentFetch', 'pendingJson'], arrows: ['arrow6'], step: 9, description: 'Writing prepared bookmarks to JSON' },
+      { nodes: ['pendingJson', 'invokeAI'], arrows: ['arrow7'], step: 10, description: 'Phase 1 complete. Spawning Claude CLI...' },
+      { nodes: ['invokeAI', 'claudeRead'], arrows: ['arrow7'], step: 11, description: 'Claude reads pending-bookmarks.json' },
+      { nodes: ['claudeRead', 'categorize'], arrows: ['arrow8'], step: 12, description: 'Claude categorizes each bookmark' },
+      { nodes: ['categorize', 'writeKnowledge'], arrows: ['arrow9'], step: 13, description: 'Writing knowledge files for GitHub repos/articles' },
+      { nodes: ['writeKnowledge', 'editBookmarks'], arrows: ['arrow9'], step: 14, description: 'Editing bookmarks.md (preserving existing data)' },
+      { nodes: ['editBookmarks', 'cleanup'], arrows: ['arrow10'], step: 15, description: 'Removing processed bookmarks from pending' },
+      { nodes: ['cleanup', 'gitCommit'], arrows: ['arrow11'], step: 16, description: 'Committing and pushing changes' },
+      { nodes: ['gitCommit'], arrows: [], step: 17, description: 'Complete! Dragon rests until next hoard.' }
+    ];
+
+    // Thread-specific animation steps
+    const threadSteps = [
+      { nodes: ['threadFetch'], arrows: [], step: 5.1, description: 'Thread expansion: fetching author reply chain' },
+      { nodes: ['threadFetch', 'threadGroup'], arrows: [], step: 5.2, description: 'Grouping tweets by conversationId' },
+      { nodes: ['threadGroup', 'allLinks'], arrows: [], step: 5.3, description: 'Aggregating links from all thread tweets' }
+    ];
+
+    // Parallel processing steps
+    const parallelSteps = [
+      { nodes: ['spawnAgents'], arrows: [], step: 12.1, description: 'Spawning haiku subagents for parallel processing' },
+      { nodes: ['spawnAgents', 'batchFiles'], arrows: [], step: 12.2, description: 'Subagents writing to batch files' },
+      { nodes: ['batchFiles', 'mergeFiles'], arrows: [], step: 12.3, description: 'Merging batch files into bookmarks.md' }
+    ];
+
+    // DOM elements
+    const playBtn = document.getElementById('playBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const speedSlider = document.getElementById('speedSlider');
+    const timelineProgress = document.getElementById('timelineProgress');
+    const currentStepEl = document.getElementById('currentStep');
+    const stepDescriptionEl = document.getElementById('stepDescription');
+    const detailsTitle = document.getElementById('detailsTitle');
+    const detailsContent = document.getElementById('detailsContent');
+    const threadFlowEl = document.getElementById('threadFlow');
+    const parallelFlowEl = document.getElementById('parallelFlow');
+
+    // Initialize
+    function init() {
+      // Tweet type buttons
+      document.querySelectorAll('.tweet-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tweet-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.selectedTweetType = btn.dataset.type;
+          updateVisualization();
+        });
+      });
+
+      // Checkboxes
+      document.getElementById('threadExpansion').addEventListener('change', (e) => {
+        state.threadExpansion = e.target.checked;
+        updateVisualization();
+      });
+
+      document.getElementById('parallelProcessing').addEventListener('change', (e) => {
+        state.parallelProcessing = e.target.checked;
+        updateVisualization();
+      });
+
+      document.getElementById('showDataSamples').addEventListener('change', (e) => {
+        state.showDataSamples = e.target.checked;
+        if (state.activeNode) {
+          showNodeDetails(state.activeNode);
+        }
+      });
+
+      // Play/Reset buttons
+      playBtn.addEventListener('click', toggleAnimation);
+      resetBtn.addEventListener('click', resetAnimation);
+
+      // Speed slider
+      speedSlider.addEventListener('input', (e) => {
+        state.speed = parseFloat(e.target.value);
+      });
+
+      // Node click handlers
+      document.querySelectorAll('.node').forEach(node => {
+        node.addEventListener('click', () => {
+          const infoKey = node.dataset.info;
+          if (infoKey && nodeInfo[infoKey]) {
+            state.activeNode = infoKey;
+            showNodeDetails(infoKey);
+          }
+        });
+      });
+
+      updateVisualization();
+    }
+
+    function updateVisualization() {
+      // Show/hide thread flow
+      threadFlowEl.style.display = state.threadExpansion && state.selectedTweetType === 'thread' ? 'block' : 'none';
+
+      // Show/hide parallel flow
+      parallelFlowEl.style.display = state.parallelProcessing ? 'block' : 'none';
+    }
+
+    function showNodeDetails(key) {
+      const info = nodeInfo[key];
+      if (!info) return;
+
+      const tweet = sampleTweets[state.selectedTweetType];
+
+      let controllerBadge = '';
+      if (info.controller === 'programmatic') {
+        controllerBadge = '<span class="phase-badge programmatic">Programmatic</span>';
+      } else if (info.controller === 'ai-driven') {
+        controllerBadge = '<span class="phase-badge ai-driven">AI-Driven</span>';
+      } else {
+        controllerBadge = '<span class="phase-badge" style="background: rgba(210,153,34,0.15); color: #d29922; border: 1px solid rgba(210,153,34,0.3);">External</span>';
+      }
+
+      detailsTitle.innerHTML = `${info.title} ${controllerBadge}`;
+
+      let html = `<p>${info.description}</p>`;
+
+      if (info.file) {
+        html += `<p><strong>File:</strong> <code>${info.file}</code></p>`;
+      }
+
+      if (info.tool) {
+        html += `<p><strong>Tool:</strong> <code>${info.tool}</code></p>`;
+      }
+
+      if (info.commands) {
+        html += `<p><strong>Commands:</strong></p><ul>`;
+        info.commands.forEach(cmd => {
+          html += `<li><code>${cmd}</code></li>`;
+        });
+        html += `</ul>`;
+      }
+
+      if (info.dataIn) {
+        html += `<p><strong>Data In:</strong> ${info.dataIn}</p>`;
+      }
+
+      if (info.dataOut) {
+        html += `<p><strong>Data Out:</strong> ${info.dataOut}</p>`;
+      }
+
+      if (state.showDataSamples && tweet) {
+        let sampleData = '';
+
+        if (key === 'bird' || key === 'twitter' || key === 'processor') {
+          sampleData = JSON.stringify({
+            id: tweet.id,
+            text: tweet.text,
+            author: { username: tweet.author, name: tweet.authorName },
+            createdAt: tweet.createdAt,
+            ...(tweet.media ? { media: tweet.media } : {}),
+            ...(tweet.isThread ? {
+              isThread: true,
+              threadPosition: tweet.threadPosition,
+              threadTweets: tweet.threadTweets?.slice(0, 2).map(t => ({ id: t.id, text: t.text.slice(0, 50) + '...' }))
+            } : {})
+          }, null, 2);
+        } else if (key === 'tcoExpand' && tweet.links?.length) {
+          sampleData = `Input:  ${tweet.links[0].original}\nOutput: ${tweet.links[0].expanded}`;
+        } else if (key === 'contentFetch' && tweet.links?.[0]?.content) {
+          sampleData = JSON.stringify(tweet.links[0].content, null, 2);
+        } else if (key === 'pendingJson') {
+          sampleData = JSON.stringify({
+            generatedAt: new Date().toISOString(),
+            count: 1,
+            bookmarks: [tweet]
+          }, null, 2).slice(0, 500) + '\n  ...';
+        } else if (key === 'allLinks' && tweet.allLinks) {
+          sampleData = JSON.stringify(tweet.allLinks, null, 2);
+        } else if (key === 'categorize') {
+          const category = tweet.links?.[0]?.type || 'tweet';
+          sampleData = `Category: ${category}\nAction: ${category === 'github' || category === 'article' ? 'file' : category === 'video' ? 'transcribe' : 'capture'}`;
+        } else if (key === 'editBookmarks') {
+          sampleData = `## @${tweet.author} - ${tweet.text.slice(0, 40)}...\n> ${tweet.text}\n\n- **Tweet:** ${tweet.tweetUrl}\n- **What:** Sample bookmark entry`;
+        }
+
+        if (sampleData) {
+          html += `<div class="data-sample">${escapeHtml(sampleData)}</div>`;
+        }
+      }
+
+      detailsContent.innerHTML = html;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    let animationInterval = null;
+
+    function toggleAnimation() {
+      if (state.isPlaying) {
+        pauseAnimation();
+      } else {
+        playAnimation();
+      }
+    }
+
+    function playAnimation() {
+      state.isPlaying = true;
+      playBtn.textContent = 'Pause';
+
+      const baseDelay = 1500 / state.speed;
+
+      const runStep = () => {
+        if (!state.isPlaying) return;
+
+        let steps = [...animationSteps];
+
+        // Insert thread steps after step 5 if applicable
+        if (state.threadExpansion && state.selectedTweetType === 'thread') {
+          const insertIdx = steps.findIndex(s => s.step === 6);
+          steps.splice(insertIdx, 0, ...threadSteps);
+        }
+
+        // Insert parallel steps after categorize if applicable
+        if (state.parallelProcessing) {
+          const insertIdx = steps.findIndex(s => s.step === 13);
+          steps.splice(insertIdx, 0, ...parallelSteps);
+        }
+
+        if (state.currentStep >= steps.length) {
+          pauseAnimation();
+          return;
+        }
+
+        const step = steps[state.currentStep];
+
+        // Clear previous highlights
+        document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+        document.querySelectorAll('.arrow').forEach(a => a.classList.remove('active'));
+
+        // Highlight current nodes and arrows
+        step.nodes.forEach(nodeId => {
+          const node = document.getElementById(nodeId);
+          if (node) node.classList.add('active');
+        });
+
+        step.arrows.forEach(arrowId => {
+          const arrow = document.getElementById(arrowId);
+          if (arrow) arrow.classList.add('active');
+        });
+
+        // Update step indicator
+        currentStepEl.textContent = state.currentStep + 1;
+        stepDescriptionEl.textContent = step.description;
+
+        // Update timeline
+        const progress = ((state.currentStep + 1) / steps.length) * 100;
+        timelineProgress.style.width = `${progress}%`;
+
+        // Show node details for first node in step
+        if (step.nodes.length > 0 && nodeInfo[step.nodes[0]]) {
+          state.activeNode = step.nodes[0];
+          showNodeDetails(step.nodes[0]);
+        }
+
+        state.currentStep++;
+
+        animationInterval = setTimeout(runStep, baseDelay);
+      };
+
+      runStep();
+    }
+
+    function pauseAnimation() {
+      state.isPlaying = false;
+      playBtn.textContent = 'Play Animation';
+      if (animationInterval) {
+        clearTimeout(animationInterval);
+        animationInterval = null;
+      }
+    }
+
+    function resetAnimation() {
+      pauseAnimation();
+      state.currentStep = 0;
+
+      // Clear all highlights
+      document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+      document.querySelectorAll('.arrow').forEach(a => a.classList.remove('active'));
+
+      // Reset UI
+      currentStepEl.textContent = '1';
+      stepDescriptionEl.textContent = 'Ready to simulate data flow';
+      timelineProgress.style.width = '0%';
+
+      detailsTitle.innerHTML = 'Click a node to see details';
+      detailsContent.innerHTML = '<p>Select any component in the data flow diagram to see detailed information about its role, the data it processes, and example payloads.</p>';
+    }
+
+    // Start
+    init();
+  </script>
+</body>
+</html>
