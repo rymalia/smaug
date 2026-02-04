@@ -34,7 +34,8 @@
     .container {
       display: grid;
       grid-template-columns: 280px 1fr;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
     }
 
     /* Sidebar */
@@ -43,6 +44,7 @@
       border-right: 1px solid var(--border);
       padding: 20px;
       overflow-y: auto;
+      height: 100vh;
     }
 
     .sidebar h1 {
@@ -213,6 +215,7 @@
     .main {
       padding: 24px;
       overflow-y: auto;
+      height: 100vh;
     }
 
     .flow-container {
