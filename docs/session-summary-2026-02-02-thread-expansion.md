@@ -151,17 +151,22 @@ The implementation is **high quality** and **faithful to the plan**. All planned
 
 ### Initial Recommendations
 - [ ] Update README.md with any necessary details and usage notes
-- [ ] Process the pending bookmarks with Claude to verify AI handles thread data correctly
+- [x] **Process the pending bookmarks with Claude to verify AI handles thread data correctly**
+  - E2E validation completed on Feb 3, 2026
+  - 20 bookmarks processed in 7 minutes ($1.11 cost)
+  - Thread-aware entries in bookmarks.md (e.g., "Thread (5 tweets):")
+  - **KEY: GitHub link from @dr_cintas tweet #2 captured in knowledge/tools/ccpm.md**
+  - This proves allLinks[] aggregation works end-to-end
 - [ ] Consider adding thread summary generation (combine all tweet texts)
 - [ ] Monitor performance impact on large fetches
 
 ### New Recommendations from Code Review
 
-- [ ] **Add integration test for full pipeline** - Create a mock-based test that exercises `fetchAndPrepareBookmarks()` with thread expansion, verifying thread grouping, `allLinks[]` aggregation, and `threadTweetsData` structure.
+- [x] **Add integration test for full pipeline** - Added tests for link aggregation from thread tweets and threadPosition preservation through grouping.
 
-- [ ] **Verify documentation consistency** - Ensure CLAUDE.md terminology matches cli.js help text for `--no-threads` flag.
+- [x] **Verify documentation consistency** - Confirmed CLAUDE.md terminology matches cli.js help text for `--no-threads` flag (both say "Disable thread expansion").
 
-- [ ] **Test edge case: empty thread tweets** - Add test for when bird CLI returns `isThread: true` but no self-replies (API edge case).
+- [x] **Test edge case: empty thread tweets** - Added test for when bird CLI returns `isThread: true` but no self-replies (API edge case). Code handles gracefully.
 
 - [ ] **Add performance note to user-facing docs** - Document that thread expansion adds ~1 second per bookmark in config template or help output for users processing large batches.
 
