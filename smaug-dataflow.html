@@ -599,6 +599,11 @@
       outline-offset: 2px;
     }
 
+    /* Only show feedback dot when .has-feedback class is present */
+    .node::after {
+      content: none;  /* Default: no dot */
+    }
+
     .node.has-feedback::after {
       content: '';
       position: absolute;
@@ -710,12 +715,60 @@
       border: 1px solid var(--border);
     }
 
+    #feedbackExisting {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+      /* Always show scrollbar when content overflows */
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-orange) var(--bg-tertiary);
+    }
+
+    #feedbackExisting::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #feedbackExisting::-webkit-scrollbar-track {
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+    }
+
+    #feedbackExisting::-webkit-scrollbar-thumb {
+      background: var(--accent-orange);
+      border-radius: 4px;
+    }
+
+    #feedbackExisting::-webkit-scrollbar-thumb:hover {
+      background: #e5a82d;
+    }
+
+    /* Fade gradient at bottom when scrollable */
+    .feedback-existing-wrapper {
+      position: relative;
+    }
+
+    .feedback-existing-wrapper.has-overflow::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 8px;
+      height: 30px;
+      background: linear-gradient(transparent, var(--bg-secondary));
+      pointer-events: none;
+    }
+
     .feedback-existing {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       padding: 12px;
       background: var(--bg-tertiary);
       border-radius: 6px;
       border-left: 3px solid var(--accent-orange);
+      transition: opacity 0.2s;
+    }
+
+    .feedback-existing:last-child {
+      margin-bottom: 0;
     }
 
     .feedback-existing-header {
@@ -1116,10 +1169,11 @@
       speed: 1,
       activeNode: null,
       feedbackMode: false,
-      feedbackTarget: null  // Current node being commented on
+      feedbackTarget: null,  // Current node being commented on
+      editingCommentId: null  // Comment ID being edited (null = adding new)
     };
 
-    // Feedback storage (localStorage)
+    // Feedback storage (localStorage) - supports multiple comments per node
     const FEEDBACK_KEY = 'smaug-dataflow-feedback';
 
     function loadFeedback() {
@@ -1141,41 +1195,77 @@
       }
     }
 
-    function getFeedbackForNode(nodeId) {
+    function getCommentsForNode(nodeId) {
       const feedback = loadFeedback();
-      return feedback[nodeId] || null;
+      return feedback[nodeId]?.comments || [];
     }
 
-    function setFeedbackForNode(nodeId, text) {
+    function addCommentToNode(nodeId, text) {
       const feedback = loadFeedback();
-      if (text && text.trim()) {
+      if (!feedback[nodeId]) {
         feedback[nodeId] = {
-          text: text.trim(),
           nodeTitle: nodeInfo[nodeId]?.title || nodeId,
-          timestamp: new Date().toISOString()
+          comments: []
         };
-      } else {
-        delete feedback[nodeId];
       }
+      feedback[nodeId].comments.push({
+        id: Date.now(),  // Unique ID for editing/deleting
+        text: text.trim(),
+        timestamp: new Date().toISOString()
+      });
       saveFeedback(feedback);
+    }
+
+    function updateCommentOnNode(nodeId, commentId, newText) {
+      const feedback = loadFeedback();
+      if (feedback[nodeId]) {
+        const comment = feedback[nodeId].comments.find(c => c.id === commentId);
+        if (comment) {
+          comment.text = newText.trim();
+          comment.timestamp = new Date().toISOString();
+          saveFeedback(feedback);
+        }
+      }
+    }
+
+    function deleteCommentFromNode(nodeId, commentId) {
+      const feedback = loadFeedback();
+      if (feedback[nodeId]) {
+        feedback[nodeId].comments = feedback[nodeId].comments.filter(c => c.id !== commentId);
+        // Remove node entry if no comments left
+        if (feedback[nodeId].comments.length === 0) {
+          delete feedback[nodeId];
+        }
+        saveFeedback(feedback);
+      }
+    }
+
+    function getTotalCommentCount() {
+      const feedback = loadFeedback();
+      return Object.values(feedback).reduce((sum, node) => sum + (node.comments?.length || 0), 0);
     }
 
     function updateFeedbackUI() {
       const feedback = loadFeedback();
-      const count = Object.keys(feedback).length;
+      const count = getTotalCommentCount();
       document.getElementById('feedbackCount').textContent =
         count === 0 ? '0 comments' : count === 1 ? '1 comment' : `${count} comments`;
 
-      // Update node badges
+      // Update node badges - explicitly add/remove to avoid toggle edge cases
       document.querySelectorAll('.node').forEach(node => {
         const nodeId = node.dataset.info;
-        node.classList.toggle('has-feedback', nodeId && feedback[nodeId]);
+        const hasFeedback = nodeId && feedback[nodeId]?.comments?.length > 0;
+        if (hasFeedback) {
+          node.classList.add('has-feedback');
+        } else {
+          node.classList.remove('has-feedback');
+        }
       });
     }
 
     function exportFeedbackAsMarkdown() {
       const feedback = loadFeedback();
-      const entries = Object.entries(feedback);
+      const entries = Object.entries(feedback).filter(([_, data]) => data.comments?.length > 0);
 
       if (entries.length === 0) {
         alert('No feedback to export.');
@@ -1189,13 +1279,18 @@
       entries.forEach(([nodeId, data]) => {
         md += `## ${data.nodeTitle}\n`;
         md += `*Node ID: \`${nodeId}\`*\n\n`;
-        md += `${data.text}\n\n`;
+        data.comments.forEach((comment, idx) => {
+          if (data.comments.length > 1) {
+            md += `### Comment ${idx + 1}\n`;
+          }
+          md += `${comment.text}\n\n`;
+        });
         md += `---\n\n`;
       });
 
       // Copy to clipboard
       navigator.clipboard.writeText(md).then(() => {
-        alert('Feedback copied to clipboard as Markdown!\\n\\nPaste it into your chat with Claude.');
+        alert('Feedback copied to clipboard as Markdown! Paste it into your chat with Claude.');
       }).catch(() => {
         // Fallback: show in a prompt
         prompt('Copy this markdown:', md);
@@ -1211,66 +1306,86 @@
 
     function openFeedbackModal(nodeId) {
       state.feedbackTarget = nodeId;
+      state.editingCommentId = null;  // Reset edit state
       const info = nodeInfo[nodeId];
-      const existing = getFeedbackForNode(nodeId);
+      const comments = getCommentsForNode(nodeId);
 
+      // Show count in title if multiple comments
+      const countText = comments.length > 0 ? ` (${comments.length})` : '';
       document.getElementById('feedbackModalTitle').textContent =
-        `Feedback: ${info?.title || nodeId}`;
+        `Feedback: ${info?.title || nodeId}${countText}`;
 
-      // Show existing feedback if any
+      // Show existing comments if any
       const existingEl = document.getElementById('feedbackExisting');
-      if (existing) {
-        existingEl.innerHTML = `
-          <div class="feedback-existing">
+      if (comments.length > 0) {
+        existingEl.innerHTML = comments.map(comment => `
+          <div class="feedback-existing" data-comment-id="${comment.id}">
             <div class="feedback-existing-header">
-              Previous comment (${new Date(existing.timestamp).toLocaleDateString()}):
+              Comment (${new Date(comment.timestamp).toLocaleDateString()}):
             </div>
-            <div class="feedback-existing-text">${escapeHtml(existing.text)}</div>
+            <div class="feedback-existing-text">${escapeHtml(comment.text)}</div>
             <div class="feedback-existing-actions">
-              <button onclick="editExistingFeedback()">Edit</button>
-              <button class="delete-btn" onclick="deleteNodeFeedback()">Delete</button>
+              <button onclick="editComment(${comment.id})">Edit</button>
+              <button class="delete-btn" onclick="deleteComment(${comment.id})">Delete</button>
             </div>
           </div>
-        `;
-        document.getElementById('feedbackInput').value = '';
-        document.getElementById('feedbackInput').placeholder = 'Add another comment or edit existing...';
+        `).join('');
+        document.getElementById('feedbackInput').placeholder = 'Add another comment...';
       } else {
         existingEl.innerHTML = '';
-        document.getElementById('feedbackInput').value = '';
         document.getElementById('feedbackInput').placeholder = 'Type your question, feedback, or observation about this component...';
       }
 
+      document.getElementById('feedbackInput').value = '';
       document.getElementById('feedbackModal').classList.add('visible');
       document.getElementById('feedbackInput').focus();
+
+      // Scroll comments to bottom so newest is visible
+      existingEl.scrollTop = existingEl.scrollHeight;
     }
 
     function closeFeedbackModal() {
       document.getElementById('feedbackModal').classList.remove('visible');
       state.feedbackTarget = null;
+      state.editingCommentId = null;
     }
 
     function saveFeedbackFromModal() {
       const text = document.getElementById('feedbackInput').value;
       if (state.feedbackTarget && text.trim()) {
-        setFeedbackForNode(state.feedbackTarget, text);
+        if (state.editingCommentId) {
+          // Update existing comment
+          updateCommentOnNode(state.feedbackTarget, state.editingCommentId, text);
+          state.editingCommentId = null;
+        } else {
+          // Add new comment
+          addCommentToNode(state.feedbackTarget, text);
+        }
         closeFeedbackModal();
       } else if (!text.trim()) {
         alert('Please enter some feedback text.');
       }
     }
 
-    function editExistingFeedback() {
-      const existing = getFeedbackForNode(state.feedbackTarget);
-      if (existing) {
-        document.getElementById('feedbackInput').value = existing.text;
-        document.getElementById('feedbackExisting').innerHTML = '';
+    function editComment(commentId) {
+      const comments = getCommentsForNode(state.feedbackTarget);
+      const comment = comments.find(c => c.id === commentId);
+      if (comment) {
+        state.editingCommentId = commentId;
+        document.getElementById('feedbackInput').value = comment.text;
+        document.getElementById('feedbackInput').focus();
+        // Highlight which comment is being edited
+        document.querySelectorAll('.feedback-existing').forEach(el => {
+          el.style.opacity = el.dataset.commentId == commentId ? '1' : '0.5';
+        });
       }
     }
 
-    function deleteNodeFeedback() {
-      if (state.feedbackTarget && confirm('Delete this feedback?')) {
-        setFeedbackForNode(state.feedbackTarget, null);
-        closeFeedbackModal();
+    function deleteComment(commentId) {
+      if (state.feedbackTarget && confirm('Delete this comment?')) {
+        deleteCommentFromNode(state.feedbackTarget, commentId);
+        // Refresh modal
+        openFeedbackModal(state.feedbackTarget);
       }
     }
 
