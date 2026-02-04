@@ -804,7 +804,7 @@
                 <div class="node ai-driven" id="batchFiles" data-info="batchFiles">
                   <div class="node-icon">&#128195;</div>
                   <div class="node-title">Batch Files</div>
-                  <div class="node-subtitle">Write to .state/batch-N.md</div>
+                  <div class="node-subtitle">Write to .state/batch-N files</div>
                 </div>
                 <div class="arrow" id="arrowParallel2">&#8594;</div>
                 <div class="node ai-driven" id="mergeFiles" data-info="mergeFiles">
@@ -1130,17 +1130,17 @@
       batchFiles: {
         title: "Batch Files (AI)",
         controller: "ai-driven",
-        description: "Each subagent writes its processed entries to a separate batch file (.state/batch-N.md) to avoid race conditions. NEVER writes directly to bookmarks.md.",
+        description: "Each subagent writes to a separate batch file (.state/batch-N.*) to avoid race conditions. NEVER writes directly to bookmarks.md. <strong>Note:</strong> Instructions say .md but agent may choose .json based on content type.",
         tool: "Write",
         dataIn: "Processed bookmark entries",
-        dataOut: ".state/batch-0.md, batch-1.md, etc."
+        dataOut: ".state/batch-0.*, batch-1.*, etc."
       },
       mergeFiles: {
         title: "Merge Batches (AI)",
         controller: "ai-driven",
         description: "After all subagents complete, main agent reads batch files and merges into bookmarks.md using Edit tool. CRITICAL: Must use Edit (not Write) to preserve existing entries.",
         tool: "Edit",
-        dataIn: ".state/batch-*.md files",
+        dataIn: ".state/batch-*.* files",
         dataOut: "Merged entries in bookmarks.md"
       },
       writeKnowledge: {

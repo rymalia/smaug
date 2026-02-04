@@ -388,6 +388,36 @@ This "fetch everything, filter locally" approach means:
 
 When visualizing bidirectional data flow (request going right, response coming left), arrows pointing only one direction are confusing. The visualization now flips arrows using CSS `transform: scaleX(-1)` during return-flow steps, making it clear when data is flowing back through the pipeline.
 
+### 6. AI Agents Make Pragmatic Deviations from Instructions
+
+**Discovery:** The `process-bookmarks.md` instructions tell subagents to write batch files with `.md` extensions:
+
+```javascript
+Task(..., prompt="Process batch 0: write to .state/batch-0.md: {json for bookmarks 0-4}")
+```
+
+But empirical observation of `.state/` shows:
+```
+batch-0-input.json
+batch-1-input.json
+batch-2-input.json
+batch-3-input.json
+```
+
+The agent deviated in two ways:
+1. **Extension:** Used `.json` instead of `.md`
+2. **Naming:** Added `-input` suffix
+
+**Why?** The instructions contain a contradiction — they specify a `.md` extension but the content is `{json for bookmarks}`. The agent recognized the mismatch and made the pragmatic choice: "If I'm writing JSON, I should use a `.json` extension."
+
+**Implications for AI-driven documentation:**
+- Instructions describe *intent*, not guaranteed *behavior*
+- Empirical verification is essential — check what files actually exist
+- Agents may "improve" on instructions when they detect inconsistencies
+- Visualizations should use wildcards (`.state/batch-*.*`) rather than specific extensions when the actual behavior may vary
+
+This is a fundamental characteristic of AI-driven phases: the agent interprets instructions rather than executing them literally, which can lead to reasonable but undocumented deviations.
+
 ---
 
 ## Implementation Patterns Used
