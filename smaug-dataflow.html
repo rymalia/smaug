@@ -630,7 +630,7 @@
               <div class="node programmatic" id="processor" data-info="processor">
                 <div class="node-icon">&#128736;</div>
                 <div class="node-title">Processor</div>
-                <div class="node-subtitle">Fetch & prepare</div>
+                <div class="node-subtitle">Filter new, expand links</div>
                 <div class="node-file">src/processor.js</div>
               </div>
               <div class="arrow" id="arrow3">&#8594;</div>
@@ -648,8 +648,31 @@
               </div>
             </div>
 
+            <div class="sub-flow" id="filterStep">
+              <div class="sub-flow-label">Deduplication (filter out already-processed tweets)</div>
+              <div class="flow-row">
+                <div class="node programmatic" id="readExisting" data-info="readExisting">
+                  <div class="node-icon">&#128214;</div>
+                  <div class="node-title">Read Existing</div>
+                  <div class="node-subtitle">bookmarks.md IDs</div>
+                </div>
+                <div class="arrow">+</div>
+                <div class="node programmatic" id="readPending" data-info="readPending">
+                  <div class="node-icon">&#128203;</div>
+                  <div class="node-title">Read Pending</div>
+                  <div class="node-subtitle">pending.json IDs</div>
+                </div>
+                <div class="arrow">&#8594;</div>
+                <div class="node programmatic" id="filterNew" data-info="filterNew">
+                  <div class="node-icon">&#128269;</div>
+                  <div class="node-title">Filter New</div>
+                  <div class="node-subtitle">Skip known IDs</div>
+                </div>
+              </div>
+            </div>
+
             <div class="sub-flow" id="linkExpansion">
-              <div class="sub-flow-label">Link Expansion & Content Fetch</div>
+              <div class="sub-flow-label">Link Expansion & Content Fetch (only for new tweets)</div>
               <div class="flow-row">
                 <div class="node programmatic" id="tcoExpand" data-info="tcoExpand">
                   <div class="node-icon">&#128279;</div>
@@ -936,10 +959,10 @@
       processor: {
         title: "Bookmark Processor",
         controller: "programmatic",
-        description: "The heart of Phase 1. Coordinates fetching bookmarks via Bird CLI, expanding t.co links, fetching content from GitHub/articles, and writing the prepared JSON bundle.",
+        description: "<strong>Important:</strong> Bird CLI does not know what's already processed — it just returns your N most recent bookmarks. The Processor then: <ol><li>Reads <code>bookmarks.md</code> to find already-archived tweet IDs</li><li>Reads <code>pending-bookmarks.json</code> to find IDs waiting to be processed</li><li>Filters out any tweets matching those IDs</li><li>Only processes the remaining 'new' tweets</li></ol>This means if you fetch 20 bookmarks but 18 are already archived, only 2 get processed.",
         file: "src/processor.js",
-        dataIn: "Config with Twitter credentials, fetch options",
-        dataOut: "Writes to .state/pending-bookmarks.json"
+        dataIn: "Config with Twitter credentials, fetch count",
+        dataOut: "Filtered new bookmarks → .state/pending-bookmarks.json"
       },
       bird: {
         title: "Bird CLI",
@@ -955,6 +978,30 @@
         description: "Twitter's GraphQL API endpoints. Requires valid authentication cookies. Rate limited. May return different structures for paginated vs non-paginated requests.",
         dataIn: "GraphQL queries with auth headers",
         dataOut: "Tweet data, user data, media attachments"
+      },
+      readExisting: {
+        title: "Read Existing Archive",
+        controller: "programmatic",
+        description: "Reads <code>bookmarks.md</code> and extracts all tweet IDs using a regex pattern (<code>/x.com/\\w+/status/(\\d+)/g</code>). These IDs represent bookmarks that have already been fully processed and archived.",
+        file: "src/processor.js:getExistingBookmarkIds()",
+        dataIn: "bookmarks.md file contents",
+        dataOut: "Set of tweet ID strings (e.g., {'123456789', '987654321'})"
+      },
+      readPending: {
+        title: "Read Pending Queue",
+        controller: "programmatic",
+        description: "Reads <code>.state/pending-bookmarks.json</code> to get IDs of bookmarks that have been fetched but not yet processed by Claude. This prevents re-fetching tweets that are waiting in the queue.",
+        file: "src/processor.js:fetchAndPrepareBookmarks()",
+        dataIn: "pending-bookmarks.json file",
+        dataOut: "Set of tweet ID strings from pending queue"
+      },
+      filterNew: {
+        title: "Filter to New Only",
+        controller: "programmatic",
+        description: "Compares the tweets returned by Bird CLI against both ID sets (existing + pending). Only tweets with IDs NOT in either set continue to processing. <br><br><strong>Example:</strong> Bird returns 20 tweets. 15 are in bookmarks.md, 3 are in pending.json → only 2 'new' tweets get processed.",
+        file: "src/processor.js:fetchAndPrepareBookmarks()",
+        dataIn: "All fetched tweets + existing IDs + pending IDs",
+        dataOut: "Filtered array of only new tweets"
       },
       tcoExpand: {
         title: "t.co Link Expander",
@@ -1090,11 +1137,13 @@
     const animationSteps = [
       { nodes: ['cli'], arrows: [], step: 1, description: 'CLI parses command: smaug run --track-tokens' },
       { nodes: ['cli', 'job'], arrows: ['arrow1'], step: 2, description: 'Checks if another Smaug is running (prevents conflicts), loads config' },
-      { nodes: ['job', 'processor'], arrows: ['arrow2'], step: 3, description: 'Processor begins bookmark fetch' },
+      { nodes: ['job', 'processor'], arrows: ['arrow2'], step: 3, description: 'Processor reads bookmarks.md & pending.json to know what is already done' },
       { nodes: ['processor', 'bird'], arrows: ['arrow3'], step: 4, description: 'Bird CLI called: bird bookmarks -n 20 --json' },
       { nodes: ['bird', 'twitter'], arrows: ['arrow4'], step: 5, description: 'Bird queries Twitter GraphQL API' },
-      { nodes: ['twitter', 'bird', 'processor'], arrows: ['arrow4', 'arrow3'], step: 6, description: 'Tweet data returned with t.co links' },
-      { nodes: ['processor', 'tcoExpand'], arrows: ['arrow5'], step: 7, description: 'Expanding t.co shortened URLs' },
+      { nodes: ['twitter', 'bird', 'processor'], arrows: ['arrow4', 'arrow3'], step: 6, description: 'Bird returns 20 tweets (does not know what is already processed)' },
+      { nodes: ['readExisting', 'readPending'], arrows: [], step: 6.5, description: 'Read bookmarks.md + pending.json to get known IDs' },
+      { nodes: ['filterNew'], arrows: [], step: 6.6, description: 'Filter: only 2 of 20 tweets are new → process those' },
+      { nodes: ['filterNew', 'tcoExpand'], arrows: ['arrow5'], step: 7, description: 'Expanding t.co shortened URLs for new tweets only' },
       { nodes: ['tcoExpand', 'contentFetch'], arrows: ['arrow5'], step: 8, description: 'Fetching content (GitHub API, articles)' },
       { nodes: ['contentFetch', 'pendingJson'], arrows: ['arrow6'], step: 9, description: 'Writing prepared bookmarks to JSON' },
       { nodes: ['pendingJson', 'invokeAI'], arrows: ['arrow7'], step: 10, description: 'Phase 1 complete. Spawning Claude CLI...' },
