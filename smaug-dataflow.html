@@ -91,6 +91,10 @@
 
     .legend-dot.programmatic { background: var(--programmatic); }
     .legend-dot.ai-driven { background: var(--ai-driven); }
+    .legend-dot.external {
+      background: transparent;
+      border: 2px dashed var(--accent-orange);
+    }
 
     .tweet-selector {
       margin-bottom: 16px;
@@ -155,17 +159,17 @@
 
     .play-controls {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       margin-top: 16px;
     }
 
     .play-btn {
       flex: 1;
-      padding: 10px;
+      padding: 8px 6px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
       transition: all 0.2s;
     }
@@ -520,6 +524,21 @@
       font-style: italic;
     }
 
+    .sub-flow.disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .sub-flow.disabled .node {
+      border-style: dashed;
+    }
+
+    .sub-flow.disabled .sub-flow-label::after {
+      content: ' — disabled';
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .container {
@@ -558,6 +577,10 @@
           <div class="legend-dot ai-driven"></div>
           <span>AI-Driven (Claude Agent)</span>
         </div>
+        <div class="legend-item">
+          <div class="legend-dot external"></div>
+          <span>External (Bird CLI, Twitter)</span>
+        </div>
       </div>
 
       <div class="section-header">Simulate Tweet Type</div>
@@ -588,7 +611,8 @@
       </div>
 
       <div class="play-controls">
-        <button class="play-btn primary" id="playBtn">Play Animation</button>
+        <button class="play-btn primary" id="playBtn">Play</button>
+        <button class="play-btn secondary" id="stepBtn">Step</button>
         <button class="play-btn secondary" id="resetBtn">Reset</button>
       </div>
 
@@ -656,13 +680,13 @@
                   <div class="node-title">Read Existing</div>
                   <div class="node-subtitle">bookmarks.md IDs</div>
                 </div>
-                <div class="arrow">+</div>
+                <div class="arrow" id="arrowPlus">+</div>
                 <div class="node programmatic" id="readPending" data-info="readPending">
                   <div class="node-icon">&#128203;</div>
                   <div class="node-title">Read Pending</div>
                   <div class="node-subtitle">pending.json IDs</div>
                 </div>
-                <div class="arrow">&#8594;</div>
+                <div class="arrow" id="arrowFilter">&#8594;</div>
                 <div class="node programmatic" id="filterNew" data-info="filterNew">
                   <div class="node-icon">&#128269;</div>
                   <div class="node-title">Filter New</div>
@@ -695,21 +719,21 @@
               </div>
             </div>
 
-            <div class="sub-flow" id="threadFlow" style="display: none;">
-              <div class="sub-flow-label">Thread Expansion <span class="conditional">(when enabled)</span></div>
+            <div class="sub-flow disabled" id="threadFlow">
+              <div class="sub-flow-label">Thread Expansion <span class="conditional">(when tweet is a thread)</span></div>
               <div class="flow-row">
                 <div class="node programmatic" id="threadFetch" data-info="threadFetch">
                   <div class="node-icon">&#128172;</div>
                   <div class="node-title">Thread Fetch</div>
                   <div class="node-subtitle">--author-chain flag</div>
                 </div>
-                <div class="arrow">&#8594;</div>
+                <div class="arrow" id="arrowThread1">&#8594;</div>
                 <div class="node programmatic" id="threadGroup" data-info="threadGroup">
                   <div class="node-icon">&#127760;</div>
                   <div class="node-title">Group Threads</div>
                   <div class="node-subtitle">groupThreadTweets()</div>
                 </div>
-                <div class="arrow">&#8594;</div>
+                <div class="arrow" id="arrowThread2">&#8594;</div>
                 <div class="node programmatic" id="allLinks" data-info="allLinks">
                   <div class="node-icon">&#128279;</div>
                   <div class="node-title">Aggregate Links</div>
@@ -748,7 +772,7 @@
               </div>
             </div>
 
-            <div class="sub-flow" id="parallelFlow" style="display: none;">
+            <div class="sub-flow disabled" id="parallelFlow">
               <div class="sub-flow-label">Parallel Processing <span class="conditional">(when 8+ bookmarks)</span></div>
               <div class="flow-row">
                 <div class="node ai-driven" id="spawnAgents" data-info="spawnAgents">
@@ -756,13 +780,13 @@
                   <div class="node-title">Spawn Subagents</div>
                   <div class="node-subtitle">Task tool, model=haiku</div>
                 </div>
-                <div class="arrow">&#8594;</div>
+                <div class="arrow" id="arrowParallel1">&#8594;</div>
                 <div class="node ai-driven" id="batchFiles" data-info="batchFiles">
                   <div class="node-icon">&#128195;</div>
                   <div class="node-title">Batch Files</div>
                   <div class="node-subtitle">Write to .state/batch-N.md</div>
                 </div>
-                <div class="arrow">&#8594;</div>
+                <div class="arrow" id="arrowParallel2">&#8594;</div>
                 <div class="node ai-driven" id="mergeFiles" data-info="mergeFiles">
                   <div class="node-icon">&#128203;</div>
                   <div class="node-title">Merge Batches</div>
@@ -959,7 +983,7 @@
       processor: {
         title: "Bookmark Processor",
         controller: "programmatic",
-        description: "<strong>Important:</strong> Bird CLI does not know what's already processed — it just returns your N most recent bookmarks. The Processor then: <ol><li>Reads <code>bookmarks.md</code> to find already-archived tweet IDs</li><li>Reads <code>pending-bookmarks.json</code> to find IDs waiting to be processed</li><li>Filters out any tweets matching those IDs</li><li>Only processes the remaining 'new' tweets</li></ol>This means if you fetch 20 bookmarks but 18 are already archived, only 2 get processed.",
+        description: "<strong>Important:</strong> Bird CLI doesn't know what's already processed — it just returns your N most recent bookmarks. The Processor then: <ol><li>Reads <code>bookmarks.md</code> to find already-archived tweet IDs</li><li>Reads <code>pending-bookmarks.json</code> to find IDs waiting to be processed</li><li>Filters out any tweets matching those IDs</li><li>Only processes the remaining 'new' tweets</li></ol>This means if you fetch 20 bookmarks but 18 are already archived, only 2 get processed.",
         file: "src/processor.js",
         dataIn: "Config with Twitter credentials, fetch count",
         dataOut: "Filtered new bookmarks → .state/pending-bookmarks.json"
@@ -1135,6 +1159,7 @@
 
     // Animation steps - each step highlights ONLY the currently active node(s)
     // Arrows show the connection that's currently "active" (data flowing through it)
+    // marker: used for stable insertion points instead of text matching
     const animationSteps = [
       { nodes: ['cli'], arrows: [], description: 'CLI parses command: smaug run --track-tokens' },
       { nodes: ['job'], arrows: ['arrow1'], description: 'Job runner checks for conflicts, loads config' },
@@ -1142,15 +1167,15 @@
       { nodes: ['bird'], arrows: ['arrow3'], description: 'Bird CLI invoked: bird bookmarks -n 20 --json' },
       { nodes: ['twitter'], arrows: ['arrow4'], description: 'Bird queries Twitter GraphQL API' },
       { nodes: ['bird'], arrows: [], description: 'Twitter returns raw tweet data to Bird' },
-      { nodes: ['processor'], arrows: [], description: 'Bird returns 20 tweets to Processor' },
-      { nodes: ['readExisting', 'readPending'], arrows: [], description: 'Read bookmarks.md + pending.json to get known IDs' },
-      { nodes: ['filterNew'], arrows: [], description: 'Filter: only 2 of 20 tweets are new → process those' },
+      { nodes: ['processor'], arrows: [], description: 'Bird returns 20 tweets to Processor', marker: 'after-fetch' },
+      { nodes: ['readExisting', 'readPending'], arrows: ['arrowPlus'], description: 'Read bookmarks.md + pending.json to get known IDs' },
+      { nodes: ['filterNew'], arrows: ['arrowFilter'], description: 'Filter: only 2 of 20 tweets are new → process those' },
       { nodes: ['tcoExpand'], arrows: [], description: 'Expanding t.co shortened URLs for new tweets' },
       { nodes: ['contentFetch'], arrows: ['arrow5'], description: 'Fetching content (GitHub API, articles)' },
       { nodes: ['pendingJson'], arrows: ['arrow6'], description: 'Writing prepared bookmarks to JSON' },
       { nodes: ['invokeAI'], arrows: [], description: 'Phase 1 complete. Spawning Claude CLI...' },
-      { nodes: ['claudeRead'], arrows: [], description: 'Claude reads pending-bookmarks.json' },
-      { nodes: ['categorize'], arrows: ['arrow8'], description: 'Claude categorizes each bookmark' },
+      { nodes: ['claudeRead'], arrows: ['arrow7'], description: 'Claude reads pending-bookmarks.json' },
+      { nodes: ['categorize'], arrows: ['arrow8'], description: 'Claude categorizes each bookmark', marker: 'after-categorize' },
       { nodes: ['writeKnowledge'], arrows: [], description: 'Writing knowledge files for GitHub repos/articles' },
       { nodes: ['editBookmarks'], arrows: ['arrow9'], description: 'Editing bookmarks.md (preserving existing data)' },
       { nodes: ['cleanup'], arrows: ['arrow10'], description: 'Removing processed bookmarks from pending' },
@@ -1158,22 +1183,23 @@
       { nodes: [], arrows: [], description: 'Complete! Dragon rests until next hoard.' }
     ];
 
-    // Thread-specific animation steps (inserted after Twitter returns)
+    // Thread-specific animation steps (inserted after 'after-fetch' marker)
     const threadSteps = [
       { nodes: ['threadFetch'], arrows: [], description: 'Thread expansion: fetching author reply chain' },
-      { nodes: ['threadGroup'], arrows: [], description: 'Grouping tweets by conversationId' },
-      { nodes: ['allLinks'], arrows: [], description: 'Aggregating links from all thread tweets' }
+      { nodes: ['threadGroup'], arrows: ['arrowThread1'], description: 'Grouping tweets by conversationId' },
+      { nodes: ['allLinks'], arrows: ['arrowThread2'], description: 'Aggregating links from all thread tweets' }
     ];
 
-    // Parallel processing steps (inserted after categorize)
+    // Parallel processing steps (inserted after 'after-categorize' marker)
     const parallelSteps = [
       { nodes: ['spawnAgents'], arrows: [], description: 'Spawning haiku subagents for parallel processing' },
-      { nodes: ['batchFiles'], arrows: [], description: 'Subagents writing to batch files' },
-      { nodes: ['mergeFiles'], arrows: [], description: 'Merging batch files into bookmarks.md' }
+      { nodes: ['batchFiles'], arrows: ['arrowParallel1'], description: 'Subagents writing to batch files' },
+      { nodes: ['mergeFiles'], arrows: ['arrowParallel2'], description: 'Merging batch files into bookmarks.md' }
     ];
 
     // DOM elements
     const playBtn = document.getElementById('playBtn');
+    const stepBtn = document.getElementById('stepBtn');
     const resetBtn = document.getElementById('resetBtn');
     const speedSlider = document.getElementById('speedSlider');
     const timelineProgress = document.getElementById('timelineProgress');
@@ -1183,6 +1209,29 @@
     const detailsContent = document.getElementById('detailsContent');
     const threadFlowEl = document.getElementById('threadFlow');
     const parallelFlowEl = document.getElementById('parallelFlow');
+
+    // Build the current steps array based on state
+    function buildSteps() {
+      let steps = [...animationSteps];
+
+      // Insert thread steps after 'after-fetch' marker if applicable
+      if (state.threadExpansion && state.selectedTweetType === 'thread') {
+        const fetchIdx = steps.findIndex(s => s.marker === 'after-fetch');
+        if (fetchIdx !== -1) {
+          steps.splice(fetchIdx + 1, 0, ...threadSteps);
+        }
+      }
+
+      // Insert parallel steps after 'after-categorize' marker if applicable
+      if (state.parallelProcessing) {
+        const categorizeIdx = steps.findIndex(s => s.marker === 'after-categorize');
+        if (categorizeIdx !== -1) {
+          steps.splice(categorizeIdx + 1, 0, ...parallelSteps);
+        }
+      }
+
+      return steps;
+    }
 
     // Initialize
     function init() {
@@ -1214,8 +1263,9 @@
         }
       });
 
-      // Play/Reset buttons
+      // Play/Step/Reset buttons
       playBtn.addEventListener('click', toggleAnimation);
+      stepBtn.addEventListener('click', stepForward);
       resetBtn.addEventListener('click', resetAnimation);
 
       // Speed slider
@@ -1238,11 +1288,12 @@
     }
 
     function updateVisualization() {
-      // Show/hide thread flow
-      threadFlowEl.style.display = state.threadExpansion && state.selectedTweetType === 'thread' ? 'block' : 'none';
+      // Thread flow: enabled only when checkbox is on AND thread type is selected
+      const threadActive = state.threadExpansion && state.selectedTweetType === 'thread';
+      threadFlowEl.classList.toggle('disabled', !threadActive);
 
-      // Show/hide parallel flow
-      parallelFlowEl.style.display = state.parallelProcessing ? 'block' : 'none';
+      // Parallel flow: enabled when checkbox is on
+      parallelFlowEl.classList.toggle('disabled', !state.parallelProcessing);
     }
 
     function showNodeDetails(key) {
@@ -1347,6 +1398,75 @@
       }
     }
 
+    // Execute a single animation step
+    function executeStep(stepIndex, steps) {
+      const step = steps[stepIndex];
+
+      // Console logging for debugging
+      console.log(`[Animation] Step ${stepIndex + 1}/${steps.length}: "${step.description}"`);
+      console.log(`  → Highlighting nodes: [${step.nodes.join(', ')}]`);
+      console.log(`  → Highlighting arrows: [${step.arrows.join(', ')}]`);
+
+      // Clear previous highlights
+      document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+      document.querySelectorAll('.arrow').forEach(a => a.classList.remove('active'));
+
+      // Highlight current nodes and arrows
+      step.nodes.forEach(nodeId => {
+        const node = document.getElementById(nodeId);
+        if (node) {
+          node.classList.add('active');
+        } else {
+          console.warn(`  ⚠️ Node not found: "${nodeId}"`);
+        }
+      });
+
+      step.arrows.forEach(arrowId => {
+        const arrow = document.getElementById(arrowId);
+        if (arrow) {
+          arrow.classList.add('active');
+        } else {
+          console.warn(`  ⚠️ Arrow not found: "${arrowId}"`);
+        }
+      });
+
+      // Update step indicator
+      currentStepEl.textContent = stepIndex + 1;
+      stepDescriptionEl.textContent = step.description;
+
+      // Update timeline
+      const progress = ((stepIndex + 1) / steps.length) * 100;
+      timelineProgress.style.width = `${progress}%`;
+
+      // Show node details for first node in step
+      if (step.nodes.length > 0 && nodeInfo[step.nodes[0]]) {
+        state.activeNode = step.nodes[0];
+        showNodeDetails(step.nodes[0]);
+      }
+    }
+
+    // Step forward one step manually
+    function stepForward() {
+      // Pause if playing
+      if (state.isPlaying) {
+        pauseAnimation();
+      }
+
+      const steps = buildSteps();
+
+      if (state.currentStep >= steps.length) {
+        console.log('[Step] Already at end');
+        return;
+      }
+
+      executeStep(state.currentStep, steps);
+      state.currentStep++;
+
+      if (state.currentStep >= steps.length) {
+        console.log('[Step] Reached end');
+      }
+    }
+
     function playAnimation() {
       state.isPlaying = true;
       playBtn.textContent = 'Pause';
@@ -1356,21 +1476,7 @@
       const runStep = () => {
         if (!state.isPlaying) return;
 
-        let steps = [...animationSteps];
-
-        // Insert thread steps after "Bird returns to Processor" (index 6) if applicable
-        if (state.threadExpansion && state.selectedTweetType === 'thread') {
-          steps.splice(7, 0, ...threadSteps); // After processor receives data
-        }
-
-        // Insert parallel steps after "categorize" step if applicable
-        if (state.parallelProcessing) {
-          // Find categorize step (it moves if thread steps were inserted)
-          const categorizeIdx = steps.findIndex(s => s.description.includes('categorizes'));
-          if (categorizeIdx !== -1) {
-            steps.splice(categorizeIdx + 1, 0, ...parallelSteps);
-          }
-        }
+        const steps = buildSteps();
 
         if (state.currentStep >= steps.length) {
           console.log('[Animation] Complete - all steps finished');
@@ -1378,50 +1484,7 @@
           return;
         }
 
-        const step = steps[state.currentStep];
-
-        // Console logging for debugging
-        console.log(`[Animation] Step ${state.currentStep + 1}/${steps.length}: "${step.description}"`);
-        console.log(`  → Highlighting nodes: [${step.nodes.join(', ')}]`);
-        console.log(`  → Highlighting arrows: [${step.arrows.join(', ')}]`);
-
-        // Clear previous highlights
-        document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
-        document.querySelectorAll('.arrow').forEach(a => a.classList.remove('active'));
-
-        // Highlight current nodes and arrows
-        step.nodes.forEach(nodeId => {
-          const node = document.getElementById(nodeId);
-          if (node) {
-            node.classList.add('active');
-          } else {
-            console.warn(`  ⚠️ Node not found: "${nodeId}"`);
-          }
-        });
-
-        step.arrows.forEach(arrowId => {
-          const arrow = document.getElementById(arrowId);
-          if (arrow) {
-            arrow.classList.add('active');
-          } else {
-            console.warn(`  ⚠️ Arrow not found: "${arrowId}"`);
-          }
-        });
-
-        // Update step indicator
-        currentStepEl.textContent = state.currentStep + 1;
-        stepDescriptionEl.textContent = step.description;
-
-        // Update timeline
-        const progress = ((state.currentStep + 1) / steps.length) * 100;
-        timelineProgress.style.width = `${progress}%`;
-
-        // Show node details for first node in step
-        if (step.nodes.length > 0 && nodeInfo[step.nodes[0]]) {
-          state.activeNode = step.nodes[0];
-          showNodeDetails(step.nodes[0]);
-        }
-
+        executeStep(state.currentStep, steps);
         state.currentStep++;
 
         animationInterval = setTimeout(runStep, baseDelay);
