@@ -1133,41 +1133,43 @@
       }
     };
 
-    // Animation steps
+    // Animation steps - each step highlights ONLY the currently active node(s)
+    // Arrows show the connection that's currently "active" (data flowing through it)
     const animationSteps = [
-      { nodes: ['cli'], arrows: [], step: 1, description: 'CLI parses command: smaug run --track-tokens' },
-      { nodes: ['cli', 'job'], arrows: ['arrow1'], step: 2, description: 'Checks if another Smaug is running (prevents conflicts), loads config' },
-      { nodes: ['job', 'processor'], arrows: ['arrow2'], step: 3, description: 'Processor reads bookmarks.md & pending.json to know what is already done' },
-      { nodes: ['processor', 'bird'], arrows: ['arrow3'], step: 4, description: 'Bird CLI called: bird bookmarks -n 20 --json' },
-      { nodes: ['bird', 'twitter'], arrows: ['arrow4'], step: 5, description: 'Bird queries Twitter GraphQL API' },
-      { nodes: ['twitter', 'bird', 'processor'], arrows: ['arrow4', 'arrow3'], step: 6, description: 'Bird returns 20 tweets (does not know what is already processed)' },
-      { nodes: ['readExisting', 'readPending'], arrows: [], step: 6.5, description: 'Read bookmarks.md + pending.json to get known IDs' },
-      { nodes: ['filterNew'], arrows: [], step: 6.6, description: 'Filter: only 2 of 20 tweets are new → process those' },
-      { nodes: ['filterNew', 'tcoExpand'], arrows: ['arrow5'], step: 7, description: 'Expanding t.co shortened URLs for new tweets only' },
-      { nodes: ['tcoExpand', 'contentFetch'], arrows: ['arrow5'], step: 8, description: 'Fetching content (GitHub API, articles)' },
-      { nodes: ['contentFetch', 'pendingJson'], arrows: ['arrow6'], step: 9, description: 'Writing prepared bookmarks to JSON' },
-      { nodes: ['pendingJson', 'invokeAI'], arrows: ['arrow7'], step: 10, description: 'Phase 1 complete. Spawning Claude CLI...' },
-      { nodes: ['invokeAI', 'claudeRead'], arrows: ['arrow7'], step: 11, description: 'Claude reads pending-bookmarks.json' },
-      { nodes: ['claudeRead', 'categorize'], arrows: ['arrow8'], step: 12, description: 'Claude categorizes each bookmark' },
-      { nodes: ['categorize', 'writeKnowledge'], arrows: ['arrow9'], step: 13, description: 'Writing knowledge files for GitHub repos/articles' },
-      { nodes: ['writeKnowledge', 'editBookmarks'], arrows: ['arrow9'], step: 14, description: 'Editing bookmarks.md (preserving existing data)' },
-      { nodes: ['editBookmarks', 'cleanup'], arrows: ['arrow10'], step: 15, description: 'Removing processed bookmarks from pending' },
-      { nodes: ['cleanup', 'gitCommit'], arrows: ['arrow11'], step: 16, description: 'Committing and pushing changes' },
-      { nodes: ['gitCommit'], arrows: [], step: 17, description: 'Complete! Dragon rests until next hoard.' }
+      { nodes: ['cli'], arrows: [], description: 'CLI parses command: smaug run --track-tokens' },
+      { nodes: ['job'], arrows: ['arrow1'], description: 'Job runner checks for conflicts, loads config' },
+      { nodes: ['processor'], arrows: ['arrow2'], description: 'Processor called to fetch bookmarks' },
+      { nodes: ['bird'], arrows: ['arrow3'], description: 'Bird CLI invoked: bird bookmarks -n 20 --json' },
+      { nodes: ['twitter'], arrows: ['arrow4'], description: 'Bird queries Twitter GraphQL API' },
+      { nodes: ['bird'], arrows: [], description: 'Twitter returns raw tweet data to Bird' },
+      { nodes: ['processor'], arrows: [], description: 'Bird returns 20 tweets to Processor' },
+      { nodes: ['readExisting', 'readPending'], arrows: [], description: 'Read bookmarks.md + pending.json to get known IDs' },
+      { nodes: ['filterNew'], arrows: [], description: 'Filter: only 2 of 20 tweets are new → process those' },
+      { nodes: ['tcoExpand'], arrows: [], description: 'Expanding t.co shortened URLs for new tweets' },
+      { nodes: ['contentFetch'], arrows: ['arrow5'], description: 'Fetching content (GitHub API, articles)' },
+      { nodes: ['pendingJson'], arrows: ['arrow6'], description: 'Writing prepared bookmarks to JSON' },
+      { nodes: ['invokeAI'], arrows: [], description: 'Phase 1 complete. Spawning Claude CLI...' },
+      { nodes: ['claudeRead'], arrows: [], description: 'Claude reads pending-bookmarks.json' },
+      { nodes: ['categorize'], arrows: ['arrow8'], description: 'Claude categorizes each bookmark' },
+      { nodes: ['writeKnowledge'], arrows: [], description: 'Writing knowledge files for GitHub repos/articles' },
+      { nodes: ['editBookmarks'], arrows: ['arrow9'], description: 'Editing bookmarks.md (preserving existing data)' },
+      { nodes: ['cleanup'], arrows: ['arrow10'], description: 'Removing processed bookmarks from pending' },
+      { nodes: ['gitCommit'], arrows: ['arrow11'], description: 'Committing and pushing changes' },
+      { nodes: [], arrows: [], description: 'Complete! Dragon rests until next hoard.' }
     ];
 
-    // Thread-specific animation steps
+    // Thread-specific animation steps (inserted after Twitter returns)
     const threadSteps = [
-      { nodes: ['threadFetch'], arrows: [], step: 5.1, description: 'Thread expansion: fetching author reply chain' },
-      { nodes: ['threadFetch', 'threadGroup'], arrows: [], step: 5.2, description: 'Grouping tweets by conversationId' },
-      { nodes: ['threadGroup', 'allLinks'], arrows: [], step: 5.3, description: 'Aggregating links from all thread tweets' }
+      { nodes: ['threadFetch'], arrows: [], description: 'Thread expansion: fetching author reply chain' },
+      { nodes: ['threadGroup'], arrows: [], description: 'Grouping tweets by conversationId' },
+      { nodes: ['allLinks'], arrows: [], description: 'Aggregating links from all thread tweets' }
     ];
 
-    // Parallel processing steps
+    // Parallel processing steps (inserted after categorize)
     const parallelSteps = [
-      { nodes: ['spawnAgents'], arrows: [], step: 12.1, description: 'Spawning haiku subagents for parallel processing' },
-      { nodes: ['spawnAgents', 'batchFiles'], arrows: [], step: 12.2, description: 'Subagents writing to batch files' },
-      { nodes: ['batchFiles', 'mergeFiles'], arrows: [], step: 12.3, description: 'Merging batch files into bookmarks.md' }
+      { nodes: ['spawnAgents'], arrows: [], description: 'Spawning haiku subagents for parallel processing' },
+      { nodes: ['batchFiles'], arrows: [], description: 'Subagents writing to batch files' },
+      { nodes: ['mergeFiles'], arrows: [], description: 'Merging batch files into bookmarks.md' }
     ];
 
     // DOM elements
@@ -1356,24 +1358,32 @@
 
         let steps = [...animationSteps];
 
-        // Insert thread steps after step 5 if applicable
+        // Insert thread steps after "Bird returns to Processor" (index 6) if applicable
         if (state.threadExpansion && state.selectedTweetType === 'thread') {
-          const insertIdx = steps.findIndex(s => s.step === 6);
-          steps.splice(insertIdx, 0, ...threadSteps);
+          steps.splice(7, 0, ...threadSteps); // After processor receives data
         }
 
-        // Insert parallel steps after categorize if applicable
+        // Insert parallel steps after "categorize" step if applicable
         if (state.parallelProcessing) {
-          const insertIdx = steps.findIndex(s => s.step === 13);
-          steps.splice(insertIdx, 0, ...parallelSteps);
+          // Find categorize step (it moves if thread steps were inserted)
+          const categorizeIdx = steps.findIndex(s => s.description.includes('categorizes'));
+          if (categorizeIdx !== -1) {
+            steps.splice(categorizeIdx + 1, 0, ...parallelSteps);
+          }
         }
 
         if (state.currentStep >= steps.length) {
+          console.log('[Animation] Complete - all steps finished');
           pauseAnimation();
           return;
         }
 
         const step = steps[state.currentStep];
+
+        // Console logging for debugging
+        console.log(`[Animation] Step ${state.currentStep + 1}/${steps.length}: "${step.description}"`);
+        console.log(`  → Highlighting nodes: [${step.nodes.join(', ')}]`);
+        console.log(`  → Highlighting arrows: [${step.arrows.join(', ')}]`);
 
         // Clear previous highlights
         document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
@@ -1382,12 +1392,20 @@
         // Highlight current nodes and arrows
         step.nodes.forEach(nodeId => {
           const node = document.getElementById(nodeId);
-          if (node) node.classList.add('active');
+          if (node) {
+            node.classList.add('active');
+          } else {
+            console.warn(`  ⚠️ Node not found: "${nodeId}"`);
+          }
         });
 
         step.arrows.forEach(arrowId => {
           const arrow = document.getElementById(arrowId);
-          if (arrow) arrow.classList.add('active');
+          if (arrow) {
+            arrow.classList.add('active');
+          } else {
+            console.warn(`  ⚠️ Arrow not found: "${arrowId}"`);
+          }
         });
 
         // Update step indicator
@@ -1422,6 +1440,7 @@
     }
 
     function resetAnimation() {
+      console.log('[Animation] Reset');
       pauseAnimation();
       state.currentStep = 0;
 
@@ -1439,7 +1458,10 @@
     }
 
     // Start
+    console.log('[Smaug Dataflow] Initializing visualization...');
+    console.log('[Smaug Dataflow] Total base animation steps:', animationSteps.length);
     init();
+    console.log('[Smaug Dataflow] Ready. Open console to see animation step logging.');
   </script>
 </body>
 </html>
