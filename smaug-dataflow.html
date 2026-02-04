@@ -264,7 +264,20 @@
 
     .phase-content {
       padding: 20px;
+      display: flex;
+      flex-direction: column;
     }
+
+    /* Default order: main flow, filter, link expansion, thread */
+    .phase-content > .flow-row { order: 1; }
+    .phase-content > #filterStep { order: 2; }
+    .phase-content > #linkExpansion { order: 3; }
+    .phase-content > #threadFlow { order: 4; }
+
+    /* When thread expansion is active: thread moves to position 2 */
+    .phase.thread-active > .phase-content > #threadFlow { order: 2; }
+    .phase.thread-active > .phase-content > #filterStep { order: 3; }
+    .phase.thread-active > .phase-content > #linkExpansion { order: 4; }
 
     .flow-row {
       display: flex;
@@ -1168,7 +1181,12 @@
       { nodes: ['cli'], arrows: [], description: 'CLI parses command: smaug run --track-tokens' },
       { nodes: ['job'], arrows: ['arrow1'], description: 'Job runner checks for conflicts, loads config' },
       { nodes: ['processor'], arrows: ['arrow2'], description: 'Processor called to fetch bookmarks' },
-      { nodes: ['bird'], arrows: ['arrow3'], description: 'Bird CLI invoked: bird bookmarks -n 20 --json' },
+      { nodes: ['bird'], arrows: ['arrow3'], description: 'Bird CLI invoked: bird bookmarks -n 20 --json', dynamicDescription: () => {
+        const threadActive = state.threadExpansion && state.selectedTweetType === 'thread';
+        return threadActive
+          ? 'Bird CLI invoked: bird bookmarks -n 20 --author-chain --thread-meta --json'
+          : 'Bird CLI invoked: bird bookmarks -n 20 --json';
+      }},
       { nodes: ['twitter'], arrows: ['arrow4'], description: 'Bird queries Twitter GraphQL API' },
       { nodes: ['bird'], arrows: ['arrow4'], reverseArrows: ['arrow4'], description: 'Twitter returns raw tweet data to Bird' },
       { nodes: ['processor'], arrows: ['arrow3'], reverseArrows: ['arrow3'], description: 'Bird returns 20 tweets to Processor (held in memory)', marker: 'after-fetch' },
@@ -1296,6 +1314,9 @@
       const threadActive = state.threadExpansion && state.selectedTweetType === 'thread';
       threadFlowEl.classList.toggle('disabled', !threadActive);
 
+      // Toggle thread-active class on phase1 to reorder rows
+      document.getElementById('phase1').classList.toggle('thread-active', threadActive);
+
       // Parallel flow: enabled when checkbox is on
       parallelFlowEl.classList.toggle('disabled', !state.parallelProcessing);
     }
@@ -1405,9 +1426,10 @@
     // Execute a single animation step
     function executeStep(stepIndex, steps) {
       const step = steps[stepIndex];
+      const description = step.dynamicDescription ? step.dynamicDescription() : step.description;
 
       // Console logging for debugging
-      console.log(`[Animation] Step ${stepIndex + 1}/${steps.length}: "${step.description}"`);
+      console.log(`[Animation] Step ${stepIndex + 1}/${steps.length}: "${description}"`);
       console.log(`  → Highlighting nodes: [${step.nodes.join(', ')}]`);
       console.log(`  → Highlighting arrows: [${step.arrows.join(', ')}]`);
 
@@ -1448,7 +1470,7 @@
 
       // Update step indicator
       currentStepEl.textContent = stepIndex + 1;
-      stepDescriptionEl.textContent = step.description;
+      stepDescriptionEl.textContent = description;
 
       // Update timeline
       const progress = ((stepIndex + 1) / steps.length) * 100;
