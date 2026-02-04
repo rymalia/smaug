@@ -623,7 +623,7 @@
               <div class="node programmatic" id="job" data-info="job">
                 <div class="node-icon">&#9881;</div>
                 <div class="node-title">Job Runner</div>
-                <div class="node-subtitle">Lock & orchestration</div>
+                <div class="node-subtitle">Prevents duplicate runs</div>
                 <div class="node-file">src/job.js</div>
               </div>
               <div class="arrow" id="arrow2">&#8594;</div>
@@ -928,7 +928,7 @@
       job: {
         title: "Job Runner",
         controller: "programmatic",
-        description: "Orchestrates the two-phase workflow. Manages lock files to prevent overlapping runs. Handles timeouts and token usage tracking. Contains the dragon-themed progress animations.",
+        description: "Orchestrates the two-phase workflow. <strong>Prevents conflicts</strong> by creating a lock file (<code>/tmp/smaug.lock</code>) so two Smaug processes can't run simultaneously and corrupt your files. Also handles timeouts and token usage tracking. Contains the dragon-themed progress animations.",
         file: "src/job.js",
         dataIn: "Parsed CLI options",
         dataOut: "Calls processor.fetchAndPrepareBookmarks() then invokeAICLI()"
@@ -1089,7 +1089,7 @@
     // Animation steps
     const animationSteps = [
       { nodes: ['cli'], arrows: [], step: 1, description: 'CLI parses command: smaug run --track-tokens' },
-      { nodes: ['cli', 'job'], arrows: ['arrow1'], step: 2, description: 'Job runner acquires lock, loads config' },
+      { nodes: ['cli', 'job'], arrows: ['arrow1'], step: 2, description: 'Checks if another Smaug is running (prevents conflicts), loads config' },
       { nodes: ['job', 'processor'], arrows: ['arrow2'], step: 3, description: 'Processor begins bookmark fetch' },
       { nodes: ['processor', 'bird'], arrows: ['arrow3'], step: 4, description: 'Bird CLI called: bird bookmarks -n 20 --json' },
       { nodes: ['bird', 'twitter'], arrows: ['arrow4'], step: 5, description: 'Bird queries Twitter GraphQL API' },
