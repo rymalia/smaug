@@ -570,6 +570,191 @@
       font-style: italic;
     }
 
+    /* Feedback Mode */
+    .feedback-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .feedback-actions .play-btn {
+      flex: 1;
+      font-size: 0.75rem;
+      padding: 6px 8px;
+    }
+
+    .feedback-count {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .feedback-mode-active .node {
+      cursor: crosshair;
+    }
+
+    .feedback-mode-active .node:hover {
+      outline: 2px dashed var(--accent-orange);
+      outline-offset: 2px;
+    }
+
+    .node.has-feedback::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent-orange);
+      border-radius: 50%;
+      border: 2px solid var(--bg-secondary);
+    }
+
+    /* Feedback Modal */
+    .feedback-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feedback-modal.visible {
+      display: flex;
+    }
+
+    .feedback-modal-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .feedback-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .feedback-modal-header h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .feedback-modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .feedback-modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .feedback-modal textarea {
+      width: 100%;
+      min-height: 100px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+      margin-bottom: 12px;
+    }
+
+    .feedback-modal textarea:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .feedback-modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .feedback-modal-actions button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .feedback-modal-actions .save-btn {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    .feedback-modal-actions .cancel-btn {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .feedback-existing {
+      margin-bottom: 16px;
+      padding: 12px;
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      border-left: 3px solid var(--accent-orange);
+    }
+
+    .feedback-existing-header {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .feedback-existing-text {
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+    }
+
+    .feedback-existing-actions {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .feedback-existing-actions button {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .feedback-existing-actions button:hover {
+      border-color: var(--accent-blue);
+      color: var(--text-primary);
+    }
+
+    .feedback-existing-actions .delete-btn:hover {
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .container {
@@ -651,6 +836,19 @@
         <label>Animation Speed</label>
         <input type="range" id="speedSlider" min="0.5" max="3" step="0.5" value="1">
       </div>
+
+      <div class="section-header">Feedback</div>
+      <div class="controls">
+        <div class="control-group">
+          <input type="checkbox" id="feedbackMode">
+          <label for="feedbackMode">Add Feedback Mode</label>
+        </div>
+      </div>
+      <div class="feedback-actions">
+        <button class="play-btn secondary" id="exportFeedback">Export Comments</button>
+        <button class="play-btn secondary" id="clearFeedback">Clear All</button>
+      </div>
+      <div class="feedback-count" id="feedbackCount">0 comments</div>
     </aside>
 
     <main class="main">
@@ -890,6 +1088,22 @@
     </main>
   </div>
 
+  <!-- Feedback Modal -->
+  <div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-modal-content">
+      <div class="feedback-modal-header">
+        <h3 id="feedbackModalTitle">Add Feedback</h3>
+        <button class="feedback-modal-close" id="feedbackModalClose">&times;</button>
+      </div>
+      <div id="feedbackExisting"></div>
+      <textarea id="feedbackInput" placeholder="Type your question, feedback, or observation about this component..."></textarea>
+      <div class="feedback-modal-actions">
+        <button class="cancel-btn" id="feedbackCancel">Cancel</button>
+        <button class="save-btn" id="feedbackSave">Save</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // State
     const state = {
@@ -900,8 +1114,165 @@
       isPlaying: false,
       currentStep: 0,
       speed: 1,
-      activeNode: null
+      activeNode: null,
+      feedbackMode: false,
+      feedbackTarget: null  // Current node being commented on
     };
+
+    // Feedback storage (localStorage)
+    const FEEDBACK_KEY = 'smaug-dataflow-feedback';
+
+    function loadFeedback() {
+      try {
+        const stored = localStorage.getItem(FEEDBACK_KEY);
+        return stored ? JSON.parse(stored) : {};
+      } catch (e) {
+        console.warn('[Feedback] Failed to load:', e);
+        return {};
+      }
+    }
+
+    function saveFeedback(feedback) {
+      try {
+        localStorage.setItem(FEEDBACK_KEY, JSON.stringify(feedback));
+        updateFeedbackUI();
+      } catch (e) {
+        console.warn('[Feedback] Failed to save:', e);
+      }
+    }
+
+    function getFeedbackForNode(nodeId) {
+      const feedback = loadFeedback();
+      return feedback[nodeId] || null;
+    }
+
+    function setFeedbackForNode(nodeId, text) {
+      const feedback = loadFeedback();
+      if (text && text.trim()) {
+        feedback[nodeId] = {
+          text: text.trim(),
+          nodeTitle: nodeInfo[nodeId]?.title || nodeId,
+          timestamp: new Date().toISOString()
+        };
+      } else {
+        delete feedback[nodeId];
+      }
+      saveFeedback(feedback);
+    }
+
+    function updateFeedbackUI() {
+      const feedback = loadFeedback();
+      const count = Object.keys(feedback).length;
+      document.getElementById('feedbackCount').textContent =
+        count === 0 ? '0 comments' : count === 1 ? '1 comment' : `${count} comments`;
+
+      // Update node badges
+      document.querySelectorAll('.node').forEach(node => {
+        const nodeId = node.dataset.info;
+        node.classList.toggle('has-feedback', nodeId && feedback[nodeId]);
+      });
+    }
+
+    function exportFeedbackAsMarkdown() {
+      const feedback = loadFeedback();
+      const entries = Object.entries(feedback);
+
+      if (entries.length === 0) {
+        alert('No feedback to export.');
+        return;
+      }
+
+      let md = '# Smaug Dataflow Visualization - Feedback\n\n';
+      md += `*Exported: ${new Date().toLocaleString()}*\n\n`;
+      md += '---\n\n';
+
+      entries.forEach(([nodeId, data]) => {
+        md += `## ${data.nodeTitle}\n`;
+        md += `*Node ID: \`${nodeId}\`*\n\n`;
+        md += `${data.text}\n\n`;
+        md += `---\n\n`;
+      });
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(md).then(() => {
+        alert('Feedback copied to clipboard as Markdown!\\n\\nPaste it into your chat with Claude.');
+      }).catch(() => {
+        // Fallback: show in a prompt
+        prompt('Copy this markdown:', md);
+      });
+    }
+
+    function clearAllFeedback() {
+      if (confirm('Delete all feedback comments? This cannot be undone.')) {
+        localStorage.removeItem(FEEDBACK_KEY);
+        updateFeedbackUI();
+      }
+    }
+
+    function openFeedbackModal(nodeId) {
+      state.feedbackTarget = nodeId;
+      const info = nodeInfo[nodeId];
+      const existing = getFeedbackForNode(nodeId);
+
+      document.getElementById('feedbackModalTitle').textContent =
+        `Feedback: ${info?.title || nodeId}`;
+
+      // Show existing feedback if any
+      const existingEl = document.getElementById('feedbackExisting');
+      if (existing) {
+        existingEl.innerHTML = `
+          <div class="feedback-existing">
+            <div class="feedback-existing-header">
+              Previous comment (${new Date(existing.timestamp).toLocaleDateString()}):
+            </div>
+            <div class="feedback-existing-text">${escapeHtml(existing.text)}</div>
+            <div class="feedback-existing-actions">
+              <button onclick="editExistingFeedback()">Edit</button>
+              <button class="delete-btn" onclick="deleteNodeFeedback()">Delete</button>
+            </div>
+          </div>
+        `;
+        document.getElementById('feedbackInput').value = '';
+        document.getElementById('feedbackInput').placeholder = 'Add another comment or edit existing...';
+      } else {
+        existingEl.innerHTML = '';
+        document.getElementById('feedbackInput').value = '';
+        document.getElementById('feedbackInput').placeholder = 'Type your question, feedback, or observation about this component...';
+      }
+
+      document.getElementById('feedbackModal').classList.add('visible');
+      document.getElementById('feedbackInput').focus();
+    }
+
+    function closeFeedbackModal() {
+      document.getElementById('feedbackModal').classList.remove('visible');
+      state.feedbackTarget = null;
+    }
+
+    function saveFeedbackFromModal() {
+      const text = document.getElementById('feedbackInput').value;
+      if (state.feedbackTarget && text.trim()) {
+        setFeedbackForNode(state.feedbackTarget, text);
+        closeFeedbackModal();
+      } else if (!text.trim()) {
+        alert('Please enter some feedback text.');
+      }
+    }
+
+    function editExistingFeedback() {
+      const existing = getFeedbackForNode(state.feedbackTarget);
+      if (existing) {
+        document.getElementById('feedbackInput').value = existing.text;
+        document.getElementById('feedbackExisting').innerHTML = '';
+      }
+    }
+
+    function deleteNodeFeedback() {
+      if (state.feedbackTarget && confirm('Delete this feedback?')) {
+        setFeedbackForNode(state.feedbackTarget, null);
+        closeFeedbackModal();
+      }
+    }
 
     // Sample tweet data for different types
     const sampleTweets = {
@@ -1314,11 +1685,38 @@
         node.addEventListener('click', () => {
           const infoKey = node.dataset.info;
           if (infoKey && nodeInfo[infoKey]) {
-            state.activeNode = infoKey;
-            showNodeDetails(infoKey);
+            if (state.feedbackMode) {
+              // Open feedback modal
+              openFeedbackModal(infoKey);
+            } else {
+              // Normal behavior: show details
+              state.activeNode = infoKey;
+              showNodeDetails(infoKey);
+            }
           }
         });
       });
+
+      // Feedback mode toggle
+      document.getElementById('feedbackMode').addEventListener('change', (e) => {
+        state.feedbackMode = e.target.checked;
+        document.querySelector('.container').classList.toggle('feedback-mode-active', state.feedbackMode);
+      });
+
+      // Feedback modal handlers
+      document.getElementById('feedbackModalClose').addEventListener('click', closeFeedbackModal);
+      document.getElementById('feedbackCancel').addEventListener('click', closeFeedbackModal);
+      document.getElementById('feedbackSave').addEventListener('click', saveFeedbackFromModal);
+      document.getElementById('feedbackModal').addEventListener('click', (e) => {
+        if (e.target.id === 'feedbackModal') closeFeedbackModal();
+      });
+
+      // Export and clear buttons
+      document.getElementById('exportFeedback').addEventListener('click', exportFeedbackAsMarkdown);
+      document.getElementById('clearFeedback').addEventListener('click', clearAllFeedback);
+
+      // Initialize feedback UI
+      updateFeedbackUI();
 
       updateVisualization();
     }
