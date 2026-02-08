@@ -807,3 +807,118 @@ describe('Thread bookmarks fixture', () => {
     }
   });
 });
+
+describe('Thread edge cases', () => {
+  test('handles isThread true but only one tweet (no self-replies returned)', () => {
+    // Edge case: bird CLI might return isThread: true but no actual self-replies
+    // (API edge case where hasSelfReplies is true but self-replies not in response)
+    const tweets = [
+      {
+        id: '1',
+        conversationId: 'conv1',
+        threadRootId: 'conv1',
+        createdAt: '2026-01-01T10:00:00Z',
+        isThread: true,
+        threadPosition: 'root',
+        hasSelfReplies: true  // Says there are replies, but none in array
+      }
+    ];
+    const originalIds = new Set(['1']);
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups.length, 1, 'should create one group');
+    assert.strictEqual(groups[0].threadTweets.length, 1, 'should have one tweet');
+    assert.strictEqual(groups[0].isExpanded, false, 'single tweet should NOT be marked expanded');
+    assert.strictEqual(groups[0].primaryTweet.id, '1');
+  });
+
+  test('handles standalone tweet with isThread false', () => {
+    const tweets = [
+      {
+        id: '1',
+        conversationId: '1',
+        createdAt: '2026-01-01T10:00:00Z',
+        isThread: false,
+        threadPosition: 'standalone'
+      }
+    ];
+    const originalIds = new Set(['1']);
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups.length, 1);
+    assert.strictEqual(groups[0].isExpanded, false);
+    assert.strictEqual(groups[0].threadTweets.length, 1);
+  });
+
+  test('aggregates links from thread tweets for allLinks simulation', () => {
+    // This tests the grouping logic that would feed into allLinks aggregation
+    const tweets = [
+      {
+        id: '1',
+        conversationId: 'conv1',
+        threadRootId: 'conv1',
+        createdAt: '2026-01-01T10:00:00Z',
+        text: 'First tweet https://t.co/link1',
+        isThread: true,
+        threadPosition: 'root'
+      },
+      {
+        id: '2',
+        conversationId: 'conv1',
+        threadRootId: 'conv1',
+        inReplyToStatusId: '1',
+        createdAt: '2026-01-01T10:01:00Z',
+        text: 'Second tweet with link https://t.co/link2',
+        isThread: true,
+        threadPosition: 'end'
+      }
+    ];
+    const originalIds = new Set(['1']);
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups.length, 1, 'should create one group');
+    assert.strictEqual(groups[0].threadTweets.length, 2, 'should have both tweets');
+    assert.strictEqual(groups[0].isExpanded, true, 'should be expanded');
+
+    // Verify both tweets are accessible for link extraction
+    const allTweetTexts = groups[0].threadTweets.map(t => t.text).join(' ');
+    assert.ok(allTweetTexts.includes('link1'), 'should have link1 from first tweet');
+    assert.ok(allTweetTexts.includes('link2'), 'should have link2 from second tweet');
+  });
+
+  test('maintains correct threadPosition values through grouping', () => {
+    const tweets = [
+      {
+        id: '1',
+        conversationId: 'conv1',
+        createdAt: '2026-01-01T10:00:00Z',
+        threadPosition: 'root'
+      },
+      {
+        id: '2',
+        conversationId: 'conv1',
+        inReplyToStatusId: '1',
+        createdAt: '2026-01-01T10:01:00Z',
+        threadPosition: 'middle'
+      },
+      {
+        id: '3',
+        conversationId: 'conv1',
+        inReplyToStatusId: '2',
+        createdAt: '2026-01-01T10:02:00Z',
+        threadPosition: 'end'
+      }
+    ];
+    const originalIds = new Set(['1']);
+
+    const groups = groupThreadTweets(tweets, originalIds);
+
+    assert.strictEqual(groups.length, 1);
+    assert.strictEqual(groups[0].threadTweets[0].threadPosition, 'root');
+    assert.strictEqual(groups[0].threadTweets[1].threadPosition, 'middle');
+    assert.strictEqual(groups[0].threadTweets[2].threadPosition, 'end');
+  });
+});
