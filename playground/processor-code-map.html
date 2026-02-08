@@ -898,6 +898,12 @@ const KNOWN_FILES = new Set([
   'setup','install','guide','docs','api','config','deployment','testing','development','quickstart',
 ]);
 
+const PAYWALL_DOMAINS = [
+  'nytimes.com', 'wsj.com', 'washingtonpost.com', 'theatlantic.com',
+  'newyorker.com', 'bloomberg.com', 'ft.com', 'economist.com',
+  'bostonglobe.com', 'latimes.com', 'wired.com',
+];
+
 const CUSTOM_URL_EXAMPLES = [
   { label: 'claude.md', url: 'https://claude.md/' },
   { label: 'obsidian.md', url: 'https://obsidian.md/' },
@@ -909,6 +915,10 @@ const CUSTOM_URL_EXAMPLES = [
   { label: 'memory.md', url: 'https://memory.md/' },
   { label: 'x.com/i/article', url: 'https://x.com/i/article/1234567890' },
   { label: 'help.obsidian.md', url: 'https://help.obsidian.md/Getting+Started' },
+  { label: 'youtube.com', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
+  { label: 'nytimes (paywall)', url: 'https://www.nytimes.com/2026/01/15/technology/ai.html' },
+  { label: 'x.com tweet', url: 'https://x.com/elonmusk/status/1234567890' },
+  { label: 'photo.jpg', url: 'https://pbs.twimg.com/media/example.jpg' },
 ];
 
 function buildCustomUrlPresets() {
@@ -1082,91 +1092,266 @@ function buildCustomTrace(inputUrl) {
     }
   }
 
-  // If we get here, the URL was NOT filtered by .md check
-  // Type classification
+  // ── Type Classification ─────────────────────────────────────
+  // Show each branch of the if/else chain as it's evaluated in processor.js
   const host = parsed.hostname;
-  const path = parsed.pathname;
-  let type = 'article';
-  let typeDesc = 'No special pattern match -> falls to default "article"';
+  const urlPath = parsed.pathname;
+  let type = null;
 
-  if (host.includes('github.com')) {
-    type = 'github'; typeDesc = 'URL contains "github.com" -> type = "github"';
-  } else if (host.includes('youtube.com') || host.includes('youtu.be')) {
-    type = 'video'; typeDesc = 'YouTube domain detected -> type = "video"';
-  } else if (path.includes('/i/article/')) {
-    type = 'x-article'; typeDesc = 'Path contains "/i/article/" -> type = "x-article"';
-  } else if (host.includes('x.com') || host.includes('twitter.com')) {
-    if (path.includes('/photo/') || path.includes('/video/')) {
-      type = 'media'; typeDesc = 'Twitter media URL -> type = "media"';
-    } else {
-      type = 'tweet'; typeDesc = 'Twitter/X URL -> type = "tweet"';
-    }
-  } else if (expandedUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
-    type = 'image'; typeDesc = 'Image file extension -> type = "image"';
+  // Branch 1: GitHub
+  const isGithub = host.includes('github.com');
+  steps.push({
+    node: 'typeClassify', fn: 'github.com?',
+    desc: isGithub
+      ? `hostname "${host}" includes "github.com" — MATCH`
+      : `hostname "${host}" includes "github.com"? No`,
+    data: isGithub ? 'type = "github"' : 'false → next check',
+    urlStage: { label: 'github?', value: isGithub ? 'YES → type: "github"' : 'No' }
+  });
+  if (isGithub) type = 'github';
+
+  // Branch 2: YouTube
+  if (!type) {
+    const isYoutube = host.includes('youtube.com') || host.includes('youtu.be');
+    steps.push({
+      node: 'typeClassify', fn: 'youtube/youtu.be?',
+      desc: isYoutube
+        ? `hostname "${host}" matches YouTube — MATCH`
+        : `hostname "${host}" is youtube.com or youtu.be? No`,
+      data: isYoutube ? 'type = "video"' : 'false → next check',
+      urlStage: { label: 'youtube?', value: isYoutube ? 'YES → type: "video"' : 'No' }
+    });
+    if (isYoutube) type = 'video';
   }
 
-  steps.push({
-    node: 'typeClassify', fn: 'if/else chain',
-    desc: typeDesc,
-    data: `type = "${type}"`,
-    urlStage: { label: 'Classify', value: `type: "${type}"` }
-  });
+  // Branch 3: X Article (checked before generic x.com)
+  if (!type) {
+    const isXArticle = urlPath.includes('/i/article/');
+    steps.push({
+      node: 'typeClassify', fn: '/i/article/?',
+      desc: isXArticle
+        ? `path "${urlPath}" contains "/i/article/" — MATCH (before generic x.com check)`
+        : `path "${urlPath}" contains "/i/article/"? No`,
+      data: isXArticle ? 'type = "x-article"' : 'false → next check',
+      urlStage: { label: '/i/article/?', value: isXArticle ? 'YES → type: "x-article"' : 'No' }
+    });
+    if (isXArticle) type = 'x-article';
+  }
 
-  // Content fetch based on type
+  // Branch 4: Twitter/X (with sub-branches for media vs tweet)
+  if (!type) {
+    const isTwitter = host.includes('x.com') || host.includes('twitter.com');
+    if (isTwitter) {
+      steps.push({
+        node: 'typeClassify', fn: 'x.com/twitter.com?',
+        desc: `hostname "${host}" matches Twitter/X — MATCH, checking sub-type`,
+        data: 'Entering Twitter sub-classification',
+        urlStage: { label: 'twitter?', value: 'YES → sub-classify' }
+      });
+      const isMedia = urlPath.includes('/photo/') || urlPath.includes('/video/');
+      steps.push({
+        node: 'typeClassify', fn: '/photo/ or /video/?',
+        desc: isMedia
+          ? `path contains media indicator — type: "media"`
+          : `no media indicator in path — type: "tweet"`,
+        data: isMedia ? 'type = "media"' : 'type = "tweet"',
+        urlStage: { label: isMedia ? 'media?' : 'tweet', value: isMedia ? 'YES → type: "media"' : 'type: "tweet"' }
+      });
+      type = isMedia ? 'media' : 'tweet';
+    } else {
+      steps.push({
+        node: 'typeClassify', fn: 'x.com/twitter.com?',
+        desc: `hostname "${host}" is x.com or twitter.com? No`,
+        data: 'false → next check',
+        urlStage: { label: 'twitter?', value: 'No' }
+      });
+    }
+  }
+
+  // Branch 5: Image file extension
+  if (!type) {
+    const isImage = !!expandedUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i);
+    steps.push({
+      node: 'typeClassify', fn: 'image extension?',
+      desc: isImage
+        ? `URL ends with image extension — MATCH`
+        : `URL ends with .jpg/.png/.gif/.webp? No — fall to default`,
+      data: isImage ? 'type = "image"' : 'false → default',
+      urlStage: { label: 'image?', value: isImage ? 'YES → type: "image"' : 'No' }
+    });
+    if (isImage) type = 'image';
+  }
+
+  // Default: article
+  if (!type) {
+    type = 'article';
+    steps.push({
+      node: 'typeClassify', fn: 'default',
+      desc: 'No pattern matched any check — defaulting to type "article"',
+      data: 'type = "article"',
+      urlStage: { label: 'default', value: 'type: "article"' }
+    });
+  }
+
+  // ── Content Fetch ───────────────────────────────────────────
   if (type === 'github') {
+    const ghMatch = expandedUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+    const owner = ghMatch ? ghMatch[1] : null;
+    const repo = ghMatch ? ghMatch[2].replace(/\.git$/, '') : null;
+
     steps.push({
       node: 'fetchContent', fn: 'fetchContent()',
-      desc: 'Dispatch to fetchGitHubContent based on type "github"',
+      desc: 'Type is "github" — dispatch to fetchGitHubContent',
       data: `fetchGitHubContent("${expandedUrl}")`,
       urlStage: { label: 'Dispatch', value: 'fetchGitHubContent()' }
     });
     steps.push({
-      node: 'fetchGitHubContent', fn: 'fetchGitHubContent()',
-      desc: 'GitHub API: fetch repo metadata + README',
-      data: 'GET api.github.com/repos/...',
-      urlStage: { label: 'API Call', value: '{name, stars, readme}' }
+      node: 'extractGitHubInfo', fn: 'extractGitHubInfo()',
+      desc: ghMatch
+        ? `Regex /github.com\\/(owner)\\/(repo)/ → {owner: "${owner}", repo: "${repo}"}`
+        : 'Regex /github.com\\/(owner)\\/(repo)/ did not match — throw Error',
+      data: ghMatch ? `{owner: "${owner}", repo: "${repo}"}` : 'null → error',
+      urlStage: { label: 'Parse URL', value: ghMatch ? `${owner}/${repo}` : 'FAILED' }
     });
-  } else if (type === 'x-article') {
     steps.push({
-      node: 'fetchXArticleContent', fn: 'fetchXArticleContent()',
-      desc: 'Fetch X article via bird CLI read, then search, then meta scrape',
-      data: `bird read <tweetId> --json`,
-      urlStage: { label: 'Bird CLI', value: 'bird read -> search -> meta' }
+      node: 'fetchGitHubContent', fn: 'fetchGitHubContent()',
+      desc: 'Two GitHub API calls: repo metadata + README (base64 decoded, truncated to 5KB)',
+      data: `api.github.com/repos/${owner || '...'}/${repo || '...'}`,
+      urlStage: { label: 'GitHub API', value: '{name, stars, language, readme}' }
     });
+    steps.push({
+      node: 'githubApi', fn: 'GitHub REST API',
+      desc: 'GET /repos/{owner}/{repo} for metadata, then GET /repos/{owner}/{repo}/readme',
+      data: 'Accept: application/vnd.github.v3+json',
+      urlStage: { label: 'API Calls', value: 'repo + readme' }
+    });
+
+  } else if (type === 'x-article') {
+    const articleIdMatch = expandedUrl.match(/\/i\/article\/(\d+)/);
+    const artId = articleIdMatch ? articleIdMatch[1] : '???';
+
+    steps.push({
+      node: 'fetchXArticleContent', fn: 'parse articleId',
+      desc: `Regex /\\/i\\/article\\/(\\d+)/ extracts article ID`,
+      data: `articleId = "${artId}"`,
+      urlStage: { label: 'Parse', value: `articleId: ${artId}` }
+    });
+    steps.push({
+      node: 'fetchXArticleContent', fn: 'Fallback 1: bird read',
+      desc: 'Try the bookmarked tweet directly — fastest if it IS the article (not a share)',
+      data: 'bird read <sourceTweetId> --json → extractArticle()',
+      urlStage: { label: 'Try #1', value: 'bird read sourceTweet' }
+    });
+    steps.push({
+      node: 'birdCli', fn: 'bird read',
+      desc: 'Fetch tweet JSON, check text + quotedTweet for article content (>500 chars)',
+      data: 'execSync("bird read <id> --json")',
+      urlStage: { label: 'Bird CLI', value: 'tweet → extractArticle()' }
+    });
+    steps.push({
+      node: 'searchForArticleTweet', fn: 'Fallback 2: search',
+      desc: `If tweet was a share, search for the original article author's tweet`,
+      data: `bird search "url:x.com/i/article/${artId}" -n 5 --json`,
+      urlStage: { label: 'Try #2', value: 'searchForArticleTweet()' }
+    });
+    steps.push({
+      node: 'birdCli', fn: 'bird search',
+      desc: 'Prefer tweets with article.title or article.previewText metadata',
+      data: 'Up to 5 results, best match selected',
+      urlStage: { label: 'Bird CLI', value: 'search → best match' }
+    });
+    steps.push({
+      node: 'fetchXArticleContent', fn: 'Fallback 3: meta scrape',
+      desc: 'Last resort: HTTP fetch for og:title, og:description — full content needs JS rendering',
+      data: `fetch("${expandedUrl}") → parse <meta> tags`,
+      urlStage: { label: 'Try #3', value: 'HTML meta tags' }
+    });
+    steps.push({
+      node: 'httpFetch', fn: 'fetch()',
+      desc: 'GET with browser User-Agent, parse title, og:title, og:description, author @handle',
+      data: `GET ${expandedUrl}`,
+      urlStage: { label: 'HTTP GET', value: 'meta tags (limited)' }
+    });
+
   } else if (type === 'tweet') {
+    const tweetIdMatch = expandedUrl.match(/status\/(\d+)/);
+    if (tweetIdMatch) {
+      steps.push({
+        node: 'fetchTweet', fn: 'extract tweetId',
+        desc: `Regex /status\\/(\\d+)/ extracts tweet ID`,
+        data: `quotedTweetId = "${tweetIdMatch[1]}"`,
+        urlStage: { label: 'Parse', value: `tweetId: ${tweetIdMatch[1]}` }
+      });
+    }
     steps.push({
       node: 'fetchTweet', fn: 'fetchTweet()',
-      desc: 'Fetch quoted tweet for context via bird CLI',
-      data: 'bird read <quotedTweetId> --json',
-      urlStage: { label: 'Bird CLI', value: 'quote tweet context' }
+      desc: 'Fetch the quoted tweet via bird CLI for context',
+      data: `bird read ${tweetIdMatch ? tweetIdMatch[1] : '<id>'} --json`,
+      urlStage: { label: 'Bird CLI', value: 'fetch quoted tweet' }
     });
+    steps.push({
+      node: 'birdCli', fn: 'bird read',
+      desc: 'Returns {id, author, text, quotedTweet?} — used as quote context in output',
+      data: 'execSync("bird read <id> --json")',
+      urlStage: { label: 'Bird CLI', value: '{author, text, ...}' }
+    });
+
   } else if (type === 'article') {
+    const paywalled = PAYWALL_DOMAINS.some(d => expandedUrl.includes(d));
+    const matchedDomain = PAYWALL_DOMAINS.find(d => expandedUrl.includes(d));
+
     steps.push({
       node: 'fetchContent', fn: 'fetchContent()',
-      desc: 'Check paywall, then fetch article HTML',
+      desc: 'Type is "article" — check paywall status before fetching',
       data: `fetchContent("${expandedUrl}", "article")`,
-      urlStage: { label: 'Dispatch', value: 'fetchArticleContent()' }
+      urlStage: { label: 'Dispatch', value: 'fetchContent()' }
     });
     steps.push({
-      node: 'fetchArticleContent', fn: 'fetchArticleContent()',
-      desc: 'GET request, read up to 50KB HTML, check paywall indicators',
-      data: '{text: "...", paywalled: false}',
-      urlStage: { label: 'HTTP GET', value: 'HTML (50KB max)' }
+      node: 'isPaywalled', fn: 'isPaywalled()',
+      desc: paywalled
+        ? `URL matches PAYWALL_DOMAINS: "${matchedDomain}" → PAYWALLED`
+        : `Checked ${PAYWALL_DOMAINS.length} domains (nytimes, wsj, bloomberg...) — no match`,
+      data: paywalled ? 'true → skip content fetch' : 'false → proceed to fetch',
+      urlStage: { label: 'Paywall?', value: paywalled ? `YES (${matchedDomain})` : 'No' }
     });
+
+    if (paywalled) {
+      steps.push({
+        node: 'fetchContent', fn: 'paywall handler',
+        desc: 'Returns note for manual bypass — no HTTP fetch attempted',
+        data: '{source: "paywalled", note: "Content requires paywall bypass"}',
+        urlStage: { label: 'Result', value: 'paywalled — skip fetch' }
+      });
+    } else {
+      steps.push({
+        node: 'fetchArticleContent', fn: 'fetchArticleContent()',
+        desc: 'GET request with 30s AbortController timeout, reads up to 50KB of HTML',
+        data: '{text: "...(50KB)...", paywalled: false}',
+        urlStage: { label: 'Fetch', value: '{text, paywalled: false}' }
+      });
+      steps.push({
+        node: 'httpFetch', fn: 'fetch()',
+        desc: 'Native fetch() GET with browser User-Agent, content sliced to 10KB for JSON output',
+        data: `GET ${expandedUrl}`,
+        urlStage: { label: 'HTTP GET', value: '200 OK → HTML (50KB max)' }
+      });
+    }
+
   } else {
+    // video, image, media — no content fetch
     steps.push({
       node: 'fetchAndPrepare', fn: 'no content fetch',
-      desc: `Type "${type}" does not trigger content extraction`,
-      data: `content = null`,
-      urlStage: { label: 'Content', value: 'none (type: ' + type + ')' }
+      desc: `Type "${type}" does not trigger content extraction — link recorded without content`,
+      data: 'content = null',
+      urlStage: { label: 'Content', value: `none (type: "${type}")` }
     });
   }
 
   // Final assembly
   steps.push({
     node: 'fetchAndPrepare', fn: 'build linkData',
-    desc: 'Assemble final link object for pending-bookmarks.json',
-    data: `{type: "${type}", content: {...}}`,
+    desc: 'Assemble final link object: {original, expanded, type, content} → push to allLinks[]',
+    data: `{type: "${type}", content: ${['article', 'github', 'x-article', 'tweet'].includes(type) ? '{...}' : 'null'}}`,
     urlStage: { label: 'Output', value: `linkData (type: "${type}")` }
   });
 
