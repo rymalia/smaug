@@ -924,261 +924,63 @@ describe('Thread edge cases', () => {
 });
 
 describe('isLikelyMdFilename', () => {
-  // Layer 1: Known dev filenames — high confidence
-  describe('known development filenames', () => {
-    test('detects plan.md as filename', () => {
-      const result = isLikelyMdFilename('https://plan.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
+  describe('filters bare .md root domains', () => {
+    test('known dev filenames are detected', () => {
+      for (const name of ['claude', 'readme', 'plan', 'todo', 'memory']) {
+        assert.strictEqual(isLikelyMdFilename(`https://${name}.md/`), true, `${name}.md should be filtered`);
+      }
     });
 
-    test('detects memory.md as filename', () => {
-      const result = isLikelyMdFilename('https://memory.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
+    test('unknown bare .md domains are also filtered', () => {
+      assert.strictEqual(isLikelyMdFilename('https://banana.md/'), true);
+      assert.strictEqual(isLikelyMdFilename('https://xyz.md'), true);
     });
 
-    test('detects claude.md as filename', () => {
-      const result = isLikelyMdFilename('https://claude.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
+    test('URL spec lowercases hostnames before function runs', () => {
+      assert.strictEqual(isLikelyMdFilename('https://CLAUDE.md/'), true);
     });
 
-    test('detects readme.md as filename', () => {
-      const result = isLikelyMdFilename('https://readme.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
+    test('query params on root path are still filtered', () => {
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/?utm_source=twitter'), true);
     });
 
-    test('detects todo.md as filename', () => {
-      const result = isLikelyMdFilename('https://todo.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
+    test('hash fragments on root path are still filtered', () => {
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/#section'), true);
     });
 
-    test('detects changelog.md as filename', () => {
-      const result = isLikelyMdFilename('https://changelog.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
-    });
-
-    test('detects contributing.md as filename', () => {
-      const result = isLikelyMdFilename('https://contributing.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
-    });
-
-    test('detects security.md as filename', () => {
-      const result = isLikelyMdFilename('https://security.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
-    });
-
-    test('detects rules.md as filename', () => {
-      const result = isLikelyMdFilename('https://rules.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
-    });
-
-    test('detects agents.md as filename', () => {
-      const result = isLikelyMdFilename('https://agents.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
-    });
-
-    test('is case-insensitive for known filenames', () => {
-      const result = isLikelyMdFilename('https://CLAUDE.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
+    test('http:// works same as https://', () => {
+      assert.strictEqual(isLikelyMdFilename('http://plan.md/'), true);
     });
   });
 
-  // URL hostname normalization — ALL_CAPS is not detectable from URLs
-  describe('URL hostname normalization', () => {
-    test('ALL_CAPS URLs are lowercased by URL spec, fall through to known list or default', () => {
-      // new URL('https://CLAUDE.md/').hostname === 'claude.md' (lowercased)
-      // So CLAUDE.md is caught by the known filename list, not an ALL_CAPS check
-      const result = isLikelyMdFilename('https://CLAUDE.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high');
+  describe('does not filter legitimate .md URLs', () => {
+    test('allows obsidian.md and subdomains', () => {
+      assert.strictEqual(isLikelyMdFilename('https://obsidian.md/'), false);
+      assert.strictEqual(isLikelyMdFilename('https://help.obsidian.md/Getting+Started'), false);
+      assert.strictEqual(isLikelyMdFilename('https://forum.obsidian.md/t/some-thread'), false);
     });
 
-    test('unknown ALL_CAPS names fall to low confidence (hostname lowercased)', () => {
-      // MYPROJECT.md → myproject.md (not in known list, no context)
-      const result = isLikelyMdFilename('https://MYPROJECT.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'low');
-    });
-  });
-
-  // Allowlist: legitimate .md domains
-  describe('legitimate .md domain allowlist', () => {
-    test('allows obsidian.md', () => {
-      const result = isLikelyMdFilename('https://obsidian.md/');
-      assert.strictEqual(result.isFilename, false);
-      assert.strictEqual(result.confidence, 'high');
+    test('does not filter subdomained .md domains', () => {
+      assert.strictEqual(isLikelyMdFilename('https://www.plan.md/'), false);
+      assert.strictEqual(isLikelyMdFilename('https://app.something.md/'), false);
     });
 
-    test('allows help.obsidian.md', () => {
-      const result = isLikelyMdFilename('https://help.obsidian.md/Getting+Started');
-      assert.strictEqual(result.isFilename, false);
-    });
-
-    test('allows forum.obsidian.md', () => {
-      const result = isLikelyMdFilename('https://forum.obsidian.md/t/some-thread');
-      assert.strictEqual(result.isFilename, false);
-    });
-
-    test('allows publish.obsidian.md', () => {
-      const result = isLikelyMdFilename('https://publish.obsidian.md/');
-      assert.strictEqual(result.isFilename, false);
+    test('does not filter .md domains with a path', () => {
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/about/us'), false);
+      assert.strictEqual(isLikelyMdFilename('https://some.md/blog/post-123'), false);
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/pricing?ref=123'), false);
     });
   });
 
-  // Non-.md domains — early exit
-  describe('non-.md domains (early exit)', () => {
-    test('ignores github.com', () => {
-      const result = isLikelyMdFilename('https://github.com/user/repo');
-      assert.strictEqual(result.isFilename, false);
-      assert.strictEqual(result.confidence, 'none');
-    });
-
-    test('ignores example.com', () => {
-      const result = isLikelyMdFilename('https://example.com/');
-      assert.strictEqual(result.isFilename, false);
-    });
-
-    test('ignores twitter.com', () => {
-      const result = isLikelyMdFilename('https://x.com/user/status/123');
-      assert.strictEqual(result.isFilename, false);
+  describe('ignores non-.md URLs', () => {
+    test('non-.md domains return false', () => {
+      for (const url of ['https://github.com/user/repo', 'https://example.com/', 'https://x.com/user/status/123']) {
+        assert.strictEqual(isLikelyMdFilename(url), false, `${url} should not be filtered`);
+      }
     });
 
     test('handles invalid URLs gracefully', () => {
-      const result = isLikelyMdFilename('not-a-url');
-      assert.strictEqual(result.isFilename, false);
-      assert.strictEqual(result.confidence, 'none');
-    });
-  });
-
-  // Subdomain check
-  describe('subdomain handling', () => {
-    test('does not filter subdomained .md domains', () => {
-      const result = isLikelyMdFilename('https://www.plan.md/');
-      assert.strictEqual(result.isFilename, false);
-      assert.ok(result.reason.includes('subdomain'));
-    });
-
-    test('does not filter app.something.md', () => {
-      const result = isLikelyMdFilename('https://app.something.md/');
-      assert.strictEqual(result.isFilename, false);
-    });
-  });
-
-  // Path check
-  describe('path handling', () => {
-    test('does not filter .md domain with specific path', () => {
-      const result = isLikelyMdFilename('https://plan.md/about/us');
-      assert.strictEqual(result.isFilename, false);
-      assert.ok(result.reason.includes('path'));
-    });
-
-    test('does not filter .md domain with article path', () => {
-      const result = isLikelyMdFilename('https://some.md/blog/post-123');
-      assert.strictEqual(result.isFilename, false);
-    });
-
-    test('filters .md domain with just trailing slash', () => {
-      const result = isLikelyMdFilename('https://plan.md/');
-      assert.strictEqual(result.isFilename, true);
-    });
-
-    test('filters .md domain without trailing slash', () => {
-      const result = isLikelyMdFilename('https://memory.md');
-      assert.strictEqual(result.isFilename, true);
-    });
-  });
-
-  // Layer 2: Tweet context
-  describe('tweet context analysis', () => {
-    test('detects filename context with "files" keyword', () => {
-      const result = isLikelyMdFilename('https://workflow.md/', 'using 3 files for this project');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'medium');
-    });
-
-    test('detects filename context with "markdown" keyword', () => {
-      const result = isLikelyMdFilename('https://banana.md/', 'I keep my markdown notes organized');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'medium');
-    });
-
-    test('detects filename context with "save as" keyword', () => {
-      const result = isLikelyMdFilename('https://banana.md/', 'save as a scratch file');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'medium');
-    });
-
-    test('detects filename context with "repo" keyword', () => {
-      const result = isLikelyMdFilename('https://banana.md/', 'added it to my repo');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'medium');
-    });
-
-    test('detects filename context with AI tool reference', () => {
-      const result = isLikelyMdFilename('https://banana.md/', 'using claude code for this');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'medium');
-    });
-  });
-
-  // Layer 3: Default for unknown bare .md domains
-  describe('default low-confidence filtering', () => {
-    test('filters unknown bare .md domain with low confidence', () => {
-      const result = isLikelyMdFilename('https://banana.md/');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'low');
-    });
-
-    test('filters unknown bare .md domain without trailing slash', () => {
-      const result = isLikelyMdFilename('https://xyz.md');
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'low');
-    });
-  });
-
-  // Real-world cases from our data
-  describe('real-world cases from smaug data', () => {
-    test('plan.md from @threepointone tweet', () => {
-      const tweetText = "I've been working on a huge thing, and using 3 files - https://t.co/uz6pZeEZrc, https://t.co/9lChAVm7Ij, https://t.co/NB25Ws30HZ. It's been amazing.";
-      const result = isLikelyMdFilename('https://plan.md/', tweetText);
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high'); // 'plan' is in known filenames
-    });
-
-    test('memory.md from @alex_prompter tweet', () => {
-      const tweetText = "Cache frequently-accessed data in https://t.co/YSz85YYwut";
-      const result = isLikelyMdFilename('https://memory.md/', tweetText);
-      assert.strictEqual(result.isFilename, true);
-      assert.strictEqual(result.confidence, 'high'); // 'memory' is in known filenames
-    });
-  });
-
-  // Return structure validation
-  describe('return structure', () => {
-    test('always returns isFilename, confidence, and reason', () => {
-      const cases = [
-        'https://plan.md/',
-        'https://github.com/',
-        'not-a-url',
-        'https://obsidian.md/',
-        'https://www.plan.md/',
-      ];
-      for (const url of cases) {
-        const result = isLikelyMdFilename(url);
-        assert.ok('isFilename' in result, `${url}: missing isFilename`);
-        assert.ok('confidence' in result, `${url}: missing confidence`);
-        assert.ok('reason' in result, `${url}: missing reason`);
-      }
+      assert.strictEqual(isLikelyMdFilename('not-a-url'), false);
     });
   });
 });

@@ -217,126 +217,35 @@ export async function fetchXArticleContent(articleUrl, config, sourceTweetId = n
   }
 }
 
-// Known legitimate .md (Moldova ccTLD) domains that developers actually link to
-const LEGITIMATE_MD_DOMAINS = [
-  'obsidian.md',
-  'help.obsidian.md',
-  'forum.obsidian.md',
-  'publish.obsidian.md',
-];
-
-// Well-known development filenames (without .md extension, lowercase)
-// When Twitter auto-links "CLAUDE.md" or "Plan.md" in a tweet, the t.co redirect
-// resolves to a Moldova ccTLD domain (e.g., https://claude.md/). These are almost
-// always filename references, not intended links to Moldovan websites.
-const KNOWN_DEV_FILENAMES = new Set([
-  // Standard project files
-  'readme', 'changelog', 'contributing', 'license', 'code_of_conduct',
-  'security', 'support', 'authors', 'history', 'upgrade', 'migration',
-  'roadmap', 'architecture', 'design', 'style_guide',
-  'pull_request_template', 'issue_template', 'funding', 'codeowners',
-  // AI/coding tool files (common in 2025-2026)
-  'claude', 'memory', 'plan', 'agents', 'rules', 'instructions',
-  'context', 'prompt', 'skill', 'tasks', 'notes', 'scratchpad',
-  'todo', 'learnings', 'cursorrules', 'conventions', 'guidelines',
-  // Documentation
-  'setup', 'install', 'guide', 'docs', 'api', 'config',
-  'deployment', 'testing', 'development', 'quickstart',
-]);
-
-// Tweet text patterns that suggest surrounding context is about files, not URLs
-const FILE_CONTEXT_PATTERNS = [
-  /\bfiles?\b/,
-  /\bdocuments?\b/,
-  /\bmarkdown\b/,
-  /\.md\b/,
-  /\breadme\b/,
-  /\brepository\b/,
-  /\brepo\b/,
-  /\bscratchpad\b/,
-  /\bclaude\s+code\b/,
-  /\bcursor\b/,
-  /\bai\s+(agent|assistant|tool|coding)\b/,
-  /\bsave\s+(as|to|in)\b/,
-  /\bcache\s+.*\bin\b/,
-];
-
 /**
  * Detects when a URL is likely a filename that Twitter auto-linked to a
  * Moldova (.md) ccTLD domain, rather than an intentional URL.
  *
- * Uses a layered approach:
- *   Layer 1: URL pattern — bare .md domain + known filename stem (high confidence)
- *   Layer 2: Tweet context — surrounding text suggests file references (medium confidence)
- *   Layer 3: Default — bare .md domain with root path (low confidence)
- *
  * @param {string} expandedUrl - Fully expanded URL (after t.co redirect)
- * @param {string} [tweetText] - Tweet text for contextual analysis
- * @returns {{ isFilename: boolean, confidence: string, reason: string }}
+ * @returns {boolean}
  */
-export function isLikelyMdFilename(expandedUrl, tweetText = '') {
+export function isLikelyMdFilename(expandedUrl) {
   let url;
   try {
     url = new URL(expandedUrl);
   } catch {
-    return { isFilename: false, confidence: 'none', reason: 'invalid URL' };
+    return false;
   }
 
-  if (!url.hostname.endsWith('.md')) {
-    return { isFilename: false, confidence: 'none', reason: 'not a .md domain' };
-  }
+  if (!url.hostname.endsWith('.md')) return false;
 
-  if (LEGITIMATE_MD_DOMAINS.some(d => url.hostname === d || url.hostname.endsWith('.' + d))) {
-    return { isFilename: false, confidence: 'high', reason: `known legitimate domain: ${url.hostname}` };
-  }
-
-  const domainParts = url.hostname.split('.');
+  // Allowlist: obsidian.md is the only known legitimate .md domain in tech Twitter
+  if (url.hostname === 'obsidian.md' || url.hostname.endsWith('.obsidian.md')) return false;
 
   // Subdomained .md domains (e.g., www.plan.md) are more likely real websites
-  if (domainParts.length > 2) {
-    return { isFilename: false, confidence: 'low', reason: 'has subdomain, likely real website' };
-  }
+  if (url.hostname.split('.').length > 2) return false;
 
-  // If URL has a meaningful path, it's likely an intentional link to a specific page
-  const pathWithoutSlash = url.pathname.replace(/\/$/, '');
-  if (pathWithoutSlash.length > 0) {
-    return { isFilename: false, confidence: 'low', reason: 'has specific path, likely intentional' };
-  }
+  // URLs with a meaningful path are likely intentional links to real pages
+  if (url.pathname.replace(/\/$/, '').length > 0) return false;
 
-  const baseName = domainParts[0].toLowerCase();
-
-  // Layer 1: Known development filenames
-  if (KNOWN_DEV_FILENAMES.has(baseName)) {
-    return {
-      isFilename: true,
-      confidence: 'high',
-      reason: `"${baseName}.md" is a well-known development filename`
-    };
-  }
-
-  // Note: ALL_CAPS detection (CLAUDE.md, MY_PROJECT.md) is not possible here because
-  // URL hostnames are normalized to lowercase by the URL spec. This could be implemented
-  // in the future if bird CLI exposes entities.urls[].display_url (the original text).
-
-  // Layer 2: Tweet text context
-  if (tweetText) {
-    const textLower = tweetText.toLowerCase();
-    if (FILE_CONTEXT_PATTERNS.some(p => p.test(textLower))) {
-      return {
-        isFilename: true,
-        confidence: 'medium',
-        reason: `"${baseName}.md" in context of dev/file discussion`
-      };
-    }
-  }
-
-  // Layer 3: Bare .md domain with root path — lean toward filtering since bare
-  // .md root domains are overwhelmingly auto-linked filenames in tech Twitter
-  return {
-    isFilename: true,
-    confidence: 'low',
-    reason: `bare .md domain "${baseName}.md" with root path — likely auto-linked filename`
-  };
+  // Bare .md root domain — overwhelmingly an auto-linked filename in tech Twitter
+  // TODO: ALL_CAPS detection needs bird CLI's entities.urls[].display_url
+  return true;
 }
 
 // Sites that typically require paywall bypass
@@ -988,29 +897,14 @@ export async function fetchAndPrepareBookmarks(options = {}) {
       for (const { original: link, expanded } of expandedResults) {
         console.log(`  Expanded: ${link} -> ${expanded}`);
 
-        // Check for auto-linked .md filename references (e.g., CLAUDE.md → https://claude.md/)
-        const mdCheck = isLikelyMdFilename(expanded, text);
-        if (mdCheck.isFilename) {
-          console.log(`  Skipping .md filename auto-link: ${expanded} (${mdCheck.reason})`);
-          const linkData = {
-            original: link,
-            expanded,
-            type: 'filename-reference',
-            content: null,
-            _filenameDetection: mdCheck
-          };
-          allLinks.push(linkData);
-          const sourceTweets = tweetLinkSources.get(link) || [];
-          if (sourceTweets.includes(bookmark.id)) {
-            links.push(linkData);
-          }
-          continue;
-        }
-
+        // Setting type based on URL patterns - this can be expanded with more patterns as needed
         let type = 'unknown';
         let content = null;
 
-        if (expanded.includes('github.com')) {
+        if (isLikelyMdFilename(expanded)) {
+          type = 'filename-reference';
+          console.log(`  Skipping .md filename auto-link: ${expanded}`);
+        } else if (expanded.includes('github.com')) {
           type = 'github';
         } else if (expanded.includes('youtube.com') || expanded.includes('youtu.be')) {
           type = 'video';
