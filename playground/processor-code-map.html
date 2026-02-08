@@ -8,29 +8,51 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #111; color: #e0e0e0; display: flex; height: 100vh; overflow: hidden; }
 
-  .sidebar { width: 280px; min-width: 280px; background: #1a1a1a; border-right: 1px solid #333; display: flex; flex-direction: column; overflow-y: auto; }
-  .sidebar h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; padding: 12px 16px 6px; }
-  .sidebar-section { padding: 8px 16px; border-bottom: 1px solid #262626; }
-  .sidebar-section:last-child { border-bottom: none; }
+  .sidebar { width: 300px; min-width: 300px; background: #1a1a1a; border-right: 1px solid #333; display: flex; flex-direction: column; overflow-y: auto; }
+  .sidebar h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; padding: 12px 14px 6px; display: flex; justify-content: space-between; align-items: center; }
+  .sidebar-section { padding: 6px 14px 10px; border-bottom: 1px solid #262626; }
 
-  .preset-btn { display: block; width: 100%; padding: 6px 10px; margin: 3px 0; background: #262626; border: 1px solid #333; border-radius: 4px; color: #ccc; font-size: 12px; cursor: pointer; text-align: left; }
+  .preset-btn { display: block; width: 100%; padding: 5px 10px; margin: 2px 0; background: #262626; border: 1px solid #333; border-radius: 4px; color: #ccc; font-size: 11px; cursor: pointer; text-align: left; }
   .preset-btn:hover { background: #333; }
   .preset-btn.active { background: #2a3a5c; border-color: #4a7adf; color: #8ab4f8; }
+  .preset-btn.trace { border-left: 3px solid #f59e0b; }
+  .preset-btn.trace.active { border-left-color: #fbbf24; background: #3a2a0c; border-color: #f59e0b; color: #fcd34d; }
 
-  .layer-toggle { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; font-size: 12px; }
+  .layer-toggle { display: flex; align-items: center; gap: 8px; padding: 3px 0; cursor: pointer; font-size: 11px; }
   .layer-toggle input { display: none; }
-  .layer-swatch { width: 14px; height: 14px; border-radius: 3px; border: 2px solid transparent; }
+  .layer-swatch { width: 12px; height: 12px; border-radius: 3px; border: 2px solid transparent; }
   .layer-toggle input:checked + .layer-swatch { border-color: #fff; }
 
-  .conn-toggle { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; font-size: 12px; }
+  .conn-toggle { display: flex; align-items: center; gap: 8px; padding: 3px 0; cursor: pointer; font-size: 11px; }
   .conn-toggle input { display: none; }
   .conn-line { width: 20px; height: 2px; }
   .conn-toggle input:checked + .conn-line { box-shadow: 0 0 4px currentColor; }
 
-  .comment-item { padding: 6px 8px; margin: 3px 0; background: #262626; border-radius: 4px; font-size: 11px; position: relative; }
-  .comment-item .target { color: #8ab4f8; font-weight: 600; font-size: 11px; }
-  .comment-item .text { color: #aaa; margin-top: 2px; }
-  .comment-item .del { position: absolute; top: 4px; right: 6px; background: none; border: none; color: #666; cursor: pointer; font-size: 14px; }
+  /* Pipeline steps */
+  .step-list { margin: 0; padding: 0; list-style: none; }
+  .step-item { display: flex; gap: 8px; padding: 5px 6px; margin: 2px 0; border-radius: 4px; font-size: 11px; cursor: pointer; transition: all 0.15s; align-items: flex-start; }
+  .step-item:hover { background: #262626; }
+  .step-item.active { background: #2a3a0c; border: 1px solid #4a6f1a; }
+  .step-item.past { opacity: 0.5; }
+  .step-num { min-width: 20px; height: 20px; border-radius: 50%; background: #333; color: #aaa; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-item.active .step-num { background: #4ade80; color: #000; }
+  .step-item.past .step-num { background: #555; color: #888; }
+  .step-body { flex: 1; }
+  .step-fn { font-family: 'SF Mono', monospace; color: #8ab4f8; font-size: 10px; }
+  .step-item.active .step-fn { color: #4ade80; }
+  .step-desc { color: #888; font-size: 10px; margin-top: 1px; }
+  .step-data { font-family: 'SF Mono', monospace; color: #f59e0b; font-size: 9px; margin-top: 2px; background: #1a1a0a; padding: 2px 5px; border-radius: 3px; word-break: break-all; }
+
+  .play-controls { display: flex; gap: 4px; padding: 6px 0 2px; }
+  .play-btn { padding: 4px 10px; background: #262626; border: 1px solid #444; border-radius: 4px; color: #ccc; font-size: 11px; cursor: pointer; }
+  .play-btn:hover { background: #333; }
+  .play-btn.playing { background: #2a3a0c; border-color: #4ade80; color: #4ade80; }
+
+  /* Comments */
+  .comment-item { padding: 5px 8px; margin: 2px 0; background: #262626; border-radius: 4px; font-size: 10px; position: relative; }
+  .comment-item .target { color: #8ab4f8; font-weight: 600; }
+  .comment-item .text { color: #aaa; margin-top: 1px; }
+  .comment-item .del { position: absolute; top: 3px; right: 5px; background: none; border: none; color: #666; cursor: pointer; font-size: 13px; }
   .comment-item .del:hover { color: #f44; }
 
   .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -38,38 +60,52 @@
   .canvas-wrap svg { width: 100%; height: 100%; }
 
   .zoom-controls { position: absolute; top: 10px; right: 10px; display: flex; gap: 4px; }
-  .zoom-btn { width: 28px; height: 28px; background: #222; border: 1px solid #444; border-radius: 4px; color: #ccc; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .zoom-btn { width: 26px; height: 26px; background: #222; border: 1px solid #444; border-radius: 4px; color: #ccc; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
   .zoom-btn:hover { background: #333; }
 
-  .legend { position: absolute; bottom: 10px; left: 10px; background: #1a1a1ae0; border: 1px solid #333; border-radius: 6px; padding: 8px 12px; font-size: 11px; }
-  .legend-item { display: flex; align-items: center; gap: 6px; padding: 2px 0; }
-  .legend-swatch { width: 12px; height: 12px; border-radius: 2px; }
-  .legend-line { width: 20px; height: 0; border-top: 2px; }
+  .legend { position: absolute; bottom: 10px; left: 10px; background: #1a1a1ae0; border: 1px solid #333; border-radius: 6px; padding: 6px 10px; font-size: 10px; }
+  .legend-item { display: flex; align-items: center; gap: 5px; padding: 1px 0; }
+  .legend-swatch { width: 10px; height: 10px; border-radius: 2px; }
 
-  .prompt-area { background: #1a1a1a; border-top: 1px solid #333; padding: 10px 16px; max-height: 180px; overflow-y: auto; }
-  .prompt-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-  .prompt-bar span { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-  .copy-btn { padding: 4px 12px; background: #2a3a5c; border: 1px solid #4a7adf; border-radius: 4px; color: #8ab4f8; font-size: 11px; cursor: pointer; }
+  /* URL Journey bar */
+  .url-journey { background: #0a0a0a; border-top: 1px solid #333; padding: 8px 14px; display: none; }
+  .url-journey.show { display: block; }
+  .url-journey-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .url-journey-flow { display: flex; align-items: center; gap: 0; overflow-x: auto; padding: 4px 0; }
+  .url-stage { display: flex; align-items: center; gap: 0; }
+  .url-stage-box { padding: 4px 10px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 10px; white-space: nowrap; border: 1px solid #333; background: #1a1a1a; color: #888; transition: all 0.3s; }
+  .url-stage-box.active { background: #1a2a0a; border-color: #4ade80; color: #4ade80; box-shadow: 0 0 8px #4ade8040; }
+  .url-stage-box.past { background: #1a1a2a; border-color: #555; color: #aaa; }
+  .url-stage-box .stage-label { font-size: 8px; color: #666; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+  .url-stage-box.active .stage-label { color: #4ade80; }
+  .url-arrow { color: #444; font-size: 16px; margin: 0 2px; flex-shrink: 0; }
+
+  .prompt-area { background: #1a1a1a; border-top: 1px solid #333; padding: 8px 14px; max-height: 140px; overflow-y: auto; }
+  .prompt-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .prompt-bar span { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .copy-btn { padding: 3px 10px; background: #2a3a5c; border: 1px solid #4a7adf; border-radius: 4px; color: #8ab4f8; font-size: 10px; cursor: pointer; }
   .copy-btn:hover { background: #3a4a6c; }
-  .prompt-text { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: #bbb; white-space: pre-wrap; line-height: 1.5; }
+  .prompt-text { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px; color: #bbb; white-space: pre-wrap; line-height: 1.4; }
 
   /* Modal */
   .modal-overlay { display: none; position: fixed; inset: 0; background: #000c; z-index: 100; align-items: center; justify-content: center; }
   .modal-overlay.show { display: flex; }
-  .modal { background: #222; border: 1px solid #444; border-radius: 8px; padding: 16px; width: 360px; }
-  .modal h3 { font-size: 14px; margin-bottom: 4px; }
-  .modal .subtitle { font-size: 11px; color: #888; margin-bottom: 10px; }
-  .modal textarea { width: 100%; height: 80px; background: #1a1a1a; border: 1px solid #444; border-radius: 4px; color: #ddd; padding: 8px; font-size: 12px; font-family: inherit; resize: vertical; }
-  .modal-actions { display: flex; gap: 8px; margin-top: 10px; justify-content: flex-end; }
-  .modal-actions button { padding: 5px 14px; border-radius: 4px; font-size: 12px; cursor: pointer; border: 1px solid #444; }
+  .modal { background: #222; border: 1px solid #444; border-radius: 8px; padding: 14px; width: 340px; }
+  .modal h3 { font-size: 13px; margin-bottom: 3px; }
+  .modal .subtitle { font-size: 10px; color: #888; margin-bottom: 8px; }
+  .modal textarea { width: 100%; height: 70px; background: #1a1a1a; border: 1px solid #444; border-radius: 4px; color: #ddd; padding: 6px; font-size: 11px; font-family: inherit; resize: vertical; }
+  .modal-actions { display: flex; gap: 6px; margin-top: 8px; justify-content: flex-end; }
+  .modal-actions button { padding: 4px 12px; border-radius: 4px; font-size: 11px; cursor: pointer; border: 1px solid #444; }
   .modal-actions .cancel { background: #333; color: #ccc; }
   .modal-actions .save { background: #2a5a3c; border-color: #4aaf6a; color: #8aefaa; }
 
-  /* Node tooltip */
-  .node-tooltip { position: absolute; background: #222; border: 1px solid #555; border-radius: 6px; padding: 8px 12px; font-size: 11px; pointer-events: none; z-index: 50; max-width: 280px; display: none; }
+  .node-tooltip { position: absolute; background: #222; border: 1px solid #555; border-radius: 6px; padding: 6px 10px; font-size: 10px; pointer-events: none; z-index: 50; max-width: 260px; display: none; }
   .node-tooltip .tt-title { font-weight: 600; color: #fff; }
-  .node-tooltip .tt-sig { font-family: monospace; color: #8ab4f8; margin: 4px 0; font-size: 10px; }
+  .node-tooltip .tt-sig { font-family: monospace; color: #8ab4f8; margin: 3px 0; font-size: 9px; }
   .node-tooltip .tt-desc { color: #aaa; }
+
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+  @keyframes dashflow { to { stroke-dashoffset: -20; } }
 </style>
 </head>
 <body>
@@ -77,6 +113,32 @@
 <div class="sidebar">
   <h2>Views</h2>
   <div class="sidebar-section" id="presets"></div>
+
+  <h2>Try a URL</h2>
+  <div class="sidebar-section">
+    <div style="display:flex;gap:4px;">
+      <input type="text" id="customUrlInput" placeholder="e.g. https://claude.md/" style="flex:1;padding:5px 8px;background:#222;border:1px solid #444;border-radius:4px;color:#ddd;font-size:11px;font-family:'SF Mono',monospace;">
+      <button class="play-btn" onclick="runCustomUrl()" style="white-space:nowrap;">Trace</button>
+    </div>
+    <div id="customUrlPresets" style="margin-top:4px;display:flex;flex-wrap:wrap;gap:3px;">
+    </div>
+  </div>
+
+  <h2>Pipeline Traces</h2>
+  <div class="sidebar-section" id="traces"></div>
+
+  <div id="stepsSection" style="display:none;">
+    <h2>Steps <span id="stepCounter" style="font-size:10px;color:#4ade80;font-weight:400;text-transform:none;letter-spacing:0;"></span></h2>
+    <div class="sidebar-section">
+      <div class="play-controls">
+        <button class="play-btn" id="playBtn" onclick="togglePlay()">Play</button>
+        <button class="play-btn" onclick="stepPrev()">Prev</button>
+        <button class="play-btn" onclick="stepNext()">Next</button>
+        <button class="play-btn" onclick="resetTrace()">Reset</button>
+      </div>
+      <ol class="step-list" id="stepList"></ol>
+    </div>
+  </div>
 
   <h2>Layers</h2>
   <div class="sidebar-section" id="layers"></div>
@@ -86,7 +148,7 @@
 
   <h2>Comments (<span id="commentCount">0</span>)</h2>
   <div class="sidebar-section" id="comments">
-    <div style="font-size:11px;color:#666;">Click any function to add a comment</div>
+    <div style="font-size:10px;color:#666;">Click any function to add a comment</div>
   </div>
 </div>
 
@@ -95,11 +157,16 @@
     <svg id="canvas"></svg>
     <div class="zoom-controls">
       <button class="zoom-btn" onclick="zoomIn()">+</button>
-      <button class="zoom-btn" onclick="zoomOut()">−</button>
-      <button class="zoom-btn" onclick="zoomReset()" style="font-size:11px;">⟳</button>
+      <button class="zoom-btn" onclick="zoomOut()">&minus;</button>
+      <button class="zoom-btn" onclick="zoomReset()" style="font-size:10px;">&#8635;</button>
     </div>
     <div class="legend" id="legend"></div>
     <div class="node-tooltip" id="tooltip"></div>
+  </div>
+
+  <div class="url-journey" id="urlJourney">
+    <div class="url-journey-label" id="urlJourneyLabel">URL Journey</div>
+    <div class="url-journey-flow" id="urlJourneyFlow"></div>
   </div>
 
   <div class="prompt-area">
@@ -142,46 +209,38 @@ const CONN_TYPES = {
 };
 
 const nodes = [
-  // Entry / Orchestrator
-  { id: 'fetchAndPrepare', label: 'fetchAndPrepareBookmarks', sig: '(options) → {bookmarks, count}', desc: 'Main orchestrator: fetches tweets, expands links, extracts content, writes pending JSON', x: 480, y: 40, w: 210, h: 42, layer: 'entry' },
+  { id: 'fetchAndPrepare', label: 'fetchAndPrepareBookmarks', sig: '(options) -> {bookmarks, count}', desc: 'Main orchestrator: fetches tweets, expands links, extracts content, writes pending JSON', x: 480, y: 40, w: 210, h: 42, layer: 'entry' },
+  { id: 'fetchFromSource', label: 'fetchFromSource', sig: '(config, count, opts) -> tweets[]', desc: 'Dispatches to fetchBookmarks or fetchLikes based on config.source', x: 100, y: 140, w: 155, h: 38, layer: 'fetch' },
+  { id: 'fetchFromFolders', label: 'fetchFromFolders', sig: '(config, count, opts) -> tweets[]', desc: 'Fetches from each configured bookmark folder, tags results', x: 350, y: 140, w: 165, h: 38, layer: 'fetch' },
+  { id: 'fetchBookmarks', label: 'fetchBookmarks', sig: '(config, count, opts) -> tweets[]', desc: 'Calls bird CLI bookmarks command, handles pagination & thread expansion', x: 80, y: 230, w: 150, h: 38, layer: 'fetch' },
+  { id: 'fetchLikes', label: 'fetchLikes', sig: '(config, count, opts) -> tweets[]', desc: 'Calls bird CLI likes command with thread expansion', x: 290, y: 230, w: 125, h: 38, layer: 'fetch' },
+  { id: 'fetchTweet', label: 'fetchTweet', sig: '(config, tweetId) -> tweet', desc: 'Fetches a single tweet by ID (for quote tweets, parent replies)', x: 500, y: 230, w: 125, h: 38, layer: 'fetch' },
+  { id: 'buildBirdEnv', label: 'buildBirdEnv', sig: '(config) -> env{}', desc: 'Builds process.env with AUTH_TOKEN and CT0 for bird CLI', x: 80, y: 320, w: 130, h: 34, layer: 'fetch' },
 
-  // Twitter Fetching
-  { id: 'fetchFromSource', label: 'fetchFromSource', sig: '(config, count, options) → tweets[]', desc: 'Dispatches to fetchBookmarks or fetchLikes based on config.source', x: 100, y: 140, w: 160, h: 38, layer: 'fetch' },
-  { id: 'fetchFromFolders', label: 'fetchFromFolders', sig: '(config, count, options) → tweets[]', desc: 'Fetches from each configured bookmark folder, tags results', x: 350, y: 140, w: 170, h: 38, layer: 'fetch' },
-  { id: 'fetchBookmarks', label: 'fetchBookmarks', sig: '(config, count, options) → tweets[]', desc: 'Calls bird CLI bookmarks command, handles pagination & thread expansion', x: 80, y: 230, w: 155, h: 38, layer: 'fetch' },
-  { id: 'fetchLikes', label: 'fetchLikes', sig: '(config, count, options) → tweets[]', desc: 'Calls bird CLI likes command with thread expansion', x: 290, y: 230, w: 130, h: 38, layer: 'fetch' },
-  { id: 'fetchTweet', label: 'fetchTweet', sig: '(config, tweetId) → tweet', desc: 'Fetches a single tweet by ID (for quote tweet context, parent replies)', x: 500, y: 230, w: 130, h: 38, layer: 'fetch' },
-  { id: 'buildBirdEnv', label: 'buildBirdEnv', sig: '(config) → env{}', desc: 'Builds process.env with AUTH_TOKEN and CT0 for bird CLI', x: 80, y: 320, w: 140, h: 34, layer: 'fetch' },
+  { id: 'groupThreadTweets', label: 'groupThreadTweets', sig: '(tweets, ids) -> groups[]', desc: 'Groups flat tweet array by conversationId/threadRootId, identifies primary tweet per group', x: 620, y: 140, w: 170, h: 38, layer: 'process' },
+  { id: 'expandTcoLink', label: 'expandTcoLink', sig: '(url, timeout?) -> expandedUrl', desc: 'Follows t.co redirect via HEAD request to get final URL', x: 700, y: 230, w: 140, h: 38, layer: 'process' },
+  { id: 'isLikelyMdFilename', label: 'isLikelyMdFilename', sig: '(expandedUrl) -> {isFilename, reason}', desc: 'Detects auto-linked .md filenames (Moldova ccTLD). Allowlist -> known filenames -> catch-all.', x: 880, y: 140, w: 175, h: 38, layer: 'process' },
+  { id: 'typeClassify', label: 'type classification', sig: 'if/else chain on expanded URL', desc: 'Pattern-matches expanded URL to determine type: github, video, x-article, tweet, media, image, article', x: 880, y: 230, w: 170, h: 38, layer: 'process' },
+  { id: 'isPaywalled', label: 'isPaywalled', sig: '(url) -> boolean', desc: 'Checks URL against PAYWALL_DOMAINS list', x: 900, y: 310, w: 125, h: 34, layer: 'process' },
 
-  // Link Processing
-  { id: 'groupThreadTweets', label: 'groupThreadTweets', sig: '(tweets, bookmarkedIds) → groups[]', desc: 'Groups flat tweet array by conversationId/threadRootId, identifies primary tweet per group', x: 620, y: 140, w: 175, h: 38, layer: 'process' },
-  { id: 'expandTcoLink', label: 'expandTcoLink', sig: '(url, timeout?) → expandedUrl', desc: 'Follows t.co redirect via HEAD request to get final URL', x: 700, y: 230, w: 145, h: 38, layer: 'process' },
-  { id: 'isLikelyMdFilename', label: 'isLikelyMdFilename', sig: '(expandedUrl, tweetText?) → {isFilename, reason}', desc: 'Detects auto-linked .md filenames (Moldova ccTLD). Uses allowlist + known filenames + catch-all.', x: 880, y: 140, w: 175, h: 38, layer: 'process' },
-  { id: 'isPaywalled', label: 'isPaywalled', sig: '(url) → boolean', desc: 'Checks URL against PAYWALL_DOMAINS list', x: 900, y: 230, w: 130, h: 38, layer: 'process' },
-  { id: 'stripQuerystring', label: 'stripQuerystring', sig: '(url) → url', desc: 'Removes query params from URL', x: 900, y: 300, w: 150, h: 34, layer: 'process' },
+  { id: 'fetchContent', label: 'fetchContent', sig: '(url, type, config) -> content', desc: 'Dispatches to GitHub API or article fetch based on type, checks paywall', x: 620, y: 380, w: 140, h: 38, layer: 'content' },
+  { id: 'fetchGitHubContent', label: 'fetchGitHubContent', sig: '(url) -> {name, stars, readme}', desc: 'Fetches repo metadata + README via GitHub REST API', x: 470, y: 460, w: 170, h: 38, layer: 'content' },
+  { id: 'fetchArticleContent', label: 'fetchArticleContent', sig: '(url) -> {text, paywalled}', desc: 'Fetches article HTML (up to 50KB), checks for paywall indicators', x: 720, y: 460, w: 170, h: 38, layer: 'content' },
+  { id: 'fetchXArticleContent', label: 'fetchXArticleContent', sig: '(url, config, tweetId?) -> article', desc: 'Fetches X article via bird CLI read/search, falls back to meta scraping', x: 280, y: 380, w: 180, h: 38, layer: 'content' },
+  { id: 'searchForArticleTweet', label: 'searchForArticleTweet', sig: '(articleId, config) -> tweet?', desc: 'Searches Twitter for original tweet that published an X article', x: 200, y: 460, w: 190, h: 38, layer: 'content' },
+  { id: 'extractGitHubInfo', label: 'extractGitHubInfo', sig: '(url) -> {owner, repo}', desc: 'Parses github.com/owner/repo from URL (private helper)', x: 470, y: 540, w: 155, h: 34, layer: 'content' },
 
-  // Content Extraction
-  { id: 'fetchContent', label: 'fetchContent', sig: '(url, type, config) → content', desc: 'Dispatches to GitHub API or article fetch based on type, checks paywall', x: 620, y: 380, w: 145, h: 38, layer: 'content' },
-  { id: 'fetchGitHubContent', label: 'fetchGitHubContent', sig: '(url) → {name, stars, readme, ...}', desc: 'Fetches repo metadata + README via GitHub REST API', x: 470, y: 460, w: 175, h: 38, layer: 'content' },
-  { id: 'fetchArticleContent', label: 'fetchArticleContent', sig: '(url) → {text, paywalled}', desc: 'Fetches article HTML (up to 50KB), checks for paywall indicators', x: 720, y: 460, w: 175, h: 38, layer: 'content' },
-  { id: 'fetchXArticleContent', label: 'fetchXArticleContent', sig: '(articleUrl, config, tweetId?) → article', desc: 'Fetches X article via bird CLI read/search, falls back to meta tag scraping', x: 280, y: 380, w: 185, h: 38, layer: 'content' },
-  { id: 'searchForArticleTweet', label: 'searchForArticleTweet', sig: '(articleId, config) → tweet?', desc: 'Searches Twitter for original tweet that published an X article', x: 200, y: 460, w: 195, h: 38, layer: 'content' },
-  { id: 'extractGitHubInfo', label: 'extractGitHubInfo', sig: '(url) → {owner, repo}', desc: 'Parses github.com/owner/repo from URL (private helper)', x: 470, y: 540, w: 160, h: 34, layer: 'content' },
+  { id: 'loadConfig', label: 'loadConfig', sig: '(configPath?) -> config', desc: 'Loads smaug.config.json, merges with env vars and defaults', x: 100, y: 460, w: 125, h: 34, layer: 'state' },
+  { id: 'loadState', label: 'loadState', sig: '(config) -> state', desc: 'Reads .state/bookmarks-state.json', x: 100, y: 520, w: 115, h: 34, layer: 'state' },
+  { id: 'saveState', label: 'saveState', sig: '(config, state) -> void', desc: 'Writes updated state back to .state/bookmarks-state.json', x: 100, y: 574, w: 115, h: 34, layer: 'state' },
+  { id: 'getExistingIds', label: 'getExistingBookmarkIds', sig: '(config) -> Set<id>', desc: 'Scans bookmarks.md for already-archived tweet IDs', x: 280, y: 520, w: 185, h: 34, layer: 'state' },
 
-  // State / Config
-  { id: 'loadConfig', label: 'loadConfig', sig: '(configPath?) → config', desc: 'Loads smaug.config.json, merges with env vars and defaults (from config.js)', x: 100, y: 460, w: 130, h: 34, layer: 'state' },
-  { id: 'loadState', label: 'loadState', sig: '(config) → state', desc: 'Reads .state/bookmarks-state.json', x: 100, y: 520, w: 120, h: 34, layer: 'state' },
-  { id: 'saveState', label: 'saveState', sig: '(config, state) → void', desc: 'Writes updated state back to .state/bookmarks-state.json', x: 100, y: 574, w: 120, h: 34, layer: 'state' },
-  { id: 'getExistingIds', label: 'getExistingBookmarkIds', sig: '(config) → Set<id>', desc: 'Scans bookmarks.md for already-archived tweet IDs', x: 280, y: 520, w: 190, h: 34, layer: 'state' },
-
-  // External Services (not functions, but targets)
-  { id: 'birdCli', label: 'bird CLI', sig: 'bookmarks | likes | read | search', desc: 'Twitter GraphQL API via bird CLI (@steipete/bird)', x: 80, y: 400, w: 100, h: 34, layer: 'external' },
-  { id: 'githubApi', label: 'GitHub API', sig: 'repos/{owner}/{repo}', desc: 'GitHub REST API v3 for repo metadata and README', x: 470, y: 620, w: 110, h: 34, layer: 'external' },
-  { id: 'httpFetch', label: 'HTTP fetch', sig: 'HEAD (t.co) / GET (articles)', desc: 'Native fetch() for URL expansion and article content', x: 720, y: 540, w: 110, h: 34, layer: 'external' },
+  { id: 'birdCli', label: 'bird CLI', sig: 'bookmarks | likes | read | search', desc: 'Twitter GraphQL API via bird (@steipete/bird)', x: 80, y: 400, w: 95, h: 34, layer: 'external' },
+  { id: 'githubApi', label: 'GitHub API', sig: 'repos/{owner}/{repo}', desc: 'GitHub REST API v3 for repo metadata and README', x: 470, y: 620, w: 105, h: 34, layer: 'external' },
+  { id: 'httpFetch', label: 'HTTP fetch', sig: 'HEAD / GET', desc: 'Native fetch() for URL expansion and article content', x: 720, y: 540, w: 105, h: 34, layer: 'external' },
 ];
 
 const connections = [
-  // fetchAndPrepareBookmarks calls
   { from: 'fetchAndPrepare', to: 'fetchFromSource', type: 'call' },
   { from: 'fetchAndPrepare', to: 'fetchFromFolders', type: 'call' },
   { from: 'fetchAndPrepare', to: 'groupThreadTweets', type: 'call' },
@@ -194,24 +253,22 @@ const connections = [
   { from: 'fetchAndPrepare', to: 'loadConfig', type: 'call' },
   { from: 'fetchAndPrepare', to: 'loadState', type: 'call' },
   { from: 'fetchAndPrepare', to: 'saveState', type: 'call' },
-
-  // Fetching sub-calls
+  { from: 'fetchAndPrepare', to: 'typeClassify', type: 'call' },
   { from: 'fetchFromSource', to: 'fetchBookmarks', type: 'call' },
   { from: 'fetchFromSource', to: 'fetchLikes', type: 'call' },
   { from: 'fetchFromFolders', to: 'fetchBookmarks', type: 'call' },
   { from: 'fetchBookmarks', to: 'buildBirdEnv', type: 'call' },
   { from: 'fetchLikes', to: 'buildBirdEnv', type: 'call' },
   { from: 'fetchTweet', to: 'buildBirdEnv', type: 'call' },
-
-  // Content extraction sub-calls
   { from: 'fetchContent', to: 'fetchGitHubContent', type: 'call' },
   { from: 'fetchContent', to: 'fetchArticleContent', type: 'call' },
   { from: 'fetchContent', to: 'isPaywalled', type: 'call' },
   { from: 'fetchGitHubContent', to: 'extractGitHubInfo', type: 'call' },
   { from: 'fetchXArticleContent', to: 'searchForArticleTweet', type: 'call' },
   { from: 'fetchXArticleContent', to: 'buildBirdEnv', type: 'call' },
-
-  // External I/O
+  { from: 'typeClassify', to: 'fetchContent', type: 'call' },
+  { from: 'typeClassify', to: 'fetchXArticleContent', type: 'call' },
+  { from: 'typeClassify', to: 'fetchTweet', type: 'call' },
   { from: 'fetchBookmarks', to: 'birdCli', type: 'io', label: 'execSync' },
   { from: 'fetchLikes', to: 'birdCli', type: 'io', label: 'execSync' },
   { from: 'fetchTweet', to: 'birdCli', type: 'io', label: 'execSync' },
@@ -220,29 +277,99 @@ const connections = [
   { from: 'fetchGitHubContent', to: 'githubApi', type: 'io', label: 'fetch' },
   { from: 'fetchArticleContent', to: 'httpFetch', type: 'io', label: 'fetch' },
   { from: 'expandTcoLink', to: 'httpFetch', type: 'io', label: 'HEAD' },
-
-  // Data flow
   { from: 'fetchFromSource', to: 'fetchAndPrepare', type: 'data', label: 'tweets[]' },
-  { from: 'fetchFromFolders', to: 'fetchAndPrepare', type: 'data', label: 'tweets[]' },
   { from: 'groupThreadTweets', to: 'fetchAndPrepare', type: 'data', label: 'groups[]' },
   { from: 'expandTcoLink', to: 'fetchAndPrepare', type: 'data', label: 'expandedUrl' },
   { from: 'isLikelyMdFilename', to: 'fetchAndPrepare', type: 'data', label: '{isFilename}' },
   { from: 'fetchContent', to: 'fetchAndPrepare', type: 'data', label: 'content' },
 ];
 
+// ─── Pipeline Traces ──────────────────────────────────────────
+
+const TRACES = {
+  linkPipeline: {
+    label: 'Link Processing Pipeline',
+    desc: 'How every URL in a tweet gets processed',
+    layers: ['entry', 'process', 'content', 'external'],
+    conns: ['call', 'io'],
+    example: { label: 'Example: GitHub link in tweet', startUrl: 'https://t.co/abc123' },
+    steps: [
+      { node: 'fetchAndPrepare', fn: 'regex match', desc: 'Extract t.co links from tweet text', data: 'https://t.co/abc123', urlStage: { label: 'Regex Extract', value: 'https://t.co/abc123' } },
+      { node: 'expandTcoLink', fn: 'expandTcoLink()', desc: 'HEAD request follows redirects to final URL', data: 'https://t.co/abc123 -> https://github.com/user/repo', urlStage: { label: 'Expand t.co', value: 'https://github.com/user/repo' } },
+      { node: 'isLikelyMdFilename', fn: 'isLikelyMdFilename()', desc: 'Check: is this an auto-linked .md filename? No - not a .md domain', data: '{isFilename: false, reason: "not a .md domain"}', urlStage: { label: '.md Check', value: 'Pass (not .md)' } },
+      { node: 'typeClassify', fn: 'if/else chain', desc: 'Pattern match: url.includes("github.com") -> type = "github"', data: 'type = "github"', urlStage: { label: 'Classify', value: 'type: "github"' } },
+      { node: 'fetchContent', fn: 'fetchContent()', desc: 'Dispatch to fetchGitHubContent based on type', data: 'fetchContent(url, "github", config)', urlStage: { label: 'Dispatch', value: 'fetchGitHubContent()' } },
+      { node: 'fetchGitHubContent', fn: 'fetchGitHubContent()', desc: 'GitHub API call for repo metadata + README', data: '{name, stars, language, readme}', urlStage: { label: 'Fetch Content', value: '{name, stars, readme}' } },
+      { node: 'githubApi', fn: 'GitHub REST API', desc: 'GET /repos/user/repo + /repos/user/repo/readme', data: 'api.github.com/repos/user/repo', urlStage: { label: 'API Call', value: 'api.github.com' } },
+      { node: 'fetchAndPrepare', fn: 'build linkData', desc: 'Assemble final link object for pending JSON', data: '{original, expanded, type: "github", content: {...}}', urlStage: { label: 'Output', value: 'linkData in allLinks[]' } },
+    ]
+  },
+
+  mdFilterYes: {
+    label: '.md Filter: Filename Detected',
+    desc: 'When a tweet mentions CLAUDE.md and Twitter auto-links it',
+    layers: ['entry', 'process', 'external'],
+    conns: ['call', 'io'],
+    example: { label: 'Example: "CLAUDE.md" auto-linked by Twitter', startUrl: 'https://t.co/xyz789' },
+    steps: [
+      { node: 'fetchAndPrepare', fn: 'regex match', desc: 'Extract t.co link from tweet text mentioning CLAUDE.md', data: 'Tweet: "put it in https://t.co/xyz789"', urlStage: { label: 'Extract', value: 'https://t.co/xyz789' } },
+      { node: 'expandTcoLink', fn: 'expandTcoLink()', desc: 'HEAD follows t.co redirect -> Moldova ccTLD domain', data: 'https://t.co/xyz789 -> https://claude.md/', urlStage: { label: 'Expand', value: 'https://claude.md/' } },
+      { node: 'isLikelyMdFilename', fn: 'endsWith(".md")?', desc: 'First check: does hostname end with .md? YES', data: 'hostname = "claude.md" -> endsWith(".md") = true', urlStage: { label: 'Is .md?', value: 'YES (.md TLD)' } },
+      { node: 'isLikelyMdFilename', fn: 'allowlist?', desc: 'Is it obsidian.md or subdomain? NO - proceed', data: '"claude.md" !== "obsidian.md"', urlStage: { label: 'Allowlist?', value: 'Not allowlisted' } },
+      { node: 'isLikelyMdFilename', fn: 'subdomain?', desc: 'Has subdomain (>2 parts)? NO - "claude.md" = 2 parts', data: '["claude","md"].length === 2', urlStage: { label: 'Subdomain?', value: 'No (2 parts)' } },
+      { node: 'isLikelyMdFilename', fn: 'has path?', desc: 'Has meaningful path beyond /? NO - root path only', data: 'pathname = "/" -> stripped = ""', urlStage: { label: 'Has Path?', value: 'No (root only)' } },
+      { node: 'isLikelyMdFilename', fn: 'known filename?', desc: 'Is "claude" in KNOWN_DEV_FILENAMES? YES - high confidence match', data: 'KNOWN_DEV_FILENAMES.has("claude") = true', urlStage: { label: 'Known File?', value: 'YES -> FILTERED' } },
+      { node: 'fetchAndPrepare', fn: 'skip + continue', desc: 'Mark as filename-reference, skip content fetch, continue to next link', data: '{type: "filename-reference", content: null}', urlStage: { label: 'Result', value: 'Skipped (no fetch)' } },
+    ]
+  },
+
+  mdFilterNo: {
+    label: '.md Filter: Legitimate Site',
+    desc: 'When someone shares an actual obsidian.md link',
+    layers: ['entry', 'process', 'content', 'external'],
+    conns: ['call', 'io'],
+    example: { label: 'Example: Real link to obsidian.md', startUrl: 'https://t.co/real456' },
+    steps: [
+      { node: 'fetchAndPrepare', fn: 'regex match', desc: 'Extract t.co link from tweet', data: 'https://t.co/real456', urlStage: { label: 'Extract', value: 'https://t.co/real456' } },
+      { node: 'expandTcoLink', fn: 'expandTcoLink()', desc: 'HEAD follows redirect to obsidian.md', data: 'https://t.co/real456 -> https://obsidian.md/', urlStage: { label: 'Expand', value: 'https://obsidian.md/' } },
+      { node: 'isLikelyMdFilename', fn: 'endsWith(".md")?', desc: 'Hostname ends with .md? YES - enter .md checks', data: 'hostname = "obsidian.md" -> true', urlStage: { label: 'Is .md?', value: 'YES (.md TLD)' } },
+      { node: 'isLikelyMdFilename', fn: 'allowlist?', desc: 'Is it obsidian.md? YES - known legitimate domain, return false', data: '"obsidian.md" is in LEGITIMATE_MD_DOMAINS -> PASS', urlStage: { label: 'Allowlist?', value: 'YES -> ALLOWED' } },
+      { node: 'typeClassify', fn: 'if/else chain', desc: 'No github/video/x-article/tweet match -> type = "article"', data: 'type = "article"', urlStage: { label: 'Classify', value: 'type: "article"' } },
+      { node: 'fetchContent', fn: 'fetchContent()', desc: 'Not paywalled, dispatch to fetchArticleContent', data: 'fetchArticleContent("https://obsidian.md/")', urlStage: { label: 'Dispatch', value: 'fetchArticleContent()' } },
+      { node: 'fetchArticleContent', fn: 'fetchArticleContent()', desc: 'GET request, read HTML, check paywall indicators', data: '{text: "<html>...", paywalled: false}', urlStage: { label: 'Fetch', value: 'HTML content (50KB max)' } },
+      { node: 'fetchAndPrepare', fn: 'build linkData', desc: 'Assemble link with article content for AI categorizer', data: '{type: "article", content: {text, source: "direct"}}', urlStage: { label: 'Output', value: 'linkData with content' } },
+    ]
+  },
+
+  articlePipeline: {
+    label: 'Article URL Journey',
+    desc: 'Substack/blog link through the full pipeline',
+    layers: ['entry', 'process', 'content', 'external'],
+    conns: ['call', 'io'],
+    example: { label: 'Example: Substack article', startUrl: 'https://t.co/blog789' },
+    steps: [
+      { node: 'fetchAndPrepare', fn: 'regex match', desc: 'Extract t.co link from tweet text', data: 'https://t.co/blog789', urlStage: { label: 'Extract', value: 'https://t.co/blog789' } },
+      { node: 'expandTcoLink', fn: 'expandTcoLink()', desc: 'HEAD follows redirect chain', data: '-> https://example.substack.com/p/my-article', urlStage: { label: 'Expand', value: 'example.substack.com/p/...' } },
+      { node: 'isLikelyMdFilename', fn: 'isLikelyMdFilename()', desc: 'Not a .md domain -> immediate return false', data: '{isFilename: false, reason: "not a .md domain"}', urlStage: { label: '.md Check', value: 'Pass (not .md)' } },
+      { node: 'typeClassify', fn: 'if/else chain', desc: 'No special pattern match -> falls through to "article"', data: 'type = "article"', urlStage: { label: 'Classify', value: 'type: "article"' } },
+      { node: 'isPaywalled', fn: 'isPaywalled()', desc: 'Check PAYWALL_DOMAINS: substack.com not in list', data: 'false', urlStage: { label: 'Paywall?', value: 'No' } },
+      { node: 'fetchArticleContent', fn: 'fetchArticleContent()', desc: 'GET with 30s timeout, read up to 50KB of HTML', data: '{text: "<html>...(50KB)...", paywalled: false}', urlStage: { label: 'Fetch HTML', value: '{text, paywalled: false}' } },
+      { node: 'httpFetch', fn: 'fetch()', desc: 'Native fetch() GET request with User-Agent header', data: 'GET https://example.substack.com/p/my-article', urlStage: { label: 'HTTP GET', value: '200 OK (text/html)' } },
+      { node: 'fetchAndPrepare', fn: 'build linkData', desc: 'Content sliced to 10KB for JSON, assembled into linkData', data: '{type: "article", content: {text: "...(10KB)..."}}', urlStage: { label: 'Output', value: 'linkData (10KB content)' } },
+    ]
+  },
+};
+
 // ─── State ────────────────────────────────────────────────────
 
 const state = {
-  layers: {},
-  connTypes: {},
-  comments: [],
-  zoom: 1,
-  panX: 0, panY: 0,
-  activePreset: 'full',
-  modalNode: null,
+  layers: {}, connTypes: {}, comments: [],
+  zoom: 1, panX: 0, panY: 0,
+  activePreset: 'full', modalNode: null,
+  // Trace state
+  activeTrace: null, currentStep: -1, playing: false, playTimer: null,
 };
 
-// Initialize toggles
 Object.keys(LAYERS).forEach(k => state.layers[k] = true);
 Object.keys(CONN_TYPES).forEach(k => state.connTypes[k] = true);
 
@@ -250,252 +377,175 @@ const PRESETS = {
   full: { label: 'Full System', layers: ['entry','fetch','process','content','state','external'], conns: ['call','io','data'] },
   fetch: { label: 'Twitter Fetching', layers: ['entry','fetch','external'], conns: ['call','io'] },
   links: { label: 'Link Processing', layers: ['entry','process','content','external'], conns: ['call','io','data'] },
-  mdfilter: { label: '.md Filename Filter', layers: ['entry','process'], conns: ['call','data'] },
   dataflow: { label: 'Data Flow Only', layers: ['entry','fetch','process','content','state'], conns: ['data'] },
 };
 
-// ─── Rendering ────────────────────────────────────────────────
+// ─── SVG Helpers ──────────────────────────────────────────────
 
 const svg = document.getElementById('canvas');
 const NS = 'http://www.w3.org/2000/svg';
 
-function el(tag, attrs = {}, parent = svg) {
+function svgEl(tag, attrs = {}, parent) {
   const e = document.createElementNS(NS, tag);
   for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  parent.appendChild(e);
+  (parent || svg).appendChild(e);
   return e;
 }
 
-function clearSvg() {
-  while (svg.firstChild) svg.removeChild(svg.firstChild);
-}
+function nodeCenter(n) { return { x: n.x + n.w / 2, y: n.y + n.h / 2 }; }
 
-function nodeCenter(n) {
-  return { x: n.x + n.w / 2, y: n.y + n.h / 2 };
-}
-
-function drawConnection(conn) {
-  const fromNode = nodes.find(n => n.id === conn.from);
-  const toNode = nodes.find(n => n.id === conn.to);
-  if (!fromNode || !toNode) return;
-  if (!state.layers[fromNode.layer] || !state.layers[toNode.layer]) return;
-
-  const ct = CONN_TYPES[conn.type];
-  const from = nodeCenter(fromNode);
-  const to = nodeCenter(toNode);
-
-  // Calculate connection points at node edges
-  const dx = to.x - from.x;
-  const dy = to.y - from.y;
-  const angle = Math.atan2(dy, dx);
-
-  // Start/end at edge of boxes
-  const startX = from.x + Math.cos(angle) * (fromNode.w / 2 + 2);
-  const startY = from.y + Math.sin(angle) * (fromNode.h / 2 + 2);
-  const endX = to.x - Math.cos(angle) * (toNode.w / 2 + 8);
-  const endY = to.y - Math.sin(angle) * (toNode.h / 2 + 8);
-
-  // Curved path
-  const midX = (startX + endX) / 2;
-  const midY = (startY + endY) / 2;
-  const cx = midX + (endY - startY) * 0.15;
-  const cy = midY - (endX - startX) * 0.15;
-
-  const markerId = `arrow-${conn.type}`;
-  const path = el('path', {
-    d: `M${startX},${startY} Q${cx},${cy} ${endX},${endY}`,
-    fill: 'none',
-    stroke: ct.color,
-    'stroke-width': conn.type === 'data' ? 1.5 : 1.2,
-    'stroke-dasharray': ct.dash || 'none',
-    'marker-end': `url(#${markerId})`,
-    opacity: 0.5,
-  });
-
-  // Label
-  if (conn.label) {
-    const lx = (startX + endX) / 2 + (endY - startY) * 0.08;
-    const ly = (startY + endY) / 2 - (endX - startX) * 0.08;
-    el('text', { x: lx, y: ly, fill: ct.color, 'font-size': '9', 'text-anchor': 'middle', opacity: 0.7 }).textContent = conn.label;
-  }
-}
-
-function drawNode(node) {
-  const hasComment = state.comments.some(c => c.target === node.id);
-  const layerInfo = LAYERS[node.layer];
-  const g = el('g', { class: 'node', 'data-id': node.id, cursor: 'pointer' });
-
-  // Shadow
-  el('rect', {
-    x: node.x + 2, y: node.y + 2, width: node.w, height: node.h,
-    rx: 6, fill: '#000', opacity: 0.3
-  }, g);
-
-  // Box
-  el('rect', {
-    x: node.x, y: node.y, width: node.w, height: node.h,
-    rx: 6,
-    fill: layerInfo.fill,
-    stroke: hasComment ? '#fbbf24' : layerInfo.color,
-    'stroke-width': hasComment ? 2.5 : 1.2,
-  }, g);
-
-  // Comment indicator
-  if (hasComment) {
-    el('circle', { cx: node.x + node.w - 6, cy: node.y + 6, r: 5, fill: '#fbbf24' }, g);
-    el('text', { x: node.x + node.w - 6, y: node.y + 9, fill: '#000', 'font-size': '8', 'text-anchor': 'middle', 'font-weight': 'bold' }, g).textContent = '!';
-  }
-
-  // Label
-  const label = el('text', {
-    x: node.x + node.w / 2, y: node.y + node.h / 2 + (node.layer === 'external' ? 1 : -2),
-    fill: '#eee', 'font-size': node.layer === 'external' ? '11' : '11',
-    'text-anchor': 'middle', 'font-weight': '600',
-    'font-family': "'SF Mono','Fira Code',monospace"
-  }, g);
-  // Truncate long names
-  const displayLabel = node.label.length > 24 ? node.label.slice(0, 22) + '…' : node.label;
-  label.textContent = displayLabel;
-
-  // Subtitle for non-external
-  if (node.layer !== 'external') {
-    el('text', {
-      x: node.x + node.w / 2, y: node.y + node.h / 2 + 11,
-      fill: '#888', 'font-size': '9', 'text-anchor': 'middle',
-      'font-family': "'SF Mono','Fira Code',monospace"
-    }, g).textContent = node.sig.length > 35 ? node.sig.slice(0, 33) + '…' : node.sig;
-  }
-
-  // Hover + click
-  g.addEventListener('mouseenter', (e) => showTooltip(node, e));
-  g.addEventListener('mouseleave', hideTooltip);
-  g.addEventListener('click', () => openModal(node));
-}
+// ─── Rendering ────────────────────────────────────────────────
 
 function render() {
-  clearSvg();
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-  // Defs for arrowheads
-  const defs = el('defs');
+  const defs = svgEl('defs');
   for (const [type, ct] of Object.entries(CONN_TYPES)) {
-    const marker = el('marker', {
-      id: `arrow-${type}`, markerWidth: '8', markerHeight: '6', refX: '7', refY: '3', orient: 'auto'
-    }, defs);
-    el('polygon', { points: '0 0, 8 3, 0 6', fill: ct.color }, marker);
+    const m = svgEl('marker', { id: `arrow-${type}`, markerWidth: 8, markerHeight: 6, refX: 7, refY: 3, orient: 'auto' }, defs);
+    svgEl('polygon', { points: '0 0, 8 3, 0 6', fill: ct.color }, m);
   }
+  // Trace arrow (green)
+  const tm = svgEl('marker', { id: 'arrow-trace', markerWidth: 8, markerHeight: 6, refX: 7, refY: 3, orient: 'auto' }, defs);
+  svgEl('polygon', { points: '0 0, 8 3, 0 6', fill: '#4ade80' }, tm);
 
-  // Transform group for zoom/pan
-  const g = el('g', { transform: `translate(${state.panX},${state.panY}) scale(${state.zoom})` });
+  const g = svgEl('g', { transform: `translate(${state.panX},${state.panY}) scale(${state.zoom})` });
 
-  // Temporarily redirect el() parent
-  const origSvg = svg;
-  const elInGroup = (tag, attrs = {}) => {
-    const e = document.createElementNS(NS, tag);
-    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-    g.appendChild(e);
-    return e;
-  };
+  const trace = state.activeTrace ? TRACES[state.activeTrace] : null;
+  const traceNodeIds = trace ? [...new Set(trace.steps.map(s => s.node))] : [];
+  const activeStepNode = trace && state.currentStep >= 0 ? trace.steps[state.currentStep]?.node : null;
+  const pastStepNodes = trace && state.currentStep >= 0 ? new Set(trace.steps.slice(0, state.currentStep).map(s => s.node)) : new Set();
 
-  // Draw connections first (under nodes)
+  // Draw connections
   for (const conn of connections) {
     if (!state.connTypes[conn.type]) continue;
-    const fromNode = nodes.find(n => n.id === conn.from);
-    const toNode = nodes.find(n => n.id === conn.to);
-    if (!fromNode || !toNode) continue;
-    if (!state.layers[fromNode.layer] || !state.layers[toNode.layer]) continue;
+    const fn = nodes.find(n => n.id === conn.from);
+    const tn = nodes.find(n => n.id === conn.to);
+    if (!fn || !tn || !state.layers[fn.layer] || !state.layers[tn.layer]) continue;
+
+    // In trace mode, dim non-trace connections
+    const inTrace = trace && traceNodeIds.includes(fn.id) && traceNodeIds.includes(tn.id);
+    const opacity = trace ? (inTrace ? 0.4 : 0.08) : 0.4;
 
     const ct = CONN_TYPES[conn.type];
-    const from = nodeCenter(fromNode);
-    const to = nodeCenter(toNode);
-    const dx = to.x - from.x;
-    const dy = to.y - from.y;
-    const angle = Math.atan2(dy, dx);
-    const startX = from.x + Math.cos(angle) * (fromNode.w / 2 + 2);
-    const startY = from.y + Math.sin(angle) * (fromNode.h / 2 + 2);
-    const endX = to.x - Math.cos(angle) * (toNode.w / 2 + 8);
-    const endY = to.y - Math.sin(angle) * (toNode.h / 2 + 8);
-    const cx = (startX + endX) / 2 + (endY - startY) * 0.15;
-    const cy = (startY + endY) / 2 - (endX - startX) * 0.15;
+    const from = nodeCenter(fn), to = nodeCenter(tn);
+    const angle = Math.atan2(to.y - from.y, to.x - from.x);
+    const sx = from.x + Math.cos(angle) * (fn.w / 2 + 2);
+    const sy = from.y + Math.sin(angle) * (fn.h / 2 + 2);
+    const ex = to.x - Math.cos(angle) * (tn.w / 2 + 8);
+    const ey = to.y - Math.sin(angle) * (tn.h / 2 + 8);
+    const cx = (sx + ex) / 2 + (ey - sy) * 0.15;
+    const cy = (sy + ey) / 2 - (ex - sx) * 0.15;
 
-    elInGroup('path', {
-      d: `M${startX},${startY} Q${cx},${cy} ${endX},${endY}`,
-      fill: 'none', stroke: ct.color,
-      'stroke-width': conn.type === 'data' ? 1.5 : 1.2,
-      'stroke-dasharray': ct.dash || 'none',
-      'marker-end': `url(#arrow-${conn.type})`,
-      opacity: 0.45,
-    });
-    if (conn.label) {
-      const lx = (startX + endX) / 2 + (endY - startY) * 0.08;
-      const ly = (startY + endY) / 2 - (endX - startX) * 0.08;
-      const t = elInGroup('text', { x: lx, y: ly, fill: ct.color, 'font-size': '9', 'text-anchor': 'middle', opacity: 0.6 });
+    svgEl('path', { d: `M${sx},${sy} Q${cx},${cy} ${ex},${ey}`, fill: 'none', stroke: ct.color, 'stroke-width': 1.2, 'stroke-dasharray': ct.dash || 'none', 'marker-end': `url(#arrow-${conn.type})`, opacity }, g);
+    if (conn.label && opacity > 0.1) {
+      const t = svgEl('text', { x: (sx+ex)/2+(ey-sy)*0.08, y: (sy+ey)/2-(ex-sx)*0.08, fill: ct.color, 'font-size': 9, 'text-anchor': 'middle', opacity: opacity * 1.2 }, g);
       t.textContent = conn.label;
+    }
+  }
+
+  // Draw trace path connections (green animated lines between sequential steps)
+  if (trace && state.currentStep >= 0) {
+    for (let i = 0; i < state.currentStep; i++) {
+      const fromId = trace.steps[i].node;
+      const toId = trace.steps[i + 1]?.node;
+      if (!toId || fromId === toId) continue;
+      const fn = nodes.find(n => n.id === fromId);
+      const tn = nodes.find(n => n.id === toId);
+      if (!fn || !tn) continue;
+
+      const from = nodeCenter(fn), to = nodeCenter(tn);
+      const angle = Math.atan2(to.y - from.y, to.x - from.x);
+      const sx = from.x + Math.cos(angle) * (fn.w / 2 + 4);
+      const sy = from.y + Math.sin(angle) * (fn.h / 2 + 4);
+      const ex = to.x - Math.cos(angle) * (tn.w / 2 + 10);
+      const ey = to.y - Math.sin(angle) * (tn.h / 2 + 10);
+      const cx = (sx + ex) / 2 + (ey - sy) * 0.2;
+      const cy = (sy + ey) / 2 - (ex - sx) * 0.2;
+
+      const p = svgEl('path', { d: `M${sx},${sy} Q${cx},${cy} ${ex},${ey}`, fill: 'none', stroke: '#4ade80', 'stroke-width': 2.5, 'stroke-dasharray': '6,4', 'marker-end': 'url(#arrow-trace)', opacity: 0.7 }, g);
+      p.style.animation = 'dashflow 0.8s linear infinite';
     }
   }
 
   // Draw nodes
   for (const node of nodes) {
     if (!state.layers[node.layer]) continue;
-    const hasComment = state.comments.some(c => c.target === node.id);
     const layerInfo = LAYERS[node.layer];
-    const ng = elInGroup('g', { cursor: 'pointer' });
+    const hasComment = state.comments.some(c => c.target === node.id);
 
-    elInGroup.call(null);
-    const rect = document.createElementNS(NS, 'rect');
-    // Build node manually inside g
-    const shadow = document.createElementNS(NS, 'rect');
-    shadow.setAttribute('x', node.x + 2); shadow.setAttribute('y', node.y + 2);
-    shadow.setAttribute('width', node.w); shadow.setAttribute('height', node.h);
-    shadow.setAttribute('rx', 6); shadow.setAttribute('fill', '#000'); shadow.setAttribute('opacity', 0.3);
-    ng.appendChild(shadow);
+    // Trace highlighting
+    const isInTrace = trace && traceNodeIds.includes(node.id);
+    const isActive = node.id === activeStepNode;
+    const isPast = pastStepNodes.has(node.id);
+    const dimmed = trace && !isInTrace;
+    const nodeOpacity = dimmed ? 0.15 : 1;
 
-    const box = document.createElementNS(NS, 'rect');
-    box.setAttribute('x', node.x); box.setAttribute('y', node.y);
-    box.setAttribute('width', node.w); box.setAttribute('height', node.h);
-    box.setAttribute('rx', 6);
-    box.setAttribute('fill', layerInfo.fill);
-    box.setAttribute('stroke', hasComment ? '#fbbf24' : layerInfo.color);
-    box.setAttribute('stroke-width', hasComment ? 2.5 : 1.2);
-    ng.appendChild(box);
+    const ng = svgEl('g', { cursor: 'pointer', opacity: nodeOpacity }, g);
 
-    if (hasComment) {
-      const ci = document.createElementNS(NS, 'circle');
-      ci.setAttribute('cx', node.x + node.w - 6); ci.setAttribute('cy', node.y + 6);
-      ci.setAttribute('r', 5); ci.setAttribute('fill', '#fbbf24');
-      ng.appendChild(ci);
-      const ct2 = document.createElementNS(NS, 'text');
-      ct2.setAttribute('x', node.x + node.w - 6); ct2.setAttribute('y', node.y + 9);
-      ct2.setAttribute('fill', '#000'); ct2.setAttribute('font-size', '8');
-      ct2.setAttribute('text-anchor', 'middle'); ct2.setAttribute('font-weight', 'bold');
-      ct2.textContent = '!'; ng.appendChild(ct2);
+    // Shadow
+    svgEl('rect', { x: node.x + 2, y: node.y + 2, width: node.w, height: node.h, rx: 6, fill: '#000', opacity: 0.3 }, ng);
+
+    // Box
+    let strokeColor = hasComment ? '#fbbf24' : layerInfo.color;
+    let strokeWidth = hasComment ? 2.5 : 1.2;
+    let fillColor = layerInfo.fill;
+    if (isActive) { strokeColor = '#4ade80'; strokeWidth = 3; fillColor = '#0a2a0a'; }
+    else if (isPast) { strokeColor = '#2a6a3a'; strokeWidth = 1.5; }
+
+    svgEl('rect', { x: node.x, y: node.y, width: node.w, height: node.h, rx: 6, fill: fillColor, stroke: strokeColor, 'stroke-width': strokeWidth }, ng);
+
+    // Active pulse
+    if (isActive) {
+      const pulse = svgEl('rect', { x: node.x - 3, y: node.y - 3, width: node.w + 6, height: node.h + 6, rx: 9, fill: 'none', stroke: '#4ade80', 'stroke-width': 1.5, opacity: 0.4 }, ng);
+      pulse.style.animation = 'pulse 1.5s ease-in-out infinite';
     }
 
-    const label = document.createElementNS(NS, 'text');
-    label.setAttribute('x', node.x + node.w / 2);
-    label.setAttribute('y', node.y + node.h / 2 + (node.layer === 'external' ? 1 : -2));
-    label.setAttribute('fill', '#eee'); label.setAttribute('font-size', '11');
-    label.setAttribute('text-anchor', 'middle'); label.setAttribute('font-weight', '600');
-    label.setAttribute('font-family', "'SF Mono','Fira Code',monospace");
-    const dl = node.label.length > 24 ? node.label.slice(0, 22) + '…' : node.label;
-    label.textContent = dl; ng.appendChild(label);
+    // Step number badge
+    if (trace && isInTrace) {
+      const stepIdx = trace.steps.findIndex(s => s.node === node.id);
+      if (stepIdx >= 0) {
+        // Show the step number (or first occurrence if node appears multiple times)
+        const badgeX = node.x - 6;
+        const badgeY = node.y - 6;
+        const badgeColor = isActive ? '#4ade80' : isPast ? '#2a6a3a' : '#555';
+        svgEl('circle', { cx: badgeX, cy: badgeY, r: 10, fill: badgeColor }, ng);
+        const bt = svgEl('text', { x: badgeX, y: badgeY + 4, fill: isActive || isPast ? '#000' : '#aaa', 'font-size': 10, 'text-anchor': 'middle', 'font-weight': 700 }, ng);
+        bt.textContent = stepIdx + 1;
+
+        // If this node appears again later, show that too
+        const lastIdx = trace.steps.length - 1 - [...trace.steps].reverse().findIndex(s => s.node === node.id);
+        if (lastIdx !== stepIdx) {
+          const b2x = node.x + node.w + 6;
+          svgEl('circle', { cx: b2x, cy: badgeY, r: 10, fill: (state.currentStep >= lastIdx) ? (state.currentStep === lastIdx ? '#4ade80' : '#2a6a3a') : '#555' }, ng);
+          const bt2 = svgEl('text', { x: b2x, y: badgeY + 4, fill: '#000', 'font-size': 10, 'text-anchor': 'middle', 'font-weight': 700 }, ng);
+          bt2.textContent = lastIdx + 1;
+        }
+      }
+    }
+
+    // Comment indicator
+    if (hasComment && !dimmed) {
+      svgEl('circle', { cx: node.x + node.w - 6, cy: node.y + 6, r: 5, fill: '#fbbf24' }, ng);
+      const ct2 = svgEl('text', { x: node.x + node.w - 6, y: node.y + 9, fill: '#000', 'font-size': 8, 'text-anchor': 'middle', 'font-weight': 'bold' }, ng);
+      ct2.textContent = '!';
+    }
+
+    // Label
+    const labelColor = isActive ? '#4ade80' : dimmed ? '#444' : '#eee';
+    const lt = svgEl('text', { x: node.x + node.w / 2, y: node.y + node.h / 2 + (node.layer === 'external' ? 1 : -2), fill: labelColor, 'font-size': 11, 'text-anchor': 'middle', 'font-weight': 600, 'font-family': "'SF Mono','Fira Code',monospace" }, ng);
+    lt.textContent = node.label.length > 22 ? node.label.slice(0, 20) + '\u2026' : node.label;
 
     if (node.layer !== 'external') {
-      const sub = document.createElementNS(NS, 'text');
-      sub.setAttribute('x', node.x + node.w / 2);
-      sub.setAttribute('y', node.y + node.h / 2 + 11);
-      sub.setAttribute('fill', '#888'); sub.setAttribute('font-size', '9');
-      sub.setAttribute('text-anchor', 'middle');
-      sub.setAttribute('font-family', "'SF Mono','Fira Code',monospace");
-      sub.textContent = node.sig.length > 35 ? node.sig.slice(0, 33) + '…' : node.sig;
-      ng.appendChild(sub);
+      const st = svgEl('text', { x: node.x + node.w / 2, y: node.y + node.h / 2 + 11, fill: dimmed ? '#333' : '#888', 'font-size': 9, 'text-anchor': 'middle', 'font-family': "'SF Mono','Fira Code',monospace" }, ng);
+      st.textContent = node.sig.length > 33 ? node.sig.slice(0, 31) + '\u2026' : node.sig;
     }
 
     ng.addEventListener('mouseenter', (e) => showTooltip(node, e));
     ng.addEventListener('mouseleave', hideTooltip);
     ng.addEventListener('click', () => openModal(node));
-    g.appendChild(ng);
   }
 
+  updateUrlJourney();
   updatePrompt();
 }
 
@@ -504,13 +554,11 @@ function render() {
 const tooltip = document.getElementById('tooltip');
 function showTooltip(node, event) {
   tooltip.style.display = 'block';
-  tooltip.innerHTML = `
-    <div class="tt-title">${node.label}</div>
-    <div class="tt-sig">${node.sig}</div>
-    <div class="tt-desc">${node.desc}</div>
-  `;
+  tooltip.innerHTML = `<div class="tt-title">${node.label}</div><div class="tt-sig">${node.sig}</div><div class="tt-desc">${node.desc}</div>`;
   const rect = document.querySelector('.canvas-wrap').getBoundingClientRect();
-  tooltip.style.left = (event.clientX - rect.left + 12) + 'px';
+  let left = event.clientX - rect.left + 12;
+  if (left + 260 > rect.width) left = event.clientX - rect.left - 270;
+  tooltip.style.left = left + 'px';
   tooltip.style.top = (event.clientY - rect.top + 12) + 'px';
 }
 function hideTooltip() { tooltip.style.display = 'none'; }
@@ -521,7 +569,7 @@ const modal = document.getElementById('modal');
 function openModal(node) {
   state.modalNode = node;
   document.getElementById('modalTitle').textContent = node.label;
-  document.getElementById('modalSubtitle').textContent = `${node.sig} — ${node.desc}`;
+  document.getElementById('modalSubtitle').textContent = `${node.sig} \u2014 ${node.desc}`;
   const existing = state.comments.find(c => c.target === node.id);
   document.getElementById('modalText').value = existing ? existing.text : '';
   modal.classList.add('show');
@@ -531,29 +579,145 @@ function closeModal() { modal.classList.remove('show'); state.modalNode = null; 
 function saveComment() {
   const text = document.getElementById('modalText').value.trim();
   if (!text) { closeModal(); return; }
-  const existing = state.comments.findIndex(c => c.target === state.modalNode.id);
-  if (existing >= 0) {
-    state.comments[existing].text = text;
-  } else {
-    state.comments.push({ id: Date.now(), target: state.modalNode.id, targetLabel: state.modalNode.label, text });
-  }
-  closeModal();
-  renderComments();
-  render();
+  const idx = state.comments.findIndex(c => c.target === state.modalNode.id);
+  if (idx >= 0) state.comments[idx].text = text;
+  else state.comments.push({ id: Date.now(), target: state.modalNode.id, targetLabel: state.modalNode.label, text });
+  closeModal(); renderComments(); render();
 }
-function deleteComment(id) {
-  state.comments = state.comments.filter(c => c.id !== id);
-  renderComments();
+function deleteComment(id) { state.comments = state.comments.filter(c => c.id !== id); renderComments(); render(); }
+
+// ─── Trace Controls ──────────────────────────────────────────
+
+function activateTrace(key) {
+  stopPlay();
+  if (state.activeTrace === key) { deactivateTrace(); return; }
+
+  state.activeTrace = key;
+  state.currentStep = 0;
+  const trace = TRACES[key];
+
+  // Set layers/conns for trace
+  for (const k of Object.keys(LAYERS)) state.layers[k] = trace.layers.includes(k);
+  for (const k of Object.keys(CONN_TYPES)) state.connTypes[k] = trace.conns.includes(k);
+
+  state.activePreset = null;
+  updateToggles();
+  renderSteps();
+  document.getElementById('stepsSection').style.display = 'block';
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.trace-btn').forEach(b => b.classList.toggle('active', b.dataset.trace === key));
   render();
 }
 
-// ─── Zoom ─────────────────────────────────────────────────────
+function deactivateTrace() {
+  stopPlay();
+  state.activeTrace = null;
+  state.currentStep = -1;
+  document.getElementById('stepsSection').style.display = 'none';
+  document.querySelectorAll('.trace-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('urlJourney').classList.remove('show');
+  // Restore full view
+  applyPreset('full');
+}
+
+function renderSteps() {
+  const trace = TRACES[state.activeTrace];
+  if (!trace) return;
+  const list = document.getElementById('stepList');
+  document.getElementById('stepCounter').textContent = `${state.currentStep + 1} / ${trace.steps.length}`;
+
+  list.innerHTML = trace.steps.map((step, i) => {
+    const cls = i === state.currentStep ? 'active' : i < state.currentStep ? 'past' : '';
+    return `<li class="step-item ${cls}" onclick="goToStep(${i})">
+      <span class="step-num">${i + 1}</span>
+      <div class="step-body">
+        <div class="step-fn">${step.fn}</div>
+        <div class="step-desc">${step.desc}</div>
+        ${i <= state.currentStep && step.data ? `<div class="step-data">${step.data}</div>` : ''}
+      </div>
+    </li>`;
+  }).join('');
+
+  // Scroll active step into view
+  const activeEl = list.querySelector('.step-item.active');
+  if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function goToStep(i) {
+  const trace = TRACES[state.activeTrace];
+  if (!trace) return;
+  state.currentStep = Math.max(0, Math.min(i, trace.steps.length - 1));
+  renderSteps(); render();
+}
+
+function stepNext() {
+  const trace = TRACES[state.activeTrace];
+  if (!trace) return;
+  if (state.currentStep < trace.steps.length - 1) { state.currentStep++; renderSteps(); render(); }
+  else stopPlay();
+}
+
+function stepPrev() {
+  if (state.currentStep > 0) { state.currentStep--; renderSteps(); render(); }
+}
+
+function togglePlay() {
+  if (state.playing) { stopPlay(); return; }
+  state.playing = true;
+  document.getElementById('playBtn').textContent = 'Pause';
+  document.getElementById('playBtn').classList.add('playing');
+  advancePlay();
+}
+
+function advancePlay() {
+  if (!state.playing) return;
+  const trace = TRACES[state.activeTrace];
+  if (!trace || state.currentStep >= trace.steps.length - 1) { stopPlay(); return; }
+  state.currentStep++;
+  renderSteps(); render();
+  state.playTimer = setTimeout(advancePlay, 1200);
+}
+
+function stopPlay() {
+  state.playing = false;
+  clearTimeout(state.playTimer);
+  const btn = document.getElementById('playBtn');
+  btn.textContent = 'Play';
+  btn.classList.remove('playing');
+}
+
+function resetTrace() {
+  stopPlay();
+  state.currentStep = 0;
+  renderSteps(); render();
+}
+
+// ─── URL Journey Bar ──────────────────────────────────────────
+
+function updateUrlJourney() {
+  const trace = TRACES[state.activeTrace];
+  const el = document.getElementById('urlJourney');
+  const flow = document.getElementById('urlJourneyFlow');
+  const label = document.getElementById('urlJourneyLabel');
+
+  if (!trace || state.currentStep < 0) { el.classList.remove('show'); return; }
+  el.classList.add('show');
+  label.textContent = trace.example.label;
+
+  flow.innerHTML = trace.steps.map((step, i) => {
+    if (!step.urlStage) return '';
+    const cls = i === state.currentStep ? 'active' : i < state.currentStep ? 'past' : '';
+    const arrow = i > 0 ? '<span class="url-arrow">\u2192</span>' : '';
+    return `<div class="url-stage">${arrow}<div class="url-stage-box ${cls}"><span class="stage-label">${step.urlStage.label}</span>${i <= state.currentStep ? step.urlStage.value : '\u2022\u2022\u2022'}</div></div>`;
+  }).join('');
+}
+
+// ─── Zoom / Pan ───────────────────────────────────────────────
 
 function zoomIn() { state.zoom = Math.min(state.zoom * 1.2, 3); render(); }
 function zoomOut() { state.zoom = Math.max(state.zoom / 1.2, 0.3); render(); }
 function zoomReset() { state.zoom = 1; state.panX = 0; state.panY = 0; render(); }
 
-// Pan via drag
 let isPanning = false, panStart = {};
 document.querySelector('.canvas-wrap').addEventListener('mousedown', (e) => {
   if (e.target.closest('g[cursor]')) return;
@@ -561,11 +725,15 @@ document.querySelector('.canvas-wrap').addEventListener('mousedown', (e) => {
 });
 document.addEventListener('mousemove', (e) => {
   if (!isPanning) return;
-  state.panX = e.clientX - panStart.x;
-  state.panY = e.clientY - panStart.y;
-  render();
+  state.panX = e.clientX - panStart.x; state.panY = e.clientY - panStart.y; render();
 });
 document.addEventListener('mouseup', () => { isPanning = false; });
+
+document.querySelector('.canvas-wrap').addEventListener('wheel', (e) => {
+  e.preventDefault();
+  state.zoom = e.deltaY < 0 ? Math.min(state.zoom * 1.08, 3) : Math.max(state.zoom / 1.08, 0.3);
+  render();
+}, { passive: false });
 
 // ─── Sidebar Controls ────────────────────────────────────────
 
@@ -575,7 +743,19 @@ function buildPresets() {
     const btn = document.createElement('button');
     btn.className = 'preset-btn' + (key === state.activePreset ? ' active' : '');
     btn.textContent = preset.label;
-    btn.onclick = () => applyPreset(key);
+    btn.onclick = () => { deactivateTrace(); applyPreset(key); };
+    el.appendChild(btn);
+  }
+}
+
+function buildTraces() {
+  const el = document.getElementById('traces');
+  for (const [key, trace] of Object.entries(TRACES)) {
+    const btn = document.createElement('button');
+    btn.className = 'preset-btn trace trace-btn';
+    btn.dataset.trace = key;
+    btn.innerHTML = `${trace.label}<br><span style="font-size:9px;color:#888;">${trace.desc}</span>`;
+    btn.onclick = () => activateTrace(key);
     el.appendChild(btn);
   }
 }
@@ -585,10 +765,10 @@ function applyPreset(key) {
   state.activePreset = key;
   for (const k of Object.keys(LAYERS)) state.layers[k] = preset.layers.includes(k);
   for (const k of Object.keys(CONN_TYPES)) state.connTypes[k] = preset.conns.includes(k);
-  updateToggles();
-  render();
-  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`#presets button:nth-child(${Object.keys(PRESETS).indexOf(key) + 1})`).classList.add('active');
+  updateToggles(); render();
+  document.querySelectorAll('.preset-btn:not(.trace)').forEach(b => b.classList.remove('active'));
+  const idx = Object.keys(PRESETS).indexOf(key);
+  document.querySelectorAll('#presets .preset-btn')[idx]?.classList.add('active');
 }
 
 function buildLayers() {
@@ -596,15 +776,11 @@ function buildLayers() {
   for (const [key, layer] of Object.entries(LAYERS)) {
     const label = document.createElement('label');
     label.className = 'layer-toggle';
-    label.innerHTML = `<input type="checkbox" data-layer="${key}" ${state.layers[key] ? 'checked' : ''}>
-      <span class="layer-swatch" style="background:${layer.fill};border-color:${state.layers[key] ? layer.color : 'transparent'}"></span>
-      ${layer.label}`;
+    label.innerHTML = `<input type="checkbox" data-layer="${key}" ${state.layers[key] ? 'checked' : ''}><span class="layer-swatch" style="background:${layer.fill};border-color:${state.layers[key] ? layer.color : 'transparent'}"></span>${layer.label}`;
     label.querySelector('input').onchange = (e) => {
-      state.layers[key] = e.target.checked;
-      state.activePreset = null;
+      state.layers[key] = e.target.checked; state.activePreset = null;
       document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-      updateSwatchBorders();
-      render();
+      updateSwatchBorders(); render();
     };
     el.appendChild(label);
   }
@@ -615,14 +791,10 @@ function buildConnTypes() {
   for (const [key, ct] of Object.entries(CONN_TYPES)) {
     const label = document.createElement('label');
     label.className = 'conn-toggle';
-    label.innerHTML = `<input type="checkbox" data-conn="${key}" ${state.connTypes[key] ? 'checked' : ''}>
-      <span class="conn-line" style="background:${ct.color};border-top:2px ${ct.dash ? 'dashed' : 'solid'} ${ct.color}"></span>
-      ${ct.label}`;
+    label.innerHTML = `<input type="checkbox" data-conn="${key}" ${state.connTypes[key] ? 'checked' : ''}><span class="conn-line" style="background:${ct.color};border-top:2px ${ct.dash ? 'dashed' : 'solid'} ${ct.color}"></span>${ct.label}`;
     label.querySelector('input').onchange = (e) => {
-      state.connTypes[key] = e.target.checked;
-      state.activePreset = null;
-      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-      render();
+      state.connTypes[key] = e.target.checked; state.activePreset = null;
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active')); render();
     };
     el.appendChild(label);
   }
@@ -638,52 +810,49 @@ function updateSwatchBorders() {
   document.querySelectorAll('.layer-toggle').forEach(label => {
     const cb = label.querySelector('input');
     const sw = label.querySelector('.layer-swatch');
-    const layer = LAYERS[cb.dataset.layer];
-    sw.style.borderColor = cb.checked ? layer.color : 'transparent';
+    sw.style.borderColor = cb.checked ? LAYERS[cb.dataset.layer].color : 'transparent';
   });
 }
 
 function renderComments() {
   const el = document.getElementById('comments');
   document.getElementById('commentCount').textContent = state.comments.length;
-  if (state.comments.length === 0) {
-    el.innerHTML = '<div style="font-size:11px;color:#666;">Click any function to add a comment</div>';
-    return;
-  }
-  el.innerHTML = state.comments.map(c => `
-    <div class="comment-item">
-      <div class="target">${c.targetLabel}</div>
-      <div class="text">${c.text}</div>
-      <button class="del" onclick="deleteComment(${c.id})">×</button>
-    </div>
-  `).join('');
+  if (state.comments.length === 0) { el.innerHTML = '<div style="font-size:10px;color:#666;">Click any function to add a comment</div>'; return; }
+  el.innerHTML = state.comments.map(c => `<div class="comment-item"><div class="target">${c.targetLabel}</div><div class="text">${c.text}</div><button class="del" onclick="deleteComment(${c.id})">\u00d7</button></div>`).join('');
 }
 
 // ─── Prompt Output ────────────────────────────────────────────
 
 function updatePrompt() {
   const out = document.getElementById('promptOutput');
-  const visibleLayers = Object.entries(state.layers).filter(([,v]) => v).map(([k]) => LAYERS[k].label);
+  const parts = [];
 
-  let parts = [];
-  parts.push(`This is the processor.js code map for Smaug (src/processor.js), showing: ${visibleLayers.join(', ')}.`);
+  if (state.activeTrace) {
+    const trace = TRACES[state.activeTrace];
+    parts.push(`Pipeline trace: ${trace.label}`);
+    parts.push(`${trace.desc}`);
+    if (state.currentStep >= 0) {
+      parts.push('');
+      parts.push(`Steps (${state.currentStep + 1}/${trace.steps.length}):`);
+      trace.steps.forEach((s, i) => {
+        if (i <= state.currentStep) parts.push(`  ${i+1}. ${s.fn}: ${s.desc}`);
+      });
+    }
+  } else {
+    const vis = Object.entries(state.layers).filter(([,v]) => v).map(([k]) => LAYERS[k].label);
+    parts.push(`processor.js code map showing: ${vis.join(', ')}.`);
+  }
 
   if (state.comments.length > 0) {
     parts.push('');
-    parts.push('Feedback on specific functions:');
-    for (const c of state.comments) {
-      parts.push('');
-      parts.push(`**${c.targetLabel}**:`);
-      parts.push(c.text);
-    }
+    parts.push('Feedback:');
+    for (const c of state.comments) { parts.push(`\n**${c.targetLabel}**: ${c.text}`); }
   }
-
   out.textContent = parts.join('\n');
 }
 
 function copyPrompt() {
-  const text = document.getElementById('promptOutput').textContent;
-  navigator.clipboard.writeText(text).then(() => {
+  navigator.clipboard.writeText(document.getElementById('promptOutput').textContent).then(() => {
     const btn = document.querySelector('.copy-btn');
     btn.textContent = 'Copied!';
     setTimeout(() => btn.textContent = 'Copy', 1500);
@@ -694,47 +863,325 @@ function copyPrompt() {
 
 function buildLegend() {
   const el = document.getElementById('legend');
-  let html = '<div style="font-weight:600;margin-bottom:4px;font-size:11px;">Layers</div>';
-  for (const [, layer] of Object.entries(LAYERS)) {
-    html += `<div class="legend-item"><span class="legend-swatch" style="background:${layer.fill};border:1px solid ${layer.color}"></span>${layer.label}</div>`;
-  }
-  html += '<div style="font-weight:600;margin:6px 0 4px;font-size:11px;">Connections</div>';
-  for (const [, ct] of Object.entries(CONN_TYPES)) {
-    html += `<div class="legend-item"><span style="display:inline-block;width:20px;border-top:2px ${ct.dash ? 'dashed' : 'solid'} ${ct.color}"></span>${ct.label}</div>`;
-  }
+  let html = '<div style="font-weight:600;margin-bottom:3px;">Layers</div>';
+  for (const [, l] of Object.entries(LAYERS)) html += `<div class="legend-item"><span class="legend-swatch" style="background:${l.fill};border:1px solid ${l.color}"></span>${l.label}</div>`;
+  html += '<div style="font-weight:600;margin:4px 0 3px;">Connections</div>';
+  for (const [, c] of Object.entries(CONN_TYPES)) html += `<div class="legend-item"><span style="display:inline-block;width:18px;border-top:2px ${c.dash?'dashed':'solid'} ${c.color}"></span>${c.label}</div>`;
   el.innerHTML = html;
 }
 
 // ─── Keyboard ─────────────────────────────────────────────────
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeModal();
+  if (modal.classList.contains('show')) { if (e.key === 'Escape') closeModal(); return; }
+  if (e.key === 'Escape') deactivateTrace();
   if (e.key === '+' || e.key === '=') zoomIn();
   if (e.key === '-') zoomOut();
   if (e.key === '0') zoomReset();
+  if (e.key === 'ArrowRight' || e.key === 'n') stepNext();
+  if (e.key === 'ArrowLeft' || e.key === 'p') stepPrev();
+  if (e.key === ' ') { e.preventDefault(); if (state.activeTrace) togglePlay(); }
 });
-
-// Enter key in modal saves
 document.getElementById('modalText').addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); saveComment(); }
 });
 
-// Mouse wheel zoom
-document.querySelector('.canvas-wrap').addEventListener('wheel', (e) => {
-  e.preventDefault();
-  if (e.deltaY < 0) { state.zoom = Math.min(state.zoom * 1.08, 3); }
-  else { state.zoom = Math.max(state.zoom / 1.08, 0.3); }
-  render();
-}, { passive: false });
+// ─── Custom URL Trace ────────────────────────────────────────
+
+const LEGIT_MD = ['obsidian.md'];
+const KNOWN_FILES = new Set([
+  'readme','changelog','contributing','license','code_of_conduct','security','support',
+  'authors','history','upgrade','migration','roadmap','architecture','design','style_guide',
+  'pull_request_template','issue_template','funding','codeowners',
+  'claude','memory','plan','agents','rules','instructions','context','prompt','skill',
+  'tasks','notes','scratchpad','todo','learnings','cursorrules','conventions','guidelines',
+  'setup','install','guide','docs','api','config','deployment','testing','development','quickstart',
+]);
+
+const CUSTOM_URL_EXAMPLES = [
+  { label: 'claude.md', url: 'https://claude.md/' },
+  { label: 'obsidian.md', url: 'https://obsidian.md/' },
+  { label: 'plan.md/pricing', url: 'https://plan.md/pricing' },
+  { label: 'github.com/...', url: 'https://github.com/user/cool-tool' },
+  { label: 'banana.md', url: 'https://banana.md/' },
+  { label: 'www.plan.md', url: 'https://www.plan.md/' },
+  { label: 'substack article', url: 'https://example.substack.com/p/my-post' },
+  { label: 'memory.md', url: 'https://memory.md/' },
+  { label: 'x.com/i/article', url: 'https://x.com/i/article/1234567890' },
+  { label: 'help.obsidian.md', url: 'https://help.obsidian.md/Getting+Started' },
+];
+
+function buildCustomUrlPresets() {
+  const el = document.getElementById('customUrlPresets');
+  el.innerHTML = CUSTOM_URL_EXAMPLES.map(ex =>
+    `<button class="play-btn" style="font-size:9px;padding:2px 6px;" onclick="document.getElementById('customUrlInput').value='${ex.url}';runCustomUrl();">${ex.label}</button>`
+  ).join('');
+}
+
+function runCustomUrl() {
+  const input = document.getElementById('customUrlInput').value.trim();
+  if (!input) return;
+
+  // Simulate the full pipeline for this URL
+  const steps = buildCustomTrace(input);
+  const traceKey = '_custom';
+
+  TRACES[traceKey] = {
+    label: 'Custom URL Trace',
+    desc: input,
+    layers: ['entry', 'process', 'content', 'external'],
+    conns: ['call', 'io'],
+    example: { label: `Tracing: ${input}`, startUrl: input },
+    steps,
+  };
+
+  activateTrace(traceKey);
+}
+
+function buildCustomTrace(inputUrl) {
+  const steps = [];
+
+  // Step 1: Regex extract (simulated - in real pipeline this is t.co)
+  steps.push({
+    node: 'fetchAndPrepare', fn: 'regex match',
+    desc: 'Extract link from tweet text',
+    data: inputUrl,
+    urlStage: { label: 'Input', value: inputUrl }
+  });
+
+  // Step 2: expandTcoLink (simulated - we use the URL as-is since we can't follow redirects)
+  const expandedUrl = inputUrl;
+  steps.push({
+    node: 'expandTcoLink', fn: 'expandTcoLink()',
+    desc: inputUrl.includes('t.co') ? 'Would follow t.co redirect (simulated)' : 'URL already expanded (not a t.co link)',
+    data: `expanded = "${expandedUrl}"`,
+    urlStage: { label: 'Expand', value: expandedUrl }
+  });
+
+  // Step 3+: Run isLikelyMdFilename decision tree
+  let parsed;
+  try { parsed = new URL(expandedUrl); } catch {
+    steps.push({
+      node: 'isLikelyMdFilename', fn: 'new URL()',
+      desc: 'Invalid URL - cannot parse',
+      data: '{isFilename: false, reason: "invalid URL"}',
+      urlStage: { label: 'Parse', value: 'INVALID URL' }
+    });
+    steps.push({
+      node: 'typeClassify', fn: 'skipped',
+      desc: 'Cannot classify invalid URL',
+      data: 'type = "unknown"',
+      urlStage: { label: 'Result', value: 'type: "unknown"' }
+    });
+    return steps;
+  }
+
+  // .md TLD check
+  if (!parsed.hostname.endsWith('.md')) {
+    steps.push({
+      node: 'isLikelyMdFilename', fn: 'endsWith(".md")?',
+      desc: `Hostname "${parsed.hostname}" does not end with .md - skip .md checks`,
+      data: '{isFilename: false, reason: "not a .md domain"}',
+      urlStage: { label: '.md TLD?', value: `NO (${parsed.hostname})` }
+    });
+  } else {
+    steps.push({
+      node: 'isLikelyMdFilename', fn: 'endsWith(".md")?',
+      desc: `Hostname "${parsed.hostname}" ends with .md - entering .md filename checks`,
+      data: `hostname = "${parsed.hostname}" -> .md TLD detected`,
+      urlStage: { label: '.md TLD?', value: 'YES - checking...' }
+    });
+
+    // Allowlist check
+    const isLegit = LEGIT_MD.some(d => parsed.hostname === d || parsed.hostname.endsWith('.' + d));
+    if (isLegit) {
+      steps.push({
+        node: 'isLikelyMdFilename', fn: 'allowlist check',
+        desc: `"${parsed.hostname}" is a known legitimate .md domain - ALLOWED`,
+        data: `LEGITIMATE_MD_DOMAINS match -> {isFilename: false}`,
+        urlStage: { label: 'Allowlist?', value: 'YES -> ALLOWED' }
+      });
+    } else {
+      steps.push({
+        node: 'isLikelyMdFilename', fn: 'allowlist check',
+        desc: `"${parsed.hostname}" is NOT in the allowlist (only obsidian.md)`,
+        data: `Not in LEGITIMATE_MD_DOMAINS`,
+        urlStage: { label: 'Allowlist?', value: 'No match' }
+      });
+
+      // Subdomain check
+      const parts = parsed.hostname.split('.');
+      if (parts.length > 2) {
+        steps.push({
+          node: 'isLikelyMdFilename', fn: 'subdomain check',
+          desc: `Has subdomain (${parts.length} parts: ${parts.join('.')}) - treating as real website`,
+          data: `{isFilename: false, reason: "has subdomain"}`,
+          urlStage: { label: 'Subdomain?', value: `YES (${parts[0]}.${parts[1]}) -> NOT FILTERED` }
+        });
+      } else {
+        steps.push({
+          node: 'isLikelyMdFilename', fn: 'subdomain check',
+          desc: `No subdomain (${parts.length} parts) - continue checking`,
+          data: `${parts.join('.')} has no subdomain`,
+          urlStage: { label: 'Subdomain?', value: `No (${parts.length} parts)` }
+        });
+
+        // Path check
+        const pathClean = parsed.pathname.replace(/\/$/, '');
+        if (pathClean.length > 0) {
+          steps.push({
+            node: 'isLikelyMdFilename', fn: 'path check',
+            desc: `Has meaningful path "${parsed.pathname}" - likely intentional link to specific page`,
+            data: `{isFilename: false, reason: "has specific path"}`,
+            urlStage: { label: 'Has Path?', value: `YES ("${parsed.pathname}") -> NOT FILTERED` }
+          });
+        } else {
+          steps.push({
+            node: 'isLikelyMdFilename', fn: 'path check',
+            desc: 'Root path only (/ or empty) - this is how Twitter auto-links look',
+            data: `pathname = "${parsed.pathname}" -> root only`,
+            urlStage: { label: 'Has Path?', value: 'No (root only)' }
+          });
+
+          // Known filename check
+          const baseName = parts[0].toLowerCase();
+          if (KNOWN_FILES.has(baseName)) {
+            steps.push({
+              node: 'isLikelyMdFilename', fn: 'known filename?',
+              desc: `"${baseName}" is in KNOWN_DEV_FILENAMES - this is a dev filename reference`,
+              data: `KNOWN_DEV_FILENAMES.has("${baseName}") = true`,
+              urlStage: { label: 'Known File?', value: `YES "${baseName}.md" -> FILTERED` }
+            });
+          } else {
+            steps.push({
+              node: 'isLikelyMdFilename', fn: 'known filename?',
+              desc: `"${baseName}" is NOT in the known filenames list`,
+              data: `KNOWN_DEV_FILENAMES.has("${baseName}") = false`,
+              urlStage: { label: 'Known File?', value: `No ("${baseName}")` }
+            });
+
+            // Catch-all
+            steps.push({
+              node: 'isLikelyMdFilename', fn: 'catch-all default',
+              desc: `Bare unknown .md domain with root path - likely auto-linked filename`,
+              data: `{isFilename: true, reason: "bare .md domain"}`,
+              urlStage: { label: 'Catch-All', value: `FILTERED (low confidence)` }
+            });
+          }
+
+          // Result: filtered
+          steps.push({
+            node: 'fetchAndPrepare', fn: 'skip + continue',
+            desc: 'Marked as filename-reference, no content fetch, continue to next link',
+            data: '{type: "filename-reference", content: null}',
+            urlStage: { label: 'Result', value: 'SKIPPED (no HTTP fetch)' }
+          });
+          return steps;
+        }
+      }
+    }
+  }
+
+  // If we get here, the URL was NOT filtered by .md check
+  // Type classification
+  const host = parsed.hostname;
+  const path = parsed.pathname;
+  let type = 'article';
+  let typeDesc = 'No special pattern match -> falls to default "article"';
+
+  if (host.includes('github.com')) {
+    type = 'github'; typeDesc = 'URL contains "github.com" -> type = "github"';
+  } else if (host.includes('youtube.com') || host.includes('youtu.be')) {
+    type = 'video'; typeDesc = 'YouTube domain detected -> type = "video"';
+  } else if (path.includes('/i/article/')) {
+    type = 'x-article'; typeDesc = 'Path contains "/i/article/" -> type = "x-article"';
+  } else if (host.includes('x.com') || host.includes('twitter.com')) {
+    if (path.includes('/photo/') || path.includes('/video/')) {
+      type = 'media'; typeDesc = 'Twitter media URL -> type = "media"';
+    } else {
+      type = 'tweet'; typeDesc = 'Twitter/X URL -> type = "tweet"';
+    }
+  } else if (expandedUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+    type = 'image'; typeDesc = 'Image file extension -> type = "image"';
+  }
+
+  steps.push({
+    node: 'typeClassify', fn: 'if/else chain',
+    desc: typeDesc,
+    data: `type = "${type}"`,
+    urlStage: { label: 'Classify', value: `type: "${type}"` }
+  });
+
+  // Content fetch based on type
+  if (type === 'github') {
+    steps.push({
+      node: 'fetchContent', fn: 'fetchContent()',
+      desc: 'Dispatch to fetchGitHubContent based on type "github"',
+      data: `fetchGitHubContent("${expandedUrl}")`,
+      urlStage: { label: 'Dispatch', value: 'fetchGitHubContent()' }
+    });
+    steps.push({
+      node: 'fetchGitHubContent', fn: 'fetchGitHubContent()',
+      desc: 'GitHub API: fetch repo metadata + README',
+      data: 'GET api.github.com/repos/...',
+      urlStage: { label: 'API Call', value: '{name, stars, readme}' }
+    });
+  } else if (type === 'x-article') {
+    steps.push({
+      node: 'fetchXArticleContent', fn: 'fetchXArticleContent()',
+      desc: 'Fetch X article via bird CLI read, then search, then meta scrape',
+      data: `bird read <tweetId> --json`,
+      urlStage: { label: 'Bird CLI', value: 'bird read -> search -> meta' }
+    });
+  } else if (type === 'tweet') {
+    steps.push({
+      node: 'fetchTweet', fn: 'fetchTweet()',
+      desc: 'Fetch quoted tweet for context via bird CLI',
+      data: 'bird read <quotedTweetId> --json',
+      urlStage: { label: 'Bird CLI', value: 'quote tweet context' }
+    });
+  } else if (type === 'article') {
+    steps.push({
+      node: 'fetchContent', fn: 'fetchContent()',
+      desc: 'Check paywall, then fetch article HTML',
+      data: `fetchContent("${expandedUrl}", "article")`,
+      urlStage: { label: 'Dispatch', value: 'fetchArticleContent()' }
+    });
+    steps.push({
+      node: 'fetchArticleContent', fn: 'fetchArticleContent()',
+      desc: 'GET request, read up to 50KB HTML, check paywall indicators',
+      data: '{text: "...", paywalled: false}',
+      urlStage: { label: 'HTTP GET', value: 'HTML (50KB max)' }
+    });
+  } else {
+    steps.push({
+      node: 'fetchAndPrepare', fn: 'no content fetch',
+      desc: `Type "${type}" does not trigger content extraction`,
+      data: `content = null`,
+      urlStage: { label: 'Content', value: 'none (type: ' + type + ')' }
+    });
+  }
+
+  // Final assembly
+  steps.push({
+    node: 'fetchAndPrepare', fn: 'build linkData',
+    desc: 'Assemble final link object for pending-bookmarks.json',
+    data: `{type: "${type}", content: {...}}`,
+    urlStage: { label: 'Output', value: `linkData (type: "${type}")` }
+  });
+
+  return steps;
+}
 
 // ─── Init ─────────────────────────────────────────────────────
 
 buildPresets();
+buildTraces();
+buildCustomUrlPresets();
 buildLayers();
 buildConnTypes();
 buildLegend();
 render();
-
 </script>
 </body>
 </html>
